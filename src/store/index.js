@@ -15,7 +15,7 @@ export default createStore({
     },
     getters:{
         get_base_url(state) {
-            return 'https://api.e-judiciary.uz/'
+            return 'http://api.e-judiciary.uz/'
         }
     },
     mutations:{},
