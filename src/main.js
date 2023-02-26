@@ -32,10 +32,11 @@ app.component('QuillEditor', QuillEditor)
 app.use(VueAxios, axios);
 app.use(pusher, {
     wsHost: 'api.e-judiciary.uz',
-    wsPort:443,
+    wsPort:80,
+    wssPort:443,
     encrypted:true,
     enabledTransports:[ 'ws', 'wss'],
-    apiKey: 'e-judiciary-app-key', forceTLS: false,
+    apiKey: 'e-judiciary-app-key', forceTLS: true,
     cluster: "mt1",
     authEndpoint: "https://api.e-judiciary.uz/api/v1/pusher/auth",
     auth: {
