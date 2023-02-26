@@ -1,8 +1,8 @@
 <template>
   <div class="">
     <v-header class="bg-primary_gr"/>
-    <div class="py-16 flex maxlg:flex-wrap maxxl:justify-center">
-      <div class="w-9/12 bg-white mt-14 p-8 maxxl:w-full">
+    <div class="py-16 flex max-lg:flex-wrap max-xl::justify-center">
+      <div class="w-9/12 bg-white mt-14 p-8 max-xl:w-full">
         <div class="userList-title">
           <h3 class="text-3xl w-[90%] font-bold">
             {{ get_appeal.title }}
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="w-4/12 ml-4  maxlg:ml-0 h-full  mt-14 p-6  maxxl:w-full " v-if="get_appeal.id">
+      <div class="w-4/12 ml-4 max-lg:ml-0 h-full  mt-14 p-6  max-xl:w-full " v-if="get_appeal.id">
         <div class="appeal-response shadow-2xl USERS bg-white rounded-2xl py-2 px-4" v-if="show && lawyers.length !== 0">
           <h3 class="text-[28px] text-center font-bold mb-4 mx-auto pb-5 USERS ">Отклики</h3>
           <vAppealResponse @changeUser="changeUser" :item="item" v-for="item in lawyers"/>
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="" v-if="Number(get_appeal.status_id) !== 4 && getCurrentUser.role_name === 'lawyer'">
-              <label for="file2" class="block cursor-pointer bg-l_white mt-10 rounded-2xl text-l_black">
+              <label for="file2" class="block cursor-pointer bg-white mt-10 rounded-2xl text-l_black">
                 <h3 class="text-2xl py-2 text-center font-bold mx-auto ">Загрузить ответ</h3>
                 <input type="file" id="file2" @change="file=$event.target.files[0]" class="hidden">
               </label>
@@ -109,12 +109,12 @@
                       <h3 class="text-3xl font-bold w-full">Оцените Юриста</h3>
                       <p class="relative text-base text-filter_gray pl-8"></p>
                       <star-rating :increment="0.5" active-color="#1B3D7E" v-model:rating="rating"/>
-                      <div class="w-full mt-10 flex justify-center maxsm:flex-wrap">
+                      <div class="w-full mt-10 flex justify-center max-sm:flex-wrap">
                         <v-button @click="showRating=!showRating"
                                   class="w-[306px] h-[60px] bg-opacity-0 border border-filter_gray text-filter_gray">
                           Отменить
                         </v-button>
-                        <v-button @click="sendRating" class="w-[306px] h-[60px] ml-4 maxsm:ml-0 maxsm:mt-4">Сохранить
+                        <v-button @click="sendRating" class="w-[306px] h-[60px] ml-4 max-sm:ml-0 max-sm:mt-4">Сохранить
                         </v-button>
                       </div>
                   </div>
@@ -135,7 +135,7 @@
 
         </div>
 
-        <div class="bg-l_white rounded-2xl py-2" v-else-if="show===false">
+        <div class="bg-white rounded-2xl py-2" v-else-if="show===false">
           <div class="ADVOCATE  border-filter_gray px-4">
             <div class="flex cursor-pointer flex-wrap gap-2 ">
               <div class="flex justify-center items-center w-full ">

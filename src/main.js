@@ -31,14 +31,14 @@ app.use(i18n);
 app.component('QuillEditor', QuillEditor)
 app.use(VueAxios, axios);
 app.use(pusher, {
-    wsHost: 'api.e-judiciary.uz',
-    wsPort:80,
+    wsHost: '127.0.0.1',
+    wsPort:6001,
     wssPort:443,
     encrypted:true,
     enabledTransports:[ 'ws', 'wss'],
-    apiKey: 'e-judiciary-app-key', forceTLS: true,
+    apiKey: 'e-judiciary-app-key', forceTLS: false,
     cluster: "mt1",
-    authEndpoint: "https://api.e-judiciary.uz/api/v1/pusher/auth",
+    authEndpoint: "http://192.168.100.6/api/v1/pusher/auth",
     auth: {
         headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),

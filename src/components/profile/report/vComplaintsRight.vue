@@ -19,7 +19,7 @@
       </div>
       <div class="flex justify-center items-center mt-4">
 
-        <button class="bg-l_primary h-[50px]  px-16 rounded-xl text-l_white active:scale-95 transition-all"
+        <button class="bg-primary h-[50px]  px-16 rounded-xl text-white active:scale-95 transition-all"
                 @click="showData">Отправить
         </button>
       </div>

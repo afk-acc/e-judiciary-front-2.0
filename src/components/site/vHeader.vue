@@ -96,7 +96,7 @@
                    </span>
 
                       <!--          <span-->
-                      <!--              class="w-[8px] animate-ping h-[8px] absolute bottom-0 right-2 z-10 text-[8px] bg-l_secondary rounded-full flex items-center justify-center text-l_white">-->
+                      <!--              class="w-[8px] animate-ping h-[8px] absolute bottom-0 right-2 z-10 text-[8px] bg-l_secondary rounded-full flex items-center justify-center text-white">-->
                       <!--          {{ this.mes }}-->
                       <!--        </span>-->
 

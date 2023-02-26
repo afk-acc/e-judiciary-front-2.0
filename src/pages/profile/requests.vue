@@ -1,12 +1,12 @@
 <template>
-  <div class="">
-    <div class="">
+  <div class="mt-20 w-full overflow-x-scroll">
+    <div class="overflow-x-scroll max-md:w-[720px]">
       <request-item
           @showModal="(el)=>{show_info = true;active_user=el.user_info }"
           :item="item" v-for="(item, index) in get_request_list.data" :key="index"
           :num="(params.page-1) * 10 + index + 1"/>
     </div>
-    <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_request_list?.data?.length > 0">
+    <div class="flex gap-x-[1px] flex-wrap my-10  overflow-x-scroll" v-if="get_request_list?.data?.length > 0">
       <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
            v-for="item in get_request_list?.meta?.links"
            :class="{'bg-primary text-white rounded-full ':item.active}">
@@ -17,23 +17,23 @@
       {{ $t('Ничего не найдено') }}
     </div>
     <v-modal v-if="show_info" @showModal="show_info = !show_info">
-      <div class="text-center font-bold text-primary text-2xl">{{ $t("Информация о пользователе") }}</div>
+      <div class="text-center font-bold text-primary text-2xl max-lg:text-base">{{ $t("Информация о пользователе") }}</div>
       <div class="flex justify-center my-2"><img :src="active_user?.image" alt=""
                                                  class="w-[100px] h-[100px] rounded-full object-cover "></div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
+      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
 
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span> {{ active_user.bio }}
+      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span> {{ active_user.bio }}
       </div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
+      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
         {{ active_user.education_place || '-' }}
       </div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
+      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
       </div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
+      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
           active_user.rating || '-'
         }}
       </div>
-      <div class="flex justify-center mt-1 gap-x-4">
+      <div class="flex justify-center mt-1 gap-x-4 max-md:gap-x-2">
         <v-button mode="danger" @click="show_info = false; change_request_lawyer({user_id:active_user.id,value:-1})">
           {{ $t("Отклонить") }}
         </v-button>

@@ -1,15 +1,15 @@
 <template>
-  <div class="bg-white w-full px-10  pb-5 rounded-lg maxmd:py-4 relative z-100">
+  <div class="bg-white w-full px-10  pb-5 rounded-lg max-md:py-4 relative z-100">
     <p class="font-bold text-[40px]">{{ $t("История изменений") }}</p>
-    <div class="flex maxlg:flex-wrap  maxlg:mt-10 ">
+    <div class="flex max-lg:flex-wrap  max-lg:mt-10 ">
       <input class="bg-footer_bg w-full rounded-xl px-4 py-2 text-sm text-[#9DA3CF] outline-none" @keyup="loadHistoryLists({...params, query:$event.target.value})" type="text" name="" value="" :placeholder="$t('Поиск изменений')">
-      <button class="text-sm maxlg:w-full maxlg:px-0 maxlg:mt-4 bg-footer_bg ml-10 maxlg:m-0 px-6 py-4 rounded-xl outline-none"
+      <button class="text-sm max-lg:w-full max-lg:px-0 max-lg:mt-4 bg-footer_bg ml-10 max-lg:m-0 px-6 py-4 rounded-xl outline-none"
               type="submit"
               @click="openModal = !openModal"
       >{{ $t("Фильтр") }}</button>
 
     </div>
-    <div class="w-[394px] maxsm:w-[90%] shadow-2xl  border-filter_gray bg-white absolute right-10 maxsm:right-4  z-30 p-4"
+    <div class="w-[394px] max-sm:w-[90%] shadow-2xl  border-filter_gray bg-white absolute right-10 max-sm:right-4  z-30 p-4"
          :class="{'block  bg-white border-filter_gray' : openModal, 'hidden': !openModal}"
     >
       <div class="filter-title flex relative">
@@ -51,7 +51,7 @@
                    placeholder="дд.мм.гг"/>
           </ul>
           <div class="flex w-full my-2 justify-center">
-            <button class="rounded-2xl bg-l_primary text-l_white px-4 py-2 w-9/12" @click="loadHistoryLists({...params, ...par})" >
+            <button class="rounded-2xl bg-primary text-white px-4 py-2 w-9/12" @click="loadHistoryLists({...params, ...par})" >
               {{ $t("Применить") }}</button>
 
           </div>

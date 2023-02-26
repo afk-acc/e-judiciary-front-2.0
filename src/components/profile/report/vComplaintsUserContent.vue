@@ -2,8 +2,8 @@
 
   <div class="">
     <div
-        class="flex items-center maxmd:flex-wrap justify-between px-6 border-b border-filter_gray border-opacity-50 pb-5 maxsm:justify-end">
-      <div class="flex  gap-x-5 items-center maxsm:hidden">
+        class="flex items-center max-md:flex-wrap justify-between px-6 border-b border-filter_gray border-opacity-50 pb-5 max-sm:justify-end">
+      <div class="flex  gap-x-5 items-center max-sm:hidden">
         <div>
           <img class="w-[50px] h-[50px] rounded-full object-cover" :src="getImage(report?.reciver_info?.image)" alt=""/>
         </div>
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div>
-        <p class="text-filter_gray maxsm:ml-10">{{ getDate(report?.created_at) }}</p>
+        <p class="text-filter_gray max-sm:ml-10">{{ getDate(report?.created_at) }}</p>
       </div>
     </div>
     <div class="px-10 my-10">
@@ -66,7 +66,7 @@
       <div class="user-content__files ">
         <div class="flex" v-if="report.file">
           <p class="px-4 font-bold">Вложение</p>
-          <button class="text-l_primary underline" @click="getPdf(report.file, report.title)">Скачать</button>
+          <button class="text-primary underline" @click="getPdf(report.file, report.title)">Скачать</button>
         </div>
       </div>
     </div>

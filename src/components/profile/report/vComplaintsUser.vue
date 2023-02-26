@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-pointer" :class="{'border-l-4 border-l_primary':is_active}">
+  <div class="cursor-pointer" :class="{'border-l-4 border-primary':is_active}">
     <div class="flex mt-4 pl-4">
       <div>
         <img :src="getImage(item.reciver_info.image)" class="w-[40px] h-[40px] rounded-full object-cover" alt="">

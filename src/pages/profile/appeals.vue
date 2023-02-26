@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="max-h-[550px] overflow-auto">
+  <div class="mt-20 w-full overflow-scroll">
+    <div class="max-h-[750px] max-lg:w-[1024px] overflow-x-scroll">
       <v-search v-model:model-value="params.query" @search="loadAppealList(params)"/>
       <div class="flex justify-between">
         <div class="flex gap-x-4 my-5">

@@ -1,5 +1,5 @@
 <template>
-  <div class=" hidden maxlg:block absolute z-50 maxlg:left-10 maxlg:top-5 cursor-pointer maxsm:top-12"
+  <div class=" hidden max-lg:block absolute z-50 left-[50px] max-lg:top-16 max-md:top-20 cursor-pointer "
        @click="modalLeft = !modalLeft"
   >
     <i>
@@ -26,8 +26,8 @@
     </i>
   </div>
   <div
-      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] maxlg:w-5/12 maxsm:w-11/12 relative maxlg:h-[90%] bg-l_white maxlg:absolute transition-all duration-300 z-50"
-      :class="{'maxlg:-left-[600px]':!modalLeft, 'maxlg:left-0  h-full' : modalLeft}"
+      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-11/12 relative max-lg:h-[90%] bg-white max-lg:absolute transition-all duration-300 z-50"
+      :class="{'max-lg:-left-[600px]':!modalLeft, 'max-lg:left-0  h-full' : modalLeft}"
   >
     <div class="chat-left_title flex justify-center items-center border-b-[1px] py-5 border-[#DBDDE2]">
       <svg
@@ -82,7 +82,7 @@
       </svg>
       <div class="flex items-center ">
         <p class="pl-2 text-xl">{{ $t("Чаты с юристами") }}</p>
-        <i class="ml-4 hidden maxlg:flex cursor-pointer"
+        <i class="ml-4 hidden max-lg:flex cursor-pointer"
            @click="modalLeft = !modalLeft"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

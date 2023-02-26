@@ -1,7 +1,6 @@
 <template>
-  <div class="">
+  <div class="max-lg:overflow-x-scroll max-lg:h-full w-full max-lg:mt-20">
     <v-search v-model:model-value="params.query" @search="loadUsersList(params)"/>
-
     <user-item
         @showInfo="(el)=>{show_info = true; change_user = el}"
         @showModal="(el)=>{show_del = true;change_user = el }" v-for="(item, index) in getUsersList.data"
@@ -20,13 +19,13 @@
       <p class="text-center font-bold text-black text-3xl">{{ $t('Изменить пользователя') }}</p>
       <div class="flex justify-center gap-x-4 my-5">
         <form @submit.prevent="changeUser"
-              class="flex items-center gap-4 maxsm:flex-col">
+              class="flex items-center gap-4 max-sm:flex-col">
           <select id="roles" class=" border-[#DBDBDB] border-[1px] mx-10 w-[70%] outline-none   rounded-[12px] p-4"
                   v-model="change_user.role_id" :value="change_user.role_id">
             <option value="" selected disabled class="text-l_black">{{ $t("Выбрать роль") }}</option>
             <option :value="item.id" v-for="item in getRoleList">{{ item.role_name }}</option>
           </select>
-          <div class=" flex justify-end mx-10 gap-x-4 my-4 maxmd:mx-auto">
+          <div class=" flex justify-end mx-10 gap-x-4 my-4 max-md:mx-auto">
             <v-button @click="show_del = false">{{ $t("Отменить") }}</v-button>
             <v-button type="submit">{{ $t("Изменить") }}
             </v-button>

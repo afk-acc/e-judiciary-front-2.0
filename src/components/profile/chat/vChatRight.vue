@@ -1,11 +1,11 @@
 <template>
-  <div class="w-9/12 flex h-full maxlg:w-full maxlg:mx-auto">
-    <div class="w-9/12 maxlg:w-full border-r-[1px] maxlg:border-none border-[#DBDDE2] h-full pb-16 maxsm:h-[90%]">
+  <div class="w-9/12 flex h-full max-lg:w-full max-lg:mx-auto">
+    <div class="w-9/12 max-lg:w-full border-r-[1px] max-lg:border-none border-[#DBDDE2] h-full pb-16 max-sm:h-[90%]">
       <div>
         <div v-if="chat"
              class="chat-left_title  flex justify-between items-center border-b-[1px] py-[10px] px-12 border-[#DBDDE2]">
           <div
-              class="flex maxsm:flex-col maxsm:text-center maxsm:items-center maxlg:mx-auto cursor-pointer select-none">
+              class="flex max-sm:flex-col max-sm:text-center max-sm:items-center max-lg:mx-auto cursor-pointer select-none">
             <div>
               <img class="w-[45px] h-[45px] object-cover rounded-full" :src="getImage(reciver.image)" alt="">
             </div>
@@ -86,13 +86,13 @@
     </div>
     <div
         v-if="chat"
-        class="w-3/12 maxmd:w-4/12 maxsm:w-9/12 maxlg:absolute  maxlg:bg-l_white maxlg:border-l-[1px] maxlg:border-[#DBDDE2] transition-all duration-300 z-10"
-        :class="{'maxlg:-right-[500px]':!modalRight, 'maxlg:right-0  h-full' : modalRight}"
+        class="w-3/12 max-md:w-4/12 max-sm:w-9/12 max-lg:absolute  max-lg:bg-white max-lg:border-l-[1px] max-lg:border-[#DBDDE2] transition-all duration-300 z-10"
+        :class="{'max-lg:-right-[500px]':!modalRight, 'max-lg:right-0  h-full' : modalRight}"
     >
-      <div class="p-[20px] border-b-[1px] border-[#DBDDE2] maxlg:text-center">
+      <div class="p-[20px] border-b-[1px] border-[#DBDDE2] max-lg:text-center">
         <p class="text-xl" v-if="reciver.role_name === 'lawyer'"> {{ $t("О юристе") }}</p>
         <p class="text-xl" v-else> {{ $t("О пользователе") }}</p>
-        <i class="ml-4 absolute top-6 left-0 hidden maxlg:flex cursor-pointer"
+        <i class="ml-4 absolute top-6 left-0 hidden max-lg:flex cursor-pointer"
            @click="modalRight = !modalRight"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

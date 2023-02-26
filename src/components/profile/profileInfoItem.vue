@@ -1,9 +1,9 @@
 <template>
-  <div class="flex w-full text-brown_t font-bold  table_item">
-    <div class="w-3/12 border-r border-[#E7E7E7] p-3">
+  <div class="flex max-sm:flex-col max-sm:items-center w-full text-brown_t font-bold  table_item">
+    <div class="w-3/12 border-r max-sm:border-r-0 border-[#E7E7E7] p-3 max-sm:w-full max-sm:text-center ">
       {{ label }}
     </div>
-    <div class="w-9/12 p-3">
+    <div class="w-9/12 p-3 max-lg:w-full max-lg:text-end max-sm:text-center max-sm:border-b"  >
       {{ item }}
     </div>
   </div>

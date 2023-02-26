@@ -1,8 +1,8 @@
 <template>
-  <div class="maxmd:mt-20 z-50 maxsm:w-full">
+  <div class="max-md:mt-20 z-50 max-md:w-full ">
     <v-history-search v-model="params" :params="params"></v-history-search>
-    <div class="bg-white  maxlg:overflow-x-scroll rounded-[24px] z-0 ">
-      <div class="history-items relative z-0 maxlg:w-full ">
+    <div class="bg-white max-lg:overflow-x-scroll rounded-[24px] z-0 ">
+      <div class="history-items relative z-0 max-lg:w-[720px] ">
         <v-history-line class="top-0 left-[47px]"/>
         <transition-group name="list">
           <v-history-content v-for="(elem, index) in getCurrentHistory.data" :elem="elem" :key="index"/>

@@ -1,10 +1,11 @@
 <template>
-  <div class="w-full h-[640px] overflow-hidden maxlg:h-screen bg-white z-50 relative flex rounded-xl">
-    <teleport to="body">
-      <div class="fixed -left-1 -top-2 p-5 text-4xl text-primary cursor-pointer z-50"
-           @click="$router.push({name:'info'})">&leftarrow;
-      </div>
-    </teleport>
+  <teleport to="body">
+    <div class="fixed -left-4 -top-5 p-4 text-4xl text-primary cursor-pointer z-50 max-lg:z-40"
+         @click="$router.push({name:'info'})">&leftarrow;
+    </div>
+  </teleport>
+  <div class="w-full p-10 h-[640px] overflow-hidden max-lg:h-screen bg-white  relative flex rounded-xl">
+
     <v-chat-left
         :get_chat_user_list="get_chat_user_list"
         @changeChat="changeChat"

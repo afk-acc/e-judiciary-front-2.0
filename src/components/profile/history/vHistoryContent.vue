@@ -42,7 +42,7 @@
     </div>
     <div class="history-text w-full flex border-[1px] border-[#D7E2FF] border-t-0 border-l-0 border-r-0
      items-center justify-between ">
-      <div class="history-left flex items-center w-7/12 maxsm:w-screen maxmd:p-6" >
+      <div class="history-left flex items-center w-7/12 max-sm:w-screen max-md:p-6" >
         <div class="history-desc text-filter_gray">
           <p> {{getDate(elem.date)}} </p>
           <p>
@@ -51,8 +51,8 @@
           </p>
         </div>
       </div>
-      <div class="history-right flex border-l-[1px] w-5/12 border-[#D7E2FF] h-full pt-10 px-4 maxlg:pt-4">
-        <div class="history-date flex items-center mr-[100px] maxlg:mr-[50px] maxlg:text-center maxmd:mr-[10px] maxlg:border-r-[1px] border-[#D7E2FF]">
+      <div class="history-right flex border-l-[1px] w-5/12 border-[#D7E2FF] h-full pt-10 px-4 max-lg:pt-4">
+        <div class="history-date flex items-center mr-[100px] max-lg:mr-[50px] max-lg:text-center max-md:mr-[10px] max-lg:border-r-[1px] border-[#D7E2FF]">
           <svg class="w-[50px] mr-2" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.0918 9.40421H20.9157" stroke="#3A57E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M16.4429 13.3097H16.4522" stroke="#3A57E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -65,9 +65,9 @@
             <path d="M7.96515 2V5.29078" stroke="#3A57E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2383 3.5791H7.77096C4.83427 3.5791 3 5.21504 3 8.22213V17.2718C3 20.3261 4.83427 21.9999 7.77096 21.9999H16.229C19.175 21.9999 21 20.3545 21 17.3474V8.22213C21.0092 5.21504 19.1842 3.5791 16.2383 3.5791Z" stroke="#3A57E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p class="maxsm:pr-4 ">{{ getDate2(elem.date)}}</p>
+          <p class="max-sm:pr-4 ">{{ getDate2(elem.date)}}</p>
         </div>
-        <div class="history-editing maxsm:pr-6 cursor-pointer flex items-center">
+        <div class="history-editing max-sm:pr-6 cursor-pointer flex items-center">
 
         </div>
       </div>

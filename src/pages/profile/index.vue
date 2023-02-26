@@ -3,7 +3,9 @@
   <div class="">
     <v-header class="bg-primary_gr"/>
     <div class="_container flex w-full py-16">
-      <div class=" w-4/12 bg-footer_bg h-screen pt-[37px]">
+      <div class=" w-4/12 max-lg:fixed z-40 transition-all duration-300 bg-footer_bg h-full pt-[37px] max-lg:w-6/12 max-md:w-8/12 max-sm:w-10/12"
+        :class="{'left-[-1000px]' : !openAdmin, 'left-0' : openAdmin}"
+      >
         <profile-link-items route="info">
           {{ $t("Основная информация") }}
         </profile-link-items>
@@ -31,18 +33,25 @@
         <profile-link-items route="service" :params="{page:1}">
           {{ $t("Добавить обращение") }}
         </profile-link-items>
+        <profile-link-items route="chat" :params="{page:1}">
+          {{ $t("Чаты с юристами") }}
+        </profile-link-items>
         <profile-link-items route="" @click="logout" class="text-danger font-bold ">
           {{ $t("Выход") }}
         </profile-link-items>
-
       </div>
-      <div class="fill-black">
-        <svg  width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <title>bars</title>
+      <div class="bg-black fixed z-30 opacity-40 w-full h-screen"
+        :class="{'hidden' : !openAdmin, 'block' : openAdmin}"
+         @click="openAdmin = !openAdmin">
+
+      ></div>
+      <div class="fill-black hidden max-lg:block absolute top-[130px] left-[100px] max-md:left-[50px]">
+        <svg class="cursor-pointer"  width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        @click="openAdmin = !openAdmin">
           <path d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
         </svg>
       </div>
-      <div class="w-8/12 pt-9 ">
+      <div class="w-8/12 max-lg:w-11/12 pt-9 mx-auto">
         <div class=" ">
           <div class="px-4 py-2 ">
             <router-view/>
@@ -65,6 +74,11 @@ import {mapActions, mapGetters} from "vuex";
 import {canAccess} from "../../assets/functions";
 
 export default {
+  data() {
+    return {
+      openAdmin: false
+    }
+  },
   name: "index",
   components: {VInfo, ProfileLinkItems, VHeader, VFooter},
   methods: {
