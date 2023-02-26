@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center gap-y-6 items-center border-r max-lg:border-none border-gray last:border-none px-5  ">
+  <div class="flex flex-col justify-center gap-y-6 items-center border-r  max-lg:border-none border-gray last:border-none px-5  ">
     <div class="text-8xl font-bold text-[#AAAFB8]">
       <slot name="num"/>
     </div>

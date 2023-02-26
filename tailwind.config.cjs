@@ -17,7 +17,8 @@ module.exports = {
         },
         backgroundImage: {
             primary_gr: "linear-gradient(83.23deg, #132852 15.54%, rgba(13, 59, 147, 0.92) 100.82%)",
-            secondary_gr: "linear-gradient(267.49deg, #132852 -12.16%, rgba(13, 59, 147, 0.92) 53.26%)"
+            secondary_gr: "linear-gradient(267.49deg, #132852 -12.16%, rgba(13, 59, 147, 0.92) 53.26%)",
+            header_gr:"linear-gradient(83.23deg, #132852 15.54%, rgba(13, 59, 147, 0.92) 100.82%);"
         },
         extend: {
             fontFamily: {

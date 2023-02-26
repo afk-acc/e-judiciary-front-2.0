@@ -5,7 +5,7 @@
       <div class="flex flex-wrap max-md:flex-col max-md:gap-y-15 justify-between gap-y-20 mt-10 relative ">
         <document-template-item :item="item" v-for="(item, index) in get_doc_type_list" :key="index"
                                 class="min-h-[500px] max-lg:min-h-full max-md:border-r-0 max-lg:px-4 flex flex-col justify-between max-md:w-full w-[49%]"
-                                :is-end="index % 2 !== 0" :class="{'border-r ':index % 2 === 0}"/>
+                                :is-end="index % 2 !== 0" :class="{'border-dashed border-r ':index % 2 === 0}"/>
       </div>
       <div class="flex justify-center mt-10">
         <v-button>

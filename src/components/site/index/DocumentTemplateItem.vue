@@ -22,8 +22,8 @@
         </router-link>
       </ul>
     </div>
-    <div class="absolute w-full left-0 -mt-12" v-if="isEnd">
-      <hr>
+    <div class="border-b border-dashed absolute w-full left-0 -mt-12" v-if="isEnd">
+
 
     </div>
   </div>
