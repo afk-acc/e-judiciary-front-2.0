@@ -1,6 +1,12 @@
 <template>
+  <teleport to="body">
+
   <div
-      class="fixed  w-full border-b-[0.5px] border-white border-opacity-40 h-[82px] z-50">
+      :class="{
+      'h-full ': open,
+      'bg-primary': scrollPosition > 380  && !open,
+    }"
+      class="fixed transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 h-[82px] z-50">
     <div class="_container flex items-center justify-between relative h-full">
 
 
@@ -121,6 +127,7 @@
     </div>
 
   </div>
+  </teleport>
 
 </template>
 
@@ -136,6 +143,7 @@ export default {
   data() {
     return {
       mes: 0,
+      scrollPosition: null,
       show_notification: false,
       lang: ""
     }
@@ -156,11 +164,15 @@ export default {
     ...mapActions(['load_notifications']),
     show() {
       return localStorage.getItem('token')
-    }
+    },
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
+    },
   },
   mounted() {
     this.mes = this.getCurrentUser.notify
     this.lang = localStorage.getItem('locale') === 'uz_l'?'Ру':'Uz'
+    window.addEventListener("scroll", this.updateScroll);
 
   },
   watch: {
