@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col justify-between">
     <v-header class="bg-primary_gr"/>
-    <router-view class="py-14"/>
+    <router-view class="pt-14"/>
     <v-footer class=""/>
   </div>
 </template>
