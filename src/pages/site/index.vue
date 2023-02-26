@@ -1,11 +1,11 @@
 <template>
-  <div class="">
+  <div class="max-lg:mt-20">
     <v-inner/>
-    <div class="_container">
+    <div class="_container ">
       <v-advantages/>
     </div>
     <v-documents-template/>
-    <div class="_container">
+    <div class="_container max-lg:px-4 ">
       <v-stats/>
     </div>
     <v-info/>

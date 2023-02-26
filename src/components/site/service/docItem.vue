@@ -1,5 +1,5 @@
 <template>
-<router-link :to="{name:'constructor', params:{name:item.id}}" class="flex gap-x-7 border-b border-border_c py-4 font-medium text-xl last:border-none">
+<router-link :to="{name:'constructor', params:{name:item.id}}" class="flex gap-x-7 border-b border-border_c py-4 font-medium text-xl max-lg:text-lg last:border-none">
   <div class="">
     <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <rect width="47" height="47" fill="url(#pattern0)"/>
@@ -11,7 +11,9 @@
       </defs>
     </svg>
   </div>
-  {{item.name}}
+  <div class="max-md:text-sm break-all">
+    {{item.name}}
+  </div>
 </router-link>
 </template>
 

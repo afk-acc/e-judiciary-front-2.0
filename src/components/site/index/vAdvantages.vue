@@ -1,8 +1,8 @@
 <template>
-  <div class="my-10">
+  <div class="my-10 ">
     <p class="text-center font-medium text-3xl text-black">{{$t('Преимущества')}}</p>
-    <div class="flex justify-center gap-5 mt-10">
-        <advantage-item >
+    <div class="flex max-lg:flex-wrap max-lg:justify-center justify-center gap-5 mt-10">
+      <advantage-item >
           <template v-slot:icon><svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M59.5833 30.0083V32.5C59.58 38.3403 57.6889 44.023 54.1919 48.7007C50.695 53.3784 45.7797 56.8004 40.1791 58.4564C34.5784 60.1123 28.5926 59.9134 23.1142 57.8895C17.6358 55.8655 12.9584 52.1248 9.77967 47.2253C6.60092 42.3259 5.09109 36.5301 5.47536 30.7025C5.85964 24.8748 8.11743 19.3275 11.912 14.8879C15.7066 10.4482 20.8346 7.35412 26.5313 6.06702C32.2281 4.77992 38.1882 5.36879 43.5229 7.74579" stroke="#2250A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M59.5833 10.8334L32.5 37.9438L24.375 29.8188" stroke="#2250A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

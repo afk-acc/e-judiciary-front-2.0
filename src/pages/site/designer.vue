@@ -1,6 +1,6 @@
 <template>
   <div class="_container">
-    <div class="flex items-center gap-x-4 pt-7">
+    <div class="flex items-center mx-10 gap-x-4 mt-14">
       <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M11.4583 4.16666H4.16659C3.61405 4.16666 3.08415 4.38615 2.69345 4.77685C2.30275 5.16755 2.08325 5.69746 2.08325 6.24999V20.8333C2.08325 21.3859 2.30275 21.9158 2.69345 22.3065C3.08415 22.6972 3.61405 22.9167 4.16659 22.9167H18.7499C19.3025 22.9167 19.8324 22.6972 20.2231 22.3065C20.6138 21.9158 20.8333 21.3859 20.8333 20.8333V13.5417"
@@ -11,8 +11,8 @@
       </svg>
       {{ get_fields.name }}
     </div>
-    <div class="flex justify-between">
-      <form class="flex flex-col w-4/12 py-5 overflow-auto max-h-[570px]" @submit.prevent="add">
+    <div class="flex justify-between mx-10 max-md:mx-4  max-lg:items-center max-lg:flex-col">
+      <form class="flex flex-col w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]" @submit.prevent="add">
         <v-input required="true" v-model:model-value="appeal.title" :label="$t('Заголовок')"/>
         <v-input required="true" v-model:model-value="appeal.description" type="textarea" :label="$t('Описание')"/>
         <designer-input @loadPreview="load_preview({doc:get_fields.doc_name,fields:doc_fields_value })"
@@ -26,7 +26,7 @@
 
         </div>
       </form>
-      <div class="w-[566px] overflow-auto max-h-[570px]">
+      <div class="w-[566px] max-lg:my-16 overflow-auto max-h-[570px] max-lg:max-h-full max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
         <div class="" v-html="get_preview"></div>
       </div>
     </div>
@@ -39,7 +39,7 @@ import DesignerInput from "../../components/site/designer/designerInput.vue";
 import VButton2 from "../../components/UI/vButton2.vue";
 import VInput from "../../components/UI/vInput.vue";
 
-export default {
+export default  {
   name: "designer",
   components: {VInput, VButton2, DesignerInput},
   data() {

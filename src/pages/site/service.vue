@@ -1,11 +1,25 @@
 <template>
   <div class="">
-    <div class="_container flex">
-      <div class="w-4/12 bg-footer_bg px-8 pt-7">
+    <div class="_container flex mt-7 ">
+      <div class="w-4/12 max-lg:fixed h-full overflow-y-scroll max-lg:w-6/12 max-md:w-10/12 break-all z-50 max-lg:absolute max-lg:h-screen transition-all bg-footer_bg px-8 pt-7"
+        :class="{'max-lg:left-[-500px]' : !openLeft, 'max-lg:left-0' : openLeft}"
+      >
         <v-search v-model:model-value="params.query" @search="load_all_doc_list(this.params)" :placeholder="$t('Поиск документов')"/>
         <v-dropdown/>
       </div>
-      <div class="px-10 pt-9 ">
+      <div class="fixed z-40 opacity-40 bg-black w-full h-screen"
+      :class="{'hidden': !openLeft, 'block' : openLeft}"
+           @click="openLeft = !openLeft"
+      ></div>
+      <div class="fill-black absolute hidden max-lg:block py-10 max-md:px-2 px-8">
+        <svg class="cursor-pointer" width="40px" height="40px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          @click="openLeft = !openLeft"
+        >
+          <title>bars</title>
+          <path d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
+        </svg>
+      </div>
+      <div class="w-full px-10 pt-20 max-lg:px-10   ">
         <div class="text-2xl text-black font-bold my-5">{{$t('Выберите шаблон для документа')}}</div>
 
         <p class="font-medium text-xl text-black">{{ $t('Все') }}</p>
@@ -13,7 +27,7 @@
           <doc-item :item="item" v-for="(item, index) in get_all_doc_list.data" :key="index"/>
         </div>
 
-        <div class="flex gap-x-[1px] flex-wrap my-10 ">
+        <div class="flex gap-x-[1px] flex-wrap my-10">
           <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
                v-for="item in get_all_doc_list?.meta?.links"
                :class="{'bg-primary text-white rounded-full ':item.active}">
@@ -22,7 +36,6 @@
         </div>
 
       </div>
-
     </div>
     <v-info/>
   </div>
@@ -43,7 +56,8 @@ export default {
       params: {
         page: 1,
         query:""
-      }
+      },
+      openLeft: false
     }
   },
   computed: {

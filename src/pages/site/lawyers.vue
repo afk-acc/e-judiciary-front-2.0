@@ -1,11 +1,11 @@
 <template>
   <div class="_container ">
-    <div class="text-black text-3xl pt-16 text-center font-bold uppercase">{{$t('Наша команда юристов')}}</div>
-    <div class="text-center font-medium mb-5 text-black text-2xl">{{$t('Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов.Оставьте обращение, и мы ответим вам в скорейшее время.')}}</div>
-    <div class="flex flex-wrap  w-full justify-between  gap-y-5">
+    <div class="text-black  text-3xl pt-16 text-center font-bold uppercase">{{$t('Наша команда юристов')}}</div>
+    <div class="text-center max-lg:px-10 max-md:text-base font-medium mb-5 text-black text-2xl">{{$t('Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов.Оставьте обращение, и мы ответим вам в скорейшее время.')}}</div>
+    <div class="flex flex-wrap max-lg:px-10 max-lg:justify-center  w-full justify-between  gap-y-5">
       <lawyer-item class="max-w-[500px] w-full" v-for="(item,index) in get_lawyer_list.data" :key="index" :item="item"/>
     </div>
-    <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_lawyer_list?.data?.length > 0">
+    <div class="flex gap-x-[1px] justify-center flex-wrap my-10 " v-if="get_lawyer_list?.data?.length > 0">
       <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
            v-for="item in get_lawyer_list?.meta?.links"
            :class="{'bg-primary text-white rounded-full ':item.active}">

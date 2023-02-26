@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-4 items-center">
+  <div class="flex gap-x-4 items-center max-md:gap-y-10 max-md:flex-col max-md:border-b max-md:pb-6 last:border-0 ">
     <div class="">
       <img :src="item.image" alt="" class="rounded-full shadow-2xl w-[91px] h-[91px] object-cover">
     </div>

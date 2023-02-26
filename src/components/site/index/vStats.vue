@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-between my-14">
+  <div class="flex flex-wrap max-lg:justify-center max-lg:gap-y-10  justify-between my-14">
       <stats-item>
         <template v-slot:num>250</template>
         <template v-slot:text>{{$t('Количество специалистов')}}</template>
