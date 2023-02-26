@@ -22,7 +22,7 @@
         </div>
         <div class="flex w-7/12 transition-all max-lg:absolute max-lg:bg-primary max-lg:w-full max-lg:flex-col items-center justify-between"
         :class="{'max-lg:top-[-500px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
-          <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold text-sm max-lg:text-3xl">
+          <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold  max-lg:text-3xl">
             <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer mt-10">{{ $t('Услуги') }}</router-link>
             <!--        <li class="cursor-pointer">{{ $t('Вопросы') }}</li>-->
             <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Юристы') }}</router-link>
