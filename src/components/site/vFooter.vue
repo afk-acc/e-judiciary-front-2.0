@@ -75,7 +75,7 @@
             </div>
 
           </div>
-          <p class="mt-2 font-bold  cursor-pointer font-medium text-[#71787E]"> {{ $t('Введите свой email:') }}</p>
+          <p class="mt-2 font-bold  cursor-pointer text-[#71787E]"> {{ $t('Введите свой email:') }}</p>
         </div>
       </div>
     </div>

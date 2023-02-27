@@ -24,9 +24,8 @@
         :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
           <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center">
             <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Услуги') }}</router-link>
-                    <li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li>
+            <router-link :to="{name: 'faq'}"><li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li></router-link>
             <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Юристы') }}</router-link>
-            <router-link :to="{name:'blog', params:{page:1}}"><li class="cursor-pointer py-4">{{ $t('Блог') }}</li></router-link>
             <router-link :to="{name: 'contacts'}"><li class="cursor-pointer py-4">{{ $t('Контакты') }}</li></router-link>
             <li class="relative py-10 pr-8 mt-[-12px]" >
               <input

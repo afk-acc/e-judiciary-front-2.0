@@ -1,7 +1,7 @@
 <template>
   <div class="my-10 ">
     <p class="text-center font-medium text-3xl text-black">{{$t('Преимущества')}}</p>
-    <div class="flex max-lg:flex-wrap max-lg:justify-center justify-center gap-5 mt-10">
+    <div class="flex w-10/12 flex-wrap mx-auto max-lg:flex-wrap max-lg:justify-center justify-center gap-5 mt-10">
       <advantage-item >
           <template v-slot:icon><svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M59.5833 30.0083V32.5C59.58 38.3403 57.6889 44.023 54.1919 48.7007C50.695 53.3784 45.7797 56.8004 40.1791 58.4564C34.5784 60.1123 28.5926 59.9134 23.1142 57.8895C17.6358 55.8655 12.9584 52.1248 9.77967 47.2253C6.60092 42.3259 5.09109 36.5301 5.47536 30.7025C5.85964 24.8748 8.11743 19.3275 11.912 14.8879C15.7066 10.4482 20.8346 7.35412 26.5313 6.06702C32.2281 4.77992 38.1882 5.36879 43.5229 7.74579" stroke="#2250A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -32,6 +32,43 @@
         </template>
         <template v-slot:header>{{$t('Скачайте')}}</template>
         <template v-slot:content>{{$t('Загрузите документ в той форме, которую вы предпочитаете')}}</template>
+      </advantage-item>
+      <advantage-item >
+        <template v-slot:icon>
+          <svg width="65px" height="65px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984" stroke="#224EA4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 6V18" stroke="#224EA4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#224EA4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </template>
+        <template v-slot:header>{{$t('Выгода')}}</template>
+        <template v-slot:content>{{$t('Абсолютно бесплатное предоставление услуг')}}</template>
+      </advantage-item>
+      <advantage-item >
+        <template v-slot:icon>
+          <svg width="65px" height="65px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="icomoon-ignore">
+            </g>
+            <path d="M16 3.205c-7.066 0-12.795 5.729-12.795 12.795s5.729 12.795 12.795 12.795 12.795-5.729 12.795-12.795c0-7.066-5.729-12.795-12.795-12.795zM16 27.729c-6.467 0-11.729-5.261-11.729-11.729s5.261-11.729 11.729-11.729 11.729 5.261 11.729 11.729c0 6.467-5.261 11.729-11.729 11.729z" fill="#224EA4">
+
+            </path>
+            <path d="M16 17.066h-6.398v1.066h7.464v-10.619h-1.066z" fill="#224EA4">
+
+            </path>
+          </svg>
+        </template>
+        <template v-slot:header>{{$t('Экономьте время')}}</template>
+        <template v-slot:content>{{$t('Экономьте свое драгоценное время ')}}</template>
+      </advantage-item>
+      <advantage-item >
+        <template v-slot:icon>
+          <svg fill="#224EA4" width="65px" height="65px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
+            <path d="M960.16 0 28 932.16l79 78.777 853.16-853.16 853.16 853.16 78.889-78.777L960.16 0Zm613.693 1027.34v781.078h-334.86v-557.913h-557.8v557.912H346.445V1027.34H234.751V1920h1450.684v-892.66h-111.582Zm-446.33 334.748v446.441H792.775v-446.441h334.748ZM960.127 692.604c61.593 0 111.582 49.989 111.582 111.582 0 61.594-49.989 111.583-111.582 111.583-61.594 0-111.583-49.99-111.583-111.583 0-61.593 49.99-111.582 111.583-111.582Zm223.165 111.582c0-123.075-100.09-223.165-223.165-223.165-123.076 0-223.165 100.09-223.165 223.165 0 123.076 100.09 223.165 223.165 223.165 123.075 0 223.165-100.09 223.165-223.165" fill-rule="evenodd"/>
+          </svg>
+        </template>
+        <template v-slot:header>{{$t('Удобство для Вас')}}</template>
+        <template v-slot:content>{{$t('Вы создаете обращение не выходя из дома')}}</template>
       </advantage-item>
     </div>
   </div>
