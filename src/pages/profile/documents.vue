@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col gap-y-2 mt-20">
+  <div class="flex flex-col  max-lg:mt-20 ">
     <span>Кол-во файлов: {{get_user_docs?.meta?.total}}</span>
-    <div class="flex flex-col gap-y-2 " v-for="(item, index) in get_user_docs.data" :key="index">
-      <div @click="get_file(file.file, file.name)" class=" cursor-pointer flex gap-x-2" v-for="(file, i) in item.files" :key="i">
+    <div class="flex flex-col border-b py-4 first:pt-0 " v-for="(item, index) in get_user_docs.data" :key="index">
+      <div @click="get_file(file.file, file.name)" class=" cursor-pointer flex gap-x-2 items-center" v-for="(file, i) in item.files" :key="i">
         <div>
           <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 4C4 3.44772 4.44772 3 5 3H14H14.5858C14.851 3 15.1054 3.10536 15.2929 3.29289L19.7071 7.70711C19.8946 7.89464 20 8.149 20 8.41421V20C20 20.5523 19.5523 21 19 21H5C4.44772 21 4 20.5523 4 20V4Z" stroke="#200E32" stroke-width="2" stroke-linecap="round"/>
@@ -14,12 +14,12 @@
           </svg>
         </div>
         <span class="break-all  text-link">
-        {{ file.name.slice(0, 10) + '.pdf' }}
+        {{ file.name.slice(0, 16) + '.pdf' }}
         </span>
       </div>
 
     </div>
-    <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_user_docs?.data?.length > 0">
+    <div class="flex gap-x-[1px] justify-center flex-wrap my-10 " v-if="get_user_docs?.data?.length > 0">
       <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
            v-for="item in get_user_docs?.meta?.links"
            :class="{'bg-primary text-white rounded-full ':item.active}">

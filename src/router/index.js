@@ -18,7 +18,8 @@ import role from "../pages/profile/role.vue";
 import reports from "../pages/profile/reports.vue";
 import chat from "../pages/profile/chat.vue";
 import history from "../pages/profile/history.vue";
-
+import blog from "../pages/site/blog.vue"
+import contacts from "../pages/site/contacts.vue";
 const routes = [
     {
         path: '/',
@@ -49,6 +50,16 @@ const routes = [
                 path: 'lawyers/:page',
                 component: lawyers,
                 name: 'lawyers'
+            },
+            {
+                path:'blog',
+                component: blog,
+                name: 'blog'
+            },
+            {
+                path:'contacts',
+                component: contacts,
+                name: 'contacts'
             }
 
         ],

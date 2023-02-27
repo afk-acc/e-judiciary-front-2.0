@@ -28,6 +28,9 @@ module.exports = {
                 adventage: "10px 24px 44px rgba(95, 94, 94, 0.26)",
                 lawyer: ' 0px 14px 24px rgba(12, 12, 12, 0.25)'
             },
+            backgroundImage: {
+                'bg-one': "url('/img/bg-one.jpg')"
+            }
 
         },
     },

@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col justify-between">
-    <v-header class="bg-primary_gr"/>
+    <v-header class="bg-header_gr"/>
     <router-view class="pt-14"/>
     <v-footer class=""/>
   </div>

@@ -2,7 +2,7 @@
   <ul class="w-full">
     <router-link class="w-full" :to="{name: route, params: params}"
                  :class="{'active-block block ' : this.$route.name === route}">
-      <li class="py-4 px-8 text-xl cursor-pointer border-b border-gray">
+      <li class="py-4 px-8 text-lg cursor-pointer border-b border-gray">
         <slot ></slot>
       </li>
     </router-link>

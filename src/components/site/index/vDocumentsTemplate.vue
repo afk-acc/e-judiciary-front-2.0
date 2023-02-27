@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-primary_gr py-10 text-white font-medium text-3xl max-lg:text-xl max-lg:px-10">
-    <div class="_container">
+  <div class="bg-primary_gr py-10 text-white font-medium  max-lg:text-xl max-lg:px-10">
+    <div class="_container  ">
       <p class="text-center mb-14">{{ $t('Образцы документов') }}</p>
-      <div class="flex flex-wrap max-md:flex-col max-md:gap-y-15 justify-between gap-y-20 mt-10 relative ">
+      <div class="flex  flex-wrap max-md:flex-col max-md:gap-y-15 justify-between gap-y-20 mt-10 relative max-md:static">
         <document-template-item :item="item" v-for="(item, index) in get_doc_type_list" :key="index"
                                 class="min-h-[500px] max-lg:min-h-full max-md:border-r-0 max-lg:px-4 flex flex-col justify-between max-md:w-full w-[49%]"
                                 :is-end="index % 2 !== 0" :class="{'border-dashed border-r ':index % 2 === 0}"/>
