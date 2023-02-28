@@ -30,7 +30,7 @@
 
     </div>
     <div class="complaint-body border-b-[1px] p-4 border-[#C9C9C9]">
-      <ul class="text-sm flex max-sm:flex-wrap max-sm:justify-around justify-between ">
+      <ul class="text-[10px] flex max-sm:flex-wrap max-sm:justify-around justify-between ">
         <li
             @click="params.type='all'"
             :class="{'border-b-[3px] border-primary ':params.type==='all'}"

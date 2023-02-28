@@ -5,7 +5,7 @@
     </div>
   </div>
   
-  <div class="_container px-10 max-sm:px-4 flex flex-wrap justify-center gap-5">
+  <div class="_container px-10 max-sm:px-4 flex flex-wrap justify-center gap-5 grid-cols-2  grid">
       <FaqItem v-for="(item, index) in list" :key="index" :item="item"/>
   </div>
 </template>

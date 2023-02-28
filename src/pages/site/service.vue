@@ -19,7 +19,7 @@
           <path d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
         </svg>
       </div>
-      <div class="w-full px-10 pt-20 max-lg:px-10   ">
+      <div class="w-full px-10 max-lg:px-10   ">
         <div class="text-2xl text-black font-bold my-5">{{$t('Выберите шаблон для документа')}}</div>
 
         <p class="font-medium text-xl text-black">{{ $t('Все') }}</p>
@@ -55,7 +55,8 @@ export default {
     return {
       params: {
         page: 1,
-        query:""
+        query:"",
+        limit:10
       },
       openLeft: false
     }

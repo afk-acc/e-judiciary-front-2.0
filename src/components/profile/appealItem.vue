@@ -5,13 +5,15 @@
     </div>
     <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-3/12 text-start text-link cursor-pointer">{{ item.title }}</router-link>
     <div class="">{{ get_date(item.started) }}</div>
-    <div class="text-link cursor-pointer" @click="getPdf(item.files, item.title)">{{ $t('Скачать') }}</div>
-    <div class="text-danger cursor-pointer" @click="$emit('showModal', item.id)">{{ $t('Удалить') }}</div>
+    <div v-if="item.files.length > 0" class="text-link cursor-pointer" @click="getPdf(item.files, item.title)">{{ $t('Скачать') }}</div>
+    <div class="" v-else>{{ $t('Без файла') }}</div>
+    <div v-if="item.applicant_info.id === getCurrentUser.id" class="text-danger cursor-pointer" @click="$emit('showModal', item.id)">{{ $t('Удалить') }}</div>
   </div>
 </template>
 
 <script>
 import {getDate, download_file} from "../../assets/functions.js";
+import {mapGetters} from "vuex";
 
 export default {
   name: "appealItem",
@@ -22,6 +24,9 @@ export default {
     item: Object,
     num: Number
   },
+  computed:{
+    ...mapGetters(['getCurrentUser'])
+  },
   methods: {
     get_date(date) {
       return getDate(date)
@@ -31,6 +36,9 @@ export default {
         download_file(e.file, name)
       })
     }
+  },
+  mounted() {
+
   }
 
 

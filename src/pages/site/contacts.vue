@@ -122,7 +122,7 @@
       </div>
     </div>
     <div class="right w-5/12 max-lg:mx-auto max-lg:w-9/12 max-md:w-full text-center">
-      <h1 class="text-2xl text-center">{{ $t('Напишите нам!') }}</h1>
+      <h1 class="text-2xl text-center">{{ $t('Задайте вопрос!') }}</h1>
       <contactForm></contactForm>
     </div>
   </div>

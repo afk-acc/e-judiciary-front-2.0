@@ -16,14 +16,11 @@
                   class="rounded-2xl text-black font-bold text-xl px-4 py-2"
                   :class="{'bg-primary_gr text-white': params.params === 'ended' }">{{ $t("Завершенные") }}
           </button>
+          <button @click="params.params='new'; params.page = 1;loadAppealList(params)" v-if="can(getCurrentUser, 'appeal.read')"
+                  class="rounded-2xl text-black font-bold text-xl px-4 py-2"
+                  :class="{'bg-primary_gr text-white': params.params === 'new' }">{{ $t("Новые") }}
+          </button>
 
-
-        </div>
-        <div class="flex items-center">
-          <router-link :to="{name:'service', params:{page:1}}"
-                  class="rounded-2xl  font-bold  px-4 py-2 bg-primary_gr text-white"
-                >{{ $t("Добавить обращение") }}
-          </router-link>
         </div>
       </div>
       <appeal-item :item="item" v-for="(item, index) in get_appeal_list.data" :key="index"
@@ -40,14 +37,7 @@
     <div class="text-center font-bold text-2xl" v-else>
       {{$t('Ничего не найдено')}}
     </div>
-    <v-modal v-if="show_del" @showModal="show_del = !show_del">
-      <p class="text-center font-bold text-black text-3xl">{{ $t('Подтвердите удаление') }}</p>
-      <div class="flex justify-center gap-x-4 my-5">
-        <v-button @click="show_del = false">Отменить</v-button>
-        <v-button mode="danger" @click="delete_appeal({del_id:del_id, params:params}); show_del=false">Удалить
-        </v-button>
-      </div>
-    </v-modal>
+
   </div>
 
 </template>
@@ -74,7 +64,7 @@ export default {
         query: '',
         sort: 'desc',
         par: 'num',
-        parametr:'user'
+        parametr:'lawyer'
       },
     }
   },
@@ -124,12 +114,7 @@ export default {
     },
     $route(to, from){
       this.params.page = to.params.page
-      if(to.name === from.name)
-      {
-        this.loadAppealList(this.params)
-
-      }
-
+      this.loadAppealList(this.params)
     }
   }
 

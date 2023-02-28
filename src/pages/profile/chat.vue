@@ -43,7 +43,7 @@ export default {
 
   },
   mounted() {
-    this.$pusher.signin();
+    // this.$pusher.signin();
     this.load_chat_user_list({});
   },
   watch: {

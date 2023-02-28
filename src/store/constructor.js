@@ -46,7 +46,7 @@ export default {
             })
         },
         load_all_doc_list(context, params) {
-            axios.get(`appeal/all?query=${params.query}&page=${params.page}&locale=${localStorage.getItem('locale')}&limit=10`).then(res => {
+            axios.get(`appeal/all?query=${params.query}&page=${params.page}&locale=${localStorage.getItem('locale')}&limit=${params.limit}`).then(res => {
                 context.commit('update_all_doc_list', res.data)
             })
         },

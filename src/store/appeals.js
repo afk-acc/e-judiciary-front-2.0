@@ -1,6 +1,7 @@
 import axios from "../axios/index.js";
 import {canAccess} from "../assets/functions.js";
-
+import {toast} from "vue3-toastify";
+import t from '../main.js'
 export default {
     state() {
         return {
@@ -106,7 +107,7 @@ export default {
             })
         },
         loadAppealList(context, params) {
-            if (canAccess(context.getters.getCurrentUser, 'appeal.read') && context.getters.getCurrentUser.role_name === 'lawyer') {
+            if (canAccess(context.getters.getCurrentUser, 'appeal.read') && context.getters.getCurrentUser.role_name === 'lawyer' && params.parametr === 'lawyer') {
                 if (params.params === 'new')
                     axios.get(`appeal?locale=${localStorage.getItem('locale')}&page=${params.page}&limit=${params.limit}&query=${params.query}&sort=${params.sort}&par=${params.par}`, {
                         headers: {

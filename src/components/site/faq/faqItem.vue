@@ -7,8 +7,13 @@
       <div
         class="w-[10px] h-[10px] bg-l_black_text left-[-5px] top-1/2 absolute rounded-full -translate-y-1/2">
       </div>
-      <p class="text-xl text-l_black_text relative pb-2 border-b border-opacity-25 border-black">
+      <p class=" text-l_black_text relative pb-2 border-b border-opacity-25 border-black">
+        <span v-if="isActive">
         {{ item.header }}
+        </span>
+        <span v-else>
+        {{ item.header.slice(0, 53) }}<span v-if="item.header.length > 53">...</span>
+        </span>
         <span
           class="absolute -right-2 top-1/2 -translate-y-1/2 transition-all duration-300"
           :class="{ 'rotate-180': isActive }"><img src="" alt="" class="w-full"/>
@@ -18,7 +23,7 @@
         </span>
       </p>
       <div
-        class="overflow-hidden transition-all duration-500 text-xl mt-2"
+        class="overflow-hidden transition-all duration-500  mt-2"
         v-html="item.content"
         :class="getClass()">
       </div>

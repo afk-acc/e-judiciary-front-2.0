@@ -20,6 +20,7 @@ import chat from "../pages/profile/chat.vue";
 import history from "../pages/profile/history.vue";
 import contacts from "../pages/site/contacts.vue";
 import faq from '../pages/site/faq.vue'
+import appealsForLawyers from "../pages/profile/appealsForLawyers.vue";
 const routes = [
     {
         path: '/',
@@ -62,6 +63,7 @@ const routes = [
                 name: 'faq'
             },
 
+
         ],
     },
     {
@@ -92,6 +94,11 @@ const routes = [
                 component: appeals,
                 name: 'appeals',
             },
+            {
+              path: 'appeals-lawyer/:page',
+              component: appealsForLawyers,
+              name: 'lawyer-appeals'
+            },
 
             {
                 path: 'documents/:page',
@@ -117,6 +124,16 @@ const routes = [
                 path: 'history/:page',
                 component: history,
                 name: 'history'
+            },
+            {
+                path: '/reports/:page',
+                component: reports,
+                name: 'reports'
+            },
+            {
+                path: '/chat',
+                component: chat,
+                name: 'chat'
             }
         ],
     },
@@ -126,16 +143,7 @@ const routes = [
         name: 'appeal-info',
     },
 
-    {
-        path: '/reports/:page',
-        component: reports,
-        name: 'reports'
-    },
-    {
-        path: '/chat',
-        component: chat,
-        name: 'chat'
-    }
+
 
 
 ]

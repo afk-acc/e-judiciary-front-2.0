@@ -4,7 +4,7 @@
       <div>
         <img :src="getImage(item.reciver_info.image)" class="w-[40px] h-[40px] rounded-full object-cover" alt="">
       </div>
-      <div class="pl-4 pr-4 flex w-full justify-between">
+      <div class="px-2 flex w-full justify-between">
         <div class="">
           <p class="text-sm font-bold">{{ item.reciver_info.name }}</p>
           <p class="text-[12px] text-[#303030]">{{ item.title }}</p>

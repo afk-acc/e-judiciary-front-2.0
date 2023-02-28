@@ -12,7 +12,8 @@
       {{ get_fields.name }}
     </div>
     <div class="flex justify-between mx-10 max-md:mx-4  max-lg:items-center max-lg:flex-col">
-      <form class="flex flex-col w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]" @submit.prevent="add">
+      <form class="flex flex-col w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]"
+            @submit.prevent="add">
         <v-input required="true" v-model:model-value="appeal.title" :label="$t('Заголовок')"/>
         <v-input required="true" v-model:model-value="appeal.description" type="textarea" :label="$t('Описание')"/>
         <designer-input @loadPreview="load_preview({doc:get_fields.doc_name,fields:doc_fields_value })"
@@ -26,7 +27,8 @@
 
         </div>
       </form>
-      <div class="w-[566px] max-lg:my-16 overflow-auto max-h-[570px] max-lg:max-h-full max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
+      <div
+          class="w-[566px] max-lg:my-16 overflow-auto max-h-[570px] max-lg:max-h-full max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
         <div class="" v-html="get_preview"></div>
       </div>
     </div>
@@ -39,7 +41,7 @@ import DesignerInput from "../../components/site/designer/designerInput.vue";
 import VButton2 from "../../components/UI/vButton2.vue";
 import VInput from "../../components/UI/vInput.vue";
 
-export default  {
+export default {
   name: "designer",
   components: {VInput, VButton2, DesignerInput},
   data() {
@@ -63,8 +65,8 @@ export default  {
           }
         })
         this.update_fields([]);
-      }else{
-        this.$router.push({name:'sign-in'})
+      } else {
+        this.$router.push({name: 'sign-in'})
         this.update_send_appeal({
           appeal: this.appeal, doc: {
             doc: this.get_fields.doc_name,
@@ -82,7 +84,8 @@ export default  {
   },
   watch: {
     get_fields(val) {
-      this.load_preview({doc: val.doc_name})
+      if (Object.entries(val).length > 0)
+        this.load_preview({doc: val.doc_name})
     }
   }
 }

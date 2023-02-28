@@ -3,8 +3,9 @@
   <div class="">
     <v-header class="bg-primary_gr"/>
     <div class="_container flex w-full py-16">
-      <div class=" w-4/12 max-lg:fixed z-40 transition-all duration-300 bg-footer_bg h-full pt-[37px] max-lg:w-6/12 max-md:w-8/12 max-sm:w-10/12"
-        :class="{'left-[-1000px]' : !openAdmin, 'left-0' : openAdmin}"
+      <div
+          class=" w-4/12 max-lg:fixed z-40 transition-all duration-300 bg-footer_bg h-full pt-[37px] max-lg:w-6/12 max-md:w-8/12 max-sm:w-10/12"
+          :class="{'left-[-1000px]' : !openAdmin, 'left-0' : openAdmin}"
       >
         <profile-link-items route="info">
           {{ $t("Основная информация") }}
@@ -27,6 +28,9 @@
         <profile-link-items route="appeals" :params="{page:1}">
           {{ $t("Мои вопросы") }}
         </profile-link-items>
+        <profile-link-items route="lawyer-appeals" :params="{page:1}" v-if="can(getCurrentUser, 'appeal.read')">
+          {{ $t("Обращение пользователей") }}
+        </profile-link-items>
         <profile-link-items route="documents" :params="{page:1}">
           {{ $t("Мои документы") }}
         </profile-link-items>
@@ -41,14 +45,17 @@
         </profile-link-items>
       </div>
       <div class="bg-black fixed z-30 opacity-40 w-full h-screen"
-        :class="{'hidden' : !openAdmin, 'block' : openAdmin}"
-         @click="openAdmin = !openAdmin">
+           :class="{'hidden' : !openAdmin, 'block' : openAdmin}"
+           @click="openAdmin = !openAdmin">
 
-      ></div>
+        >
+      </div>
       <div class="fill-black hidden max-lg:block absolute top-[130px] left-[100px] max-md:left-[50px]">
-        <svg class="cursor-pointer"  width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
-        @click="openAdmin = !openAdmin">
-          <path d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
+        <svg class="cursor-pointer" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             @click="openAdmin = !openAdmin">
+          <path
+              d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
         </svg>
       </div>
       <div class="w-8/12 max-lg:w-11/12 pt-9 mx-auto">
@@ -86,7 +93,7 @@ export default {
     can(user, item) {
       return canAccess(user, item)
     },
-    logout(){
+    logout() {
       localStorage.removeItem('token')
       this.$router.push('/')
     }

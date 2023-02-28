@@ -69,6 +69,9 @@
 <script>
 import VButton2 from "../../components/UI/vButton2.vue";
 import {mapActions, mapGetters, mapMutations} from "vuex";
+import axios from "../../axios/index.js";
+import {toast} from "vue3-toastify";
+import t from "../../main.js";
 
 export default {
   name: "sign-in",
@@ -88,8 +91,23 @@ export default {
     ...mapMutations(['updateIsAuth']),
     ...mapActions(['authorize']),
     auth() {
-      this.authorize(this.login)
-
+      axios.post(`auth/login`, {
+        login: this.login.login,
+        password: this.login.password,
+        locale: localStorage.getItem('locale')
+      }).then(res => {
+        localStorage.setItem('token', res.data.access_token);
+        toast.success(t('Успешная авторизация'), {autoClose: 1500})
+        this.$router.push({name:'info'})
+      }).catch(e => {
+        localStorage.removeItem('token');
+        let mes = e.response.data.errors;
+        for (let i in mes) {
+          mes[i].forEach(el => {
+            toast.error(el, {autoClose: 3000})
+          })
+        }
+      })
     }
   },
   mounted() {
@@ -99,12 +117,7 @@ export default {
 
   },
   watch: {
-    getIsAuth(val) {
-      if (val === true) {
-        this.$router.push({name: "info"})
-        this.updateIsAuth('')
-      }
-    }
+
   }
 }
 </script>

@@ -79,7 +79,6 @@ export default {
                 locale: localStorage.getItem('locale')
             }).then(res => {
                 localStorage.setItem('token', res.data.access_token);
-                context.commit('updateIsAuth', true)
                 toast.success(t('Успешная авторизация'), {autoClose: 1500})
             }).catch(e => {
                 localStorage.removeItem('token');

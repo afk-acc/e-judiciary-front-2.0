@@ -5,7 +5,8 @@
     </div>
     <div class="flex flex-col max-w-[400px] text-lawyer_name">
       <p class="font-bold ">{{ item.name }}</p>
-      <p class="font-medium">{{ item.bio.slice(0, 150) }}</p>
+      <p class="font-medium"><strong>{{$t('Кол-во отзывов')}}:</strong> {{item.feedback_count}}</p>
+      <p class="font-medium"><strong>{{$t('Кол-во выполненых обращений')}}:</strong> {{item.appeals_count}}</p>
       <p><strong>{{$t("Рейтинг")}}:</strong>{{ item.rating || '-' }}</p>
       <p><strong>{{$t("Стаж")}}:</strong>{{ item.work_experience || '-' }}</p>
     </div>

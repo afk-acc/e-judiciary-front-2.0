@@ -22,18 +22,24 @@
         </div>
         <div class="flex transition-all max-lg:absolute max-lg:bg-header_gr  max-lg:w-full max-lg:flex-col items-center justify-between"
         :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
-          <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center">
+          <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center text-sm">
             <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Услуги') }}</router-link>
             <router-link :to="{name: 'faq'}"><li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li></router-link>
             <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Юристы') }}</router-link>
             <router-link :to="{name: 'contacts'}"><li class="cursor-pointer py-4">{{ $t('Контакты') }}</li></router-link>
-            <li class="relative py-10 pr-8 mt-[-12px]" >
+            <li class="relative py-10 pr-8 mt-[-12px] text-sm" >
               <input
-                  @focusout="$emit('search')"
-                  @keyup.enter="$emit('search')"
-                  @input="$emit('update:modelValue', $event.target.value)"
-                  type="text" class="w-full ml-10  outline-none  border-b border-white " style="background: none;"
+                  v-model="params.query"
+                  @keyup.enter="load_all_doc_list(this.params); isActive = true"
+                  type="text"
+                  class="w-full ml-10  outline-none text-sm  border-b border-white "
+                  style="background: none;"
               >
+              <div class="absolute p-4  top-full bg-primary_gr flex flex-col gap-y-2 left-0" v-if="isActive && get_all_doc_list?.data?.length > 0">
+                <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});" v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
+                    {{item.name.slice(0, 45)}}
+                </div>
+              </div>
               <div class="absolute left-3 top-[52px] translate-x-[0px] translate-y-[-3px]">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -51,10 +57,10 @@
           <div class="flex  max-lg:flex-col gap-x-8 text-white items-center ">
             <select
                 v-model="lang"
-                class="select text-black appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white" style="background: none">
-              <option value="ru">RU</option>
-              <option value="uz_l">UZ</option>
-              <option value="uz_c">Уз(к)</option>
+                class="select text-sm  text-black appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white" style="background: none">
+              <option value="ru">Ру</option>
+              <option value="uz_l">Uz</option>
+              <option value="uz_c">Уз</option>
             </select>
             <div class="flex max-lg:flex-col gap-x-4 items-center z-50" v-if="show()">
               <div class="header-icons flex max-lg:flex-col  items-center ">
@@ -73,12 +79,12 @@
                                   d="M11.0088 17.2285C10.5088 17.1217 7.46266 17.1217 6.96275 17.2285C6.53539 17.3272 6.07324 17.5568 6.07324 18.0604C6.09809 18.5408 6.37935 18.9648 6.76895 19.2337L6.76795 19.2347C7.27184 19.6275 7.86319 19.8773 8.48236 19.9669C8.81232 20.0122 9.14825 20.0102 9.49014 19.9669C10.1083 19.8773 10.6997 19.6275 11.2036 19.2347L11.2026 19.2337C11.5922 18.9648 11.8734 18.5408 11.8983 18.0604C11.8983 17.5568 11.4361 17.3272 11.0088 17.2285Z"
                                   fill="#fff"/>
                           </svg>
-                          <span class=" absolute -bottom-1 right-2" v-if="Number(this.get_notifications.length) > 0">
+                          <span class=" absolute -bottom-1 text-sm right-2" v-if="Number(this.get_notifications.length) > 0">
                       <span class="flex h-4 w-4 relative">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-danger opacity-75"></span>
                         <span
-                            class="relative text-[10px] px-2 py-2 items-center justify-center text-white inline-flex rounded-full h-3 w-3 bg-danger">
+                            class="relative text-[10px]   px-2 py-2 items-center justify-center text-white inline-flex rounded-full h-3 w-3 bg-danger">
                             {{ this.get_notifications.length }}</span>
                       </span>
                     </span>
@@ -123,9 +129,9 @@
                     </router-link>
                   </div>
                   <router-link :to="{name:'info'}" class="flex mx-auto   gap-x-4 max-lg:my-6 items-center">
-                    <div class="">{{ getCurrentUser.name }}</div>
-                    <div class="w-[85px] h-[55px] mx-auto">
-                      <img :src="getCurrentUser.image" class=" max-lg:w-[55px] h-[55px] rounded-full" alt="">
+                    <div class="text-sm  ">{{ getCurrentUser.name }}</div>
+                    <div class="w-[85px] h-[55px] ">
+                      <img :src="getCurrentUser.image" class="w-[55px] h-[55px] rounded-full" alt="">
                     </div>
                   </router-link>
                 </div>
@@ -167,7 +173,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import {useI18n} from "vue-i18n";
 import VNotification from "../profile/vNotification.vue";
 import {toast} from "vue3-toastify";
@@ -181,7 +187,13 @@ export default {
       scrollPosition: null,
       show_notification: false,
       openBurger: false,
-      lang: ""
+      lang: "",
+      params:{
+        query:"",
+        page:1,
+        limit:5
+      },
+      isActive:false,
     }
   },
   setup() {
@@ -194,10 +206,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['getCurrentUser', 'get_notifications', 'get_base_url'])
+    ...mapGetters(['getCurrentUser', 'get_notifications', 'get_base_url', 'get_all_doc_list']),
+
   },
   methods: {
-    ...mapActions(['load_notifications']),
+    ...mapActions(['load_notifications', 'load_all_doc_list']),
+    ...mapMutations(['update_all_doc_list']),
     show() {
       return localStorage.getItem('token')
     },
@@ -217,6 +231,9 @@ export default {
 
   },
   watch: {
+    $route(){
+      this.isActive = false
+    },
     getCurrentUser(val) {
       this.mes = this.getCurrentUser.notify
       if (this.mes === undefined)
