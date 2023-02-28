@@ -1,6 +1,6 @@
 <template>
   <div class="bg-primary_gr max-lg:px-4 pt-16 max-lg:pt-0 w-full relative z-20 drop-shadow-2xl "  >
-    <img src="/img/inner2.png" alt="" class="absolute left-0 top-0 z-10 h-full object-cover" style="filter: opacity(0.1)">
+    <img src="/img/inner2.png" alt="" class="absolute left-0 top-0 w-full z-10 h-full object-cover " style="filter: opacity(0.1);object-position: center">
     <v-header/>
       <div class="flex pt-14 justify-between _container max-lg:flex-col z-20 relative max-lg:items-center  ">
         <div class="w-[49%] max-lg:w-9/12 max-lg:max-w-full max-md:text-center text-white max-w-[430px] flex justify-center flex-col">
