@@ -1,5 +1,5 @@
 <template>
- <div class="">
+ <div class="pt-0">
   <div class="text-white pt-[170px] pb-[270px] relative text-center overflow-hidden before:absolute before:-z-10 before:left-0 before:top-[-17%] before:w-full before:-skew-y-[2.5deg] before:h-full before:bg-bg-one before:bg-left max-lg:before:bg-bottom before:bg-no-repeat before:bg-cover">
     <div>
       <h1 class="text-4xl uppercase font-bold">{{ $t('Контакты') }}</h1>
