@@ -12,6 +12,7 @@ import 'vue3-toastify/dist/index.css';
 import {QuillEditor} from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import pusher from './pusher'
+import VueNumber from "vue-number-animation";
 
 const localeLocalStorage = localStorage.getItem("locale");
 const messages = Object.assign(languages);
@@ -27,6 +28,8 @@ const app = createApp(App)
 app.use(store);
 app.use(router);
 app.use(i18n);
+app.use(VueNumber);
+
 app.component('QuillEditor', QuillEditor)
 app.use(VueAxios, axios);
 // app.use(pusher, {
