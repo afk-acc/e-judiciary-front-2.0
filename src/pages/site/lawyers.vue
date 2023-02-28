@@ -1,7 +1,13 @@
 <template>
+  <div class="text-whitept-[170px] pb-[270px] max-md:pb-[130px] relative text-center overflow-hidden before:absolute before:-z-10 before:left-0 before:top-[-17%] before:w-full before:-skew-y-[2.5deg] before:h-full before:bg-bg-one before:bg-left max-lg:before:bg-bottom before:bg-no-repeat before:bg-cover">
+     <div class="_container mt-16 text-white">
+      <div class="  text-3xl pt-16 text-center font-bold uppercase">{{$t('Наша команда юристов')}}</div>
+      <div class="text-center w-8/12 max-md:w-full mx-auto pt-5 max-lg:px-10 max-md:text-base font-medium mb-5 text-lg">{{$t('Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов.Оставьте обращение, и мы ответим вам в скорейшее время.')}}
+      </div>
+    </div>
+  </div>
   <div class="_container ">
-    <div class="text-black  text-3xl pt-16 text-center font-bold uppercase">{{$t('Наша команда юристов')}}</div>
-    <div class="text-center max-lg:px-10 max-md:text-base font-medium mb-5 text-black text-2xl">{{$t('Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов.Оставьте обращение, и мы ответим вам в скорейшее время.')}}</div>
+    
     <div class="flex flex-wrap max-lg:px-10 max-lg:justify-center  w-full justify-between  gap-y-5">
       <lawyer-item class="max-w-[500px] w-full" v-for="(item,index) in get_lawyer_list.data" :key="index" :item="item"/>
     </div>
