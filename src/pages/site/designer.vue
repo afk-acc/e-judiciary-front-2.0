@@ -1,6 +1,6 @@
 <template>
   <div class="_container">
-    <div class="flex items-center mx-10 gap-x-4 mt-14">
+    <div class="flex items-center mx-10 gap-x-4 mt-14 text-base">
       <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M11.4583 4.16666H4.16659C3.61405 4.16666 3.08415 4.38615 2.69345 4.77685C2.30275 5.16755 2.08325 5.69746 2.08325 6.24999V20.8333C2.08325 21.3859 2.30275 21.9158 2.69345 22.3065C3.08415 22.6972 3.61405 22.9167 4.16659 22.9167H18.7499C19.3025 22.9167 19.8324 22.6972 20.2231 22.3065C20.6138 21.9158 20.8333 21.3859 20.8333 20.8333V13.5417"
@@ -11,8 +11,8 @@
       </svg>
       {{ get_fields.name }}
     </div>
-    <div class="flex justify-between mx-10 max-md:mx-4  max-lg:items-center max-lg:flex-col">
-      <form class="flex flex-col w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]"
+    <div class="flex justify-between mx-10 max-md:mx-4 text-sm  max-lg:items-center max-lg:flex-col">
+      <form class="flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]"
             @submit.prevent="add">
         <v-input required="true" v-model:model-value="appeal.title" :label="$t('Заголовок')"/>
         <v-input required="true" v-model:model-value="appeal.description" type="textarea" :label="$t('Описание')"/>
@@ -23,7 +23,7 @@
           <v-button-2 type="button" @click="load_preview({doc:get_fields.doc_name,fields:doc_fields_value })">
             {{ $t('Предпросмотр') }}
           </v-button-2>
-          <v-button-2 type="submit">{{ $t('Создать обращение') }}</v-button-2>
+          <v-button-2 class="text-sm" type="submit">{{ $t('Создать обращение') }}</v-button-2>
 
         </div>
       </form>

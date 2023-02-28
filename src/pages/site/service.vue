@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="_container flex mt-7 ">
-      <div class="w-4/12 max-lg:fixed h-screen overflow-y-scroll max-lg:w-6/12 max-md:w-10/12 break-all z-50 transition-all bg-footer_bg px-8 pt-7"
+      <div class="w-4/12 max-lg:fixed h-screen overflow-y-scroll max-lg:w-6/12 max-md:w-10/12 break-all z-50 transition-all bg-footer_bg px-8 pt-7 pb-[150px]"
         :class="{'max-lg:left-[-1000px]' : !openLeft, 'max-lg:left-0' : openLeft}"
       >
         <v-search v-model:model-value="params.query" @search="load_all_doc_list(this.params)" :placeholder="$t('Поиск документов')"/>
@@ -15,14 +15,13 @@
         <svg class="cursor-pointer" width="40px" height="40px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
           @click="openLeft = !openLeft"
         >
-          <title>bars</title>
           <path d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
         </svg>
       </div>
-      <div class="w-full px-10 max-lg:px-10   ">
-        <div class="text-2xl text-black font-bold my-5">{{$t('Выберите шаблон для документа')}}</div>
+      <div class="w-full px-10 max-lg:px-10 mt-16">
+        <div class="text-lg text-black font-bold my-5">{{$t('Выберите шаблон для документа')}}</div>
 
-        <p class="font-medium text-xl text-black">{{ $t('Все') }}</p>
+        <p class="font-medium text-lg text-black">{{ $t('Все') }}</p>
         <div class="flex-col gap-y-5 flex">
           <doc-item :item="item" v-for="(item, index) in get_all_doc_list.data" :key="index"/>
         </div>

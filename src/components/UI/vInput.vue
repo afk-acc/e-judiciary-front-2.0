@@ -1,5 +1,5 @@
 <template>
-  <label class="flex flex-col text-gray text-xl font-medium">
+  <label class="flex flex-col text-gray text-sm font-medium">
     {{ label }}
     <textarea name="" id="" cols="30" rows="10" v-if="type==='textarea'"
               @input="$emit('update:modelValue', $event.target.value)"

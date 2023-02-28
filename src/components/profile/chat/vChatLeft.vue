@@ -1,5 +1,5 @@
 <template>
-  <div class=" hidden max-lg:block absolute z-50 left-[50px] max-lg:top-16 max-md:top-20 cursor-pointer "
+  <div class=" hidden max-lg:block absolute z-20 left-[50px] max-sm:left-[20px] max-lg:top-10 max-md:top-10 cursor-pointer "
        @click="modalLeft = !modalLeft"
   >
     <i>
@@ -26,7 +26,7 @@
     </i>
   </div>
   <div
-      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-11/12 relative max-lg:h-[90%] bg-white max-lg:absolute transition-all duration-300 z-50"
+      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-full relative max-lg:h-full bg-white max-lg:absolute transition-all duration-300 z-50"
       :class="{'max-lg:-left-[600px]':!modalLeft, 'max-lg:left-0  h-full' : modalLeft}"
   >
     <div class="chat-left_title flex justify-center items-center border-b-[1px] py-5 border-[#DBDDE2]">
@@ -81,7 +81,7 @@
         />
       </svg>
       <div class="flex items-center ">
-        <p class="pl-2 text-xl">{{ $t("Чаты с юристами") }}</p>
+        <p class="pl-2 text-lg">{{ $t("Чаты с юристами") }}</p>
         <i class="ml-4 hidden max-lg:flex cursor-pointer"
            @click="modalLeft = !modalLeft"
         >
@@ -93,7 +93,7 @@
         </i>
       </div>
     </div>
-    <div class="chat-left_users overflow-y-scroll h-full mb-20">
+    <div class="chat-left_users overflow-y-scroll h-full">
       <v-chat-users :class="{
         'bg-primary_gr text-white':item.id === chat
       }" :active="item.id === chat" v-for="item in get_chat_user_list" :item="item" @click="$emit('changeChat',item.id)"/>

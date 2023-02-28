@@ -1,28 +1,27 @@
 <template>
   <div class="bg-white px-12 py-7 rounded-xl overflow-x-scroll w-full max-sm:mt-[50px] max-lg:mt-20">
-    <div class="max-md:w-[720px]">
-      <div class="text-[#333437] text-3xl font-medium flex justify-between">
+    <div class="max-md:w-[620px]">
+      <div class="text-[#333437] text-xl font-medium flex justify-between">
         <p>
           {{ $t('Список ролей') }}
         </p>
         <button
             v-if="can(getCurrentUser, 'role.create')"
             @click="show_add = true"
-            class="hover:bg-primary hover:text-white duration-300 transition-all rounded-xl border border-[#DBDBDB] text-white text-xl py-2 px-4">{{
-            $t('Добавить роль')
-          }}
+            class="bg-primary text-base rounded-xl border border-[#DBDBDB] text-white py-2 px-4">
+            {{$t('Добавить роль')}}
         </button>
       </div>
-      <div class="flex justify-between items-center py-4 w-full text-l_title font-bold text-xl">
+      <div class="flex justify-between items-center py-4 w-full max-md:w-1  1/12 text-l_title font-bold text-base">
         <div class="">
           <p class="">{{ $t("Роли") }}</p>
         </div>
-        <div class="flex gap-x-6 max-sm:ml-[120px]">
+        <div class="flex gap-x-6 max-md:gap-x-14  max-sm:ml-[120px] ">
           <p class="" v-if="can(getCurrentUser, 'role.permission.edit')">{{ $t("Редактирование") }}</p>
           <p class="" v-if="can(getCurrentUser, 'role.delete')">{{ $t("Удаление") }}</p>
         </div>
       </div>
-      <div class="flex flex-col gap-y-6">
+      <div class="flex flex-col gap-y-6 ">
         <role-item v-for="(item, index) in get_roles" :key="index" :item="item"
                    @showRead="(el)=>{current_role = el; show_read = true; load_permission(item.id)}"
                    @changeCurrentRole="(el)=>{ current_role = el; show_info=true; load_permission(item.id)}"
@@ -31,7 +30,7 @@
       </div>
       <v-modal v-if="show_info" @showModal="show_info = !show_info">
         <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
-          <div class="text-center font-bold uppercase my-4 text-3xl max-md:text-xl">{{ current_role.role_name }}</div>
+          <div class="text-center font-bold uppercase my-4 text-base max-md:text-base">{{ current_role.role_name }}</div>
           <p>{{ $t('Права доступа') }}</p>
           <div class="flex flex-col">
             <label v-for="item in get_permissions">
@@ -54,7 +53,7 @@
       </v-modal>
       <v-modal v-if="show_del" @showModal="show_del = !show_del">
         <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
-          <div class="text-center font-bold uppercase my-4 text-3xl">{{ current_role.role_name }}</div>
+          <div class="text-center font-bold uppercase my-4 text-base">{{ current_role.role_name }}</div>
           <p class="text-center text-bold text-xl">{{ $t('Вы дейстивительно хотите удалить роль?') }}</p>
           <div class="flex gap-x-4 mt-4 justify-center">
             <button @click="show_del = false"
@@ -70,25 +69,25 @@
       </v-modal>
       <v-modal v-if="show_add" @showModal="show_add = !show_add">
         <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
-          <div class="text-center font-bold uppercase my-4 text-3xl">{{ $t('Добавить роль') }}</div>
+          <div class="text-center font-bold uppercase my-4 text-base">{{ $t('Добавить роль') }}</div>
           <div class="flex flex-col gap-y-4">
             <input required type="text" v-model="name.name_ru"
-                   class="w-full px-4 py-2 text-2xl max-sm:text-base text-l_title outline-none border border-filter_gray rounded-xl"
+                   class="w-full px-4 py-2 text-sm max-sm:text-base text-l_title outline-none border border-filter_gray rounded-xl"
                    :placeholder="$t('Название роли (на русском)')">
             <input required type="text" v-model="name.name_uz_l"
-                   class="w-full px-4 py-2 text-2xl max-sm:text-base text-l_title outline-none border border-filter_gray rounded-xl"
+                   class="w-full px-4 py-2 text-sm max-sm:text-base text-l_title outline-none border border-filter_gray rounded-xl"
                    :placeholder="$t('Название роли (на узбекском латиница)')">
             <input required type="text" v-model="name.name_uz_c"
-                   class="w-full px-4 py-2 text-2xl max-sm:text-base text-l_title outline-none border border-filter_gray rounded-xl"
+                   class="w-full px-4 py-2 text-sm max-sm:text-base text-l_title outline-none border border-filter_gray rounded-xl"
                    :placeholder="$t('Название роли (на узбекском кириллица)')">
           </div>
           <div class="flex gap-x-4 mt-4 justify-center">
             <button @click="show_add = false"
-                    class="bg-[#F7F8F9] rounded-xl border border-[#DBDBDB] text-[#8A92A6] text-2xl max-sm:text-[14px] py-2 px-16 max-sm:px-10">
+                    class="bg-[#F7F8F9] rounded-xl border border-[#DBDBDB] text-[#8A92A6] text-sm max-sm:text-[14px] py-2 px-16 max-sm:px-10">
               {{ $t('Отменить') }}
             </button>
             <button @click="add_role({...name});show_add = false"
-                    class="bg-primary rounded-xl border border-[#DBDBDB] text-white text-2xl max-sm:text-[14px] py-2 px-16 max-sm:px-10">
+                    class="bg-primary rounded-xl border border-[#DBDBDB] text-white text-sm max-sm:text-[14px] py-2 px-16 max-sm:px-10">
               {{ $t('Добавить') }}
             </button>
           </div>
@@ -96,7 +95,7 @@
       </v-modal>
       <v-modal v-if="show_read" @showModal="show_read = !show_read">
         <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
-          <div class="text-center font-bold uppercase my-4 text-3xl">{{ current_role.role_name }}</div>
+          <div class="text-center font-bold uppercase my-4 text-base">{{ current_role.role_name }}</div>
           <p>{{ $t('Права доступа') }}</p>
           <div class="flex flex-col">
             <label v-for="item in get_permissions">

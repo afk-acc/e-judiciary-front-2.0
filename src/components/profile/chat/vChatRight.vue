@@ -1,6 +1,6 @@
 <template>
-  <div class="w-9/12 flex h-full max-lg:w-full max-lg:mx-auto">
-    <div class="w-9/12 max-lg:w-full border-r-[1px] max-lg:border-none border-[#DBDDE2] h-full pb-16 max-sm:h-[90%]">
+  <div class="w-9/12 flex max-lg:h-[500px] max-lg:w-full max-lg:mx-auto">
+    <div class="w-9/12 max-lg:w-full border-r-[1px] max-lg:border-none border-[#DBDDE2] h-full max-lg:h-[500px]  max-sm:h-[90%]">
       <div>
         <div v-if="chat"
              class="chat-left_title  flex justify-between items-center border-b-[1px] py-[10px] px-12 border-[#DBDDE2]">
@@ -25,9 +25,9 @@
           </div>
         </div>
       </div>
-      <div class=" h-full  flex flex-col justify-between ">
-        <div class="h-full  flex flex-col justify-between" v-if="chat">
-          <div class="px-4 overflow-y-scroll py-4" ref="messages_block" id="messages_block" @scroll="onScroll">
+      <div class=" h-full max-lg:h-[500px]  flex flex-col justify-between ">
+        <div class="h-[600px] max-lg:h-[500px]  flex flex-col justify-between" v-if="chat">
+          <div class="px-4 overflow-y-scroll py-4 " ref="messages_block" id="messages_block" @scroll="onScroll">
             <v-message @updateDate="updateDate" :dates="dates" v-for="item in messages" :ket="item.id" :message="item"
                        :from_me="getCurrentUser.id === item.reciver_info"/>
           </div>
@@ -68,7 +68,7 @@
             <input
                 v-model="message.data"
                 type="text"
-                class="resize-none w-full pl-12 pr-24 h-full  bg-[#E9EFFF] absolute px-4 outline-none py-2"/>
+                class="resize-none w-full pl-12 pr-24 h-full text-sm  bg-[#E9EFFF] absolute px-4 outline-none py-2"/>
             <button type="submit"
                     class="w-[75px] relative z-10 h-[60px] bg-primary_gr rounded-xl flex justify-center items-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,13 +86,13 @@
     </div>
     <div
         v-if="chat"
-        class="w-3/12 max-md:w-4/12 max-sm:w-9/12 max-lg:absolute  max-lg:bg-white max-lg:border-l-[1px] max-lg:border-[#DBDDE2] transition-all duration-300 z-10"
+        class="w-5/12 max-md:w-4/12 max-sm:w-9/12 max-lg:absolute max-lg:bg-white max-lg:border-l-[1px] max-lg:border-[#DBDDE2] transition-all duration-300 z-10"
         :class="{'max-lg:-right-[500px]':!modalRight, 'max-lg:right-0  h-full' : modalRight}"
     >
       <div class="p-[20px] border-b-[1px] border-[#DBDDE2] max-lg:text-center">
-        <p class="text-xl" v-if="reciver.role_name === 'lawyer'"> {{ $t("О юристе") }}</p>
-        <p class="text-xl" v-else> {{ $t("О пользователе") }}</p>
-        <i class="ml-4 absolute top-6 left-0 hidden max-lg:flex cursor-pointer"
+        <p class="text-base" v-if="reciver.role_name === 'lawyer'"> {{ $t("О юристе") }}</p>
+        <p class="text-base" v-else> {{ $t("О пользователе") }}</p>
+        <i class="ml-4 absolute top-0 left-0 hidden max-lg:flex cursor-pointer"
            @click="modalRight = !modalRight"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -104,32 +104,32 @@
       </div>
       <div class="overflow-y-scroll h-full pb-20">
         <div class="p-6 text-center">
-          <img class=" mx-auto w-[120px] h-[120px] rounded-full object-cover" :src="getImage(reciver.image)" alt="">
-          <h3 class="text-xl font-bold pt-4">{{ reciver.name }}</h3>
-          <p class="text-base text-filter_gray">{{ reciver.phone }}</p>
+          <img class=" mx-auto w-[60px] h-[60px] rounded-full object-cover" :src="getImage(reciver.image)" alt="">
+          <h3 class="text-sm font-bold pt-4">{{ reciver.name }}</h3>
+          <p class="text-sm text-filter_gray">{{ reciver.phone }}</p>
         </div>
         <div class="px-4">
           <div class="py-4">
-            <h3 class="text-[#333437] font-bold text-lg">{{ $t("О себе") }}</h3>
+            <h3 class="text-[#333437] font-bold text-sm">{{ $t("О себе") }}</h3>
             <p class="text-[#333437]">{{ reciver.bio }}</p>
           </div>
           <div class="py-4 " v-if="reciver.education_place">
-            <h3 class="text-[#333437] font-bold text-lg">{{ $t("Образование") }}</h3>
+            <h3 class="text-[#333437] font-bold text-sm">{{ $t("Образование") }}</h3>
             <p class="text-[#333437]">{{ reciver.education_place }}</p>
           </div>
         </div>
         <div class="flex flex-col justify-center text-center m-4">
           <!--        <button class="text-[#1D19DC] border-[1px] border-[#1D19DC] rounded-md px-4 py-2">Сменить юриста</button>     -->
-          <p @click="report_modal_show = true" class="text-[#EB5757] text-lg mt-8 cursor-pointer">{{
+          <p @click="report_modal_show = true" class="text-[#EB5757] text-sm mt-8 cursor-pointer">{{
               $t("Пожаловаться")
             }}</p>
           <v-modal v-if="report_modal_show" @showModal="report_modal_show= !report_modal_show">
             <form class="p-5 " @submit.prevent="send_report(reciver.id)">
-              <p class="text-center font-bold text-xl">{{ $t('Отправить жалобу ') }}</p>
+              <p class="text-center font-bold text-lg">{{ $t('Отправить жалобу ') }}</p>
               <v-input :is_required="true" v-model:model-value="report.title" :label="$t('Заголовок')" type="text"/>
               <v-input :is_required="true" v-model:model-value="report.description" :label="$t('Описание')"
                        type="textarea"/>
-              <p class="font-bold text-xl ">{{ $t('Выберите файл') }}</p>
+              <p class="font-bold text-lg ">{{ $t('Выберите файл') }}</p>
               <label for="report_file" class="flex justify-center my-4 cursor-pointer">
                 <svg class="ml-2" width="90" height="90" viewBox="0 0 89 89" fill="none"
                      xmlns="http://www.w3.org/2000/svg">

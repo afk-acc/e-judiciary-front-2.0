@@ -2,7 +2,7 @@
 
   <div class="">
     <div
-        class="flex items-center max-md:flex-wrap justify-between px-6 border-b border-filter_gray border-opacity-50 pb-5 max-sm:justify-end">
+        class="flex items-center max-md:flex-wrap justify-between px-6 pl-12 border-b border-filter_gray border-opacity-50 pb-5 max-sm:justify-end">
       <div class="flex  gap-x-5 items-center max-sm:hidden">
         <div>
           <img class="w-[50px] h-[50px] rounded-full object-cover" :src="getImage(report?.reciver_info?.image)" alt=""/>

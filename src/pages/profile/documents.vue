@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col  max-lg:mt-20 ">
-    <span>Кол-во файлов: {{get_user_docs?.meta?.total}}</span>
+  <div class="flex flex-col max-lg:mt-20 ">
+    <span>{{ $t('Кол-во файлов') }}: {{get_user_docs?.meta?.total}}</span>
     <div class="flex flex-col border-b py-4 first:pt-0 " v-for="(item, index) in get_user_docs.data" :key="index">
       <div @click="get_file(file.file, file.name)" class=" cursor-pointer flex gap-x-2 items-center" v-for="(file, i) in item.files" :key="i">
         <div>
@@ -13,8 +13,8 @@
             <path d="M7 17L7 15.5M7 15.5L7 13L7.75 13C8.44036 13 9 13.5596 9 14.25V14.25C9 14.9404 8.44036 15.5 7.75 15.5H7Z" stroke="#200E32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="break-all  text-link">
-        {{ file.name.slice(0, 16) + '.pdf' }}
+        <span class="break-all text-sm text-link">
+        {{ file.name.slice(0, 25) + '.pdf' }}
         </span>
       </div>
 

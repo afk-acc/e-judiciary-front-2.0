@@ -7,7 +7,7 @@
     }"
         class="fixed max-lg:bg-header_gr transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 h-[82px] z-50">
       <div class="_container flex  max-lg:flex-col items-center justify-between relative h-full">
-        <div class="flex max-lg:w-9/12 max-lg:justify-between items-center  h-full max-lg:w-10/12 items-start pt-2">
+        <div class="flex max-lg:justify-between max-lg:items-center h-full max-lg:w-10/12 items-start pt-2">
          <router-link to="/" class=" h-[70px]  relative  ">
            <img  src="/ejudiciary.svg" alt="" class="w-full h-[60px] object-cover">
          </router-link>
@@ -20,14 +20,14 @@
            </svg>
          </div>
         </div>
-        <div class="flex transition-all max-lg:absolute max-lg:bg-header_gr  max-lg:w-full max-lg:flex-col items-center justify-between"
+        <div class="flex transition-all max-lg:absolute max-lg:bg-header_gr max-lg:w-full max-lg:flex-col items-center justify-between max-lg:justify-start max-lg:h-screen"
         :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
           <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center text-sm">
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Услуги') }}</router-link>
+            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-4">{{ $t('Услуги') }}</router-link>
             <router-link :to="{name: 'faq'}"><li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li></router-link>
-            <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-10">{{ $t('Юристы') }}</router-link>
+            <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-4">{{ $t('Юристы') }}</router-link>
             <router-link :to="{name: 'contacts'}"><li class="cursor-pointer py-4">{{ $t('Контакты') }}</li></router-link>
-            <li class="relative py-10 pr-8 mt-[-12px] text-sm" >
+            <li class="relative py-4 pr-8 mt-[-12px] max-lg:py-4 text-sm" >
               <input
                   v-model="params.query"
                   @keyup.enter="load_all_doc_list(this.params); isActive = true"
@@ -35,12 +35,12 @@
                   class="w-full ml-10  outline-none text-sm  border-b border-white "
                   style="background: none;"
               >
-              <div class="absolute p-4  top-full bg-primary_gr flex flex-col gap-y-2 left-0" v-if="isActive && get_all_doc_list?.data?.length > 0">
+              <div class="absolute p-4 z-50  top-full bg-primary_gr flex flex-col gap-y-2 left-0" v-if="isActive && get_all_doc_list?.data?.length > 0">
                 <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});" v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
                     {{item.name.slice(0, 45)}}
                 </div>
               </div>
-              <div class="absolute left-3 top-[52px] translate-x-[0px] translate-y-[-3px]">
+              <div class="absolute left-3 top-[25px] max-lg:top-[25px] translate-x-[0px] translate-y-[-3px]">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                       d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
@@ -57,14 +57,14 @@
           <div class="flex  max-lg:flex-col gap-x-8 text-white items-center ">
             <select
                 v-model="lang"
-                class="select text-sm  text-black appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white" style="background: none">
+                class="select text-sm appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white" style="background: none">
               <option value="ru">Ру</option>
               <option value="uz_l">Uz</option>
               <option value="uz_c">Уз</option>
             </select>
-            <div class="flex max-lg:flex-col gap-x-4 items-center z-50" v-if="show()">
+            <div class="flex max-lg:flex-col gap-x-4 items-center z-30" v-if="show()">
               <div class="header-icons flex max-lg:flex-col  items-center ">
-                <div class="notification flex max-lg:flex-col items-center">
+                <div class="notification flex max-lg:flex-col max-md:justify-center items-center">
                   <div class="flex max-lg:mt-10">
                     <div class="relative">
                       <div class="relative">

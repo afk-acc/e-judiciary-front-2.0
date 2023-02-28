@@ -1,10 +1,6 @@
 <template>
-  <teleport to="body">
-    <div class="fixed -left-4 -top-5 p-4 text-4xl text-primary cursor-pointer z-50 max-lg:z-40"
-         @click="$router.push({name:'info'})">&leftarrow;
-    </div>
-  </teleport>
-  <div class="w-full p-10 h-[640px] overflow-hidden max-lg:h-screen bg-white  relative flex rounded-xl">
+
+  <div class="w-full p-4 h-[700px] max-lg:border max-lg:border-filter_gray max-lg:border-opacity-30 rounded-xl overflow-hidden max-lg:h-[600px] max-md:h-[650px] bg-white  relative flex">
 
     <v-chat-left
         :get_chat_user_list="get_chat_user_list"

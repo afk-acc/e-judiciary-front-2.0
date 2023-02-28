@@ -1,6 +1,6 @@
 <template>
   <div class="mt-20 w-full overflow-x-scroll">
-    <div class="overflow-x-scroll max-md:w-[720px]">
+    <div class="overflow-x-scroll max-md:w-[720px] text-sm">
       <request-item
           @showModal="(el)=>{show_info = true;active_user=el.user_info }"
           :item="item" v-for="(item, index) in get_request_list.data" :key="index"
@@ -17,19 +17,19 @@
       {{ $t('Ничего не найдено') }}
     </div>
     <v-modal v-if="show_info" @showModal="show_info = !show_info">
-      <div class="text-center font-bold text-primary text-2xl max-lg:text-base">{{ $t("Информация о пользователе") }}</div>
+      <div class="text-center font-bold text-primary text-lg max-lg:text-sm">{{ $t("Информация о пользователе") }}</div>
       <div class="flex justify-center my-2"><img :src="active_user?.image" alt=""
-                                                 class="w-[100px] h-[100px] rounded-full object-cover "></div>
-      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
+       class="w-[100px] h-[100px] rounded-full object-cover "></div>
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
 
-      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span> {{ active_user.bio }}
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span> {{ active_user.bio }}
       </div>
-      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
         {{ active_user.education_place || '-' }}
       </div>
-      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
       </div>
-      <div class="text-xl max-md:text-base"><span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
           active_user.rating || '-'
         }}
       </div>

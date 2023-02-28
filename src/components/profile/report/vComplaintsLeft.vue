@@ -1,5 +1,5 @@
 <template>
-  <div class="w-5/12 border-r-[1px] top-0 border-[#C9C9C9] max-lg:absolute max-md:w-full h-full bg-white z-10 transition-all"
+  <div class="w-7/12 max-lg:w-5/12 border-r-[1px] top-0 border-[#C9C9C9] max-lg:absolute max-md:w-full h-full bg-white z-10 transition-all"
        :class="{'left-0' : open, 'left-[-1000px]' : !open }">
     <div class=" justify-end p-4 hidden max-lg:flex" >
       <svg class="cursor-pointer" @click="$emit('show')" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
 
     </div>
     <div class="complaint-body border-b-[1px] p-4 border-[#C9C9C9]">
-      <ul class="text-[10px] flex max-sm:flex-wrap max-sm:justify-around justify-between ">
+      <ul class="text-[13px] px-2 flex max-sm:flex-wrap max-sm:justify-around justify-between ">
         <li
             @click="params.type='all'"
             :class="{'border-b-[3px] border-primary ':params.type==='all'}"

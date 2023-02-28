@@ -1,19 +1,19 @@
 <template>
-  <div class="w-full overflow-scroll">
-    <div class="max-h-[750px] max-lg:w-[1024px] overflow-x-scroll">
+  <div class="w-full overflow-scroll max-lg:mt-10">
+    <div class="max-h-[500px] max-lg:w-[1024px] overflow-x-scroll max-lg:mt-10">
       <v-search v-model:model-value="params.query" @search="loadAppealList(params)"/>
       <div class="flex justify-between">
-        <div class="flex gap-x-4 my-5">
+        <div class="flex gap-x-4 my-5 text-sm">
           <button @click="params.params='all'; params.page = 1;loadAppealList(params)"
-                  class="rounded-2xl text-black font-bold text-xl px-4 py-2"
+                  class="rounded-2xl text-black font-bold  px-4 py-2"
                   :class="{'bg-primary_gr text-white': params.params === 'all' }">{{ $t("Все") }}
           </button>
           <button @click="params.params='progress'; params.page = 1;loadAppealList(params)"
-                  class="rounded-2xl text-black font-bold text-xl px-4 py-2"
+                  class="rounded-2xl text-black font-bold  px-4 py-2"
                   :class="{'bg-primary_gr text-white': params.params === 'progress' }">{{ $t('В процессе') }}
           </button>
           <button @click="params.params='ended';params.page = 1; loadAppealList(params)"
-                  class="rounded-2xl text-black font-bold text-xl px-4 py-2"
+                  class="rounded-2xl text-black font-bold  px-4 py-2"
                   :class="{'bg-primary_gr text-white': params.params === 'ended' }">{{ $t("Завершенные") }}
           </button>
 
@@ -21,7 +21,7 @@
         </div>
         <div class="flex items-center">
           <router-link :to="{name:'service', params:{page:1}}"
-                  class="rounded-2xl  font-bold  px-4 py-2 bg-primary_gr text-white"
+                  class="rounded-2xl text-sm  font-bold  px-4 py-2 bg-primary_gr text-white"
                 >{{ $t("Добавить обращение") }}
           </router-link>
         </div>

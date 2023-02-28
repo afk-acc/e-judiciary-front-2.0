@@ -1,11 +1,11 @@
 <template>
 
-  <div class="flex justify-between text-primary text-xl max-md:w-full ">
+  <div class="flex justify-between text-primary text-sm py-1 max-md:w-[600px] ">
     <div class="cursor-pointer max-md:w-4/12 max-md:mr-4" @click="$emit('showRead', item)">
       <p>{{ item.role_name }}</p>
     </div>
     <div class="flex gap-x-12  max-sm:w-6/12">
-      <button class="flex gap-x-2 items-center  max-sm:text-base max-sm:w-[500px]"
+      <button class="flex gap-x-2 items-center text-sm max-sm:w-[500px]"
               @click="$emit('changeCurrentRole', item)" v-if="can(getCurrentUser, 'role.permission.edit')">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -17,8 +17,8 @@
         </svg>
         {{ $t('Изменить роль') }}
       </button>
-      <button v-if="can(getCurrentUser, 'role.delete')" @click="$emit('del', item)"
-              class="flex gap-x-2 items-center text-white_red max-sm:text-base">
+      <button  v-if="can(getCurrentUser, 'role.delete')" @click="$emit('del', item)"
+              class=" text-sm flex gap-x-2 items-center text-white_red ">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
               d="M5.5 8L5.85207 17.1537C5.93467 19.3015 7.69902 21 9.84835 21C11.1516 21 12.6568 21 14.1509 21C16.3002 21 18.0653 19.3015 18.1479 17.1537L18.5 8"

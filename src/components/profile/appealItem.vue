@@ -1,9 +1,9 @@
 <template>
-  <div class="flex gap-x-1 justify-between items-center border-b border-border_c px-4 ">
+  <div class="flex gap-x-1 text-sm justify-evenly items-center border-b border-border_c px-4 ">
     <div class="py-5">
       {{ num }}
     </div>
-    <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-3/12 text-start text-link cursor-pointer">{{ item.title }}</router-link>
+    <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-2/12 text-start text-link cursor-pointer">{{ item.title }}</router-link>
     <div class="">{{ get_date(item.started) }}</div>
     <div v-if="item.files.length > 0" class="text-link cursor-pointer" @click="getPdf(item.files, item.title)">{{ $t('Скачать') }}</div>
     <div class="" v-else>{{ $t('Без файла') }}</div>

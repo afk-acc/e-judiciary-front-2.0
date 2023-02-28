@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col justify-between h-full">
+  <div class="w-full flex flex-col justify-between h-full max-lg:border border-filter_gray border-opacity-20 rounded-xl">
 
     <div class="w-full flex flex-col justify-between" v-if="Object.entries(report).length > 0">
       <div class="my-5 ">

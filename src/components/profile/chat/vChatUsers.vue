@@ -3,9 +3,9 @@
     <div class="w-[48px] h-[48px]">
       <img class="w-[48px] h-[48px] rounded-full max-w-sm object-cover" :src="getImage(reciver?.image)" alt=""/>
     </div>
-    <div class="chat-user_text w-9/12">
-      <p class="font-bold text-lg">{{ reciver?.name }}</p>
-      <p v-html="item?.message?.data?.slice(0, 120)"> </p>
+    <div class=" w-9/12">
+      <p class="font-bold text-sm">{{ reciver?.name }}</p>
+      <p class="text-sm" v-html="item?.message?.data?.slice(0, 120)"> </p>
     </div>
     <div
         class="chat-user_time flex items-center absolute max-lg:static max-lg:items-start max-md:items-center  right-4  text-filter_gray">
@@ -25,7 +25,7 @@
           </svg>
         </div>
       </div>
-      <div class="chat-user_item" :class="{'text-white':active}">
+      <div class="chat-user_item text-sm" :class="{'text-white':active}">
         <span>{{ getDate(item.message.date) }}</span>
       </div>
     </div>

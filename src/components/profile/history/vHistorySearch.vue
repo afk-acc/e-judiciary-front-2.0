@@ -1,19 +1,19 @@
 <template>
   <div class="bg-white w-full px-10  pb-5 rounded-lg max-md:py-4 relative z-100">
-    <p class="font-bold text-[40px]">{{ $t("История изменений") }}</p>
+    <p class="font-bold text-xl">{{ $t("История изменений") }}</p>
     <div class="flex max-lg:flex-wrap  max-lg:mt-10 ">
-      <input class="bg-footer_bg w-full rounded-xl px-4 py-2 text-sm text-[#9DA3CF] outline-none" @keyup="loadHistoryLists({...params, query:$event.target.value})" type="text" name="" value="" :placeholder="$t('Поиск изменений')">
+      <input class="bg-footer_bg w-full  text-sm rounded-xl px-4 py-2 text-[#9DA3CF] outline-none" @keyup="loadHistoryLists({...params, query:$event.target.value})" type="text" name="" value="" :placeholder="$t('Поиск изменений')">
       <button class="text-sm max-lg:w-full max-lg:px-0 max-lg:mt-4 bg-footer_bg ml-10 max-lg:m-0 px-6 py-4 rounded-xl outline-none"
               type="submit"
               @click="openModal = !openModal"
       >{{ $t("Фильтр") }}</button>
 
     </div>
-    <div class="w-[394px] max-sm:w-[90%] shadow-2xl  border-filter_gray bg-white absolute right-10 max-sm:right-4  z-30 p-4"
+    <div class="w-[394px] max-sm:w-[90%] shadow-2xl text-sm border-filter_gray bg-white absolute right-10 max-sm:right-4  z-30 p-4"
          :class="{'block  bg-white border-filter_gray' : openModal, 'hidden': !openModal}"
     >
-      <div class="filter-title flex relative">
-        <p class="text-2xl font-bold">{{ $t("Фильтры") }}</p>
+      <div class="filter-title flex relative ">
+        <p class="text-lg font-bold ">{{ $t("Фильтры") }}</p>
         <i class="absolute right-0 cursor-pointer"
            @click="openModal = !openModal"
         ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +24,7 @@
       <div class="filter-body mt-5">
         <div>
           <p class="text-filter_gray">{{ $t("Категория:") }}</p>
-          <ul class="text-base text-filter_gray flex justify-around mx-auto text-center mt-[6px]">
+          <ul class="text-sm text-filter_gray flex justify-around mx-auto text-center mt-[6px]">
             <li class="w-6/12 py-2 rounded-xl " @click="par.category = 'all'" :class="{'bg-primary_gr text-white ':par.category === 'all'}">
               {{ $t("Все") }}</li>
             <li class="w-6/12 py-2 ml-4 rounded-xl" @click="par.category = 'login'" :class="{'bg-primary_gr text-white ':par.category === 'login'}">
@@ -39,14 +39,14 @@
         </div>
         <div class="mt-8">
           <p class="text-filter_gray">{{ $t("Сортировать по") }}:</p>
-          <ul class="text-base text-filter_gray flex items-center justify-around mx-auto text-center mt-[6px]">
+          <ul class="text-sm text-filter_gray flex items-center justify-around mx-auto text-center mt-[6px]">
             <li class="w-6/12 py-2 rounded-xl" @click="par.sort='asc'" :class="{'bg-primary_gr text-white ':par.sort === 'asc'}">
               {{ $t("Возрастанию") }}</li>
             <li class="w-6/12 py-2 ml-4 rounded-xl" @click="par.sort='desc'" :class="{'bg-primary_gr text-white ':par.sort === 'desc'}">
               {{ $t("Убыванию") }}</li>
           </ul>
           <p class="text-filter_gray mt-5">{{ $t("Дата:") }}</p>
-          <ul class="text-base text-filter_gray mt-[6px]">
+          <ul class="text-sm text-filter_gray mt-[6px]">
             <input v-model="par.date" type="date" class="w-6/12 py-2 ml-4 rounded-xl text-center outline-none border-[#E9ECEF] border-[1px] "
                    placeholder="дд.мм.гг"/>
           </ul>

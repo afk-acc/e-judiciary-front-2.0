@@ -41,10 +41,10 @@
               </svg>
             </template>
             <template v-slot:contactTitle>
-              Адрес
+              {{ $t('Адрес') }}
             </template>
             <template v-slot:contactInfo>
-              Toshkent sh., Mirobod tumani, A.Temur shohko‘chasi, 19-uy
+              {{ $t('г.Ташкент, Мирабадский район, А.Проспект Тимура, 19') }}
             </template>
         </contactItem>
         <contactItem>
@@ -72,9 +72,9 @@
               {{ $t('Рабочее время') }}
             </template>
             <template v-slot:contactInfo>
-              Понедельник-Пятница: 09:00-18:00
+              {{ $t('Понедельник-Пятница: 09:00-18:00') }}
               <br>
-              Обед: 13:00-14:00
+              {{ $t('Обед: 13:00-14:00') }}
             </template>
         </contactItem>
         <contactItem>

@@ -1,20 +1,18 @@
 <template>
-  <div class="bg-footer_bg py-10 max-lg:px-4">
-    <div class="_container flex max-lg:flex-col max-lg:justify-center justify-between max-lg:text-center max-lg:justify-center ">
+  <div class="bg-footer_bg py-10 px-4 ">
+    <div class="_container flex max-lg:flex-col gap-x-10 justify-between max-lg:text-center max-lg:justify-center ">
       <div class="flex flex-col gap-y-5  justify-center">
         <div class="max-lg:mx-auto max-lg:pl-16">
           <img src="/ejudiciary2.svg" alt="" class="">
         </div>
 
-        <h3 class="text-gray max-lg:w-8/12 max-lg:font-bold max-lg:mx-auto w-[400px] max-sm:w-11/12 max-lg:block text-2xl max-lg:text-xl max-md:text-lg ">
+        <h3 class="text-gray max-lg:w-8/12 max-lg:font-bold max-lg:mx-auto w-[400px] max-sm:w-11/12 max-lg:block text-2xl max-lg:text-lg max-md:text-base ">
           {{
-            $t(`E-Judiciary
-Электронная судебная система, предназначенная
-для облегчения решений юридических вопросов.`)
+            $t(`E-Judiciary Электронная судебная система, предназначенная для облегчения решений юридических вопросов.`)
           }}</h3>
 
       </div>
-      <div class="flex flex-wrap max-lg:justify-center gap-y-5 gap-x-10">
+      <div class="flex flex-wrap max-lg:justify-center gap-y-5 gap-x-10 text-sm">
         <div class=" max-lg:my-10 max-w-[150px] max-sm:max-w-max">
           <p class="text-primary font-bold  cursor-pointer"> {{ $t('Навигация по системе') }}</p>
           <ul class="text-gray  flex flex-col gap-y-3 mt-3">
@@ -47,7 +45,7 @@
         </div>
         <div class=" max-lg:my-10 max-w-[150px] max-sm:max-w-max">
           <p class="text-primary font-bold  cursor-pointer"> {{ $t('Навигация по системе') }}</p>
-          <ul class="text-gray  flex flex-col gap-y-3 mt-3">
+          <ul class="text-gray flex flex-col gap-y-3 mt-3 ">
             <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{
                 $t('Создание обращения')
               }}
@@ -60,7 +58,7 @@
             <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{ $t('Услуги') }}</router-link>
           </ul>
         </div>
-        <div class=" max-lg:my-10 flex justify-center flex-col max-sm:w-full">
+        <div class=" max-lg:my-10 flex justify-center flex-col max-sm:w-11/12">
           <div class="relative">
             <input type="text" class="w-full py-2 px-4 rounded-xl" :placeholder="$t('Подписаться')">
             <div class="absolute z-10 cursor-pointer active:scale-90 transition-all duration-75 select-none -right-2 top-0">

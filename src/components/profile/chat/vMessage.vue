@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-wrap">
-    <div class="flex flex-wrap w-full" :class="{'justify-end ':from_me , }">
+  <div class="flex flex-wrap ">
+    <div class="flex flex-wrap w-full text-sm " :class="{'justify-end ':from_me , }">
       <div v-if="Number(message.message_type_id)===1" class="py-4 px-5 my-2 rounded-xl"
            :class="{'bg-primary text-white':from_me,'bg-[#E9EFFF]':!from_me }">
         <span id="data" v-html="message.data">

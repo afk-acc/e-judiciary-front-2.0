@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <label class="flex flex-col text-gray text-xl font-medium">
+  <div class="text-sm">
+    <label class="flex flex-col text-gray  font-medium">
       {{ item.label }}
       <input
           v-if="item.type === 'text' || item.type === 'date' || item.type === 'number' || item.type === 'select_from_request' "
@@ -13,7 +13,7 @@
     </label>
 
     <label v-if="item.type === 'select_text'"
-           class="flex flex-col text-gray text-xl font-medium">
+           class="flex flex-col text-gray  font-medium">
       {{ item.label }}
       <select
           :required="!modelValue.length"
@@ -36,7 +36,7 @@
     <label for="" v-if="item.type === 'comment'">
       {{ item.label }}
     </label>
-    <label for="" v-else-if="item.type==='multi_select_text'" class="flex flex-col text-gray text-xl font-medium">
+    <label for="" v-else-if="item.type==='multi_select_text'" class="flex flex-col text-gray  font-medium">
       {{ item.label }}
       <select
           :required="!modelValue.length"
