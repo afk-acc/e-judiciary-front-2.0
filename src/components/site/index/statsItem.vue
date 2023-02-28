@@ -40,7 +40,7 @@ export default {
     updateScroll() {
       this.scrollPosition = window.scrollY;
       if (this.played === false) {
-        if (this.scrollPosition > this.maxScroll - 300) {
+        if (this.scrollPosition > this.maxScroll + 300) {
           this.playAnimation();
           this.played = true;
         }
@@ -52,10 +52,7 @@ export default {
     this.maxScroll = document.querySelector("#info-scroll").offsetTop ;
     window.addEventListener("scroll", this.updateScroll);
     this.scrollPosition = window.scrollY;
-    if (window.outerHeight > this.maxScroll + 260) {
-      this.playAnimation();
-      this.played = true;
-    }
+
   }
 }
 </script>
