@@ -26,19 +26,30 @@
           </router-link>
         </div>
       </div>
-      <appeal-item :item="item" v-for="(item, index) in get_appeal_list.data" :key="index"
-                   @showModal="(id)=>{this.show_del = true; this.del_id = id }"
-                   :num="(params.page - 1) * 10 + index +1"/>
-    </div>
-    <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_appeal_list?.data?.length > 0">
-      <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
-           v-for="item in get_appeal_list?.meta?.links"
-           :class="{'bg-primary text-white rounded-full ':item.active}">
-        {{ $t(item.label) }}
+      <div v-if="get_appeal_list.data?.length > 0">
+        <appeal-item :item="item" v-for="(item, index) in get_appeal_list.data" :key="index"
+         @showModal="(id)=>{this.show_del = true; this.del_id = id }"
+         :num="(params.page - 1) * 10 + index +1"/>
       </div>
+      <div v-else-if="!get_appeal_list.data" class="overflow-hidden">
+        <AppealsScelet></AppealsScelet>
+        <AppealsScelet></AppealsScelet>
+        <AppealsScelet></AppealsScelet>
+        <AppealsScelet></AppealsScelet>
+        <AppealsScelet></AppealsScelet>
+      </div>
+      <div class="text-center font-bold text-2xl" v-else>
+          {{$t('Ничего не найдено')}}
+        </div>
+ 
+   
     </div>
-    <div class="text-center font-bold text-2xl" v-else>
-      {{$t('Ничего не найдено')}}
+    <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_appeal_list?.meta?.links?.length > 0">
+        <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
+             v-for="item in get_appeal_list?.meta?.links"
+             :class="{'bg-primary text-white rounded-full ':item.active}">
+          {{ $t(item.label) }}
+        </div>
     </div>
     <v-modal v-if="show_del" @showModal="show_del = !show_del">
       <p class="text-center font-bold text-black text-3xl">{{ $t('Подтвердите удаление') }}</p>
@@ -59,10 +70,11 @@ import VModal from "../../components/UI/vModal.vue";
 import VButton from "../../components/UI/vButton2.vue";
 import VSearch from "../../components/UI/vSearch.vue";
 import {canAccess} from "../../assets/functions.js";
+import AppealsScelet from "./sceleton/appealsScelet.vue";
 
 export default {
   name: "appeals",
-  components: {VSearch, VButton, VModal, AppealItem},
+  components: { VSearch, VButton, VModal, AppealItem, AppealsScelet },
   data() {
     return {
       show_del: false,

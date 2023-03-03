@@ -9,28 +9,28 @@
       <v-stats/>
     </div>
     <v-info/>
-    <v-footer/>
   </div>
 </template>
 
 <script>
+import userSceletTemplate from "./sceleton/userSceletTemplate.vue";
+
 import vInner from "../../components/site/index/vInner.vue"
 import VAdvantages from "../../components/site/index/vAdvantages.vue";
 import VDocumentsTemplate from "../../components/site/index/vDocumentsTemplate.vue";
 import VStats from "../../components/site/index/vStats.vue";
 import VInfo from "../../components/site/index/vInfo.vue";
-import VFooter from "../../components/site/vFooter.vue";
 import {mapActions} from "vuex";
 
 export default {
   name: "index",
   components: {
-    VFooter,
     VInfo,
     VStats,
     VDocumentsTemplate,
     VAdvantages,
-    vInner
+    vInner, 
+    userSceletTemplate 
   },
   methods:{
     ...mapActions(['loadCurrentUser'])

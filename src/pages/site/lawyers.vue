@@ -8,8 +8,14 @@
   </div>
   <div class="_container ">
     
-    <div class="flex flex-wrap max-lg:px-10 max-lg:justify-center  w-full justify-between  gap-y-5">
+    <div v-if="get_lawyer_list.data" class="flex flex-wrap max-lg:px-10 max-lg:justify-center  w-full justify-between  gap-y-5">
       <lawyer-item class="max-w-[500px] w-full" v-for="(item,index) in get_lawyer_list.data" :key="index" :item="item"/>
+    </div>
+    <div v-else class="flex flex-wrap max-lg:px-10 max-lg:justify-center  w-full justify-between  gap-y-5">
+      <LawyersSceletTemplate class="max-w-[500px] w-full" />
+      <LawyersSceletTemplate class="max-w-[500px] w-full" />
+      <LawyersSceletTemplate class="max-w-[500px] w-full" />
+      <LawyersSceletTemplate class="max-w-[500px] w-full" />
     </div>
     <div class="flex gap-x-[1px] justify-center flex-wrap my-10 " v-if="get_lawyer_list?.data?.length > 0">
       <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
@@ -27,11 +33,12 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import LawyerItem from "../../components/site/lawyers/lawyerItem.vue";
+import LawyersSceletTemplate from "./sceleton/lawyersSceletTemplate.vue";
 
 export default {
   name: "lawyers",
-  components: {LawyerItem},
-
+  components: { LawyerItem, LawyersSceletTemplate },
+ 
   data() {
     return {
       params: {
@@ -74,6 +81,7 @@ export default {
       this.load_lawyer_list(this.params)
     }
   }
+  
 }
 </script>
 

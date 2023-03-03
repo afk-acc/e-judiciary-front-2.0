@@ -93,10 +93,16 @@
         </i>
       </div>
     </div>
-    <div class="chat-left_users overflow-y-scroll h-full">
+    <div v-if="get_chat_user_list.data" class="chat-left_users overflow-y-scroll h-full">
       <v-chat-users :class="{
         'bg-primary_gr text-white':item.id === chat
-      }" :active="item.id === chat" v-for="item in get_chat_user_list" :item="item" @click="$emit('changeChat',item.id)"/>
+      }" :active="item.id === chat" v-for="item in get_chat_user_list.data" :item="item" @click="$emit('changeChat',item.id)" />
+    </div>
+    <div v-else>
+      <chatScelet></chatScelet>
+      <chatScelet></chatScelet>
+      <chatScelet></chatScelet>
+      <chatScelet></chatScelet>
     </div>
   </div>
 </template>
@@ -104,10 +110,11 @@
 <script>
 import vChatUsers from './vChatUsers.vue';
 import {mapActions, mapGetters} from "vuex";
-
+import chatScelet from '../../../pages/profile/sceleton/chatScelet.vue'
 export default {
   components: {
     vChatUsers,
+    chatScelet
   },
   data() {
     return {

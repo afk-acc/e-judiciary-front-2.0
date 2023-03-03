@@ -21,21 +21,18 @@ import history from "../pages/profile/history.vue";
 import contacts from "../pages/site/contacts.vue";
 import faq from '../pages/site/faq.vue'
 import appealsForLawyers from "../pages/profile/appealsForLawyers.vue";
-const routes = [
-    {
-        path: '/',
-        component: index,
-        name: "main"
-    },
 
+const routes = [
+   
     {
         path: '/index',
-        component: base,
+        component: base ,
         name: 'base',
         children: [
             {
-                path: '',
-                component: base,
+                path: '/',
+                component: index,
+                name: "main"
             },
             {
                 path: 'service/:page',
@@ -62,8 +59,7 @@ const routes = [
                 component: faq,
                 name: 'faq'
             },
-
-
+           
         ],
     },
     {
@@ -143,13 +139,9 @@ const routes = [
         name: 'appeal-info',
     },
 
-
-
-
 ]
 
 export default new createRouter({
     history: createWebHistory(),
-    linkActiveClass: 'active-link',
-    routes
+    routes,
 })

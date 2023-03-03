@@ -2,8 +2,9 @@
   <teleport to="body">
     <div
         :class="{
-      'bg-header_gr': showBg() ,
-
+      'bg-header_gr': showBg(),
+      
+        
     }"
         class="fixed max-lg:bg-header_gr transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 h-[82px] z-50">
       <div class="_container flex  max-lg:flex-col items-center justify-between relative h-full">
@@ -238,7 +239,7 @@ export default {
       this.mes = this.getCurrentUser.notify
       if (this.mes === undefined)
         this.mes = 0;
-      console.log(this.mes)
+      // console.log(this.mes)
       // let channel = this.$pusher.subscribe('private-notification.' + val.id)
       // channel.bind('notify', notify => {
       //   console.log('notify')
@@ -257,11 +258,17 @@ export default {
       localStorage.setItem('locale', val)
       this.switchLanguage()
     }
-  }
+  },
+ 
 }
 </script>
 
-<style>
+<style scoped>
+
+a.router-link-active {
+  text-decoration: underline;
+}
+
 .el-hover path {
   transition: all 0.3s;
 }

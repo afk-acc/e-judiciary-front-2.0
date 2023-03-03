@@ -22,11 +22,19 @@
         </div>
       </div>
       <div class="flex flex-col gap-y-6 ">
-        <role-item v-for="(item, index) in get_roles" :key="index" :item="item"
-                   @showRead="(el)=>{current_role = el; show_read = true; load_permission(item.id)}"
-                   @changeCurrentRole="(el)=>{ current_role = el; show_info=true; load_permission(item.id)}"
-                   @del="(el)=>{ current_role = el; show_del=true;}"
-        />
+         <div v-if="get_roles.data">
+          <role-item v-for="(item, index) in get_roles.data" :key="index" :item="item"
+           @showRead="(el)=>{current_role = el; show_read = true; load_permission(item.id)}"
+           @changeCurrentRole="(el)=>{ current_role = el; show_info=true; load_permission(item.id)}"
+           @del="(el)=>{ current_role = el; show_del=true;}"/>
+         </div>
+         <div v-else>
+           <RolesScelet ></RolesScelet>
+           <RolesScelet ></RolesScelet>
+           <RolesScelet ></RolesScelet>
+           <RolesScelet ></RolesScelet>
+           <RolesScelet ></RolesScelet>
+         </div>
       </div>
       <v-modal v-if="show_info" @showModal="show_info = !show_info">
         <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
@@ -121,18 +129,19 @@
 </template>
 
 <script>
-import RoleItem from "../../components/profile/roleItem.vue";
 import {mapActions, mapGetters} from "vuex";
 import VModal from "../../components/UI/vModal.vue";
 import roleItem from "../../components/profile/roleItem.vue";
 import {canAccess} from "../../assets/functions.js";
+import RolesScelet from "./sceleton/rolesScelet.vue";
 
 export default {
   name: "RoleList",
   components: {
     VModal,
-    roleItem
-  },
+    roleItem,
+    RolesScelet
+},
   data() {
     return {
       show_add: false,

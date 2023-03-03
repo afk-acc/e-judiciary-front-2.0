@@ -1,10 +1,19 @@
 <template>
   <div class="max-lg:overflow-x-scroll max-lg:h-full w-full max-lg:mt-20">
     <v-search v-model:model-value="params.query" @search="loadUsersList(params)"/>
-    <user-item
+      <div v-if="getUsersList.data">
+        <user-item
         @showInfo="(el)=>{show_info = true; change_user = el}"
         @showModal="(el)=>{show_del = true;change_user = el }" v-for="(item, index) in getUsersList.data"
         :item="item" :key="index" :num="(params.page - 1) * params.limit + index + 1"/>
+      </div>
+      <div v-else>
+        <UsersScelet />
+        <UsersScelet />
+        <UsersScelet />
+        <UsersScelet />
+        <UsersScelet />
+      </div>
     <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="getUsersList?.data?.length > 0">
       <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
            v-for="item in getUsersList?.meta?.links"
@@ -65,6 +74,7 @@ import {mapActions, mapGetters} from "vuex";
 import VModal from "../../components/UI/vModal.vue";
 import VButton from "../../components/UI/vButton2.vue";
 import VSearch from "../../components/UI/vSearch.vue";
+import UsersScelet from "./sceleton/usersScelet.vue";
 
 export default {
   name: "users",
@@ -72,8 +82,9 @@ export default {
     VSearch,
     VButton,
     VModal,
-    userItem
-  },
+    userItem,
+    UsersScelet
+},
   data() {
     return {
       params: {

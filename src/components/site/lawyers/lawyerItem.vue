@@ -19,8 +19,10 @@ export default {
   name: "lawyerItem",
   props: {
     item: Object
-  }
+  },
+
 }
+
 </script>
 
 <style scoped>

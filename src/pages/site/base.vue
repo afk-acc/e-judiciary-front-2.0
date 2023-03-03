@@ -1,30 +1,38 @@
 <template>
-  <div class="min-h-screen flex flex-col justify-between">
-    <v-header class="bg-header_gr"/>
-    <router-view class="pt-14"/>
-    <v-footer class=""/>
-  </div>
+    <v-header  />
+    <router-view></router-view>
+    <v-footer class="" />
 </template>
 
 <script>
 import VHeader from "../../components/site/vHeader.vue";
 import VFooter from "../../components/site/vFooter.vue";
-import {mapActions} from "vuex";
+
+import { mapActions } from "vuex";
 
 export default {
   name: "base",
-  components: {VFooter, VHeader},
-  methods:{
-    ...mapActions(['loadCurrentUser'])
+  components: { VFooter, VHeader},
+  methods: {
+    ...mapActions(["loadCurrentUser"]),
   },
   mounted() {
-    if(localStorage.getItem('token')){
-      this.loadCurrentUser()
+    if (localStorage.getItem("token")) {
+      this.loadCurrentUser();
     }
-  }
+  },
+
 }
 </script>
 
-<style scoped>
+<style>
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5 ease-out;
+}
 </style>

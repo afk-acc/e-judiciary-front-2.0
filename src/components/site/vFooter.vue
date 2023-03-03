@@ -71,7 +71,6 @@
                       stroke-linejoin="round"/>
               </svg>
             </div>
-
           </div>
           <p class="mt-2 font-bold  cursor-pointer text-[#71787E]"> {{ $t('Введите свой email:') }}</p>
         </div>
@@ -88,7 +87,8 @@ export default {
     login() {
       return localStorage.getItem('token')?.length > 1
     }
-  }
+  },
+  
 }
 </script>
 

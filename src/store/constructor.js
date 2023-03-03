@@ -41,14 +41,16 @@ export default {
     },
     actions: {
         load_doc_type_list(context) {
-            axios.get(`appeal/type_list?locale=${localStorage.getItem('locale')}`).then(res => {
-                context.commit('update_doc_type_list', res.data.data)
-            })
+                axios.get(`appeal/type_list?locale=${localStorage.getItem('locale')}`).then(res => {
+                context.commit('update_doc_type_list', res.data)
+        })        
+        
         },
         load_all_doc_list(context, params) {
-            axios.get(`appeal/all?query=${params.query}&page=${params.page}&locale=${localStorage.getItem('locale')}&limit=${params.limit}`).then(res => {
-                context.commit('update_all_doc_list', res.data)
-            })
+         axios.get(`appeal/all?query=${params.query}&page=${params.page}&locale=${localStorage.getItem('locale')}&limit=${params.limit}`).then(res => {
+        context.commit('update_all_doc_list', res.data)
+        })
+           
         },
         load_fields(context, id) {
             context.commit('update_preview', '')

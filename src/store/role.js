@@ -26,13 +26,13 @@ export default {
 
     },
     actions: {
-        load_roles(context) {
-            axios.get(`role?locale=${localStorage.getItem('locale')}`, {
+         load_roles(context) {
+             axios.get(`role?locale=${localStorage.getItem('locale')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
-                context.commit('update_roles', res.data.data)
+                context.commit('update_roles', res.data)
             })
         },
         load_permission(context, id) {

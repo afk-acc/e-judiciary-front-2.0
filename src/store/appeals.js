@@ -36,6 +36,7 @@ export default {
     mutations: {
         updateAppeal(state, data) {
             state.appeals_list = data
+            
         },
         update_send_appeal(state, data) {
             state.send_appeal = data
@@ -107,6 +108,7 @@ export default {
             })
         },
         loadAppealList(context, params) {
+            context.commit('updateAppeal', [])
             if (canAccess(context.getters.getCurrentUser, 'appeal.read') && context.getters.getCurrentUser.role_name === 'lawyer' && params.parametr === 'lawyer') {
                 if (params.params === 'new')
                     axios.get(`appeal?locale=${localStorage.getItem('locale')}&page=${params.page}&limit=${params.limit}&query=${params.query}&sort=${params.sort}&par=${params.par}`, {

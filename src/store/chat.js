@@ -39,7 +39,7 @@ export default {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res=>{
-                context.commit('update_chat_user_list', res.data.data)
+                context.commit('update_chat_user_list', res.data)
             })
         },
         load_messages(context, params){

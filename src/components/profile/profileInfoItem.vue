@@ -15,7 +15,7 @@ export default {
   props: {
     item: String,
     label: String
-  }
+  },
 }
 </script>
 

@@ -7,6 +7,7 @@
         @changeChat="changeChat"
         :chat="chat"
     />
+    
     <v-chat-right :chat="chat" :reciver="reciver"/>
   </div>
 </template>

@@ -1,26 +1,37 @@
-<script >
+<script>
+import vPreloader from "./components/UI/vPreloader.vue";
 export default {
-  mounted() {
-    if (!localStorage.getItem('locale'))
-      localStorage.setItem('locale', 'ru')
+  components: {
+    vPreloader,
   },
-}
-
+  mounted() {
+    if (!localStorage.getItem("locale")) localStorage.setItem("locale", "ru");
+    setTimeout(() => {
+      this.show = true
+    }, 3000);
+  },
+  data() {
+    return {
+      show:false,
+    }
+  },
+};
 </script>
-
 <template>
   <div id="app">
-    <router-view/>
+    <RouterView v-if="show">
+    </RouterView>
+    <vPreloader v-else></vPreloader>
+    
   </div>
 </template>
 
-<style >
-._container{
+<style>
+._container {
   max-width: 1190px;
-  margin:0 auto;
+  margin: 0 auto;
   width: 100%;
 }
-
 
 * {
   scrollbar-width: thin;
@@ -36,7 +47,7 @@ export default {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #2556B5;
+  background-color: #2556b5;
   border-radius: 2px;
 }
 </style>

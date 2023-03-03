@@ -1,10 +1,18 @@
 <template>
-  <div class="mt-20 w-full overflow-x-scroll">
+  <div class="w-full overflow-x-scroll">
     <div class="overflow-x-scroll max-md:w-[720px] text-sm">
-      <request-item
-          @showModal="(el)=>{show_info = true;active_user=el.user_info }"
-          :item="item" v-for="(item, index) in get_request_list.data" :key="index"
-          :num="(params.page-1) * 10 + index + 1"/>
+      <div v-if="get_request_list?.data?.length > 0">
+        <request-item
+        @showModal="(el)=>{show_info = true;active_user=el.user_info }"
+        :item="item" v-for="(item, index) in get_request_list.data" :key="index"
+        :num="(params.page-1) * 10 + index + 1"/>
+      </div>
+      <div v-else-if="!get_request_list.data">
+        <usersScelet ></usersScelet>
+      </div>
+      <div class="text-center font-bold text-2xl" v-else>
+        {{ $t('Ничего не найдено') }}
+      </div>
     </div>
     <div class="flex gap-x-[1px] flex-wrap my-10  overflow-x-scroll" v-if="get_request_list?.data?.length > 0">
       <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
@@ -13,9 +21,7 @@
         {{ $t(item.label) }}
       </div>
     </div>
-    <div class="text-center font-bold text-2xl" v-else>
-      {{ $t('Ничего не найдено') }}
-    </div>
+    
     <v-modal v-if="show_info" @showModal="show_info = !show_info">
       <div class="text-center font-bold text-primary text-lg max-lg:text-sm">{{ $t("Информация о пользователе") }}</div>
       <div class="flex justify-center my-2"><img :src="active_user?.image" alt=""
@@ -52,10 +58,11 @@ import {canAccess} from "../../assets/functions.js";
 import RequestItem from "../../components/profile/requestItem.vue";
 import VModal from "../../components/UI/vModal.vue";
 import VButton from "../../components/UI/vButton2.vue";
+import usersScelet from "./sceleton/usersScelet.vue";
 
 export default {
   name: "requests",
-  components: {VButton, VModal, RequestItem},
+  components: { VButton, VModal, RequestItem, usersScelet },
 
 
   data() {

@@ -88,7 +88,8 @@ export default {
       return d.toLocaleDateString("ru", options)
       // return `${d.getDate()}-${d.getMonth()}-${d.getFullYear()}`
     }
-  }
+  },
+  
 };
 </script>
 

@@ -34,7 +34,6 @@
       <p v-if="item.message.is_read === 0">?</p>
     </div>
   </div>
-
 </template>
 
 <script>

@@ -78,7 +78,7 @@
           </svg>
         </template>
         <template v-slot:header>{{$t('Экономьте время')}}</template>
-        <template v-slot:content>{{$t('Экономьте свое драгоценное время ')}}</template>
+        <template v-slot:content>{{$t('Экономьте свое драгоценное время')}}</template>
       </advantage-item>
       <advantage-item >
         <template v-slot:icon>

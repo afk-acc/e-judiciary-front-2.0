@@ -25,8 +25,8 @@ export default {
         }
     },
     actions: {
-        update_user(context, params) {
-            let fd = new FormData();
+         update_user(context, params) {
+             let fd = new FormData();
             fd.set('education_place', params.education_place)
             fd.set('education_start', params.education_start)
             fd.set('education_end', params.education_end)
@@ -34,7 +34,7 @@ export default {
             fd.set('locale', localStorage.getItem('locale'))
             if (params.new_image)
                 fd.set('image', params.new_image)
-            axios.post(`user/${params.user_id}/update`, fd, {
+             axios.post(`user/${params.user_id}/update`, fd, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -50,8 +50,8 @@ export default {
                 }
             })
         },
-        loadUsersList(context, params) {
-            axios.get(`users-list?query=${params.query}&page=${params.page}&limit=${params.limit}&locale=${localStorage.getItem('locale')}`, params, {
+         loadUsersList(context, params) {
+              axios.get(`users-list?query=${params.query}&page=${params.page}&limit=${params.limit}&locale=${localStorage.getItem('locale')}`, params, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -59,8 +59,8 @@ export default {
                 context.commit('updateUsersList', res.data)
             })
         },
-        loadRoleList(context) {
-            axios.get(`role?locale=${localStorage.getItem('locale')}`, {
+         loadRoleList(context) {
+             axios.get(`role?locale=${localStorage.getItem('locale')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -68,8 +68,8 @@ export default {
                 context.commit('updateRoleList', res.data.data)
             })
         },
-        changeUserRole(context, par) {
-            axios.post(`user/${par.user_id}/update`, {
+         changeUserRole(context, par) {
+             axios.post(`user/${par.user_id}/update`, {
                 role: par.role,
                 locale: localStorage.getItem('locale')
             }, {

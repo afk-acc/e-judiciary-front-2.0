@@ -1,11 +1,12 @@
 <template>
   <div class="">
-    <div class="_container flex mt-7 ">
+    <div class="_container flex mt-[4.75rem] ">
       <div class="w-4/12 max-lg:fixed h-screen overflow-y-scroll max-lg:w-6/12 max-md:w-10/12 break-all z-50 transition-all bg-footer_bg px-8 pt-7 pb-[150px]"
         :class="{'max-lg:left-[-1000px]' : !openLeft, 'max-lg:left-0' : openLeft}"
       >
         <v-search v-model:model-value="params.query" @search="load_all_doc_list(this.params)" :placeholder="$t('Поиск документов')"/>
-        <v-dropdown/>
+          <v-dropdown/>
+       
       </div>
       <div class="fixed z-40 opacity-40 bg-black w-full h-screen"
       :class="{'hidden': !openLeft, 'block' : openLeft}"
@@ -20,12 +21,19 @@
       </div>
       <div class="w-full px-10 max-lg:px-10 max-lg:mt-16">
         <div class="text-lg text-black font-bold my-5">{{$t('Выберите шаблон для документа')}}</div>
-
         <p class="font-medium text-lg text-black">{{ $t('Все') }}</p>
-        <div class="flex-col gap-y-5 flex">
-          <doc-item :item="item" v-for="(item, index) in get_all_doc_list.data" :key="index"/>
-        </div>
-
+          <div v-if="get_all_doc_list.data" class="flex-col gap-y-5 flex">
+            <DocItem :item="item" v-for="(item, index) in get_all_doc_list.data" :key="index"/>
+          </div>
+          <div v-else>
+            <UserSceletTemplate />
+            <UserSceletTemplate />
+            <UserSceletTemplate />
+            <UserSceletTemplate />
+            <UserSceletTemplate />
+            <UserSceletTemplate />
+            <UserSceletTemplate />
+          </div>
         <div class="flex gap-x-[1px] flex-wrap my-10">
           <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
                v-for="item in get_all_doc_list?.meta?.links"
@@ -46,10 +54,12 @@ import VDropdown from "../../components/site/service/vDropdown.vue";
 import DocItem from "../../components/site/service/docItem.vue";
 import VInfo from "../../components/site/index/vInfo.vue";
 import {mapActions, mapGetters} from "vuex";
+import UserSceletTemplate from "./sceleton/userSceletTemplate.vue";
+import ServiceLeftPanel from "./sceleton/ServiceLeftPanel.vue"
 
 export default {
   name: "service",
-  components: {VInfo, DocItem, VDropdown, VSearch},
+  components: { VInfo, DocItem, VDropdown, VSearch, UserSceletTemplate, ServiceLeftPanel },
   data() {
     return {
       params: {
@@ -61,7 +71,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_all_doc_list'])
+    ...mapGetters(['get_all_doc_list', 'get_doc_type_list'])
   },
   methods: {
     ...mapActions(['load_all_doc_list']),
@@ -88,7 +98,8 @@ export default {
   mounted() {
     this.params.page = this.$route.params.page
     this.load_all_doc_list(this.params)
-  }
+  },
+ 
 }
 </script>
 
