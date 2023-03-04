@@ -21,12 +21,16 @@ import history from "../pages/profile/history.vue";
 import contacts from "../pages/site/contacts.vue";
 import faq from '../pages/site/faq.vue'
 import appealsForLawyers from "../pages/profile/appealsForLawyers.vue";
+import document_template_list from "../pages/profile/document_template/document_template_list.vue";
+import document_template_page from "../pages/profile/document_template/document_template_page.vue";
+import createDocumentTemplate from "../pages/profile/document_template/createDocumentTemplate.vue";
+import documentTypeList from "../pages/profile/documentTypeList.vue";
 
 const routes = [
-   
+
     {
         path: '/index',
-        component: base ,
+        component: base,
         name: 'base',
         children: [
             {
@@ -50,16 +54,16 @@ const routes = [
                 name: 'lawyers'
             },
             {
-                path:'contacts',
+                path: 'contacts',
                 component: contacts,
                 name: 'contacts'
             },
             {
-                path:'faq',
+                path: 'faq',
                 component: faq,
                 name: 'faq'
             },
-           
+
         ],
     },
     {
@@ -91,9 +95,9 @@ const routes = [
                 name: 'appeals',
             },
             {
-              path: 'appeals-lawyer/:page',
-              component: appealsForLawyers,
-              name: 'lawyer-appeals'
+                path: 'appeals-lawyer/:page',
+                component: appealsForLawyers,
+                name: 'lawyer-appeals'
             },
 
             {
@@ -130,6 +134,26 @@ const routes = [
                 path: '/chat',
                 component: chat,
                 name: 'chat'
+            },
+            {
+                path: '/document-templates/:page',
+                component: document_template_list,
+                name: 'document_list'
+            },
+            {
+                path: '/document-template/:id',
+                component: document_template_page,
+                name: 'document_template_page'
+            },
+            {
+                path: '/create-document-template',
+                component: createDocumentTemplate,
+                name: 'create_document_template'
+            },
+            {
+                path: '/document-type',
+                component: documentTypeList,
+                name: 'document_type_list'
             }
         ],
     },

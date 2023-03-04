@@ -34,7 +34,7 @@
             <UserSceletTemplate />
             <UserSceletTemplate />
           </div>
-        <div class="flex gap-x-[1px] flex-wrap my-10">
+        <div class="flex gap-x-[1px] flex-wrap my-10" v-if="get_all_doc_list?.meta?.links">
           <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
                v-for="item in get_all_doc_list?.meta?.links"
                :class="{'bg-primary text-white rounded-full ':item.active}">

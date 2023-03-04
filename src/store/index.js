@@ -9,13 +9,14 @@ import history from "./history.js";
 import report from "./report.js";
 import chat from "./chat.js";
 import notification from "./notification.js";
+import document_template from "./document_template";
 export default createStore({
     state(){
         return {}
     },
     getters:{
         get_base_url(state) {
-            return 'http://api.e-judiciary.uz/'
+            return 'https://api.e.sjco.uz/'
         }
     },
     mutations:{},
@@ -30,7 +31,8 @@ export default createStore({
         report,
         history,
         chat,
-        notification
+        notification,
+        document_template
     },
 
 })

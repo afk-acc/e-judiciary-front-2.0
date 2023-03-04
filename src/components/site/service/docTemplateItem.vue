@@ -1,6 +1,5 @@
 <template>
-  <router-link
-    :to="{ name: 'constructor', params: { name: item.id } }"
+  <div
     class="flex items-center gap-x-7 border-b border-border_c py-4 font-medium text-base max-lg:text-sm last:border-none">
     <div class="">
       <svg
@@ -33,7 +32,7 @@
     <div class="max-md:text-sm break-all">
       {{ item.name }}
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script >

@@ -12,24 +12,25 @@
       {{ get_fields.name }}
     </div>
     <div class="flex justify-between mx-10 max-md:mx-4 text-sm  max-lg:items-center max-lg:flex-col">
-      <form class="flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]"
-            @submit.prevent="add">
+      <form
+          class="flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]"
+          @submit.prevent="add">
         <v-input required="true" v-model:model-value="appeal.title" :label="$t('Заголовок')"/>
         <v-input required="true" v-model:model-value="appeal.description" type="textarea" :label="$t('Описание')"/>
-        <designer-input @loadPreview="load_preview({doc:get_fields.doc_name,fields:doc_fields_value })"
-                        v-for="item in get_fields.doc_fields" :item="item"
-                        v-model:model-value="doc_fields_value[item.key]"/>
-        <div class="flex flex-col gap-y-5 mt-5">
-          <v-button-2 type="button" @click="load_preview({doc:get_fields.doc_name,fields:doc_fields_value })">
-            {{ $t('Предпросмотр') }}
-          </v-button-2>
-          <v-button-2 class="text-sm" type="submit">{{ $t('Создать обращение') }}</v-button-2>
+        <div v-for="(item,index) in get_fields.doc_content" :key="index">
 
+          <designer-input
+              v-model:model-value="field.value"
+              v-for="(field, i) in item.fields" :item="field" :key="i"
+          />
+        </div>
+        <div class="flex flex-col gap-y-5 mt-5">
+          <v-button-2 class="text-sm" type="submit">{{ $t('Создать обращение') }}</v-button-2>
         </div>
       </form>
       <div
           class="w-[566px] max-lg:my-16 overflow-auto max-h-[570px] max-lg:max-h-full max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
-        <div class="" v-html="get_preview"></div>
+        <document_preview :item="get_fields"/>
       </div>
     </div>
   </div>
@@ -40,10 +41,11 @@ import {mapActions, mapGetters, mapMutations} from "vuex";
 import DesignerInput from "../../components/site/designer/designerInput.vue";
 import VButton2 from "../../components/UI/vButton2.vue";
 import VInput from "../../components/UI/vInput.vue";
+import Document_preview from "../../components/profile/document_template/documentPreview.vue";
 
 export default {
   name: "designer",
-  components: {VInput, VButton2, DesignerInput},
+  components: {Document_preview, VInput, VButton2, DesignerInput},
   data() {
     return {
       doc_fields_value: {},
@@ -60,17 +62,18 @@ export default {
       if (localStorage.getItem('token')) {
         this.add_new_appeal({
           appeal: this.appeal, doc: {
-            doc: this.get_fields.doc_name,
-            fields: this.doc_fields_value
+            doc: this.get_fields.id,
+            fields: this.get_fields
           }
         })
         this.update_fields([]);
+        this.$router.push({name: 'info'})
       } else {
         this.$router.push({name: 'sign-in'})
         this.update_send_appeal({
           appeal: this.appeal, doc: {
-            doc: this.get_fields.doc_name,
-            fields: this.doc_fields_value
+            doc: this.get_fields.id,
+            fields: this.get_fields
           }
         });
       }
@@ -80,14 +83,10 @@ export default {
     ...mapGetters(['get_fields', 'get_preview'])
   },
   mounted() {
-    this.load_fields(this.$route.params.name)
+    console.log(this.$route.params)
+    this.load_fields(Number(this.$route.params.name))
   },
-  watch: {
-    get_fields(val) {
-      if (Object.entries(val).length > 0)
-        this.load_preview({doc: val.doc_name})
-    }
-  }
+  watch: {}
 }
 </script>
 

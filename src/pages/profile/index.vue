@@ -64,6 +64,14 @@
         <profile-link-items route="chat" :params="{ page: 1 }">
           {{ $t("Чаты с юристами") }}
         </profile-link-items>
+        <profile-link-items
+            route="document_list"
+            :params="{ page: 1 }"
+            v-if="can(getCurrentUser, 'template.read')"
+        >
+          {{ $t("Шаблоны документов") }}
+        </profile-link-items>
+
         <profile-link-items route="" @click="logout" class="text-danger font-bold">
           {{ $t("Выход") }}
         </profile-link-items>
