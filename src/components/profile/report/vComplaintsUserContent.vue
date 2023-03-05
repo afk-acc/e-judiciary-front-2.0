@@ -109,7 +109,6 @@ export default {
   },
   watch: {
     report(val) {
-      console.log(val)
     }
   }
 };

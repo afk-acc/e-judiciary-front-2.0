@@ -248,7 +248,6 @@ export default {
     getPdf(pdf, name) {
       const linkSource = pdf;
       const downloadLink = document.createElement("a");
-      console.log(pdf)
       let ext = pdf.split('/')[1].split(';')[0]
       const fileName = name + "." + ext;
       downloadLink.href = linkSource;
@@ -263,7 +262,6 @@ export default {
   watch: {
     get_appeal(val) {
       if (this.getCurrentUser.id !== undefined) {
-        console.log(this.getCurrentUser.id)
         this.show = (this.getCurrentUser.id === val.applicant_id && !val.lawyer_id)
       } else {
       }

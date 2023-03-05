@@ -84,7 +84,6 @@ export default {
   methods: {
     ...mapActions(['load_request_list', 'change_request_lawyer']),
     loadPage(page) {
-      console.log(page)
       if (page === '<') {
         if (Number(this.params.page) > 1) {
           this.params.page -= 1;

@@ -76,7 +76,6 @@ export default {
   methods: {
     ...mapActions(['load_all_doc_list']),
     loadPage(page) {
-      console.log(page)
       if (page === '<') {
         if (Number(this.params.page) > 1) {
           this.params.page -= 1;

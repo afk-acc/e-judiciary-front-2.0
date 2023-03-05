@@ -17,7 +17,6 @@ export function getDate(date) {
 export function download_file(file, name){
     const linkSource = file;
     const downloadLink = document.createElement("a");
-    console.log(file)
     let ext = file.split('/')[1].split(';')[0]
     const fileName = name + "." + ext;
     downloadLink.href = linkSource;

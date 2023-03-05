@@ -47,7 +47,6 @@ export default {
   methods: {
     ...mapActions(['load_document_template_list']),
     loadPage(page) {
-      console.log(page)
       if (page === '<') {
         if (Number(this.params.page) > 1) {
           this.params.page -= 1;

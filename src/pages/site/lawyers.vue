@@ -53,7 +53,6 @@ export default {
   methods: {
     ...mapActions(['load_lawyer_list']),
     loadPage(page) {
-      console.log(page)
       if (page === '<') {
         if (Number(this.params.page) > 1) {
           this.params.page -= 1;

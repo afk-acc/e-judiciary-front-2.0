@@ -29,7 +29,6 @@ export default  {
     strings: '',
   },
   mounted() {
-    console.log(this.item)
   },
   methods:{
     getImage(image){

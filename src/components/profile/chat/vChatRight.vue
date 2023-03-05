@@ -235,9 +235,7 @@ export default {
   computed: {
     ...mapGetters(['get_messages', 'getCurrentUser', 'get_base_url', 'get_sended']),
     messages() {
-      console.log(this.get_messages.data?.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date)
-      }))
+
       return this.get_messages.data?.sort((a, b) => {
         return new Date(a.date) - new Date(b.date)
       })
@@ -251,16 +249,13 @@ export default {
       this.params.room_id = val
       this.params.page = 1
       this.load_messages(this.params)
-      console.log(1)
       // window.Echo.private('chat.' + this.params.room_id)
       //     .listen('SendMessage', message=>{
-      //       console.log(1)
       //       this.recive_message(message)
       //     })
       // this.read_message({chat_id: val})
       let channel = this.$pusher.subscribe('private-chat.' + this.params.room_id);
       channel.bind('SendMessage', message => {
-        console.log(1)
         this.recive_message(message)
       })
       this.read_message({chat_id: val})
@@ -276,7 +271,6 @@ export default {
       }
     },
     get_messages(val) {
-      console.log(this.$refs.messages_block.scrollHeight)
       setTimeout(() => {
         const element = document.getElementById('messages_block');
         element.scrollTop = element.scrollHeight;

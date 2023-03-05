@@ -84,7 +84,6 @@ export default {
                 localStorage.removeItem('token');
                 context.commit('updateIsAuth', false);
                 let mes = e.response.data.errors;
-                console.log(mes)
                 for (let i in mes) {
                     mes[i].forEach(el => {
                         toast.error(el, {autoClose: 3000})

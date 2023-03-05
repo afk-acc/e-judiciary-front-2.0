@@ -27,7 +27,6 @@ export default {
         },
         add_messages(state,data){
             state.messages.data = [ ...data.data, ...state.messages.data]
-            console.log(state.messages.data)
             state.messages.meta = data.meta
         }
 

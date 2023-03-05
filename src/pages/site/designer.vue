@@ -83,7 +83,6 @@ export default {
     ...mapGetters(['get_fields', 'get_preview'])
   },
   mounted() {
-    console.log(this.$route.params)
     this.load_fields(Number(this.$route.params.name))
   },
   watch: {}

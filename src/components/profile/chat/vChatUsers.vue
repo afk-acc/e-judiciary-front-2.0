@@ -53,8 +53,6 @@ export default {
     active: Boolean
   },
   mounted() {
-    console.log(this.item.sender_info)
-    console.log(this.item.reciver_info)
     if (this.item.reciver_id === this.getCurrentUser.id) {
       this.reciver = this.item.sender_info
     } else this.reciver = this.item.reciver_info

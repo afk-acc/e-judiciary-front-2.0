@@ -85,9 +85,6 @@ export default {
   methods: {
     ...mapActions(['load_report', 'read_report']),
     onScroll({target: {scrollTop, clientHeight, scrollHeight}}) {
-      // console.log(`scroll top - ${scrollTop}`)
-      // console.log(`clientHeight - ${clientHeight}`)
-      // console.log(`scrollHeight - ${scrollHeight}`)
       if (Number(scrollTop) + Number(clientHeight) >= Number(scrollHeight) - 100) {
         if (this.get_reports?.meta?.last_page !== this.params.page) {
           this.params.page = Number(this.params.page) + 1;

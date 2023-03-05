@@ -239,17 +239,13 @@ export default {
       this.mes = this.getCurrentUser.notify
       if (this.mes === undefined)
         this.mes = 0;
-      // console.log(this.mes)
       let channel = this.$pusher.subscribe('private-notification.' + val.id)
       channel.bind('notify', notify => {
-        console.log('notify')
         toast.info(this.$t('Новое уведомление'), {autoClose: 2000})
         this.mes = Number(this.mes) + 1
       })
       this.load_notifications()
       channel.bind('notification', notify => {
-        console.log('notification')
-        console.log(notify)
         toast.info(this.$t('Новое уведомление'), {autoClose: 2000})
         this.add_notification(notify.notification)
       })
