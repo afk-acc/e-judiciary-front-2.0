@@ -1,7 +1,6 @@
 <template>
-  <div class="max-w-[500px] w-full"
+  <div class="max-w-[1000px] w-full max-lg:w-[720p]"
   >
-
     <div v-for="(content, index) in item.doc_content"
          class="w-full inline-block"
          :class="{

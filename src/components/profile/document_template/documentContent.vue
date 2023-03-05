@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full flex flex-col gap-y-4"
+  <div class=" flex flex-col gap-y-4"
        v-if="!(item.deleted) "
   >
-    <div class="my-2 w-full">
+    <div class="my-2 w-full max-md:w-8/12">
       <v-textarea v-model:model-value="item.text" required></v-textarea>
     </div>
     <div class="">
@@ -83,11 +83,10 @@
         </div>
       </div>
       <div class="flex flex-col gap-y-2" v-if="item.fields.length > 0">
-        <div class="font-bold mt-2">{{ $t("Поля для ввода") }}</div>
-        <div class="flex flex-col gap-y-2 pl-10">
+        <div class="font-bold mt-2" @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
+        <div class="flex flex-col gap-y-2 pl-10 max-sm:pl-0 ">
           <document-field @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
-
-                          v-for="(field, index) in item.fields" :key="index" :index="index"/>
+             v-for="(field, index) in item.fields" :key="index" :index="index"/>
         </div>
       </div>
       <div class="">
@@ -113,7 +112,11 @@ import VTextarea from "./vTextarea.vue";
 export default {
   name: "documentContent",
   components: {VTextarea, DocumentField},
-
+  data() {
+    return {
+      openField: false
+    }
+  },
   props: {
     item: Object,
     index: Number

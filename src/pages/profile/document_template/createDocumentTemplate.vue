@@ -1,9 +1,8 @@
 <template>
-  <form class=""
+  <form class="max-lg:mt-20 w-full overflow-hidden"
         @submit.prevent="create_document_template(get_document_template);$router.push({name:'document_list', params:{page:1}})">
     <div class="">
-      <div class="my-2 text-center text-xl flex gap-x-4 justify-center">
-
+      <div class="my-2 text-center text-xl flex max-lg:flex-col max-lg:gap-y-4 overflow-hidden gap-x-4 justify-center">
         <input type="text" v-model="get_document_template.name_ru" v-if="can(getCurrentUser, 'template.edit')"
                required
                placeholder="Название документа"
@@ -39,8 +38,8 @@
 
 
     </div>
-    <div class="flex gap-x-2 h-[500px] overflow-scroll">
-      <div class="w-[49%]">
+    <div class="flex gap-x-2 h-[500px] overflow-y-scroll  overflow-x-scroll max-lg:w-screen">
+      <div class="w-[49%] max-lg:w-[720px]">
         <div class="">
 
           <div class="" v-if="can(getCurrentUser, 'template.edit')">
@@ -58,11 +57,11 @@
           </button>
         </div>
       </div>
-      <div class="w-[50%] h-[500px] left-[60%] overflow-scroll  border-[0.5px] px-2 border-filter_gray">
+      <div class="w-[50%] max-lg:w-[720px] max-lg:mx-4 h-[500px] left-[60%]   border-[0.5px] px-2 border-filter_gray">
         <document-preview :item="get_document_template"/>
       </div>
     </div>
-    <div class="flex justify-center gap-x-4" v-if="can(getCurrentUser, 'template.create')">
+    <div class="flex justify-center gap-x-4 mt-10" v-if="can(getCurrentUser, 'template.create')">
       <button
           type="submit"
           class="bg-primary_gr p-2 text-white rounded-xl px-4">

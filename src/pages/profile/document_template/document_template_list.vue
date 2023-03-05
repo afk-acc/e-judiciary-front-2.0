@@ -1,6 +1,5 @@
 <template>
-  <div class="">
-
+  <div class="max-lg:mt-20 ">
     <div class="flex flex-col gap-y-4" v-if="get_document_template_list?.data">
       <div class="flex gap-x-4">
         <router-link :to="{name:'create_document_template'}" class="bg-primary_gr p-2 rounded-xl text-white">{{$t('Добавить документ')}}</router-link>

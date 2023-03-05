@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="max-lg:mt-10">
 
     <div class="flex flex-col gap-y-4">
       <div class="flex justify-between items-center " v-for="(item,index) in get_doc_type_list.data">
@@ -7,7 +7,7 @@
         <div class="font-medium">
           {{ item.title }}
         </div>
-        <div class="flex gap-x-4 ">
+        <div class="flex gap-x-4 max-sm:text-sm max-sm:flex max-sm:flex-col max-sm:gap-y-2">
           <button @click="change= item;showEdit = true" class="text-white bg-primary_gr rounded-xl py-2 px-4">
             {{ $t('Редактировать') }}
           </button>

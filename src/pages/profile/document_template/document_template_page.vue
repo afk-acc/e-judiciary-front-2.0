@@ -1,8 +1,8 @@
 <template>
   <form @submit.prevent="send" class="">
 
-    <div class=" h-[500px] overflow-scroll">
-      <div class="my-2 text-center text-xl flex gap-x-4 justify-center">
+    <div class=" h-[500px] overflow-scroll " >
+      <div class="my-2 text-center text-base flex gap-x-4 max-md:flex-col max-md:gap-y-4 justify-center">
         <input type="text" v-model="get_document_template.name_ru" v-if="can(getCurrentUser, 'template.edit')"
                required
                class="p-2 rounded-xl border border-filter_gray outline-none">
@@ -28,18 +28,14 @@
           <option :value="item.id" v-for="(item, index) in get_doc_type_list.data">{{ item.title }}</option>
         </select>
       </div>
-
-      <div class="flex gap-x-2">
-
-        <div class="w-[49%]">
+      <div class="flex gap-x-2 max-lg:overflow-x-scroll max-lg:w-[1024px]">
+        <div class="w-[49%] ">
           <div class="">
-
             <div class="" v-if="can(getCurrentUser, 'template.edit')">
               <document-content
                   @removeSection="(val)=>{get_document_template.doc_content[val].deleted = true}"
                   :index="index" v-for="(item, index) in get_document_template.doc_content" :item="item" :key="index"/>
             </div>
-
           </div>
 
           <div class="my-5 ">
@@ -49,7 +45,7 @@
             </button>
           </div>
         </div>
-        <div class="w-[50%] h-[500px] left-[60%] overflow-scroll  border-[0.5px] px-2 border-filter_gray">
+        <div class="w-[50%] max-lg:w-[720px] h-[500px] left-[60%] overflow-scroll  border-[0.5px] px-2 border-filter_gray">
           <document-preview :item="get_document_template"/>
         </div>
       </div>

@@ -77,7 +77,7 @@
         </profile-link-items>
       </div>
       <template #fallback>
-        <navScelet></navScelet>
+        <navScelet class="max-lg:hidden"></navScelet>
       </template>
      </Suspense>
       <div
@@ -139,7 +139,7 @@
       </div>
       <div class="w-10/12 max-lg:w-11/12 pt-9 mx-auto">
         <div class="">
-          <div class="px-4 py-0" :class="{ 'py-2': this.$route.name !== 'reports' }">
+          <div class="px-0 py-0" :class="{ 'py-2': this.$route.name !== 'reports'  }">
             <router-view />
           </div>
         </div>

@@ -37,7 +37,7 @@
         </div>
         <div class="" v-if="Number(item.input_type_id) === 2">
           <div class="font-medium">{{ $t("Список возможных значений:") }}</div>
-          <div class="pl-10 flex flex-col gap-y-2">
+          <div class="pl-10 max-sm:pl-2 flex flex-col gap-y-2">
             <div class="" v-for="(val,index) in list.uz_l" :key="index">
               <input type="text" class="p-2 outline-none rounded-xl border border-filter_gray"
                      required
