@@ -21,7 +21,7 @@
           </svg>
           <span class="break-all" :class="{' text-left':isEnd}">
 
-            {{ getName(child, 'name_') }}
+            {{ child.name}}
           </span>
         </router-link>
       </ul>
@@ -42,9 +42,7 @@ export default {
     }
   },
   methods:{
-    getName(t, name){
-      return t[name+localStorage.getItem('locale')]
-    }
+
   }
 }
 </script>

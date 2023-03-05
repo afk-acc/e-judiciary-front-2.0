@@ -1,7 +1,7 @@
 <template>
   <div class="flex cursor-pointer relative w-full p-4 gap-x-2">
     <div class="w-[48px] h-[48px]">
-      <img class="w-[48px] h-[48px] rounded-full max-w-sm object-cover" :src="getImage(reciver?.image)" alt=""/>
+      <img class="w-[48px] h-[48px] rounded-full max-w-sm object-cover" :src="reciver.image" alt=""/>
     </div>
     <div class=" w-9/12">
       <p class="font-bold text-sm">{{ reciver?.name }}</p>
@@ -56,8 +56,8 @@ export default {
     console.log(this.item.sender_info)
     console.log(this.item.reciver_info)
     if (this.item.reciver_id === this.getCurrentUser.id) {
-      this.reciver = this.item.reciver_id
-    } else this.reciver = this.item.sender_info
+      this.reciver = this.item.sender_info
+    } else this.reciver = this.item.reciver_info
   },
   methods: {
     getDate(date) {

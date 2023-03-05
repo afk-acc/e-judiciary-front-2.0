@@ -29,7 +29,7 @@
         <div class="h-[600px] max-lg:h-[500px]  flex flex-col justify-between" v-if="chat">
           <div class="px-4 overflow-y-scroll py-4 " ref="messages_block" id="messages_block" @scroll="onScroll">
             <v-message @updateDate="updateDate" :dates="dates" v-for="item in messages" :ket="item.id" :message="item"
-                       :from_me="getCurrentUser.id === item.reciver_info"/>
+                       :from_me="getCurrentUser.id === item.sender_id"/>
           </div>
           <form @submit.prevent="send" enctype="multipart/form-data"
                 class="flex pb-2 w-full relative justify-between  ">
@@ -235,6 +235,9 @@ export default {
   computed: {
     ...mapGetters(['get_messages', 'getCurrentUser', 'get_base_url', 'get_sended']),
     messages() {
+      console.log(this.get_messages.data?.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date)
+      }))
       return this.get_messages.data?.sort((a, b) => {
         return new Date(a.date) - new Date(b.date)
       })

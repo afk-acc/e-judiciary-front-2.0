@@ -45,12 +45,12 @@ export default {
   },
   watch: {
     chat(val) {
-      let temp = this.get_chat_user_list.filter(e => {
+      let temp = this.get_chat_user_list.data.filter(e => {
         return e.id === val
       })[0]
       if (temp.reciver_id === this.getCurrentUser.id) {
-        this.reciver = temp.reciver_info
-      } else this.reciver = temp.sender_info
+        this.reciver = temp.sender_info
+      } else this.reciver = temp.reciver_info
 
     },
 
