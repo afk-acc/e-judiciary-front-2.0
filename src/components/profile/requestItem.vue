@@ -8,7 +8,7 @@
       }}
     </div>
     <div class=""><img :src="item.user_info.image" alt="" class="w-[90px] h-[90px] rounded-full object-cover"></div>
-    <div class="text-link cursor-pointer w-2/12 text-center">{{ item.user_info.education_place || 'Пользователь ' }}</div>
+    <div class="text-link cursor-pointer w-2/12 text-center">{{ item.user_info.education_place || '- ' }}</div>
     <div class="text-link cursor-pointer" @click="$emit('showModal', item)">{{ $t('Подробно') }}</div>
   </div>
 </template>

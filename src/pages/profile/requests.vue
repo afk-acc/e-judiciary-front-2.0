@@ -3,12 +3,12 @@
     <div class="overflow-x-scroll max-md:w-[720px] text-sm">
       <div v-if="get_request_list?.data?.length > 0">
         <request-item
-        @showModal="(el)=>{show_info = true;active_user=el.user_info }"
-        :item="item" v-for="(item, index) in get_request_list.data" :key="index"
-        :num="(params.page-1) * 10 + index + 1"/>
+            @showModal="(el)=>{show_info = true;active_user=el.user_info }"
+            :item="item" v-for="(item, index) in get_request_list.data" :key="index"
+            :num="(params.page-1) * 10 + index + 1"/>
       </div>
       <div v-else-if="!get_request_list.data">
-        <usersScelet ></usersScelet>
+        <usersScelet></usersScelet>
       </div>
       <div class="text-center font-bold text-2xl" v-else>
         {{ $t('Ничего не найдено') }}
@@ -21,24 +21,44 @@
         {{ $t(item.label) }}
       </div>
     </div>
-    
+
     <v-modal v-if="show_info" @showModal="show_info = !show_info">
       <div class="text-center font-bold text-primary text-lg max-lg:text-sm">{{ $t("Информация о пользователе") }}</div>
       <div class="flex justify-center my-2"><img :src="active_user?.image" alt=""
-       class="w-[100px] h-[100px] rounded-full object-cover "></div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
+                                                 class="w-[100px] h-[100px] rounded-full object-cover "></div>
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Имя') }}:</span>
+        {{ active_user.name }}
+      </div>
 
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span> {{ active_user.bio }}
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span>
+        {{ active_user.bio }}
       </div>
       <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
         {{ active_user.education_place || '-' }}
       </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Телефон') }}:</span>
+        {{ active_user.phone || '-' }}
       </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
-          active_user.rating || '-'
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Стаж') }}:</span> {{
+          active_user.work_experience || '-'
         }}
       </div>
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Страна') }}:</span> {{
+          active_user.county || '-'
+        }}
+      </div>
+      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Город') }}:</span> {{
+          active_user.city || '-'
+        }}
+      </div>
+      <div @click="getFile(active_user.lawyer_file, active_user.name)"
+           class="text-base cursor-pointer text-link font-medium max-md:text-sm"><span
+          class="font-bold text-black">
+        {{ $t('Сертификат юриста') }}:</span> {{
+          $t('Скачать')
+        }}
+      </div>
+
       <div class="flex justify-center mt-1 gap-x-4 max-md:gap-x-2">
         <v-button mode="danger" @click="show_info = false; change_request_lawyer({user_id:active_user.id,value:-1})">
           {{ $t("Отклонить") }}
@@ -62,7 +82,7 @@ import usersScelet from "./sceleton/usersScelet.vue";
 
 export default {
   name: "requests",
-  components: { VButton, VModal, RequestItem, usersScelet },
+  components: {VButton, VModal, RequestItem, usersScelet},
 
 
   data() {
@@ -98,6 +118,17 @@ export default {
         }
       }
       this.$router.push({name: 'requests', params: {page: this.params.page}})
+    },
+    getFile(pdf, name) {
+      if (pdf) {
+        const linkSource = pdf;
+        const downloadLink = document.createElement("a");
+        let ext = pdf.split('/')[1].split(';')[0]
+        const fileName = name + "." + ext;
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      }
     }
 
   },

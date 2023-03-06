@@ -56,6 +56,23 @@ export default {
 
     },
     actions: {
+        add_doc_type(context, params){
+            axios.post(`appeal/type-add`, params, {
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res=>{
+                toast.success(t('Создан новый тип'), {autoClose:2000});
+                context.dispatch('load_doc_type_list')
+            }).catch(e=>{
+                let mes = e.response.data.errors;
+                for (let i in mes) {
+                    mes[i].forEach(el => {
+                        toast.error(el, {autoClose: 2000})
+                    })
+                }
+            })
+        },
         delete_appeal(context, params) {
             axios.delete(`appeal/${params.del_id}`,{
                 headers:{
