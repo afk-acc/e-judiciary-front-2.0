@@ -30,7 +30,7 @@
         {{ $t(item.label) }}
       </div>
     </div>
-    <div class="text-center font-bold text-2xl" v-else>
+    <div class="text-center font-bold text-2xl" v-else-if="getCurrentHistory.data">
       {{ $t("Ничего не найдено") }}
     </div>
   </div>
