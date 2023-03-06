@@ -2,7 +2,7 @@
   <div class="max-lg:mt-10 px-2">
 
     <div class="flex flex-col gap-y-4">
-      <div class="flex justify-end">
+      <div class="flex justify-end" v-if="can(getCurrentUser, 'template.edit')">
         <button @click="showAdd = true"  class="text-white bg-primary_gr py-2 px-4 text-sm rounded-xl">
           {{ $t('Добавить') }}
         </button>
@@ -13,10 +13,11 @@
           {{ item.title }}
         </div>
         <div class="flex gap-x-4 max-sm:text-sm max-sm:flex max-sm:flex-col max-sm:gap-y-2">
-          <button @click="change= item;showEdit = true" class="text-white bg-primary_gr rounded-xl py-2 px-4">
+          <button @click="change= item;showEdit = true" v-if="can(getCurrentUser, 'template.edit')"
+                  class="text-white bg-primary_gr rounded-xl py-2 px-4">
             {{ $t('Редактировать') }}
           </button>
-          <button @click="change= item;delete_doc_type(item)" class="text-white bg-danger rounded-xl py-2 px-4">
+          <button @click="change= item;delete_doc_type(item)" v-if="can(getCurrentUser, 'template.edit')" class="text-white bg-danger rounded-xl py-2 px-4">
             {{ $t('Удалить') }}
           </button>
         </div>
