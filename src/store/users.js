@@ -37,6 +37,7 @@ export default {
             fd.set('languages', params.languages)
             fd.set('bio', params.bio)
             fd.set('locale', localStorage.getItem('locale'))
+            fd.set('role', params.role_id)
             if (params.new_image)
                 fd.set('image', params.new_image)
             if (params.new_lawyer_file)
@@ -59,7 +60,7 @@ export default {
             })
         },
         loadUsersList(context, params) {
-            axios.get(`users-list?query=${params.query}&page=${params.page}&limit=${params.limit}&locale=${localStorage.getItem('locale')}`, params, {
+            axios.get(`users-list?query=${params.query}&page=${params.page}&limit=${params.limit}&locale=${localStorage.getItem('locale')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

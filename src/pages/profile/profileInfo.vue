@@ -14,11 +14,11 @@
     </div>
 
     <div v-if="item = getCurrentUser.id" class="w-full mx-auto max-md:flex max-md:flex-col ">
-      <profile-info-item :item="getCurrentUser.name" :label="$t('ФИО:')"/>
-      <profile-info-item :item="getCurrentUser.bio || '-'" :label="$t('О себе:')"/>
-      <profile-info-item :item="getCurrentUser.country" :label="$t('Страна:')"/>
-      <profile-info-item :item="getCurrentUser.city || '-'" :label="$t('Город:')"/>
-      <profile-info-item :item="getCurrentUser.phone || '-'" :label="$t('Телефон:')"/>
+      <profile-info-item :item="getCurrentUser.name" :label="$t('ФИО')"/>
+      <profile-info-item :item="getCurrentUser.bio || '-'" :label="$t('О себе')"/>
+      <profile-info-item :item="getCurrentUser.country" :label="$t('Страна')"/>
+      <profile-info-item :item="getCurrentUser.city || '-'" :label="$t('Город')"/>
+      <profile-info-item :item="getCurrentUser.phone || '-'" :label="$t('Телефон')"/>
     </div>
     <div v-else>
       <profileInfoScelet></profileInfoScelet>
@@ -29,13 +29,13 @@
       </div>
 
       <div v-if="item = getCurrentUser.id" class="w-full mx-auto max-md:flex max-md:flex-col ">
-        <profile-info-item :item="getCurrentUser.languages || '-'" :label="$t('Знание языков:')"/>
-        <profile-info-item :item="getCurrentUser.education_place || '-'" :label="$t('Образование:')"/>
-        <profile-info-item :item="getCurrentUser.education_start || '-'" :label="$t('Начала обучения:')"/>
-        <profile-info-item :item="getCurrentUser.education_end || '-'" :label="$t('Конец обучения:')"/>
-        <profile-info-item :item="getCurrentUser.work_experience || '-'" :label="$t('Стаж работы:')"/>
-        <profile-info-item :item="getCurrentUser.rating || '-'" :label="$t('Рейтинг:')"/>
-        <profile-info-item :item="getCurrentUser.lawyer_file" :isFile="true" :label="$t('Сертификат юриста:')"/>
+        <profile-info-item :item="getCurrentUser.languages || '-'" :label="$t('Знание языков')"/>
+        <profile-info-item :item="getCurrentUser.education_place || '-'" :label="$t('Образование')"/>
+        <profile-info-item :item="getCurrentUser.education_start || '-'" :label="$t('Начала обучения')"/>
+        <profile-info-item :item="getCurrentUser.education_end || '-'" :label="$t('Конец обучения')"/>
+        <profile-info-item :item="getCurrentUser.work_experience || '-'" :label="$t('Стаж работы')"/>
+        <profile-info-item :item="getCurrentUser.rating || '-'" :label="$t('Рейтинг')"/>
+        <profile-info-item :item="getCurrentUser.lawyer_file" :isFile="true" :label="$t('Сертификат юриста')"/>
 
       </div>
       <div v-else>
@@ -116,6 +116,7 @@
                     <option value="русский">Русский</option>
                     <option value="o`zbek">O`zbek</option>
                     <option value="узбек">Узбек</option>
+                    <option value="english">English</option>
                   </select>
                 </div>
                 <div class="text-gray text-sm font-medium">

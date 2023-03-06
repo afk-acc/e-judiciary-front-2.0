@@ -1,5 +1,21 @@
-
 {
+  "Описание о себе": "O'zingiz haqingizda tavsif",
+  "Знание языков": "Asosiy til",
+  "Фотография профиля": "Profil fotosurati",
+  "Страна проживания": "Yashash mamlakati",
+  "Город проживания": "Yashash shahri",
+  "Основной язык": "Asosiy til",
+  "Редактировать профиль": "Profilni tahrirlash",
+  "Информация о юристе": "Advokat haqida ma'lumot",
+  "Начала обучения": "o'qishni boshlash",
+  "Конец обучения": "o'qishni tugatish",
+  "Стаж работы": "Ish tajribasi",
+  "Сертификат юриста": "Advokat sertifikati",
+  "Закрыть": "Yopish",
+  "Информация о пользователе": "Foydalanuvchi haqida ma'lumot",
+  "Страна": "Mamlakat",
+  "Язык": "Til",
+  "Роль": "Rol",
   "pagination.previous": "<",
   "pagination.next": ">",
   "Вы успешно зарегистрировались": "Вы успешно зарегистрировались",
@@ -13,7 +29,7 @@
   "Вход": "Kirish",
   "МЫ ПОМОЖЕМ ВАМ ПО ЮРИДИЧЕСКИМ ВОПРОСАМ": "BIZ SIZGA HUQUQIY MASALALARDA YORDAM BERAMIZ",
   "Обратная связь:": "Fikr-mulohaza:",
-  "Обращение по вопросам:":"Masalalar bo ' yicha murojaat:",
+  "Обращение по вопросам:": "Masalalar bo ' yicha murojaat:",
   "НАЛОГИ": "SOLIQLAR",
   "ПРАВО": "HUQUQ",
   "КОНСУЛЬТАЦИЯ ПО РИСКАМ": "XATARLAR BO'YICHA MASLAHAT",
@@ -21,15 +37,12 @@
   "ПРЕИМУЩЕСТВО": "FOYDA",
   "Вопросы": "Savollar",
   "Юристы": "Advokatlar",
-  
   "Найдите себе необходимый документ и заполните его без ошибок, <strong>выиграйте время</strong>.": "O'zingizga kerakli hujjatni toping va uni xatosiz to'ldiring, <strong>vaqtni yutib oling</strong>.",
-  
-  "Задайте вопрос":"Savol bering",  
+  "Задайте вопрос": "Savol bering",
   "Выберите юриста": "Advokatni tanlang",
   "Заполните документ": "Hujjatni to'ldiring",
   "Найдите и выберите нужный вам документ": "Kerakli hujjatni toping va tanlang",
-  "Загрузите документ в той форме, которую вы предпочитаете": 
-  "Hujjatni o'zingiz xohlagan shaklda yuklab oling",
+  "Загрузите документ в той форме, которую вы предпочитаете": "Hujjatni o'zingiz xohlagan shaklda yuklab oling",
   "Скачайте": "Yuklab oling",
   "Выгода": "Foyda",
   "Абсолютно бесплатное предоставление услуг": "Mutlaqo bepul xizmat ko'rsatish",
@@ -40,23 +53,17 @@
   "Образцы документов": "Namunaviy hujjatlar",
   "Все образцы": "Barcha namunalar",
   "Количество специалистов": "Mutaxassislar soni",
-  "Количество вопросов": "Savollar soni",  
+  "Количество вопросов": "Savollar soni",
   "Количество пользователей": "Foydalanuvchilar soni",
-  "Какие еще документы вы хотели бы иметь? Ваше мнение очень важно для нас": 
-  "Yana qanday hujjatlarga ega bo'lishni xohlaysiz? Sizning fikringiz biz uchun juda muhimdir",
+  "Какие еще документы вы хотели бы иметь? Ваше мнение очень важно для нас": "Yana qanday hujjatlarga ega bo'lishni xohlaysiz? Sizning fikringiz biz uchun juda muhimdir",
   "Навигация по системе": "Tizim navigatsiyasi",
-  "E-Judiciary Электронная судебная система, предназначенная для облегчения решений юридических вопросов.":
-  "E-Judiciary huquqiy masalalarni hal qilishni osonlashtirish uchun mo'ljallangan elektron sud tizimi.",
+  "E-Judiciary Электронная судебная система, предназначенная для облегчения решений юридических вопросов.": "E-Judiciary huquqiy masalalarni hal qilishni osonlashtirish uchun mo'ljallangan elektron sud tizimi.",
   "Создание обращения": "Murojaatni yaratish",
   "Личный кабинет": "Shaxsiy kabinet",
   "Введите свой email:": "Elektron pochtangizni kiriting:",
   "Подписаться": "Obuna bo'lish",
   "Выберите шаблон для документа": "Hujjat uchun shablonni tanlang",
-
-  
-  "Наша компания - одна из наиболее успешных юридических компаний в сфере разрешения налоговых и таможенных споров: с 2020 года наши юристы одержали 21 победу в Верховном Суде": 
-  "Bizning kompaniyamiz soliq va bojxona nizolarini hal qilishda eng muvaffaqiyatli yuridik kompaniyalardan biri hisoblanadi: 2020 yildan beri advokatlarimiz Oliy sudda 21 ta g'alaba qozonishdi",
-  
+  "Наша компания - одна из наиболее успешных юридических компаний в сфере разрешения налоговых и таможенных споров: с 2020 года наши юристы одержали 21 победу в Верховном Суде": "Bizning kompaniyamiz soliq va bojxona nizolarini hal qilishda eng muvaffaqiyatli yuridik kompaniyalardan biri hisoblanadi: 2020 yildan beri advokatlarimiz Oliy sudda 21 ta g'alaba qozonishdi",
   "Ответы на часто задаваемые вопросы": "Tez-tez so'raladigan savollarga javoblar",
   "Услуги которые мы предоставляем": "Biz taqdim etadigan xizmatlar",
   "Составление претензии / отзыва на претензию ответчика / истца": "Javobgar / da'vogarning da'vosiga da'vo / sharh tuzish",
@@ -67,28 +74,17 @@
   "Правовая поддержка предпринимателей и компаний": "Tadbirkorlar va kompaniyalarni huquqiy qo'llab-quvvatlash",
   "СКАЧИВАЙТЕ НАШЕ МОБИЛЬНОЕ ПРИЛОЖЕНИЕ": "MOBIL ILOVAMIZNI YUKLAB OLING",
   "Есть вопросы ?": "Savollar bor ?",
-
   "Консультация по рискам": "Xatarlar bo'yicha maslahat",
   "Консультирование по рискам": "Xavf bo'yicha maslahat",
-  
   "Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов.Оставьте обращение, и мы ответим вам в скорейшее время.": "Bizning yuridik maslahat sohasidagi yuqori malakali mutaxassislarimiz sizning savollaringizni hal qilishda yordam berishga tayyor.Murojaatni qoldiring va biz sizga tez orada javob beramiz.",
-  
-  
-  
-  "Введите свой электронный адрес и отправьте его и наши специалисты свяжутся с вами в течении 25 минут.":
-  "Elektron pochta manzilingizni kiriting va uni yuboring va bizning mutaxassislarimiz 25 daqiqa ichida siz bilan bog'lanishadi.",
+  "Введите свой электронный адрес и отправьте его и наши специалисты свяжутся с вами в течении 25 минут.": "Elektron pochta manzilingizni kiriting va uni yuboring va bizning mutaxassislarimiz 25 daqiqa ichida siz bilan bog'lanishadi.",
   "Введите свой E-mail": "Elektron pochtangizni kiriting",
   "Все права защищены": "Barcha huquqlar himoyalangan",
-  
-  "Cреди клиентов нашей компании - известные компании, многие из которых входят в рейтинг ТОП-500 по версии РБК":
-  "Kompaniyamiz mijozlari orasida taniqli kompaniyalar bor, ularning aksariyati RBC ma'lumotlariga ko'ra top 500 reytingiga kiritilgan",
+  "Cреди клиентов нашей компании - известные компании, многие из которых входят в рейтинг ТОП-500 по версии РБК": "Kompaniyamiz mijozlari orasida taniqli kompaniyalar bor, ularning aksariyati RBC ma'lumotlariga ko'ra top 500 reytingiga kiritilgan",
   "География услуг охватывает большинство регионов Узбекистана": "Xizmatlar geografiyasi O'zbekistonning aksariyat mintaqalarini qamrab oladi",
   "Сегодня в команде свыше 40 специалистов, пять из которых являются партнерами": "Bugungi kunda jamoada 40 dan ortiq mutaxassislar bor, ulardan beshtasi sheriklardir",
   "Hакопленный опыт и нацеленность на результат позволяют нам находить нестандартные решения и возможности там, где остальные видят лишь риски и проблемы": "To'plangan tajriba va natijaga e'tibor qaratish, boshqalar faqat xavf va muammolarni ko'radigan nostandart echimlar va imkoniyatlarni topishga imkon beradi",
-  
-  "Ключевое преимущество компании — возможность комплексного решения проблем клиентов в области налогообложения и права, а также поддержка со стороны лучших аудиторов, бухгалтеров, консультантов, оценщиков и специалистов по кибербезопасности": 
-  "Kompaniyaning asosiy afzalligi — soliq va huquq sohasidagi mijozlar muammolarini har tomonlama hal qilish imkoniyati, shuningdek, eng yaxshi auditorlar, buxgalterlar, maslahatchilar, baholovchilar va kiberxavfsizlik bo'yicha mutaxassislarni qo'llab-quvvatlash",
-  
+  "Ключевое преимущество компании — возможность комплексного решения проблем клиентов в области налогообложения и права, а также поддержка со стороны лучших аудиторов, бухгалтеров, консультантов, оценщиков и специалистов по кибербезопасности": "Kompaniyaning asosiy afzalligi — soliq va huquq sohasidagi mijozlar muammolarini har tomonlama hal qilish imkoniyati, shuningdek, eng yaxshi auditorlar, buxgalterlar, maslahatchilar, baholovchilar va kiberxavfsizlik bo'yicha mutaxassislarni qo'llab-quvvatlash",
   "НАШ ПОДХОД К РАБОТЕ": "BIZNING ISHGA YONDASHUVIMIZ",
   "Назначение персонального менеджера для клиента": "Mijoz uchun shaxsiy menejerni tayinlash",
   "Формирование профессиональной команды под задачу клиента": "Mijozning vazifasi uchun professional jamoani shakllantirish",
@@ -106,10 +102,7 @@
   "Сельское хозяйство": "Qishloq xo'jaligi",
   "Автомобильная промышленность": "Avtomobil sanoati",
   "КОМАНДА КВАЛИВИЦИРОВАННЫХ СПЕЦИАЛИСТОВ": "MALAKALI MUTAXASSISLAR JAMOASI",
-  
-  "Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов. Оставьте обращение, и мы ответим вам в скорейшее время.": 
-  "Bizning yuridik maslahat sohasidagi yuqori malakali mutaxassislarimiz sizning savollaringizni hal qilishda yordam berishga tayyor. Murojaatni qoldiring va biz sizga tez orada javob beramiz.",
-  
+  "Наша команда высококвалифицированных специалистов в сфере юридических консультаций готова помочь в решении ваших вопросов. Оставьте обращение, и мы ответим вам в скорейшее время.": "Bizning yuridik maslahat sohasidagi yuqori malakali mutaxassislarimiz sizning savollaringizni hal qilishda yordam berishga tayyor. Murojaatni qoldiring va biz sizga tez orada javob beramiz.",
   "Поиск обращения по названию": "Ism bo'yicha qo'ng'iroqni qidiring",
   "Юрист": "Advokat",
   "стаж": "tajriba",
@@ -118,7 +111,6 @@
   "Введите свой Email": "Elektron pochtangizni kiriting",
   "Редактировать": "Tahrirlash",
   "Страницы": "Sahifalar",
-
   "История изменений": "O'zgarishlar tarixi",
   "Ничего не найдено": "Hech narsa topilmadi",
   "Кол-во отзывов": "Sharhlar soni",
@@ -128,8 +120,7 @@
   "Наши контактные данные": "Bizning aloqa ma'lumotlarimiz",
   "Адрес": "Manzil",
   "Задайте вопрос!": "Savol bering!",
-  "г.Ташкент, Мирабадский район, А.Проспект Тимура, 19":
-  "Toshkent sh., Mirobod tumani, A.Temur shohko‘chasi, 19-uy",
+  "г.Ташкент, Мирабадский район, А.Проспект Тимура, 19": "Toshkent sh., Mirobod tumani, A.Temur shohko‘chasi, 19-uy",
   "Рабочее время": "Ish vaqti",
   "Понедельник-Пятница: 09:00-18:00": "Dushanba-Juma: 09: 00-18: 00",
   "Обед: 13:00-14:00": "Tushlik: 13: 00-14: 00",
@@ -151,13 +142,10 @@
   "Без файла": "Faylsiz",
   "Поиск документов": "Hujjatlarni qidirish",
   "Получите необходимый документ онлайн!": "Kerakli hujjatni onlayn oling!",
-  
-  
-
   "Оставить обращение": "Murojaatni qoldiring",
   "Наша команда юристов": "BIZNING YURIDIK GURUHIMIZ",
   "Поиск обращение по названию": "Qidiruv sarlavha bo'yicha murojaat",
-  "Стаж:" : "Tajriba:",
+  "Стаж:": "Tajriba:",
   "от 5 до 10 лет": "5 yildan 10 yilgacha",
   "лет": "yillar",
   "Город: Все": "Shahar: Hammasi",
@@ -165,9 +153,7 @@
   "Написать обращение": "Murojaat yozing",
   "УСЛУГИ": "Xizmatlar",
   "Налоги": "Soliqlar",
-  "Консалтинг, урегулирование споров, цифровые решения...": 
-  "Konsalting, nizolarni hal qilish, raqamli echimlar...",
-  
+  "Консалтинг, урегулирование споров, цифровые решения...": "Konsalting, nizolarni hal qilish, raqamli echimlar...",
   "Подробнее": "Batafsil",
   "Банкротство": "Bankrotlik",
   "Трудовое право": "Mehnat qonuni",
@@ -175,12 +161,9 @@
   "Недвижимость": "Ko'chmas mulk",
   "Строительство": "Qurilish",
   "Услуги частным клиентам": "Xususiy mijozlarga xizmatlar",
-  
-  "Международные судебные разбирате-льства и арбитраж": 
-  "Xalqaro sud jarayonlari va arbitraj",
-  
+  "Международные судебные разбирате-льства и арбитраж": "Xalqaro sud jarayonlari va arbitraj",
   "ОТВЕТЫ НА ВАШИ ВОПРОСЫ": "SAVOLLARINGIZGA JAVOBLAR",
-  "Специалистов":"Mutaxassislar",
+  "Специалистов": "Mutaxassislar",
   "Ответов на вопросы": "Savollarga javoblar",
   "Большая база данных по юр. вопросам": "Yurda katta ma'lumotlar bazasi. masalalar",
   "Работаем днем и ночью": "Biz kechayu kunduz ishlaymiz",
@@ -317,7 +300,6 @@
   "Название роли (на узбекском кириллица)": "Rolning nomi (o'zbek tilida kirillcha)",
   "Вы успешно добавили роль": "Siz rolni muvaffaqiyatli qo'shdingiz",
   "Инициализция": "Ishga tushirish",
-  
   "Мы поможем вам самостоятельно защитить свои права": "Biz sizga o'z huquqlaringizni mustaqil ravishda himoya qilishga yordam beramiz",
   "Создать обращение в суд и другие компетентные органы можно по следующим вопросам:": "Sud va boshqa  vakolatli organlarga quyidagi masalalarda murojaat yaratishingiz mumkin:",
   "По уголовным делам": "Jinoyat ishlari bo`yicha",
@@ -343,8 +325,4 @@
   "Создание формы обращения в результате ответа на поставленные вопросы": "Qo‘yilgan  savollarga javob berish natijasida  murojaat shaklini yaratish",
   "Информация о порядке обращения в суд в Республике Узбекистан для инвесторов": "Investorlar uchun O‘zbekiston Respublikasida sudga murojaat qilish tartibida haqida ma'lumot",
   "Получение юридической помощи онлайн от специалиста в режиме чата 24/7.": "24/7 Chat  rejimida mutaxassisdan onlayn huquqiy yordam olish."
-
-
-
-
 }

@@ -21,54 +21,52 @@
         {{ $t(item.label) }}
       </div>
     </div>
-
     <v-modal v-if="show_info" @showModal="show_info = !show_info">
-      <div class="text-center font-bold text-primary text-lg max-lg:text-sm">{{ $t("Информация о пользователе") }}</div>
-      <div class="flex justify-center my-2"><img :src="active_user?.image" alt=""
+      <div class="text-center font-bold text-primary text-2xl">{{ $t("Информация о пользователе") }}</div>
+      <div class="flex justify-center my-2"><img :src="active_user.image" alt=""
                                                  class="w-[100px] h-[100px] rounded-full object-cover "></div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Имя') }}:</span>
-        {{ active_user.name }}
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Роль') }}:</span> {{ active_user.role_locale }}
       </div>
-
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('О пользователе') }}:</span>
+      <div class="text-xl text-justify"><span class="font-bold text-black ">{{ $t('О пользователе') }}:</span>
         {{ active_user.bio }}
       </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
         {{ active_user.education_place || '-' }}
       </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Телефон') }}:</span>
-        {{ active_user.phone || '-' }}
+
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Страна') }}:</span>
+        {{ active_user.country || '-' }}
       </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Стаж') }}:</span> {{
-          active_user.work_experience || '-'
-        }}
-      </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Страна') }}:</span> {{
-          active_user.county || '-'
-        }}
-      </div>
-      <div class="text-base max-md:text-sm"><span class="font-bold text-black">{{ $t('Город') }}:</span> {{
-          active_user.city || '-'
-        }}
-      </div>
-      <div @click="getFile(active_user.lawyer_file, active_user.name)"
-           class="text-base cursor-pointer text-link font-medium max-md:text-sm"><span
-          class="font-bold text-black">
-        {{ $t('Сертификат юриста') }}:</span> {{
-          $t('Скачать')
-        }}
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Город') }}:</span>
+        {{ active_user.city || '-' }}
       </div>
 
-      <div class="flex justify-center mt-1 gap-x-4 max-md:gap-x-2">
-        <v-button mode="danger" @click="show_info = false; change_request_lawyer({user_id:active_user.id,value:-1})">
-          {{ $t("Отклонить") }}
-        </v-button>
-        <v-button @click="show_info = false; change_request_lawyer({user_id:active_user.id,value:1})">{{
-            $t("Приянть")
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Язык') }}:</span>
+        {{ active_user.languages || '-' }}
+      </div>
+
+
+      <div class="text-xl"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
+      </div>
+      <div class="text-xl flex flex-col" v-if="active_user.role_name === 'lawyer'">
+        <div class="">
+          <span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
+            active_user.rating || '-'
           }}
-        </v-button>
+        </div>
+        <div class="">
+          <span class="font-bold text-black ">{{ $t('Сертификат юриста') }}:</span>
+          <span class="text-link" @click="getFile(active_user.lawyer_file, change_user.name)">{{
+              $t("Скачать")
+            }}</span>
+        </div>
+      </div>
+      <div class="flex justify-center mt-1">
+        <v-button @click="show_info = false">{{ $t("Закрыть") }}</v-button>
       </div>
     </v-modal>
+
   </div>
 </template>
 
