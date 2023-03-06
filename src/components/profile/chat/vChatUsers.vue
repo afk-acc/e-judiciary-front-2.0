@@ -31,7 +31,7 @@
     </div>
     <div
         class="absolute bg-primary px-2 text-white rounded-[50px] bottom-4 max-md:bottom-2 max-sm:bottom-4 right-10 text-end ">
-      <p v-if="item.message.is_read === 0">?</p>
+      <p v-if="item.message.is_read === 0">-</p>
     </div>
   </div>
 </template>
