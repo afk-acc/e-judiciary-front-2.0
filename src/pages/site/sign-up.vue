@@ -100,6 +100,9 @@
 <script>
 import VButton from "../../components/UI/vButton2.vue";
 import {mapActions, mapGetters} from "vuex";
+import axios from "../../axios/index.js";
+import {toast} from "vue3-toastify";
+import t from "../../main.js";
 
 export default {
   name: "sign-up",
@@ -113,13 +116,38 @@ export default {
       }
     }
   },
-  computed:{
+  computed: {
     ...mapGetters(['getIsAuth'])
   },
   methods: {
     ...mapActions(['register']),
     auth() {
-      this.register(this.login)
+      // this.register(this.login)
+      axios.post(`auth/register`, {
+        login: this.login.login,
+        password: this.login.password,
+        password_confirm: this.login.password_repeat,
+        locale: localStorage.getItem('locale')
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }).then(res => {
+        localStorage.setItem('token', res.data.access_token);
+        // context.commit('updateIsAuth', true)
+        this.$router.push({name: "info"})
+
+        toast.success(this.$t('Вы успешно зарегистрировались'), {autoClose: 1500})
+      }).catch(e => {
+        localStorage.removeItem('token');
+        let mes = e.response.data.errors;
+        for (let i in mes) {
+          mes[i].forEach(el => {
+            toast.error(el, {autoClose: 3000})
+          })
+        }
+      })
+
     }
   },
   mounted() {
@@ -127,13 +155,7 @@ export default {
       window.location = window.location.protocol + '//' + window.location.host + '/profile/info'
     }
   },
-  watch: {
-    getIsAuth(val) {
-      if (val === true) {
-        this.$router.push({name: "info"})
-      }
-    }
-  }
+  watch: {}
 }
 </script>
 

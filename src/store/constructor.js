@@ -7,7 +7,7 @@ export default {
             doc_type_list: [],
             all_doc_list: [],
             fields: [],
-            preview:'',
+            preview: '',
         }
 
     },
@@ -21,7 +21,7 @@ export default {
         get_fields(state) {
             return state.fields
         },
-        get_preview(state){
+        get_preview(state) {
             return state.preview
         }
     },
@@ -35,34 +35,52 @@ export default {
         update_fields(state, data) {
             state.fields = data
         },
-        update_preview(state, data){
+        update_preview(state, data) {
             state.preview = data
         }
     },
     actions: {
         load_doc_type_list(context) {
-                axios.get(`appeal/type_list?locale=${localStorage.getItem('locale')}`).then(res => {
+            axios.get(`appeal/type_list?locale=${localStorage.getItem('locale')}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
                 context.commit('update_doc_type_list', res.data)
-        })        
-        
+            })
+
         },
         load_all_doc_list(context, params) {
-         axios.get(`appeal/all?query=${params.query}&page=${params.page}&locale=${localStorage.getItem('locale')}&limit=${params.limit}`).then(res => {
-        context.commit('update_all_doc_list', res.data)
-        })
-           
+            axios.get(`appeal/all?query=${params.query}&page=${params.page}&locale=${localStorage.getItem('locale')}&limit=${params.limit}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(res => {
+                context.commit('update_all_doc_list', res.data)
+            })
+
         },
         load_fields(context, id) {
             context.commit('update_preview', '')
-            axios.get(`constructor/fields/${id}?locale=${localStorage.getItem('locale')}`).then(res => {
+            axios.get(`constructor/fields/${id}?locale=${localStorage.getItem('locale')}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(res => {
                 context.commit('update_fields', res.data.data)
             })
         },
-        load_preview(context, params){
+        load_preview(context, params) {
             axios.post(`constructor/document/${params.doc}`, {
-                locale:localStorage.getItem('locale'),
-                fields:params.fields
-            }).then(res=>{
+                locale: localStorage.getItem('locale'),
+                fields: params.fields
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
                 context.commit('update_preview', res.data)
             })
 

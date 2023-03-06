@@ -41,7 +41,12 @@ export default {
     },
     actions: {
         load_lawyer_list(context, params) {
-            axios.get(`all_lawyers?locale=${localStorage.getItem('locale')}&page=${params.page}&limit=${params.limit}`)
+            axios.get(`all_lawyers?locale=${localStorage.getItem('locale')}&page=${params.page}&limit=${params.limit}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
                 .then(res => {
                     context.commit('update_lawyer_list', res.data)
                 })
@@ -77,6 +82,10 @@ export default {
                 login: param.login,
                 password: param.password,
                 locale: localStorage.getItem('locale')
+            },{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem('token')}`
+                }
             }).then(res => {
                 localStorage.setItem('token', res.data.access_token);
                 toast.success(t('Успешная авторизация'), {autoClose: 1500})
@@ -97,6 +106,10 @@ export default {
                 password: login.password,
                 password_confirm: login.password_repeat,
                 locale: localStorage.getItem('locale')
+            },{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem('token')}`
+                }
             }).then(res => {
                 localStorage.setItem('token', res.data.access_token);
                 context.commit('updateIsAuth', true)

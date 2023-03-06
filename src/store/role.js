@@ -74,6 +74,10 @@ export default {
                 name_uz_l:params.name_uz_l,
                 name_uz_c:params.name_uz_c,
                 name_ru:params.name_ru,
+            },{
+                headers:{
+                    Authorization:`Bearer ${localStorage.getItem('token')}`
+                }
             }).then(res=>{
                 toast.success(t('Вы успешно добавили роль'))
                 context.dispatch('load_roles')

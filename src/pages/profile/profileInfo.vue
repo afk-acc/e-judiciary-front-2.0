@@ -23,7 +23,7 @@
     <div v-else>
       <profileInfoScelet></profileInfoScelet>
     </div>
-    <div class="" v-if="getCurrentUser.role_name === 'lawyer'">
+    <div class="" >
       <div class="flex gap-x-4 my-2">
         <h1 class="text-link font-bold text-2xl">{{ $t("Информация о юристе") }}</h1>
       </div>
