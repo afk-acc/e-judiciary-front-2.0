@@ -5,7 +5,7 @@
       :to="{ name: route, params: params }"
       :class="{ 'active-block block ': this.$route.name === route }"
     >
-      <li class="py-4 px-8 cursor-pointer border-b border-opacity-20 border-filter_gray">
+      <li class="py-[6px] text-sm my-2 pl-10 hover:pl-12 transition-all ease-in hover:bg-white hover:text-primary px-6 cursor-pointer rounded-md">
         <slot></slot>
       </li>
     </router-link>
@@ -15,12 +15,6 @@
 <script>
 export default {
   props: { route: String, params: Object },
-  async setup() {
-    const getMovie = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 800));
-    };
-    await getMovie();
-  },
 };
 </script>
 

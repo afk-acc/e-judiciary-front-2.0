@@ -1,10 +1,10 @@
 <template>
   <div class="w-full max-lg:mt-16 px-1">
-    <div class="flex gap-x-4 my-2 item-center">
-      <h1 class="text-link font-bold text-2xl">{{ $t("Основная информация") }}</h1>
-      <div class="flex gap-x-4 item-center ">
+    <div class="flex gap-x-4 my-2 item-center max-md:flex-col max-md:justify-center">
+      <h1 class="text-link font-bold text-2xl max-md:text-center">{{ $t("Основная информация") }}</h1>
+      <div class="flex gap-x-4 item-center max-md:mx-auto">
         <button @click="showEdit = true; edit={...getCurrentUser}"
-                class="text-white bg-primary_gr py-2 px-4 rounded-xl ">{{ $t("Редактировать профиль") }}
+                class="text-white bg-primary_gr py-2 px-4 rounded-xl max-md:py-2">{{ $t("Редактировать профиль") }}
         </button>
         <button v-if="getCurrentUser.role_name === 'user' " @click="send_request_lawyer(getCurrentUser.id)"
                 class="text-white bg-primary_gr py-2 px-4 rounded-xl ">{{ $t("Стать юристом") }}
@@ -82,7 +82,7 @@
               <v-input class="mb-2" v-model:model-value="edit.education_place" :label="$t('Учебное учреждение')"
                        type="text"/>
               <label for="" class="font-medium text-black ">{{ $t('Дата обучения') }}</label>
-              <div class="flex justify-between maxsm:flex-col gap-x-2">
+              <div class="flex max-md:flex-col justify-between maxsm:flex-col gap-x-2">
                 <div class="w-full flex gap-x-2  items-center">
                   <label for="">{{ $t('от') }}</label>
                   <input

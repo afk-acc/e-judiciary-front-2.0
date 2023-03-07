@@ -1,13 +1,14 @@
 <template>
   <teleport to="body">
     <div
-        :class="{
+      :class="{
       'bg-header_gr': showBg(),
-      
         
     }"
-        class="fixed max-lg:bg-header_gr transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 h-[82px] z-50">
-      <div class="_container flex  max-lg:flex-col items-center justify-between relative h-full">
+      class="absolute max-lg:bg-header_gr  transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-50"
+        >
+      <div class="_container flex items-center justify-between relative"
+      >
         <div class="flex max-lg:justify-between max-lg:items-center h-full max-lg:w-10/12 items-start pt-2">
          <router-link to="/" class=" h-[70px]  relative  ">
            <img  src="/ejudiciary.svg" alt="" class="w-full h-[60px] object-cover">
@@ -130,7 +131,7 @@
                     </router-link>
                   </div>
                   <router-link :to="{name:'info'}" class="flex mx-auto   gap-x-4 max-lg:my-6 items-center">
-                    <div class="text-sm  ">{{ getCurrentUser.name }}</div>
+                    <div class="text-sm  hidden max-lg:flex">{{ getCurrentUser.name }}</div>
                     <div class="w-[85px] h-[55px] ">
                       <img :src="getCurrentUser.image" class="w-[55px] h-[55px] rounded-full" alt="">
                     </div>

@@ -24,9 +24,13 @@
         </div>
       </div>
       <div class="w-4/12 ml-4 max-lg:ml-0 h-full  mt-14 p-6  max-xl:w-full " v-if="get_appeal.id">
-        <div class="appeal-response shadow-2xl USERS bg-white rounded-2xl py-2 px-4" v-if="show && lawyers.length !== 0">
+        <div class="appeal-response shadow-2xl USERS bg-white rounded-2xl py-2 px-4"
+             v-if="show && lawyers.length !== 0">
           <h3 class="text-[28px] text-center font-bold mb-4 mx-auto pb-5 USERS ">Отклики</h3>
-          <vAppealResponse @changeUser="changeUser" :item="item" v-for="item in lawyers"/>
+          <div class="max-h-[500px] overflow-y-scroll">
+
+            <vAppealResponse @changeUser="changeUser" :item="item" v-for="item in lawyers"/>
+          </div>
           <v-modal v-if="open" @showModal="open = !open">
             <div :class="{'flex justify-center flex-wrap max-w-[400px] ' : open,'hidden' : !open}">
               <div class="flex gap-x-1 ">
@@ -41,9 +45,42 @@
                 </div>
 
               </div>
-              <div class="w-full">
+              <div class="w-full max-h-[300px] overflow-y-scroll">
                 <p class="font-bold text-xl">Общая информация</p>
-                <span class="text-filter_gray">{{ changed_user?.bio }}</span>
+                <div class="flex flex-col gap-y-2">
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('О себе') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.bio }}</span>
+                  </div>
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('Рейтинг') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.rating || '-' }}</span>
+                  </div>
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('Кол-во отзывов') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.feedback_count || '-' }}</span>
+                  </div>
+
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('Кол-во выполненых обращений') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.appeals_count }}</span>
+                  </div>
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('Стаж') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.work_experience || '-' }}</span>
+                  </div>
+
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('Окончил ВУЗ') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.education_place || '-' }}</span>
+                  </div>
+
+
+                  <div class="flex gap-y-2 flex-col">
+                    <span class="text-primary font-medium text-xl">{{ $t('Язык') }}</span>
+                    <span class="text-filter_gray">{{ changed_user?.languages || '-' }}</span>
+                  </div>
+                </div>
               </div>
 
               <div class="mt-8 flex justify-between w-full">
@@ -62,7 +99,8 @@
 
         <div class=" " v-else-if="get_appeal.lawyer_id !== null">
           <div class="appeal-response ADVOCATE  ">
-            <div class="bg-footer_bg shadow-2xl text-black rounded-2xl py-2" v-if="get_appeal.applicant_id === getCurrentUser.id">
+            <div class="bg-footer_bg shadow-2xl text-black rounded-2xl py-2"
+                 v-if="get_appeal.applicant_id === getCurrentUser.id">
               <h3 class="text-[28px] text-center font-bold mx-auto pb-5 ADVOCATE ">Выбраный юрист</h3>
               <div class="flex justify-center items-center ">
                 <img :src="getImage(get_appeal.lawyer_info?.image)" alt=""
@@ -71,6 +109,32 @@
               <div class="pl-4 flex gap-2 justify-center flex-wrap px-4">
                 <p class="text-center font-bold w-full">{{ get_appeal.lawyer_info?.name }}</p>
                 <p class="w-full text-justify">{{ get_appeal.lawyer_info?.bio?.slice(0, 100) }}...</p>
+                <div class="flex gap-x-2 w-full">
+                  <span class="font-medium">{{ $t("Рейтинг") }}:</span>
+                  <span>{{ get_appeal.lawyer_info?.rating || '-'}}</span>
+                </div>
+                <div class="flex gap-x-2 w-full">
+                  <span class="font-medium">{{ $t("Кол-во отзывов") }}:</span>
+                  <span>{{ get_appeal.lawyer_info?.feedback_count || '-'}}</span>
+                </div>
+                <div class="flex gap-x-2 w-full">
+                  <span class="font-medium">{{ $t("Кол-во выполненных обращений") }}:</span>
+                  <span>{{ get_appeal.lawyer_info?.appeals_count || '-'}}</span>
+                </div>
+                <div class="flex gap-x-2 w-full">
+                  <span class="font-medium">{{ $t("Стаж работы") }}:</span>
+                  <span>{{ get_appeal.lawyer_info?.work_experience || '-'}}</span>
+                </div>
+                <div class="flex gap-x-2 w-full">
+                  <span class="font-medium">{{ $t("Окончил ВУЗ") }}:</span>
+                  <span>{{ get_appeal.lawyer_info?.education_place || '-'}}</span>
+                </div>
+
+                <div class="flex gap-x-2 w-full">
+                  <span class="font-medium">{{ $t("Язык") }}:</span>
+                  <span>{{ get_appeal.lawyer_info?.languages || '-'}}</span>
+                </div>
+
               </div>
             </div>
             <div class="bg-footer_bg shadow-2xl bg-opacity-50 rounded-2xl py-2" v-else>
@@ -105,18 +169,18 @@
                 <button class="bg-primary_gr py-2 px-4 text-white rounded-xl" @click="showRating = true">Оценить Юриста
                 </button>
                 <v-modal v-if="showRating" @showModal="showRating =!showRating">
-                   <div class="text-center flex justify-center flex-wrap gap-y-2">
-                      <h3 class="text-3xl font-bold w-full">Оцените Юриста</h3>
-                      <p class="relative text-base text-filter_gray pl-8"></p>
-                      <star-rating :increment="0.5" active-color="#1B3D7E" v-model:rating="rating"/>
-                      <div class="w-full mt-10 flex justify-center max-sm:flex-wrap">
-                        <v-button @click="showRating=!showRating"
-                                  class="w-[306px] h-[60px] bg-opacity-0 border border-filter_gray text-filter_gray">
-                          Отменить
-                        </v-button>
-                        <v-button @click="sendRating" class="w-[306px] h-[60px] ml-4 max-sm:ml-0 max-sm:mt-4">Сохранить
-                        </v-button>
-                      </div>
+                  <div class="text-center flex justify-center flex-wrap gap-y-2">
+                    <h3 class="text-3xl font-bold w-full">Оцените Юриста</h3>
+                    <p class="relative text-base text-filter_gray pl-8"></p>
+                    <star-rating :increment="0.5" active-color="#1B3D7E" v-model:rating="rating"/>
+                    <div class="w-full mt-10 flex justify-center max-sm:flex-wrap">
+                      <v-button @click="showRating=!showRating"
+                                class="w-[306px] h-[60px] bg-opacity-0 border border-filter_gray text-filter_gray">
+                        Отменить
+                      </v-button>
+                      <v-button @click="sendRating" class="w-[306px] h-[60px] ml-4 max-sm:ml-0 max-sm:mt-4">Сохранить
+                      </v-button>
+                    </div>
                   </div>
                 </v-modal>
 
@@ -124,7 +188,8 @@
               <div class="font-bold text-2xl" v-else>
                 <div> Результат работы</div>
 
-                <star-rating :increment="0.5" active-color="#1B3D7E" read-only="true" v-model:rating="get_appeal.score"/>
+                <star-rating :increment="0.5" active-color="#1B3D7E" read-only="true"
+                             v-model:rating="get_appeal.score"/>
 
               </div>
             </div>

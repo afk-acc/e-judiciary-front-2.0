@@ -79,11 +79,8 @@ const routes = [
     {
         path: '/profile',
         component: profile,
+        name: 'profile-base',
         children: [
-            {
-                path: "",
-                name: 'profile-base'
-            },
             {
                 path: 'info',
                 component: info,
