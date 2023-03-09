@@ -111,19 +111,19 @@ export default {
 
     loadPage(page) {
       if (page === '<') {
-        if (Number(this.params.page) > 1) {
-          this.params.page -= 1;
+        if (Number(this.page) > 1) {
+          this.page -= 1;
         }
       } else if (page === '>') {
-        if (Number(this.params.page) < this.getUsersList.meta.last_page) {
-          this.params.page = Number(this.params.page) + 1
+        if (Number(this.page) < this.get_faq_list.meta.last_page) {
+          this.page = Number(this.page) + 1
         }
       } else {
-        if (Number(page) <= this.getUsersList.meta.last_page) {
-          this.params.page = Number(page)
+        if (Number(page) <= this.get_faq_list.meta.last_page) {
+          this.page = Number(page)
         }
       }
-      this.$router.push({name: 'users-list', params: {page: this.params.page}})
+      this.$router.push({name: 'load_faq_list', params: {page: this.page}})
     },
     can(user, item) {
       return canAccess(user, item);

@@ -9,10 +9,10 @@
       </div>
       <p class=" text-l_black_text relative pb-2 border-b border-opacity-25 border-black">
         <span v-if="isActive">
-        {{ item.header }}
+        {{ item.question }}
         </span>
         <span v-else>
-        {{ item.header.slice(0, 53) }}<span v-if="item.header.length > 53">...</span>
+        {{ item.question.slice(0, 53) }}<span v-if="item.question.length > 53">...</span>
         </span>
         <span
           class="absolute -right-2 top-1/2 -translate-y-1/2 transition-all duration-300"
@@ -24,7 +24,7 @@
       </p>
       <div
         class="overflow-hidden transition-all duration-500  mt-2"
-        v-html="item.content"
+        v-html="item.answer"
         :class="getClass()">
       </div>
     </div>

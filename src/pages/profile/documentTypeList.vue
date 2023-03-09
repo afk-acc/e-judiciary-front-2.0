@@ -34,6 +34,9 @@
                  v-model="change.name_uz_c">
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-xl "
                  v-model="change.name_ru">
+          <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-xl "
+                 v-model="change.sort_order">
+
         </div>
         <div class="flex gap-x-4">
           <button @click="showEdit = false;" class=" rounded-xl py-2 px-4">
@@ -51,6 +54,8 @@
         <v-input :label="$t('Название')" v-model:model-value="new_type.name_ru" required="true"/>
         <v-input :label="$t('Nomi')" v-model:model-value="new_type.name_uz_l" required="true"/>
         <v-input :label="$t('Номи')" v-model:model-value="new_type.name_uz_c" required="true"/>
+        <v-input :label="$t('Порядок')" v-model:model-value="new_type.sort_order" required="true"/>
+
         <div class="flex gap-x-2 justify-center my-2">
           <button class="text-white text-sm bg-primary_gr rounded-xl py-2 px-4"
                   @click="showAdd = false;new_type = {}">{{$t('Отменить')
@@ -80,7 +85,8 @@ export default {
       new_type: {
         name_uz_l:"",
         name_uz_c:"",
-        name_ru:""
+        name_ru:"",
+        sort_order:-1
       },
     }
   },

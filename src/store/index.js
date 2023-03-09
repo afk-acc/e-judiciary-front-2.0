@@ -11,6 +11,7 @@ import chat from "./chat.js";
 import notification from "./notification.js";
 import document_template from "./document_template";
 import faq from './faq.js'
+import site_ref from './site_ref.js'
 export default createStore({
     state(){
         return {}
@@ -34,7 +35,8 @@ export default createStore({
         chat,
         notification,
         document_template,
-        faq
+        faq,
+        site_ref
     },
 
 })

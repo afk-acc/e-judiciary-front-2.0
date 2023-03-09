@@ -1,6 +1,6 @@
 <template>
   <div
-      class="flex  mx-auto max-md:w-[720px] max gap-x-1 justify-between items-center border-b border-border_c px-4 py-2 ">
+      class="flex mx-auto max-md:w-[720px] max gap-x-1 justify-between items-center border-b border-border_c px-4 py-2 ">
     <div class="w-1/12">
       {{ num + '.' }}
     </div>

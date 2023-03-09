@@ -1,14 +1,12 @@
 <template>
   <div class="flex">
     <div
-        :class="{'bg-primary': showBg(), 'w-[70px] max-lg:w-0' : !openMenu, 'w-[300px] ' : openMenu}"
+        :class="{'bg-primary_gr': showBg(), 'w-[70px] max-lg:w-0' : !openMenu, 'w-[300px] ' : openMenu}"
         class=" transition-all max-lg:absolute h-full overflow-y-scroll py-4 duration-300 top-0 left-0 border-b-[0.5px] border-white z-50"
-        @mouseover="openMenu = true" @mouseleave="openMenu = false"
     >
-      <div class="flex flex-col h-full p-3">
+    <div class="flex flex-col h-full p-3">
         <div class="">
-          <div
-              class="pb-2 cursor-pointer border-b flex justify-between items-center border-white text-white border-opacity-40 transition-all">
+          <div class="pb-2 cursor-pointer border-b flex justify-between items-center border-white text-white border-opacity-40 transition-all">
             <div class="flex items-center" @click="this.$router.push('/')">
               <img src="/ejudiciary.svg" alt="" class="">
               <p :class="{'hidden' : !openMenu, 'block' : openMenu}">E-judicary</p>
@@ -32,12 +30,17 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-col transition-all mt-4 text-white">
-          <div class="Link-to-Pages"
-               @mouseover="params.showDropDown = 'home'"
-               @mouseleave="params.showDropDown  = ''">
-            <div class="flex justify-between transition-all  items-center cursor-pointer font-bold py-2">
-              <div class="flex gap-x-2" :class="{'ml-2' : !openMenu, 'ml-0' : openMenu}">
+        <div class="flex flex-col  mt-4 text-white">
+          <div class="Link-to-Pages" :class="{'profile-hoverFill' : !openMenu}"
+              @click="showDropDown = showDropDown === 'home' ? '' : 'home'  "
+          >
+            <div class="flex justify-between transition-all items-center cursor-pointer font-bold ">
+              <div class="flex gap-x-2 " :class="{'hover:bg-white px-2 py-2 hover:pl-3 rounded-md' : !openMenu, 'ml-0' : openMenu}" @click="()=>{
+                if(!openMenu){
+                  $router.push('/')
+
+                }
+              }">
                 <svg width="20px" height="20px" viewBox="0 0 1024 1024" fill="#fff" class="icon" version="1.1"
                      xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -49,15 +52,15 @@
                 <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Главная') }}</p>
               </div>
               <div class="transition-all duration-300"
-                   :class="{'-rotate-90' : params.showDropDown == 'home', 'rotate-0' : params.showDropDown == '', 'hidden' : !openMenu, 'block' : openMenu}">
+                   :class="{'-rotate-90' : showDropDown === 'home' , 'rotate-0' : showDropDown !== 'home' , 'hidden' : !openMenu, 'block' : openMenu}">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13 9L10.3003 11.6997V11.6997C10.1344 11.8656 10.1344 12.1344 10.3003 12.3003V12.3003L13 15"
                         stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
             </div>
-            <ul class="flex flex-col max-h-0 overflow-hidden pl-4 text-sm transitiona-all duration-500"
-                :class="{'max-h-screen' : params.showDropDown === 'home'}"
+            <ul class="flex flex-col max-h-0 overflow-hidden pl-4 text-sm transition-all duration-500"
+                :class="{'max-h-screen' : showDropDown === 'home', 'hidden' : !openMenu, 'block' : openMenu}"
             >
               <router-link :to="{name:'main'}" class="cursor-pointer ">{{ $t('Вернуться') }}</router-link>
               <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer ">{{
@@ -79,7 +82,7 @@
           <div class="Link-to-Pages profile-hover my-6">
             <div @click="this.$router.push({name: 'info'})"
                  class="hover:bg-white hover:text-primary flex gap-x-2 items-center rounded-md hover:pl-4 transition-all ease-in cursor-pointer font-bold py-2 "
-                 :class="{'ml-2' : !openMenu, 'ml-0' : openMenu}">
+                 :class="{' pl-2 mx-auto  hover:pl-3' : !openMenu, 'ml-0' : openMenu}">
               <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M12.1601 10.87C12.0601 10.86 11.9401 10.86 11.8301 10.87C9.45006 10.79 7.56006 8.84 7.56006 6.44C7.56006 3.99 9.54006 2 12.0001 2C14.4501 2 16.4401 3.99 16.4401 6.44C16.4301 8.84 14.5401 10.79 12.1601 10.87Z"
@@ -91,115 +94,135 @@
               <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Основная информация') }}</p>
             </div>
           </div>
-          <div class="Link-to-Pages mb-4" @mouseover="params.showDropDown = 'admins'"
-               @mouseleave="params.showDropDown = ''">
-            <div class="flex justify-between items-center cursor-pointer font-bold py-2"
-                 :class="{'ml-2' : !openMenu, 'ml-0' : openMenu}">
-              <div class="flex gap-x-2">
-                <svg class="" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path
-                      d="M11 3H13C13.5523 3 14 3.44772 14 4V4.56879C14 4.99659 14.2871 5.36825 14.6822 5.53228C15.0775 5.69638 15.5377 5.63384 15.8403 5.33123L16.2426 4.92891C16.6331 4.53838 17.2663 4.53838 17.6568 4.92891L19.071 6.34312C19.4616 6.73365 19.4615 7.36681 19.071 7.75734L18.6688 8.1596C18.3661 8.46223 18.3036 8.92247 18.4677 9.31774C18.6317 9.71287 19.0034 10 19.4313 10L20 10C20.5523 10 21 10.4477 21 11V13C21 13.5523 20.5523 14 20 14H19.4312C19.0034 14 18.6318 14.2871 18.4677 14.6822C18.3036 15.0775 18.3661 15.5377 18.6688 15.8403L19.071 16.2426C19.4616 16.6331 19.4616 17.2663 19.071 17.6568L17.6568 19.071C17.2663 19.4616 16.6331 19.4616 16.2426 19.071L15.8403 18.6688C15.5377 18.3661 15.0775 18.3036 14.6822 18.4677C14.2871 18.6318 14 19.0034 14 19.4312V20C14 20.5523 13.5523 21 13 21H11C10.4477 21 10 20.5523 10 20V19.4313C10 19.0034 9.71287 18.6317 9.31774 18.4677C8.92247 18.3036 8.46223 18.3661 8.1596 18.6688L7.75732 19.071C7.36679 19.4616 6.73363 19.4616 6.34311 19.071L4.92889 17.6568C4.53837 17.2663 4.53837 16.6331 4.92889 16.2426L5.33123 15.8403C5.63384 15.5377 5.69638 15.0775 5.53228 14.6822C5.36825 14.2871 4.99659 14 4.56879 14H4C3.44772 14 3 13.5523 3 13V11C3 10.4477 3.44772 10 4 10L4.56877 10C4.99658 10 5.36825 9.71288 5.53229 9.31776C5.6964 8.9225 5.63386 8.46229 5.33123 8.15966L4.92891 7.75734C4.53838 7.36681 4.53838 6.73365 4.92891 6.34313L6.34312 4.92891C6.73365 4.53839 7.36681 4.53839 7.75734 4.92891L8.15966 5.33123C8.46228 5.63386 8.9225 5.6964 9.31776 5.53229C9.71288 5.36825 10 4.99658 10 4.56876V4C10 3.44772 10.4477 3 11 3Z"
-                      stroke-width="1.5" stroke="#fff"/>
-                  <path
-                      d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
-                      stroke-width="1.5" stroke="#fff"/>
-                </svg>
-                <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Настройки') }}</p>
-              </div>
-              <div class="transition-all duration-300"
-                   :class="{'-rotate-90' : params.showDropDown == 'admins', 'rotate-0' : params.showDropDown == '', 'hidden' : !openMenu, 'block' : openMenu}">
-                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13 9L10.3003 11.6997V11.6997C10.1344 11.8656 10.1344 12.1344 10.3003 12.3003V12.3003L13 15"
-                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
+          <div class="Link-to-Pages transition-all mb-4" :class="{'profile-hover' : !openMenu}"
+             @click="()=> {
+              showDropDown = showDropDown === 'admins' ? '' : 'admins'
+              if(!openMenu) {
+                $router.push({name: 'users-list', params:{page: 1}})
+              }
+             }">
+          <div class="flex justify-between items-center  transition-all cursor-pointer font-bold py-2"
+               :class="{'hover:bg-white pl-2 hover:pl-3 rounded-md' : !openMenu, 'ml-0' : openMenu}">
+            <div class="flex gap-x-2">
+              <svg class="" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M11 3H13C13.5523 3 14 3.44772 14 4V4.56879C14 4.99659 14.2871 5.36825 14.6822 5.53228C15.0775 5.69638 15.5377 5.63384 15.8403 5.33123L16.2426 4.92891C16.6331 4.53838 17.2663 4.53838 17.6568 4.92891L19.071 6.34312C19.4616 6.73365 19.4615 7.36681 19.071 7.75734L18.6688 8.1596C18.3661 8.46223 18.3036 8.92247 18.4677 9.31774C18.6317 9.71287 19.0034 10 19.4313 10L20 10C20.5523 10 21 10.4477 21 11V13C21 13.5523 20.5523 14 20 14H19.4312C19.0034 14 18.6318 14.2871 18.4677 14.6822C18.3036 15.0775 18.3661 15.5377 18.6688 15.8403L19.071 16.2426C19.4616 16.6331 19.4616 17.2663 19.071 17.6568L17.6568 19.071C17.2663 19.4616 16.6331 19.4616 16.2426 19.071L15.8403 18.6688C15.5377 18.3661 15.0775 18.3036 14.6822 18.4677C14.2871 18.6318 14 19.0034 14 19.4312V20C14 20.5523 13.5523 21 13 21H11C10.4477 21 10 20.5523 10 20V19.4313C10 19.0034 9.71287 18.6317 9.31774 18.4677C8.92247 18.3036 8.46223 18.3661 8.1596 18.6688L7.75732 19.071C7.36679 19.4616 6.73363 19.4616 6.34311 19.071L4.92889 17.6568C4.53837 17.2663 4.53837 16.6331 4.92889 16.2426L5.33123 15.8403C5.63384 15.5377 5.69638 15.0775 5.53228 14.6822C5.36825 14.2871 4.99659 14 4.56879 14H4C3.44772 14 3 13.5523 3 13V11C3 10.4477 3.44772 10 4 10L4.56877 10C4.99658 10 5.36825 9.71288 5.53229 9.31776C5.6964 8.9225 5.63386 8.46229 5.33123 8.15966L4.92891 7.75734C4.53838 7.36681 4.53838 6.73365 4.92891 6.34313L6.34312 4.92891C6.73365 4.53839 7.36681 4.53839 7.75734 4.92891L8.15966 5.33123C8.46228 5.63386 8.9225 5.6964 9.31776 5.53229C9.71288 5.36825 10 4.99658 10 4.56876V4C10 3.44772 10.4477 3 11 3Z"
+                    stroke-width="1.5" stroke="#fff"/>
+                <path
+                    d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
+                    stroke-width="1.5" stroke="#fff"/>
+              </svg>
+              <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Настройки') }}</p>
             </div>
-            <div
-                class="z-40 transition-all max-h-0 overflow-hidden"
-                :class="{'max-h-screen' : params.showDropDown === 'admins'}"
-            >
-              <profile-link-items
-                  route="users-list"
-                  :params="{ page: 1 }"
-                  v-if="can(getCurrentUser, 'users.profile.read')"
-              >
-                {{ $t("Пользователи") }}
-              </profile-link-items>
-              <profile-link-items
-                  route="roles"
-                  :params="{ page: 1 }"
-                  v-if="can(getCurrentUser, 'role.read')"
-              >
-                {{ $t("Роли") }}
-              </profile-link-items>
-              <profile-link-items
-                  route="history"
-                  :params="{ page: 1 }"
-                  v-if="can(getCurrentUser, 'logs.read')"
-              >
-                {{ $t("История действий") }}
-              </profile-link-items>
-              <profile-link-items
-                  route="requests"
-                  :params="{ page: 1 }"
-                  v-if="can(getCurrentUser, 'request.read')"
-              >
-                {{ $t("Завки стать юристом") }}
-              </profile-link-items>
-              <!-- <profile-link-items
-                route="reports"
+            <div class="transition-all duration-300"
+                 :class="{'-rotate-90' : showDropDown === 'admins', 'rotate-0' : showDropDown !== 'admins', 'hidden' : !openMenu, 'block' : openMenu}">
+              <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 9L10.3003 11.6997V11.6997C10.1344 11.8656 10.1344 12.1344 10.3003 12.3003V12.3003L13 15"
+                      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div
+              class="z-40 transition-all max-h-0 overflow-hidden"
+              :class="{'max-h-screen' : showDropDown === 'admins', 'hidden' : !openMenu, 'block' : openMenu}"
+          >
+            <profile-link-items
+                route="users-list"
                 :params="{ page: 1 }"
-                v-if="can(getCurrentUser, 'report.read')"
-              >
-                {{ $t("Жалобы") }}
-              </profile-link-items> -->
-              <!-- <profile-link-items
+                v-if="can(getCurrentUser, 'users.profile.read')"
+            >
+              {{ $t("Пользователи") }}
+            </profile-link-items>
+            <profile-link-items
+                route="roles"
+                :params="{ page: 1 }"
+                v-if="can(getCurrentUser, 'role.read')"
+            >
+              {{ $t("Роли") }}
+            </profile-link-items>
+            <profile-link-items
+                route="history"
+                :params="{ page: 1 }"
+                v-if="can(getCurrentUser, 'logs.read')"
+            >
+              {{ $t("История действий") }}
+            </profile-link-items>
+            <profile-link-items
                 route="requests"
                 :params="{ page: 1 }"
                 v-if="can(getCurrentUser, 'request.read')"
-              >
-                {{ $t("Завки стать юристом") }}
-              </profile-link-items>
-              <profile-link-items route="appeals" :params="{ page: 1 }">
-                {{ $t("Мои вопросы") }}
-              </profile-link-items>
-              <profile-link-items
-                route="lawyer-appeals"
+            >
+              {{ $t("Завки стать юристом") }}
+            </profile-link-items>
+            <!-- <profile-link-items
+              route="reports"
+              :params="{ page: 1 }"
+              v-if="can(getCurrentUser, 'report.read')"
+            >
+              {{ $t("Жалобы") }}
+            </profile-link-items> -->
+            <!-- <profile-link-items
+              route="requests"
+              :params="{ page: 1 }"
+              v-if="can(getCurrentUser, 'request.read')"
+            >
+              {{ $t("Завки стать юристом") }}
+            </profile-link-items>
+            <profile-link-items route="appeals" :params="{ page: 1 }">
+              {{ $t("Мои вопросы") }}
+            </profile-link-items>
+            <profile-link-items
+              route="lawyer-appeals"
+              :params="{ page: 1 }"
+              v-if="can(getCurrentUser, 'appeal.read')"
+            >
+              {{ $t("Обращение пользователей") }}
+            </profile-link-items>
+            <profile-link-items route="documents" :params="{ page: 1 }">
+              {{ $t("Мои документы") }}
+            </profile-link-items>
+            <profile-link-items route="service" :params="{ page: 1 }">
+              {{ $t("Добавить обращение") }}
+            </profile-link-items>
+            <profile-link-items route="chat" :params="{ page: 1 }">
+              {{ $t("Чаты с юристами") }}
+            </profile-link-items> -->
+            <profile-link-items
+                route="document_list"
                 :params="{ page: 1 }"
-                v-if="can(getCurrentUser, 'appeal.read')"
-              >
-                {{ $t("Обращение пользователей") }}
-              </profile-link-items>
-              <profile-link-items route="documents" :params="{ page: 1 }">
-                {{ $t("Мои документы") }}
-              </profile-link-items>
-              <profile-link-items route="service" :params="{ page: 1 }">
-                {{ $t("Добавить обращение") }}
-              </profile-link-items>
-              <profile-link-items route="chat" :params="{ page: 1 }">
-                {{ $t("Чаты с юристами") }}
-              </profile-link-items> -->
-              <profile-link-items
-                  route="document_list"
-                  :params="{ page: 1 }"
-                  v-if="can(getCurrentUser, 'template.read')"
-              >
-                {{ $t("Шаблоны документов") }}
-              </profile-link-items>
-              <profile-link-items
-                  :params="{ page: 1 }"
-                  route="faq_list"
-                  v-if="can(getCurrentUser, 'faq.create')"
-              >
-                {{ $t("FAQ") }}
-              </profile-link-items>
-            </div>
+                v-if="can(getCurrentUser, 'template.read')"
+            >
+              {{ $t("Шаблоны документов") }}
+            </profile-link-items>
+            <profile-link-items
+                :params="{ page: 1 }"
+                route="faq_list"
+                v-if="can(getCurrentUser, 'faq.create')"
+            >
+              {{ $t("FAQ") }}
+            </profile-link-items>
+            <profile-link-items
+                :params="{ page: 1 }"
+                route="site_ref_list"
+                v-if="can(getCurrentUser, 'site_ref.create')"
+            >
+              {{ $t("Дополнительные ссылки на сайте") }}
+            </profile-link-items>
+
+
           </div>
-          <div class="Link-to-Pages mb-4" @mouseover="params.showDropDown = 'systems'"
-               @mouseleave="params.showDropDown = ''">
+        </div>
+          <div class="Link-to-Pages transition-all mb-4" :class="{'profile-hoverFill' : !openMenu}"
+               @click="()=> {
+              showDropDown = showDropDown === 'systems' ? '' : 'systems'
+              if(!openMenu) {
+                $router.push({name: 'appeals', params:{page: 1}})
+              }
+             }"
+          >
             <div class="flex items-center justify-between cursor-pointer font-bold py-2"
-                 :class="{'ml-2' : !openMenu, 'ml-0' : openMenu}">
+                 :class="{'hover:bg-white pl-2 hover:pl-3 rounded-md' : !openMenu, 'ml-0' : openMenu}">
               <div class="flex gap-x-2">
                 <svg fill="white" width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -210,8 +233,8 @@
                 <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Cистема') }}</p>
               </div>
               <div class="transition-all duration-300"
-                   :class="{'-rotate-90' : params.showDropDown == 'systems', 'rotate-0' : params.showDropDown == '', 'hidden' : !openMenu, 'block' : openMenu}">
-                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   :class="{'-rotate-90' : showDropDown === 'systems', 'rotate-0' : showDropDown !== 'systems', 'hidden' : !openMenu, 'block' : openMenu}">
+                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13 9L10.3003 11.6997V11.6997C10.1344 11.8656 10.1344 12.1344 10.3003 12.3003V12.3003L13 15"
                         stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -219,7 +242,7 @@
             </div>
             <div
                 class="z-40 transition-all max-h-0 overflow-hidden"
-                :class="{'max-h-screen' : params.showDropDown === 'systems'}"
+                :class="{'max-h-screen' : showDropDown === 'systems' , 'hidden' : !openMenu, 'block' : openMenu}"
             >
               <!-- <profile-link-items
                 route="users-list"
@@ -284,14 +307,20 @@
               </profile-link-items> -->
             </div>
           </div>
-          <div class="Link-to-Pages mb-4" @mouseover="params.showDropDown = 'rest'"
-               @mouseleave="params.showDropDown = ''">
-            <div class="flex items-center justify-between cursor-pointer font-bold py-2 ">
-              <div class="flex gap-x-2" :class="{'ml-2' : !openMenu, 'ml-0' : openMenu}">
+          <div class="Link-to-Pages transition-all mb-4" :class="{'profile-hoverFill' : !openMenu}"
+               @click="()=> {
+              showDropDown = showDropDown === 'rest' ? '' : 'rest'
+              if(!openMenu) {
+                $router.push({name: 'reports', params:{page: 1}})
+              }
+             }"
+          >
+            <div class="flex items-center transition-all justify-between cursor-pointer font-bold py-2 ">
+              <div class="flex gap-x-2 py-2 " :class="{'hover:bg-white px-2 hover:pl-3 rounded-md' : !openMenu, 'ml-0' : openMenu}">
                 <svg fill="white" height="20px" width="20px" version="1.1" id="Layer_1"
                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      viewBox="0 0 512 512" xml:space="preserve">
-            		<g>
+                    <g>
             			<g>
             				<g>
             					<path d="M469.333,64H256H42.667C19.109,64,0,83.109,0,106.667v298.667C0,428.891,19.109,448,42.667,448H256h213.333
@@ -318,8 +347,8 @@
                 <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Остальное') }}</p>
               </div>
               <div class="transition-all duration-300"
-                   :class="{'-rotate-90' : params.showDropDown == 'rest', 'rotate-0' : params.showDropDown == '', 'hidden' : !openMenu, 'block' : openMenu}">
-                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   :class="{'-rotate-90' : showDropDown === 'rest', 'rotate-0' : showDropDown !== 'rest', 'hidden' : !openMenu, 'block' : openMenu}">
+                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13 9L10.3003 11.6997V11.6997C10.1344 11.8656 10.1344 12.1344 10.3003 12.3003V12.3003L13 15"
                         stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -327,7 +356,7 @@
             </div>
             <div
                 class="z-40 transition-all max-h-0 overflow-hidden"
-                :class="{'max-h-screen' : params.showDropDown === 'rest'}"
+                :class="{'max-h-screen' : showDropDown === 'rest' , 'hidden' : !openMenu, 'block' : openMenu}"
             >
               <!-- <profile-link-items
                 route="users-list"
@@ -406,7 +435,7 @@
         </div>
       </div>
     </div>
-    <div class="cursor-pointer relative z-40 hidden m-4 max-lg:block max-lg:absolute" @click="openMenu = !openMenu">
+    <div class="cursor-pointer relative z-40 m-4 absolute" @click="openMenu = !openMenu">
       <svg data-v-8c5b6cc0="" fill="#fff" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
            xmlns="http://www.w3.org/2000/svg">
         <path data-v-8c5b6cc0=""
@@ -536,12 +565,12 @@ export default {
       show_notification: false,
       openMenu: false,
       openAdmin: false,
+      showDropDown: '',
       lang: "",
       params: {
         query: "",
         page: 1,
         limit: 5,
-        showDropDown: '',
       },
       isActive: false,
     }
@@ -668,6 +697,11 @@ a {
 
 .profile-hover:hover svg path {
   stroke: #2556B5;
+  border-radius: 0.375rem;
+}
+.profile-hoverFill:hover svg path {
+  fill: #2556B5;
+  border-radius: 0.375rem;
 }
 
 a {
