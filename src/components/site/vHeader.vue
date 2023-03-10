@@ -50,8 +50,6 @@
                   <path d="M17.5 17.5L13.875 13.875" stroke="white" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round"/>
                 </svg>
-
-
               </div>
             </li>
 
