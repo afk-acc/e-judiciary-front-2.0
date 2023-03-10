@@ -1,5 +1,5 @@
 <template>
-  <div class="max-lg:overflow-x-scroll max-lg:h-full w-full max-lg:mt-20">
+  <div class="max-lg:overflow-x-scroll h-full w-full max-lg:mt-20">
     <v-search v-model:model-value="params.query" @search="loadUsersList(params)"/>
     <div v-if="getUsersList?.data?.length > 0">
       <user-item

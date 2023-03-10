@@ -37,6 +37,9 @@ export default {
         },
         updateIsAuth(state, data) {
             state.is_auth = data;
+        },
+        updateUserImage(state, data){
+            state.current_user.image = data
         }
     },
     actions: {
@@ -71,6 +74,13 @@ export default {
             }).then(res => {
                 context.commit('updateCurrentUser', res.data.data)
                 context.commit('updateIsAuth', true)
+                axios.get('get-user-image', {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }).then(im=>{
+                    context.commit('updateUserImage', im.data)
+                })
             }).catch(res => {
                 context.commit('updateIsAuth', false)
                 localStorage.removeItem('token')
@@ -82,9 +92,9 @@ export default {
                 login: param.login,
                 password: param.password,
                 locale: localStorage.getItem('locale')
-            },{
-                headers:{
-                    Authorization:`Bearer ${localStorage.getItem('token')}`
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
                 localStorage.setItem('token', res.data.access_token);
@@ -106,9 +116,9 @@ export default {
                 password: login.password,
                 password_confirm: login.password_repeat,
                 locale: localStorage.getItem('locale')
-            },{
-                headers:{
-                    Authorization:`Bearer ${localStorage.getItem('token')}`
+            }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
                 localStorage.setItem('token', res.data.access_token);

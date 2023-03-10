@@ -1,35 +1,63 @@
 <template>
   <teleport to="body">
     <div
-      :class="{
+        :class="{
       'bg-header_gr': showBg(),
         
     }"
-      class="absolute max-lg:bg-header_gr  transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-50"
-        >
+        class="absolute max-lg:bg-header_gr  transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-50"
+    >
       <div class="_container flex items-center justify-between relative"
       >
         <div class="flex max-lg:justify-between max-lg:items-center h-full max-lg:w-10/12 items-start pt-2">
-         <router-link to="/" class=" h-[70px]  relative  ">
-           <img  src="/ejudiciary.svg" alt="" class="w-full h-[60px] object-cover">
-         </router-link>
-         <div class="cursor-pointer hidden max-lg:block "
-         @click="openBurger = !openBurger">
-           <svg fill="#fff" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
-                xmlns="http://www.w3.org/2000/svg">
-             <path
-                 d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
-           </svg>
-         </div>
+          <router-link to="/" class=" h-[70px]  relative  ">
+            <img src="/ejudiciary.svg" alt="" class="w-full h-[60px] object-cover">
+          </router-link>
+          <div class="cursor-pointer hidden max-lg:block "
+               @click="openBurger = !openBurger">
+            <svg fill="#fff" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M2 8.749h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0zM30 15.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0zM30 23.25h-28c-0.414 0-0.75 0.336-0.75 0.75s0.336 0.75 0.75 0.75v0h28c0.414 0 0.75-0.336 0.75-0.75s-0.336-0.75-0.75-0.75v0z"></path>
+            </svg>
+          </div>
         </div>
-        <div class="flex transition-all max-lg:absolute max-lg:bg-header_gr max-lg:w-full max-lg:flex-col items-center justify-between max-lg:justify-start max-lg:h-screen"
-        :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
+        <div
+            class="flex transition-all max-lg:absolute max-lg:bg-header_gr max-lg:w-full max-lg:flex-col items-center justify-between max-lg:justify-start max-lg:h-screen"
+            :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
           <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center text-sm">
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-4">{{ $t('Услуги') }}</router-link>
-            <router-link :to="{name: 'faq'}"><li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li></router-link>
-            <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-4">{{ $t('Юристы') }}</router-link>
-            <router-link :to="{name: 'contacts'}"><li class="cursor-pointer py-4">{{ $t('Контакты') }}</li></router-link>
-            <li class="relative py-4 pr-8 mt-[-12px] max-lg:py-4 text-sm" >
+            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-4">{{
+                $t('Услуги')
+              }}
+            </router-link>
+            <router-link :to="{name: 'faq'}">
+              <li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li>
+            </router-link>
+            <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-4">{{
+                $t('Юристы')
+              }}
+            </router-link>
+            <router-link :to="{name: 'contacts'}">
+              <li class="cursor-pointer py-4">{{ $t('Контакты') }}</li>
+            </router-link>
+            <li class="relative">
+              <span @click="show_adv = !show_adv" class="cursor-pointer"
+                   >{{ $t('Дополнительно') }}</span>
+              <ul class="flex flex-col gap-y-2 bg-primary_gr absolute max-w-[300px] w-screen left-0 top-10 transition-all duration-300 "
+                  :class="{
+                'max-h-0 overflow-hidden':!show_adv,
+                'max-h-[200px] overflow-y-scroll py-2 px-4':show_adv
+                  }"
+              >
+                <li class="underline" v-for="item in ref_list">
+                  <a :href="item.ref">
+                    {{ item.name }}
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="relative py-4 pr-8 mt-[-12px] max-lg:py-4 text-sm">
               <input
                   v-model="params.query"
                   @keyup.enter="load_all_doc_list(this.params); isActive = true"
@@ -37,9 +65,11 @@
                   class="w-full ml-10  outline-none text-sm  border-b border-white "
                   style="background: none;"
               >
-              <div class="absolute p-4 z-50  top-full bg-primary_gr flex flex-col gap-y-2 left-0" v-if="isActive && get_all_doc_list?.data?.length > 0">
-                <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});" v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
-                    {{item.name.slice(0, 45)}}
+              <div class="absolute p-4 z-50  top-full bg-primary_gr flex flex-col gap-y-2 left-0"
+                   v-if="isActive && get_all_doc_list?.data?.length > 0">
+                <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});"
+                     v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
+                  {{ item.name.slice(0, 45) }}
                 </div>
               </div>
               <div class="absolute left-3 top-[25px] max-lg:top-[25px] translate-x-[0px] translate-y-[-3px]">
@@ -57,7 +87,8 @@
           <div class="flex  max-lg:flex-col gap-x-8 text-white items-center ">
             <select
                 v-model="lang"
-                class="select text-sm appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white" style="background: none">
+                class="select text-sm appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white"
+                style="background: none">
               <option value="ru">Ру</option>
               <option value="uz_l">Uz</option>
               <option value="uz_c">Уз</option>
@@ -79,7 +110,8 @@
                                   d="M11.0088 17.2285C10.5088 17.1217 7.46266 17.1217 6.96275 17.2285C6.53539 17.3272 6.07324 17.5568 6.07324 18.0604C6.09809 18.5408 6.37935 18.9648 6.76895 19.2337L6.76795 19.2347C7.27184 19.6275 7.86319 19.8773 8.48236 19.9669C8.81232 20.0122 9.14825 20.0102 9.49014 19.9669C10.1083 19.8773 10.6997 19.6275 11.2036 19.2347L11.2026 19.2337C11.5922 18.9648 11.8734 18.5408 11.8983 18.0604C11.8983 17.5568 11.4361 17.3272 11.0088 17.2285Z"
                                   fill="#fff"/>
                           </svg>
-                          <span class=" absolute -bottom-1 text-sm right-2" v-if="Number(this.get_notifications.length) > 0">
+                          <span class=" absolute -bottom-1 text-sm right-2"
+                                v-if="Number(this.get_notifications.length) > 0">
                       <span class="flex h-4 w-4 relative">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-danger opacity-75"></span>
@@ -177,6 +209,7 @@ import {mapActions, mapGetters, mapMutations} from "vuex";
 import {useI18n} from "vue-i18n";
 import VNotification from "../profile/vNotification.vue";
 import {toast} from "vue3-toastify";
+import axios from "../../axios/index.js";
 
 export default {
   name: "vHeader",
@@ -188,12 +221,14 @@ export default {
       show_notification: false,
       openBurger: false,
       lang: "",
-      params:{
-        query:"",
-        page:1,
-        limit:5
+      show_adv: false,
+      params: {
+        query: "",
+        page: 1,
+        limit: 5
       },
-      isActive:false,
+      isActive: false,
+      ref_list:[],
     }
   },
   setup() {
@@ -228,10 +263,12 @@ export default {
     this.mes = this.getCurrentUser.notify
     this.lang = localStorage.getItem('locale')
     window.addEventListener("scroll", this.updateScroll);
-
+    axios.get(`get-site-ref?limit=1000`).then(res=>{
+      this.ref_list = res.data.data
+    })
   },
   watch: {
-    $route(){
+    $route() {
       this.isActive = false
     },
     getCurrentUser(val) {
@@ -254,7 +291,7 @@ export default {
       this.switchLanguage()
     }
   },
- 
+
 }
 </script>
 
@@ -271,6 +308,7 @@ a.router-link-active {
 .el-hover:hover path {
   stroke: #2556B5 !important;
 }
+
 .select option {
   background: #2556B5;
 }

@@ -25,6 +25,8 @@ import document_template_list from "../pages/profile/document_template/document_
 import document_template_page from "../pages/profile/document_template/document_template_page.vue";
 import createDocumentTemplate from "../pages/profile/document_template/createDocumentTemplate.vue";
 import documentTypeList from "../pages/profile/documentTypeList.vue";
+import FAQ from "../pages/profile/FAQ.vue";
+import SiteRef from "../pages/profile/SiteRef.vue";
 
 const routes = [
 
@@ -151,7 +153,17 @@ const routes = [
                 path: '/document-type',
                 component: documentTypeList,
                 name: 'document_type_list'
-            }
+            },
+            {
+                path: '/faq-list/:page',
+                component: FAQ,
+                name: "faq_list"
+            },
+            {
+                path: '/site-ref-list/:page',
+                component: SiteRef,
+                name: "site_ref_list"
+            },
         ],
     },
     {
