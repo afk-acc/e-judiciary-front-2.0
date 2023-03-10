@@ -7,6 +7,7 @@
           {{ $t('Добавить') }}
         </button>
       </div>
+      
       <div class="flex justify-between items-center " v-for="(item,index) in get_doc_type_list.data">
 
         <div class="font-medium">

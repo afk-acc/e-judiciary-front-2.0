@@ -49,7 +49,10 @@
                       d="M637.6 998.4v-33.6h-33.6V904c0-51.2-41.6-92-92-92-51.2 0-92 41.6-92 92v60.8h-33.6v33.6H196.8c-40.8 0-73.6-32.8-73.6-73.6V509.6c0-13.6 10.4-24 24-24s24 10.4 24 24v415.2c0 14.4 11.2 25.6 25.6 25.6h175.2v-45.6c0-77.6 63.2-140 140-140s140 63.2 140 140v45.6h175.2c14.4 0 25.6-11.2 25.6-25.6V509.6c0-13.6 10.4-24 24-24s24 10.4 24 24v415.2c0 40.8-32.8 73.6-73.6 73.6H637.6z"/>
                   <path d="M604 998.4v-48h48v48h-48z m-232 0v-48h48v48h-48z"/>
                 </svg>
-                <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">{{ $t('Главная') }}</p>
+                <p :class="{'hidden' : !openMenu, 'block ' : openMenu}">
+                 
+                {{ $t('Главная') }}
+                </p>
               </div>
               <div class="transition-all duration-300"
                    :class="{'-rotate-90' : showDropDown === 'home' , 'rotate-0' : showDropDown !== 'home' , 'hidden' : !openMenu, 'block' : openMenu}">
@@ -62,20 +65,64 @@
             <ul class="flex flex-col max-h-0 overflow-hidden pl-4 text-sm transition-all duration-500"
                 :class="{'max-h-screen' : showDropDown === 'home', 'hidden' : !openMenu, 'block' : openMenu}"
             >
-              <router-link :to="{name:'main'}" class="cursor-pointer ">{{ $t('Вернуться') }}</router-link>
-              <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer ">{{
-                  $t('Услуги')
-                }}
+              <router-link :to="{name:'main'}" class="cursor-pointer flex gap-x-2 items-center profile-hover profile-hoverFill">
+                <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                  <g id="tab-previous">
+                  	<g>
+                  		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                  	</g>
+                  </g>
+                </svg>
+              {{ $t('Вернуться') }}
+              </router-link>
+              <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer flex gap-x-2 items-center profile-hover profile-hoverFill">
+                <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                  <g id="tab-previous">
+                  	<g>
+                  		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                  	</g>
+                  </g>
+                </svg>
+              {{$t('Услуги')}}
               </router-link>
               <router-link :to="{name: 'faq'}">
-                <li class="cursor-pointer ">{{ $t('Вопросы') }}</li>
+                <li class="cursor-pointer flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                  <g id="tab-previous">
+                  	<g>
+                  		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                  	</g>
+                  </g>
+                </svg>
+                {{ $t('Вопросы') }}
+                </li>
               </router-link>
-              <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer ">{{
-                  $t('Юристы')
-                }}
+              <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer flex gap-x-2 items-center profile-hover profile-hoverFill">
+                <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                  <g id="tab-previous">
+                  	<g>
+                  		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                  	</g>
+                  </g>
+                </svg>
+              {{$t('Юристы')}}
               </router-link>
               <router-link :to="{name: 'contacts'}">
-                <li class="cursor-pointer ">{{ $t('Контакты') }}</li>
+                <li class="cursor-pointer flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                  	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                  <g id="tab-previous">
+                  	<g>
+                  		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                  	</g>
+                  </g>
+                </svg>
+                {{ $t('Контакты') }}
+                </li>
               </router-link>
             </ul>
           </div>
@@ -131,29 +178,69 @@
                 route="users-list"
                 :params="{ page: 1 }"
                 v-if="can(getCurrentUser, 'users.profile.read')"
-            >
+                class="">
+              <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                <g id="tab-previous">
+                	<g>
+                		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                	</g>
+                </g>
+              </svg>
               {{ $t("Пользователи") }}
+              </div>
             </profile-link-items>
             <profile-link-items
                 route="roles"
                 :params="{ page: 1 }"
                 v-if="can(getCurrentUser, 'role.read')"
             >
+            <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                <g id="tab-previous">
+                	<g>
+                		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                	</g>
+                </g>
+              </svg>
               {{ $t("Роли") }}
+            </div>
             </profile-link-items>
             <profile-link-items
                 route="history"
                 :params="{ page: 1 }"
                 v-if="can(getCurrentUser, 'logs.read')"
             >
+            <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+              <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                <g id="tab-previous">
+                	<g>
+                		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                	</g>
+                </g>
+              </svg>
               {{ $t("История действий") }}
+            </div>
             </profile-link-items>
             <profile-link-items
                 route="requests"
                 :params="{ page: 1 }"
                 v-if="can(getCurrentUser, 'request.read')"
             >
-              {{ $t("Завки стать юристом") }}
+            <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+              <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                <g id="tab-previous">
+                	<g>
+                		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                	</g>
+                </g>
+              </svg>
+              {{ $t("Заявки стать юристом") }}
+            </div>
             </profile-link-items>
             <!-- <profile-link-items
               route="reports"
@@ -193,25 +280,54 @@
                 :params="{ page: 1 }"
                 v-if="can(getCurrentUser, 'template.read')"
             >
+            <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+              <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                <g id="tab-previous">
+                	<g>
+                		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                	</g>
+                </g>
+              </svg>
               {{ $t("Шаблоны документов") }}
+            </div>
             </profile-link-items>
             <profile-link-items
                 :params="{ page: 1 }"
                 route="faq_list"
                 v-if="can(getCurrentUser, 'faq.create')"
             >
-              {{ $t("FAQ") }}
+            <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
+                {{ $t("FAQ") }}
+                </div>
             </profile-link-items>
             <profile-link-items
                 :params="{ page: 1 }"
                 route="site_ref_list"
                 v-if="can(getCurrentUser, 'site_ref.create')"
             >
+            
+            <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+              <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                <g id="tab-previous">
+                	<g>
+                		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                	</g>
+                </g>
+              </svg>
               {{ $t("Дополнительные ссылки на сайте") }}
+            </div>
             </profile-link-items>
-
-
-          </div>
+           </div>
         </div>
           <div class="Link-to-Pages transition-all mb-4" :class="{'profile-hoverFill' : !openMenu}"
                @click="()=> {
@@ -280,20 +396,60 @@
                 {{ $t("Завки стать юристом") }}
               </profile-link-items> -->
               <profile-link-items route="appeals" :params="{ page: 1 }">
-                {{ $t("Мои вопросы") }}
+                <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
+                  {{ $t("Мои вопросы") }}
+                </div>
               </profile-link-items>
               <profile-link-items
                   route="lawyer-appeals"
                   :params="{ page: 1 }"
                   v-if="can(getCurrentUser, 'appeal.read')"
               >
-                {{ $t("Обращение пользователей") }}
+                <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
+                  {{ $t("Обращение пользователей") }}
+                </div>
               </profile-link-items>
               <profile-link-items route="documents" :params="{ page: 1 }">
-                {{ $t("Мои документы") }}
+                <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
+                  {{ $t("Мои документы") }}
+                </div>
               </profile-link-items>
               <profile-link-items route="service" :params="{ page: 1 }">
+                <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
                 {{ $t("Добавить обращение") }}
+                </div>
               </profile-link-items>
               <!-- <profile-link-items route="chat" :params="{ page: 1 }">
                 {{ $t("Чаты с юристами") }}
@@ -384,7 +540,17 @@
                   :params="{ page: 1 }"
                   v-if="can(getCurrentUser, 'report.read')"
               >
+              <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
                 {{ $t("Жалобы") }}
+                </div>
               </profile-link-items>
               <!-- <profile-link-items
                 route="requests"
@@ -410,7 +576,17 @@
                 {{ $t("Добавить обращение") }}
               </profile-link-items> -->
               <profile-link-items route="chat" :params="{ page: 1 }">
+                <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
+                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+                    <g id="tab-previous">
+                    	<g>
+                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
+                    	</g>
+                    </g>
+                  </svg>
                 {{ $t("Чаты с юристами") }}
+                </div>
               </profile-link-items>
               <!-- <profile-link-items
                   route="document_list"

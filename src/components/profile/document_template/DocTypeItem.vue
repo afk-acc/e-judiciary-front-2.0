@@ -4,7 +4,7 @@
       <div class="font-medium " @click="isOpen = !isOpen">
         {{ item.title }}
       </div>
-      <div class="">
+      <div class="flex flex-col gap-y-2">
         <router-link :to="{name:'document_template_page', params:{id:item.id}}"
                      v-for="(doc, index) in item.document_list" :key="index">
           {{ doc.name }}

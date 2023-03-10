@@ -37,9 +37,9 @@
             <option :value="item.id" v-for="item in getRoleList">{{ item.role_name }}</option>
           </select>
           <div class=" flex justify-end mx-10 gap-x-4 my-4 max-md:mx-auto">
-            <v-button @click="show_del = false">{{ $t("Отменить") }}</v-button>
-            <v-button type="submit">{{ $t("Изменить") }}
-            </v-button>
+            <button class="text-white bg-danger rounded-xl py-2 px-4" @click="show_del = false">{{ $t("Отменить") }}</button>
+            <button class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4" type="submit">{{ $t("Изменить") }}
+            </button>
           </div>
         </form>
 
@@ -149,7 +149,7 @@
           </div>
           <div class="flex justify-center my-2">
 
-            <button type="submit" class="h-[50px] py-2 px-4 bg-primary_gr text-white rounded-xl">{{
+            <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4">{{
                 $t('Сохранить')
               }}
             </button>

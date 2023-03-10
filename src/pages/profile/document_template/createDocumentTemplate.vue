@@ -53,7 +53,7 @@
           </button>
         </div>
       </div>
-      <div class="w-[49%] max-lg:w-full max-lg:h-[500px] overflow-y-scroll p-4 border border-opacity-60 border-filter_gray">
+      <div class="w-[50%] max-lg:w-full max-lg:h-[500px] overflow-y-scroll p-4 border border-opacity-60 border-filter_gray">
         <document-preview :item="get_document_template"/>
       <div class="flex justify-center gap-x-4 mt-10" v-if="can(getCurrentUser, 'template.create')">
       <button

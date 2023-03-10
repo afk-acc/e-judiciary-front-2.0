@@ -6,19 +6,19 @@
         <div class="flex gap-x-4 my-5 text-sm">
           <button @click="params.params='all'; params.page = 1;loadAppealList(params)"
                   class="rounded-2xl text-black font-bold  px-4 py-2"
-                  :class="{'bg-primary_gr text-white': params.params === 'all' }">{{ $t("Все") }}
+                  :class="{'bg-[#0069d9] text-white': params.params === 'all' }">{{ $t("Все") }}
           </button>
           <button @click="params.params='progress'; params.page = 1;loadAppealList(params)"
                   class="rounded-2xl text-black font-bold  px-4 py-2"
-                  :class="{'bg-primary_gr text-white': params.params === 'progress' }">{{ $t('В процессе') }}
+                  :class="{'bg-[#0069d9] text-white': params.params === 'progress' }">{{ $t('В процессе') }}
           </button>
           <button @click="params.params='ended';params.page = 1; loadAppealList(params)"
                   class="rounded-2xl text-black font-bold  px-4 py-2"
-                  :class="{'bg-primary_gr text-white': params.params === 'ended' }">{{ $t("Завершенные") }}
+                  :class="{'bg-[#0069d9] text-white': params.params === 'ended' }">{{ $t("Завершенные") }}
           </button>
           <button @click="params.params='new'; params.page = 1;loadAppealList(params)" v-if="can(getCurrentUser, 'appeal.read')"
                   class="rounded-2xl text-black font-bold  px-4 py-2"
-                  :class="{'bg-primary_gr text-white': params.params === 'new' }">{{ $t("Новые") }}
+                  :class="{'bg-[#0069d9] text-white': params.params === 'new' }">{{ $t("Новые") }}
           </button>
 
         </div>

@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="send" class="">
 
-    <div class=" h-[500px] overflow-scroll " >
+    <div class=" h-full overflow-scroll " >
       <div class="my-2 text-center text-base flex gap-x-4 max-md:flex-col max-md:gap-y-4 justify-center">
         <input type="text" v-model="get_document_template.name_ru" v-if="can(getCurrentUser, 'template.edit')"
                required
@@ -28,8 +28,8 @@
           <option :value="item.id" v-for="(item, index) in get_doc_type_list.data">{{ item.title }}</option>
         </select>
       </div>
-      <div class="flex gap-x-2 max-lg:overflow-x-scroll max-lg:w-[1024px]">
-        <div class="w-[49%] ">
+      <div class="flex max-lg:w-full  gap-x-2 max-lg:flex-col h-[500px] max-lg:h-full max-lg:items-center max-lg:gap-y-10 overflow-y-scroll overflow-x-scroll">
+        <div class="w-[49%] max-lg:w-full max-lg:h-[500px] max-lg:border-b max-lg:border-opacity-60 max-lg:border-filter_gray overflow-y-scroll">
           <div class="">
             <div class="" v-if="can(getCurrentUser, 'template.edit')">
               <document-content
@@ -40,12 +40,13 @@
 
           <div class="my-5 ">
             <button
+                type="button"
                 @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id})"
-                class="bg-primary_gr p-2 text-white rounded-xl ">{{ $t("Добавить секцию") }}
+                class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl p-2 text-white">{{ $t("Добавить секцию") }}
             </button>
           </div>
         </div>
-        <div class="w-[50%] max-lg:w-[720px] h-[500px] left-[60%] overflow-scroll  border-[0.5px] px-2 border-filter_gray">
+        <div class="w-[50%] max-lg:w-full max-lg:h-[500px] overflow-y-scroll p-4 border border-opacity-60 border-filter_gray">
           <document-preview :item="get_document_template"/>
         </div>
       </div>
@@ -54,12 +55,12 @@
       <button
           type="submit"
           @click="params = 'save'"
-          class="bg-primary_gr p-2 text-white rounded-xl px-4">
+          class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl p-2 text-white">
         {{ $t('Сохранить') }}
       </button>
       <button
           type="submit"
-          class="bg-primary_gr p-2 text-white rounded-xl px-4">
+          class="bg-danger p-2 text-white rounded-xl px-4">
         {{ $t('Удалить документ') }}
       </button>
     </div>
