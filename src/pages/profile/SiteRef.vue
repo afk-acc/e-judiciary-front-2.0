@@ -141,5 +141,7 @@ export default {
 </script>
 
 <style scoped>
-
+path{
+  stroke: #fff
+}
 </style>
