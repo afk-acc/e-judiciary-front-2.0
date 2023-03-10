@@ -142,13 +142,14 @@
             </div>
           </div>
           <div class="Link-to-Pages transition-all mb-4" :class="{'profile-hover' : !openMenu}"
-             @click="()=> {
+          v-if="can(getCurrentUser, 'logs.read') || can(getCurrentUser, 'users.profile.read') || can(getCurrentUser, 'role.read') || can(getCurrentUser, 'request.read') || can(getCurrentUser, 'template.read') || can(getCurrentUser, 'faq.create') || can(getCurrentUser, 'site_ref.create')" @click="()=> {
               showDropDown = showDropDown === 'admins' ? '' : 'admins'
               if(!openMenu) {
                 $router.push({name: 'users-list', params:{page: 1}})
               }
              }">
           <div class="flex justify-between items-center  transition-all cursor-pointer font-bold py-2"
+            
                :class="{'hover:bg-white pl-2 hover:pl-3 rounded-md' : !openMenu, 'ml-0' : openMenu}">
             <div class="flex gap-x-2">
               <svg class="" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
@@ -621,7 +622,7 @@
     <div class="bg-header_gr  w-full absolute z-30 h-[50px]">
       <div class="flex justify-end text-white items-center ">
         <div class="header-icons flex items-center ">
-          <li class="relative py-4 pr-8 mt-[-12px] max-lg:py-4 text-sm">
+          <div class="relative max-sm:w-[200px] max-[375px]:w-[130px] py-4 pr-8 mt-[-12px] max-lg:py-4 text-sm">
             <input
                 v-model="params.query"
                 @keyup.enter="load_all_doc_list(this.params); isActive = true"
@@ -645,7 +646,7 @@
                       stroke-linejoin="round"/>
               </svg>
             </div>
-          </li>
+          </div>
           <select
               v-model="lang"
               class="select text-sm appearance-none text-center w-[50px] h-[50px]  focus:outline-none text-white"

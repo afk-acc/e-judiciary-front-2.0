@@ -8,11 +8,9 @@
               required
               class="my-4 border-opacity-20 h-[120px] border-primary border rounded-lg p-2 w-full resize-none"
               :placeholder="$t('Описание')"></textarea>
-    <v-button>
-      <button type="submit" class="border-2 border-primary w-full text-center px-4 py-2 rounded-xl border-opacity-60">
+      <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-4 px-6 max-sm:w-full ">
         Отправить
       </button>
-    </v-button>
   </form>
 </template>
 

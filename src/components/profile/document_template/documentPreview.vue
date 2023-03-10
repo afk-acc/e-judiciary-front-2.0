@@ -1,8 +1,8 @@
 <template>
-  <div class="max-w-[1000px] w-full max-lg:w-[720p]"
+  <div class="max-w-[1000px] w-full max-lg:w-[720p] my_class"
   >
     <div v-for="(content, index) in item.doc_content"
-         class="w-full inline-block"
+         class="w-full inline-block "
          :class="{
       'text-start':content.align === 'start',
       'text-center':content.align === 'center',
@@ -15,7 +15,9 @@
           v-if="!(content.deleted) "
       >
         <br v-if="Number(content.new_line) === 1">
+        <span class="break-all">
         {{ content.text }}
+      </span>
         <p class="break-all" v-for="field in content.fields">
           {{field.value}}
         </p>
@@ -49,6 +51,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style >
+.my_class {
+  font-family: 'Times New Roman', Times, serif;
+}
 </style>

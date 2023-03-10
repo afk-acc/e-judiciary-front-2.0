@@ -6,8 +6,9 @@
           <p class="text-3xl max-md:text-lg" v-html="$t('Найдите себе необходимый документ и заполните его без ошибок, <strong>выиграйте время</strong>.')"></p>
           <p class="my-6 font-medium text-sm">{{$t('Получите необходимый документ онлайн!')}}</p>
           <div class="flex justify-between w-full max-md:text-sm max-md:flex-wrap max-md:justify-center max-md:gap-x-4 max-md:gap-y-4">
-            <v-button >{{$t('Задайте вопрос')}}</v-button>
-            <v-button class="px-4">{{$t('Выберите юриста')}}</v-button>
+            <v-button @click="this.$router.push({name: 'contacts'})">{{$t('Задайте вопрос')}}</v-button>
+            <v-button class="px-4" @click="check
+              ">{{$t('Выберите юриста')}}</v-button>
           </div>
         </div>
         <div class="w-[49%] max-lg:w-9/12 max-lg:z-0 flex justify-end"><img src="/img/inner.png" alt=""></div>
@@ -18,9 +19,17 @@
 <script>
 import VHeader from "../vHeader.vue";
 import vButton from "../../UI/vButton.vue"
+import { toast } from "vue3-toastify";
 export default {
   name: "vInner",
-  components: {VHeader,vButton}
+  components: {VHeader,vButton},
+  methods: {
+    check(){
+      if(localStorage.getItem('token'))
+        this.$router.push({name: 'appeals', params: {page:1}})
+      else toast.error(this.$t('Пожалуйста авторизуйтесь'))
+    }
+  },
 }
 </script>
 

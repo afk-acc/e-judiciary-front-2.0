@@ -5,13 +5,13 @@
               @input="$emit('update:modelValue', $event.target.value)"
               :required="required"
               :value="modelValue"
-              class="resize-none border border-footer_bg rounded-xl outline-none px-4 py-2"
+              class="resize-none border focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2"
               :placeholder="label"
     ></textarea>
     <input v-else
            :value="modelValue"
            :required="required"
-           :type="type" class="border border-footer_bg rounded-xl outline-none px-4 py-2"
+           :type="type" class="border focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2"
            :placeholder="label"
            @input="$emit('update:modelValue', $event.target.value)">
   </label>

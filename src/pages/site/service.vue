@@ -91,12 +91,12 @@ export default {
         }
       }
       this.$router.push({name:'service', params:{page:this.params.page}})
-      this.load_all_doc_list(this.params)
+    this.load_all_doc_list({page:1, limit:1000, query:this.params.query})
     }
   },
   mounted() {
     this.params.page = this.$route.params.page
-    this.load_all_doc_list(this.params)
+    this.load_all_doc_list({page:1, limit:1000, query:this.params.query})
   },
  
 }

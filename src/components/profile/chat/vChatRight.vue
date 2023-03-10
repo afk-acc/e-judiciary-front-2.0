@@ -1,5 +1,5 @@
 <template>
-  <div class="w-9/12 flex max-lg:h-[500px] max-lg:w-full max-lg:mx-auto">
+  <div class="w-9/12 flex max-lg:h-[500px] max-lg:w-full max-lg:mx-auto ">
     <div class="w-9/12 max-lg:w-full border-r-[1px] max-lg:border-none border-[#DBDDE2] h-full max-lg:h-[500px]  max-sm:h-[90%]">
       <div>
         <div v-if="chat"

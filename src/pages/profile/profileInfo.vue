@@ -4,7 +4,7 @@
       <h1 class="text-link font-bold text-2xl max-md:text-center">{{ $t("Основная информация") }}</h1>
       <div class="flex gap-x-4 item-center max-md:mx-auto">
         <button @click="showEdit = true; edit={...getCurrentUser}"
-                class="text-white bg-primary_gr py-2 px-4 rounded-xl max-md:py-2">{{ $t("Редактировать профиль") }}
+                class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">{{ $t("Редактировать профиль") }}
         </button>
         <button v-if="getCurrentUser.role_name === 'user' " @click="send_request_lawyer(getCurrentUser.id)"
                 class="text-white bg-primary_gr py-2 px-4 rounded-xl ">{{ $t("Стать юристом") }}
@@ -46,8 +46,8 @@
       <form @submit.prevent="editProfile" enctype="multipart/form-data" >
 
         <p class="mx-auto font-bold mt-10 flex justify-center
-         text-xl   max-md:text-center ">{{
-            $t('Редактирование пользователя')
+         text-xl   max-md:text-center ">
+         {{$t('Редактирование пользователя')
           }}</p>
         <div class="px-2">
           <div class="">
@@ -120,19 +120,18 @@
                   </select>
                 </div>
                 <div class="text-gray text-sm font-medium">
-                  <p>{{ $t("Документ подтверждающий что вы юрист") }}</p>
-                  <label for="lawyer_file" class="text-primary py-2"> Выберите файл</label>
+                  <p class="mb-2">{{ $t("Документ подтверждающий что вы юрист") }}</p>
+                  <label for="lawyer_file" class="text-primary py-2 "> Выберите файл</label>
                   <input type="file" id="lawyer_file" @change="edit.new_lawyer_file = $event.target.files[0]"
-                         class="hidden">
+                   class="hidden">
                 </div>
 
               </div>
             </div>
 
           </div>
-          <div class="flex justify-center my-2">
-
-            <button type="submit" class="h-[50px] py-2 px-4 bg-primary_gr text-white rounded-xl">{{
+          <div class="flex justify-center my-4">
+            <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">{{
                 $t('Сохранить')
               }}
             </button>

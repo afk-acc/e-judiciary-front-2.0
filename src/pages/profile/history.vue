@@ -1,7 +1,7 @@
 <template>
   <div class="max-lg:mt-20 z-50 max-md:w-full">
     <v-history-search v-model="params" :params="params"></v-history-search>
-    <div class="bg-white max-lg:overflow-x-scroll rounded-[24px] z-0">
+    <div class="bg-white h-[500px] overflow-y-scroll max-lg:overflow-x-scroll rounded-[24px] z-0">
       <div v-if="getCurrentHistory.data" class="history-items relative z-0 max-lg:w-[720px]">
         <v-history-line class="top-0 left-[47px]" />
         <v-history-content

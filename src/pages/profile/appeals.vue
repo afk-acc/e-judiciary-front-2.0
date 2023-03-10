@@ -1,9 +1,9 @@
 <template>
   <div class="w-full overflow-scroll max-lg:mt-10">
-    <div class=" max-lg:w-[1024px] overflow-x-scroll max-lg:mt-10">
+    <div class="  max-lg:mt-10">
       <v-search v-model:model-value="params.query" @search="loadAppealList(params)"/>
-      <div class="flex justify-between">
-        <div class="flex gap-x-4 my-5 text-sm">
+      <div class="flex flex-wrap max-md:justify-center  justify-between">
+        <div class="flex gap-x-4 my-5 text-sm flex-wrap max-md:justify-center">
           <button @click="params.params='all'; params.page = 1;loadAppealList(params)"
                   class="rounded-2xl text-black font-bold  px-4 py-2"
                   :class="{'bg-[#0069d9] text-white': params.params === 'all' }">{{ $t("Все") }}
@@ -16,8 +16,6 @@
                   class="rounded-2xl text-black font-bold  px-4 py-2"
                   :class="{'bg-[#0069d9] text-white': params.params === 'ended' }">{{ $t("Завершенные") }}
           </button>
-
-
         </div>
         <div class="flex items-center">
           <router-link :to="{name:'service', params:{page:1}}"

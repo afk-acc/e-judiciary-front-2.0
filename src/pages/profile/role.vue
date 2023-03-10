@@ -37,10 +37,10 @@
          </div>
       </div>
       <v-modal v-if="show_info" @showModal="show_info = !show_info">
-        <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
-          <div class="text-center font-bold uppercase my-4 text-base max-md:text-base">{{ current_role.role_name }}</div>
+        <div class=" overflow-x-hidden">
+          <div class="text-center font-bold uppercase text-base max-md:text-base">{{ current_role.role_name }}</div>
           <p>{{ $t('Права доступа') }}</p>
-          <div class="flex flex-col">
+          <div class="flex flex-col gap-y-4 ">
             <label v-for="item in get_permissions">
               <input type="checkbox" :checked="Number(item.value) === 1"
                      @change="item.value = $event.target.checked?1:0">
@@ -79,13 +79,13 @@
           <div class="text-center font-bold uppercase my-4 text-base">{{ $t('Добавить роль') }}</div>
           <div class="flex flex-col gap-y-4 w-10/12 max-md:w-full mx-auto">
             <input required type="text" v-model="name.name_ru"
-                   class="w-full px-4 py-2 text-sm max-sm:text-[12px] text-l_title outline-none border border-filter_gray rounded-xl"
+                   class="w-full focus:border-borderFocus focus:shadow-inputFocus px-4 py-2 text-sm max-sm:text-[12px] text-l_title outline-none border border-filter_gray rounded-xl"
                    :placeholder="$t('Название роли (на русском)')">
             <input required type="text" v-model="name.name_uz_l"
-                   class="w-full px-4 py-2 text-sm max-sm:text-[12px] text-l_title outline-none border border-filter_gray rounded-xl"
+                   class="w-full focus:border-borderFocus focus:shadow-inputFocus px-4 py-2 text-sm max-sm:text-[12px] text-l_title outline-none border border-filter_gray rounded-xl"
                    :placeholder="$t('Название роли (на узбекском латиница)')">
             <input required type="text" v-model="name.name_uz_c"
-                   class="w-full px-4 py-2 text-sm max-sm:text-[12px] text-l_title outline-none border border-filter_gray rounded-xl"
+                   class="w-full focus:border-borderFocus focus:shadow-inputFocus px-4 py-2 text-sm max-sm:text-[12px] text-l_title outline-none border border-filter_gray rounded-xl"
                    :placeholder="$t('Название роли (на узбекском кириллица)')">
           </div>
           <div class="flex gap-x-4 mt-4 justify-center">
@@ -104,12 +104,11 @@
         <div class="px-4 py-4 rounded-2xl overflow-x-hidden">
           <div class="text-center font-bold uppercase my-4 text-base">{{ current_role.role_name }}</div>
           <p>{{ $t('Права доступа') }}</p>
-          <div class="flex flex-col">
+          <div class="flex flex-col gap-y-4">
             <label v-for="item in get_permissions">
               <input type="checkbox"
-
-                     :checked="Number(item.value) === 1"
-                     @change="$event.target.checked=item.value">
+              :checked="Number(item.value) === 1"
+               @change="$event.target.checked=item.value">
               {{ item.permission_name }}
             </label>
           </div>

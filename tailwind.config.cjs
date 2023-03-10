@@ -14,6 +14,7 @@ module.exports = {
             danger: '#EB5757',
             lawyer_name:"#586069",
             filter_gray: '#8A92A6',
+            borderFocus: '#80bdfff'
         },
         backgroundImage: {
             primary_gr: "linear-gradient(83.23deg, #132852 15.54%, rgba(13, 59, 147, 0.92) 100.82%)",
@@ -26,7 +27,8 @@ module.exports = {
             },
             boxShadow: {
                 adventage: "10px 24px 44px rgba(95, 94, 94, 0.26)",
-                lawyer: ' 0px 14px 24px rgba(12, 12, 12, 0.25)'
+                lawyer: ' 0px 14px 24px rgba(12, 12, 12, 0.25)',
+                inputFocus: '0 0 0 0.2rem rgb(0 123 255 / 25%)'
             },
             backgroundImage: {
                 'bg-one': "url('/img/bg-one.jpg')"

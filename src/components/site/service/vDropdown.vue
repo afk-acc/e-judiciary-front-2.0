@@ -23,7 +23,7 @@ export default {
   },
   mounted() {
     
-    this.load_doc_type_list()
+    this.load_doc_type_list({page:1, limit:1000})
   },
   watch:{
    

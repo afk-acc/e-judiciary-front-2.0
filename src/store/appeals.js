@@ -116,7 +116,7 @@ export default {
             })
         },
         load_appeal_type_list(context, params) {
-            axios.get('appeal/type_list?locale=' + localStorage.getItem('locale'), {
+            axios.get(`appeal/type_list?page=${params.page}&limit=${params.limit}&locale=` + localStorage.getItem('locale'), {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }

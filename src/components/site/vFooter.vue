@@ -60,7 +60,7 @@
         </div>
         <div class=" max-lg:my-10 flex justify-center flex-col max-sm:w-11/12">
           <div class="relative">
-            <input type="text" class="w-full py-2 px-4 rounded-xl" :placeholder="$t('Подписаться')">
+            <input type="text" class="w-full py-2 px-4 rounded-xl outline-none focus:border-borderFocus focus:shadow-inputFocus" :placeholder="$t('Подписаться')">
             <div class="absolute z-10 cursor-pointer active:scale-90 transition-all duration-75 select-none -right-2 top-0">
               <svg width="39" height="38" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path

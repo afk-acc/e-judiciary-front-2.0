@@ -3,32 +3,32 @@
         @submit.prevent="create_document_template(get_document_template);$router.push({name:'document_list', params:{page:1}})">
         <h1 class="mt-6 mb-10 text-center text-2xl font-bold">Создать свой документ</h1>
     <div class="">
-      <div class="my-2 text-center text-lg flex max-lg:items-center max-md:flex-col max-lg:gap-y-4 overflow-hidden gap-x-4 justify-center">
+      <div class="my-2 text-center text-base flex gap-x-4 max-md:flex-col max-md:gap-y-4 justify-center">
         <input type="text" v-model="get_document_template.name_ru" v-if="can(getCurrentUser, 'template.edit')"
                required
                placeholder="Название документа"
-               class="p-2 rounded-xl border border-filter_gray outline-none">
+               class="p-2 rounded-md border border-filter_gray outline-none focus:border-borderFocus  focus:shadow-inputFocus">
         <p v-else>
           {{ get_document_template.name_ru }}
         </p>
         <input type="text" v-model="get_document_template.name_uz_l" v-if="can(getCurrentUser, 'template.edit')"
                required
                placeholder="Document nomi"
-               class="p-2 rounded-xl border border-filter_gray outline-none">
+               class="p-2 rounded-md border border-filter_gray outline-none focus:border-borderFocus  focus:shadow-inputFocus">
         <p v-else>
           {{ get_document_template.name_uz_l }}
         </p>
         <input type="text" v-model="get_document_template.name_uz_c" v-if="can(getCurrentUser, 'template.edit')"
                required
                placeholder="Документ номи"
-               class="p-2 rounded-xl border border-filter_gray outline-none">
+               class="p-2 rounded-md border border-filter_gray outline-none focus:border-borderFocus  focus:shadow-inputFocus">
         <p v-else>
           {{ get_document_template.name_uz_c }}
         </p>
       </div>
       <select
           required
-          name="" class="px-4 p-2 my-4 outline-none" id="" v-model="get_document_template.appeal_type_id">
+          name="" class="px-4 p-2 my-4 outline-none focus:border-borderFocus focus:shadow-inputFocus rounded-md" id="" v-model="get_document_template.appeal_type_id">
         <option value="-1" disabled>{{ $t('Выберите тип') }}</option>
         <option :value="item.id" v-for="(item, index) in get_doc_type_list.data">
           {{ item.title }}
@@ -48,6 +48,7 @@
         </div>
         <div class="my-5 ">
           <button
+          type="button"
               @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id})"
               class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 ml-2 p-2 text-white rounded-xl ">{{ $t("Добавить секцию") }}
           </button>
@@ -83,7 +84,7 @@ export default {
     return {
       get_document_template: {
         doc_content: [],
-        appeal_type_id: -1
+        appeal_type_id: 1
       },
     }
 
@@ -106,7 +107,7 @@ export default {
         this.$router.go(-1);
       }
       this.load_input_type_list()
-      this.load_doc_type_list()
+      this.load_doc_type_list({page:1, limit:1000})
       // this.load_document_template_list(this.params)
     }
   },
@@ -117,7 +118,7 @@ export default {
           this.$router.go(-1);
         }
         this.load_input_type_list()
-        this.load_doc_type_list()
+        this.load_doc_type_list({page:1, limit:1000})
       }
       // this.load_document_template_list(this.params)
     },

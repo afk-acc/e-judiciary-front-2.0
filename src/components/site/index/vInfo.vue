@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-secondary_gr p-10">
+  <!-- <div class="bg-secondary_gr p-10">
     <div class="_container">
 
       <p class="text-white font-bold text-xl mb-5  text-center">{{
@@ -11,7 +11,7 @@
         </v-button>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>

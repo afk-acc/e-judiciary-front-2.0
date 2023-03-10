@@ -1,7 +1,7 @@
 import axios from "../axios/index.js";
 import {toast} from "vue3-toastify";
 import t from '../main.js'
-
+import router from '../router/index.js'
 export default {
     state() {
         return {
@@ -84,6 +84,8 @@ export default {
             }).catch(res => {
                 context.commit('updateIsAuth', false)
                 localStorage.removeItem('token')
+                router.push('/');
+                toast.error(t('Ошибка авторизации'));
                 // window.location = 'http://localhost:5173'
             })
         },

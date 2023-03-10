@@ -1,29 +1,29 @@
 <template>
   <form @submit.prevent="send" class="">
 
-    <div class=" h-full overflow-scroll " >
+    <div class=" h-full overflow-scroll pl-1" >
       <div class="my-2 text-center text-base flex gap-x-4 max-md:flex-col max-md:gap-y-4 justify-center">
         <input type="text" v-model="get_document_template.name_ru" v-if="can(getCurrentUser, 'template.edit')"
                required
-               class="p-2 rounded-xl border border-filter_gray outline-none">
+               class="p-2 rounded-md border border-filter_gray outline-none focus:border-borderFocus focus:shadow-inputFocus">
         <p v-else>
           {{ get_document_template.name_ru }}
         </p>
         <input type="text" v-model="get_document_template.name_uz_l" v-if="can(getCurrentUser, 'template.edit')"
                required
-               class="p-2 rounded-xl border border-filter_gray outline-none">
+               class="p-2 rounded-md border border-filter_gray outline-none focus:border-borderFocus focus:shadow-inputFocus">
         <p v-else>
           {{ get_document_template.name_uz_l }}
         </p>
         <input type="text" v-model="get_document_template.name_uz_c" v-if="can(getCurrentUser, 'template.edit')"
                required
-               class="p-2 rounded-xl border border-filter_gray outline-none">
+               class="p-2 rounded-md border border-filter_gray outline-none focus:border-borderFocus focus:shadow-inputFocus">
         <p v-else>
           {{ get_document_template.name_uz_c }}
         </p>
       </div>
       <div class="flex gap-x-4">
-        <select name="" class="px-4 p-2 outline-none" id="" required
+        <select name="" class="px-4 p-2 outline-none focus:border-borderFocus focus:shadow-inputFocus rounded-md" id="" required
                 v-model="get_document_template.appeal_type_id">
           <option :value="item.id" v-for="(item, index) in get_doc_type_list.data">{{ item.title }}</option>
         </select>
@@ -42,7 +42,7 @@
             <button
                 type="button"
                 @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id})"
-                class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl p-2 text-white">{{ $t("Добавить секцию") }}
+                class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-md p-2 text-white">{{ $t("Добавить секцию") }}
             </button>
           </div>
         </div>
@@ -55,12 +55,12 @@
       <button
           type="submit"
           @click="params = 'save'"
-          class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl p-2 text-white">
+          class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-md p-2 text-white">
         {{ $t('Сохранить') }}
       </button>
       <button
           type="submit"
-          class="bg-danger p-2 text-white rounded-xl px-4">
+          class="bg-danger p-2 text-white rounded-md px-4">
         {{ $t('Удалить документ') }}
       </button>
     </div>
@@ -78,7 +78,8 @@ export default {
   components: {DocumentContent, DocumentPreview},
   data() {
     return {
-      params: ''
+      params: '',
+      page:1,
     }
   },
   methods: {
@@ -98,9 +99,13 @@ export default {
         this.get_document_template.deleted = true;
         this.update_document_doc_template(this.get_document_template);
         this.$router.push({name: 'document_list', params: {page: 1}})
+        this.load_doc_type_list({page:1, limit:1000})
       }
-    }
+    },
+ 
   },
+  
+  
   computed: {
     ...mapGetters(['getCurrentUser', 'get_document_template', 'get_doc_type_list'])
   },
@@ -111,7 +116,7 @@ export default {
         this.$router.go(-1);
       }
       this.load_document_template({id: this.$route.params.id})
-      this.load_doc_type_list()
+      this.load_doc_type_list({page:1, limit:1000})
       this.load_input_type_list()
     }
   },
@@ -123,7 +128,7 @@ export default {
         }
       }
       this.load_document_template({id: this.$route.params.id})
-      this.load_doc_type_list()
+      this.load_doc_type_list({page:1, limit:1000})
       this.load_input_type_list()
       // this.load_document_template_list(this.params)
     },

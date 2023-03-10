@@ -4,7 +4,7 @@
         @focusout="$emit('search')"
         @keyup.enter="$emit('search')"
         @input="$emit('update:modelValue', $event.target.value)"
-        type="text" class="pl-5 w-full pr-10 py-2  outline-none rounded-xl border border-filter_gray border-opacity-25 bg-white"
+        type="text" class="pl-5 w-full pr-10 py-2 focus:border-borderFocus focus:shadow-inputFocus outline-none rounded-xl border border-filter_gray border-opacity-25 bg-white"
         :placeholder="placeholder">
     <div class="absolute right-1 top-2/4 -translate-x-1/2 -translate-y-1/2">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -3,7 +3,7 @@
     <v-search v-model:model-value="params.query" @search="loadUsersList(params)"/>
     <div v-if="getUsersList?.data?.length > 0">
       <user-item
-          @showInfo="(el)=>{show_info = true; change_user = {...el}}"
+          @showInfo="(el)=>{show_info = true; change_user = {...el}; load_user_image()}"
           @showModal="(el)=>{show_del = true;change_user = {...el} }"
           @showEdit="(el)=>{showEdit = true; edit = {...el}}"
           v-for="(item, index) in getUsersList.data"
@@ -31,49 +31,53 @@
       <div class="flex justify-center gap-x-4 my-5">
         <form @submit.prevent="changeUser"
               class="flex items-center gap-4 max-sm:flex-col">
-          <select id="roles" class=" border-[#DBDBDB] border-[1px] mx-10 w-[70%] outline-none   rounded-[12px] p-4"
+          <select id="roles" class="focus:border-borderFocus focus:shadow-inputFocus border-[#DBDBDB] border-[1px] mx-10 w-[70%] outline-none rounded-[12px] p-4"
                   v-model="change_user.role_id" :value="change_user.role_id">
             <option value="" selected disabled class="text-l_black">{{ $t("Выбрать роль") }}</option>
             <option :value="item.id" v-for="item in getRoleList">{{ item.role_name }}</option>
           </select>
           <div class=" flex justify-end mx-10 gap-x-4 my-4 max-md:mx-auto">
-            <button class="text-white bg-danger rounded-xl py-2 px-4" @click="show_del = false">{{ $t("Отменить") }}</button>
-            <button class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4" type="submit">{{ $t("Изменить") }}
+            <button class="text-white bg-danger rounded-xl py-2 px-4" @click="show_del = false">{{
+                $t("Отменить")
+              }}
+            </button>
+            <button
+                class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4"
+                type="submit">{{ $t("Изменить") }}
             </button>
           </div>
         </form>
 
       </div>
     </v-modal>
-    <v-modal v-if="show_info" @showModal="show_info = !show_info">
+    <v-modal  v-if="show_info" @showModal="show_info = !show_info">
       <div class="text-center font-bold text-primary text-2xl">{{ $t("Информация о пользователе") }}</div>
       <div class="flex justify-center my-2"><img :src="change_user.image" alt=""
-                                                 class="w-[100px] h-[100px] rounded-full object-cover "></div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ change_user.name }}</div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Роль') }}:</span> {{ change_user.role_locale }}
+        class="w-[100px] h-[100px] rounded-full object-cover "></div>
+      <div class="flex flex-col gap-y-4 ">
+        <div class="text-base"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ change_user.name }}</div>
+      <div class="text-base"><span class="font-bold text-black">{{ $t('Роль') }}:</span> {{ change_user.role_locale }}
       </div>
-      <div class="text-xl text-justify"><span class="font-bold text-black ">{{ $t('О пользователе') }}:</span>
+      <div class="text-base text-justify"><span class="font-bold text-black ">{{ $t('О пользователе') }}:</span>
         {{ change_user.bio }}
       </div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
+      <div class="text-base"><span class="font-bold text-black">{{ $t('Образование') }}:</span>
         {{ change_user.education_place || '-' }}
       </div>
 
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Страна') }}:</span>
+      <div class="text-base"><span class="font-bold text-black">{{ $t('Страна') }}:</span>
         {{ change_user.country || '-' }}
       </div>
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Город') }}:</span>
+      <div class="text-base"><span class="font-bold text-black">{{ $t('Город') }}:</span>
         {{ change_user.city || '-' }}
       </div>
 
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Язык') }}:</span>
+      <div class="text-base"><span class="font-bold text-black">{{ $t('Язык') }}:</span>
         {{ change_user.languages || '-' }}
       </div>
-
-
-      <div class="text-xl"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ change_user.phone || '-' }}
+      <div class="text-base"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ change_user.phone || '-' }}
       </div>
-      <div class="text-xl flex flex-col" v-if="change_user.role_name === 'lawyer'">
+      <div class="text-base flex flex-col" v-if="change_user.role_name === 'lawyer'">
         <div class="">
           <span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
             change_user.rating || '-'
@@ -88,6 +92,7 @@
       </div>
       <div class="flex justify-center mt-1">
         <v-button @click="show_info = false">{{ $t("Закрыть") }}</v-button>
+      </div>
       </div>
     </v-modal>
     <v-modal v-if="showEdit" @showModal="showEdit = false">
@@ -109,7 +114,7 @@
 
               <img class="rounded-full w-[150px] h-[150px] object-cover " :src="edit.image" alt="">
             </div>
-            <div class="flex justify-center  my-4">
+            <div class="flex justify-center my-4">
               <label for="file">
                 <svg class="ml-2" width="90" height="90" viewBox="0 0 89 89" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +140,7 @@
                          type="text"/>
                 <div class="text-gray text-sm font-medium">
                   <p>{{ $t("Основной язык") }}</p>
-                  <select class="outline-none w-full p-2" name="" id="" v-model="edit.languages">
+                  <select class="outline-none w-full p-2 focus:border-borderFocus focus:shadow-inputFocus rounded-xl mt-2" name="" id="" v-model="edit.languages">
                     <option value="" disabled>{{ $t("Основной язык") }}</option>
                     <option value="русский">Русский</option>
                     <option value="o`zbek">O`zbek</option>
@@ -149,7 +154,9 @@
           </div>
           <div class="flex justify-center my-2">
 
-            <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4">{{
+            <button type="submit"
+                    class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4">
+              {{
                 $t('Сохранить')
               }}
             </button>
@@ -171,6 +178,7 @@ import VButton from "../../components/UI/vButton2.vue";
 import VSearch from "../../components/UI/vSearch.vue";
 import UsersScelet from "./sceleton/usersScelet.vue";
 import VInput from "../../components/UI/vInput.vue";
+import axios from "../../axios/index.js";
 
 export default {
   name: "users",
@@ -213,6 +221,13 @@ export default {
     editProfile() {
       this.update_user(this.edit)
       this.showEdit = false
+    },
+    load_user_image() {
+      axios.post('get-user-image', {
+        user_id: this.change_user.id
+      }).then(res => {
+        this.change_user.image = res.data
+      })
     },
     loadPage(page) {
       if (page === '<') {
