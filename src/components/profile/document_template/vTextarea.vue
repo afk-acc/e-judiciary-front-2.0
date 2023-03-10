@@ -1,6 +1,6 @@
 <template>
   <textarea required
-            rows="1" class="w-full resize-none h-max px-2 py-2 outline-none rounded-xl border border-filter_gray"
+            rows="1" class="w-9/12 resize-none h-max px-2 py-2 outline-none rounded-xl border border-filter_gray"
             ref="textarea" name="" spellcheck="false" id="" :value="modelValue"
             @keyup="$emit('update:modelValue', $event.target.value)"></textarea>
 </template>

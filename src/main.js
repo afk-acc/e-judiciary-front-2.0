@@ -13,6 +13,7 @@ import {QuillEditor} from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import pusher from './pusher'
 import VueNumber from "vue-number-animation";
+
 const localeLocalStorage = localStorage.getItem("locale");
 const messages = Object.assign(languages);
 const i18n = createI18n({

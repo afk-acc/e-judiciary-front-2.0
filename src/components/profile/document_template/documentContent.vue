@@ -1,9 +1,9 @@
 <template>
-  <div class=" flex flex-col gap-y-4"
+  <div class=" flex flex-col gap-y-4 border border-filter_gray border-opacity-30 p-4 m-2 mb-2"
        v-if="!(item.deleted) "
   >
-    <div class="my-2 w-full max-md:w-8/12">
-      <v-textarea v-model:model-value="item.text" required></v-textarea>
+    <div class="my-2 w-full max-md:w-8/12 max-sm:w-full">
+      <v-textarea v-model:model-value="item.text" :placeholder="$t('Введите текст')" required></v-textarea>
     </div>
     <div class="">
       <div class="flex gap-x-2 my-2">
@@ -82,26 +82,29 @@
           </svg>
         </div>
       </div>
-      <div class="flex flex-col gap-y-2" v-if="item.fields.length > 0">
-        <div class="font-bold mt-2" @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
-        <div class="flex flex-col gap-y-2 pl-10 max-sm:pl-0 ">
+      <div class="flex flex-col relative gap-y-2 my-10 w-9/12 max-md:w-full " v-if="item.fields.length > 0">
+        <div class="font-bold mt-2 " @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
+     
+        <div class="flex flex-col gap-y-2  max-sm:pl-0 ">
           <document-field @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
              v-for="(field, index) in item.fields" :key="index" :index="index"/>
         </div>
       </div>
-      <div class="">
+      <div class="flex gap-x-4 mt-10">
         <button @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1})"
-                class="bg-primary_gr p-2 rounded-xl text-white">{{ $t("Добавить поле для ввода") }}
+                class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-1 rounded-xl text-white">
+          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z" stroke="#fff" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button
+          @click="$emit('removeSection', index)"
+          class="bg-danger p-1 text-white rounded-xl ">
+          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-f2b47a05=""><path d="M10 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M14 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M4 7H20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path></svg>
         </button>
       </div>
     </div>
-    <div class="">
-      <button
-          @click="$emit('removeSection', index)"
-          class="bg-danger p-2 text-white rounded-xl px-4">
-        {{ $t('Удалить секцию') }}
-      </button>
-    </div>
+      
   </div>
 </template>
 

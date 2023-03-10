@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-10  max-lg:gap-x-0">
+  <div class="flex  max-lg:gap-x-0">
     <v-header-admin/>
     <div class="pt-[50px] w-full">
       <div class="w-full">

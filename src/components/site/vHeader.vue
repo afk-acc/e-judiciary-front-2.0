@@ -5,11 +5,11 @@
       'bg-header_gr': showBg(),
         
     }"
-        class="absolute max-lg:bg-header_gr  transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-50"
+        class="absolute max-lg:bg-header_gr max-lg:fixed transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-50"
     >
       <div class="_container flex items-center justify-between relative"
       >
-        <div class="flex max-lg:justify-between max-lg:items-center h-full max-lg:w-10/12 items-start pt-2">
+        <div class="flex max-lg:justify-between max-lg:items-center  h-full max-lg:w-full max-lg:mx-4 items-start pt-2">
           <router-link to="/" class=" h-[70px]  relative  ">
             <img src="/ejudiciary.svg" alt="" class="w-full h-[60px] object-cover">
           </router-link>
@@ -24,7 +24,7 @@
         </div>
         <div
             class="flex transition-all max-lg:absolute max-lg:bg-header_gr max-lg:w-full max-lg:flex-col items-center justify-between max-lg:justify-start max-lg:h-screen"
-            :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[80px]' : openBurger}">
+            :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[78px]' : openBurger}">
           <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center text-sm">
             <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-4">{{
                 $t('Услуги')
@@ -40,16 +40,16 @@
             <router-link :to="{name: 'contacts'}">
               <li class="cursor-pointer py-4">{{ $t('Контакты') }}</li>
             </router-link>
-            <li class="relative">
+            <li class="relative max-lg:my-10">
               <span @click="show_adv = !show_adv" class="cursor-pointer"
                    >{{ $t('Дополнительно') }}</span>
-              <ul class="flex flex-col gap-y-2 bg-primary_gr absolute max-w-[300px] w-screen left-0 top-10 transition-all duration-300 "
+              <ul class="flex flex-col  gap-y-2 bg-primary_gr z-30 max-md:left-[-60px] border border-filter_gray border-opacity-50 absolute max-w-[300px] w-screen left-0 top-10 transition-all duration-300 "
                   :class="{
-                'max-h-0 overflow-hidden':!show_adv,
+                'max-h-0 overflow-hidden hidden':!show_adv,
                 'max-h-[200px] overflow-y-scroll py-2 px-4':show_adv
                   }"
               >
-                <li class="underline" v-for="item in ref_list">
+                <li class="underline text-base" v-for="item in ref_list">
                   <a :href="item.ref">
                     {{ item.name }}
                   </a>

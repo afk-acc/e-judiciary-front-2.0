@@ -1,11 +1,11 @@
 <template>
 
-  <div class="flex justify-between text-primary text-sm py-1 max-md:w-[600px] ">
+  <div class="flex justify-between max-lg:justify-between items-center text-primary text-sm py-1 ">
     <div class="cursor-pointer max-md:w-4/12 max-md:mr-4" @click="$emit('showRead', item)">
       <p>{{ item.role_name }}</p>
     </div>
-    <div class="flex gap-x-12  max-sm:w-6/12">
-      <button class="flex gap-x-2 items-center text-sm max-sm:w-[500px]"
+    <div class="flex gap-x-12 max-md:flex-col max-md:gap-y-4 ">
+      <button class="flex gap-x-2 items-center text-sm "
               @click="$emit('changeCurrentRole', item)" v-if="can(getCurrentUser, 'role.permission.edit')">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"

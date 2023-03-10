@@ -1,15 +1,15 @@
 <template>
-  <div class="max-lg:mt-10 px-2">
-
+  <div class="max-lg:mt-10 px-2 h-full">
+    <h1 class="font-bold text-xl my-4">{{ $t('Редактирование документов')}}</h1>
     <div class="flex flex-col gap-y-4">
       <div class="flex gap-x-4">
-
-        <router-link :to="{name:'create_document_template'}" class="bg-primary_gr p-2 rounded-xl text-white">
+      
+        <router-link :to="{name:'create_document_template'}" class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-2 rounded-xl text-white">
           {{ $t('Добавить документ') }}
         </router-link>
 
         <div class="flex justify-end" v-if="can(getCurrentUser, 'template.edit')">
-          <button @click="showAdd = true" class="text-white bg-primary_gr py-2 px-4 text-sm rounded-xl">
+          <button @click="showAdd = true" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 py-2 px-4 text-sm rounded-xl">
             {{ $t('Добавить тип документа') }}
           </button>
         </div>
@@ -25,22 +25,22 @@
       <form @submit.prevent="update_doc_type(change);showEdit=false" class="">
         <div class="font-bold text-center">{{ $t('Редактирование') }}</div>
         <div class="flex flex-col gap-y-4 my-5">
-
+          <p>{{ $t('Наименование') + ':' }}</p>
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-xl"
                  v-model="change.name_uz_l">
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-xl"
                  v-model="change.name_uz_c">
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-xl "
                  v-model="change.name_ru">
+           <p>{{ $t('Порядок') + ':' }}</p>
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-xl "
-                 v-model="change.sort_order">
-
+                 v-model="change.sort_order" >
         </div>
-        <div class="flex gap-x-4">
-          <button @click="showEdit = false;" class=" rounded-xl py-2 px-4">
+        <div class="flex gap-x-4 justify-center">
+          <button @click="showEdit = false;" class="text-white bg-danger rounded-xl py-2 px-4">
             {{ $t('Отменить') }}
           </button>
-          <button type="submit" class="text-white bg-primary_gr rounded-xl py-2 px-4">
+          <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl py-2 px-4">
             {{ $t('Сохранить') }}
           </button>
         </div>
@@ -55,12 +55,12 @@
         <v-input :label="$t('Порядок')" v-model:model-value="new_type.sort_order" required="true"/>
 
         <div class="flex gap-x-2 justify-center my-2">
-          <button class="text-white text-sm bg-primary_gr rounded-xl py-2 px-4"
+          <button class="text-white text-sm bg-danger rounded-xl py-2 px-4"
                   @click="showAdd = false;new_type = {}">{{
               $t('Отменить')
             }}
           </button>
-          <button type="submit" class="text-white text-sm bg-primary_gr rounded-xl py-2 px-4">{{ $t('Добавить') }}
+          <button type="submit" class="text-white text-sm  bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] rounded-xl py-2 px-4">{{ $t('Добавить') }}
           </button>
         </div>
       </form>

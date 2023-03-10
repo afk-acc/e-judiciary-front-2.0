@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white px-12 py-7 rounded-xl overflow-x-scroll w-full max-sm:mt-[50px] max-lg:mt-20">
-    <div class="max-md:w-[620px]">
-      <div class="text-[#333437] text-xl font-medium flex justify-between">
+  <div class="bg-white px-12 py-7 rounded-xl max-md:px-4 w-full max-sm:mt-[50px] max-lg:mt-20">
+    <div class="">
+      <div class="text-[#333437] text-xl max-sm:flex-col max-sm:items-center max-sm:gap-y-4 max-sm:mb-10 font-medium flex justify-between">
         <p>
           {{ $t('Список ролей') }}
         </p>
@@ -12,11 +12,11 @@
             {{$t('Добавить роль')}}
         </button>
       </div>
-      <div class="flex justify-between items-center py-4 w-full max-md:w-1  1/12 text-l_title font-bold text-base">
+      <div class="flex justify-between items-center py-4 w-full max-md:w-11/12 max-sm:w-full max text-l_title font-bold text-base">
         <div class="">
           <p class="">{{ $t("Роли") }}</p>
         </div>
-        <div class="flex gap-x-6 max-md:gap-x-14  max-sm:ml-[120px] ">
+        <div class="flex gap-x-6 max-md:gap-x-14 max-md:flex-col max-md:items-center max-sm:ml-[120px] ">
           <p class="" v-if="can(getCurrentUser, 'role.permission.edit')">{{ $t("Редактирование") }}</p>
           <p class="" v-if="can(getCurrentUser, 'role.delete')">{{ $t("Удаление") }}</p>
         </div>

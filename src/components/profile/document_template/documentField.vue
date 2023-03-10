@@ -1,20 +1,25 @@
 <template>
   <div class="" v-if="!(item.deleted) ">
-    <div class="flex flex-col gap-y-2">
+    <div class="flex flex-col gap-y-2 relative border border-filter_gray border-opacity-30 p-2">
+      <div class="absolute right-2 top-0">
+          <button @click="$emit('removeField', index)" class="bg-danger p-2 my-2 rounded-xl text-white ">
+            <svg data-v-31f1ac2d="" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path data-v-31f1ac2d="" d="M19.7188 18.3906L13.325 12.0004L19.7188 5.65714C20.0392 5.28603 20.0219 4.72911 19.679 4.37894C19.3361 4.02878 18.7832 4.00341 18.4101 4.32073L11.9976 10.6169L5.69734 4.27367C5.33275 3.90878 4.74392 3.90878 4.37933 4.27367C4.20236 4.45039 4.10282 4.69094 4.10282 4.94188C4.10282 5.19282 4.20236 5.43337 4.37933 5.61008L10.6703 11.9439L4.2765 18.2777C4.09954 18.4544 4 18.695 4 18.9459C4 19.1969 4.09954 19.4374 4.2765 19.6141C4.45291 19.7903 4.69172 19.8885 4.94018 19.887C5.18409 19.8885 5.41891 19.794 5.59452 19.6235L11.9976 13.2709L18.4101 19.7271C18.5865 19.9032 18.8253 20.0014 19.0738 20C19.319 19.9989 19.554 19.9009 19.7281 19.7271C19.9039 19.5491 20.0017 19.3078 20 19.0569C19.9982 18.8059 19.897 18.5661 19.7188 18.3906Z" fill="#fff"></path></svg>
+          </button>
+      </div>
       <div class="font-medium">{{ $t('Название поля') }}</div>
-      <div class="flex gap-x-4 items-center">
+      <div class="flex gap-x-4 max-sm:mt-4 items-center">
         {{ $t("Uz") }}
         <input type="text"
                required
-               class="outline-none p-2 rounded-xl border border-filter_gray" v-model="item.name_uz_l">
+               class="outline-none p-2 rounded-xl max-sm:w-full border border-filter_gray" v-model="item.name_uz_l">
       </div>
       <div class="gap-x-4 flex items-center">
         {{ $t("Уз") }}
         <input type="text"
                required
-               class="outline-none p-2 rounded-xl border border-filter_gray" v-model="item.name_uz_c">
+               class="outline-none p-2 rounded-xl max-sm:w-full border border-filter_gray" v-model="item.name_uz_c">
       </div>
-      <div class="">
+      <div class="mt-10 mb-10">
         <div class="font-medium">{{ $t("Тип поля") }}</div>
         <div class="">
           <select name="" id="" class="outline-none p-2 border border-filter_gray rounded-xl"
@@ -37,17 +42,18 @@
         </div>
         <div class="" v-if="Number(item.input_type_id) === 2">
           <div class="font-medium">{{ $t("Список возможных значений:") }}</div>
-          <div class="pl-10 max-sm:pl-2 flex flex-col gap-y-2">
-            <div class="" v-for="(val,index) in list.uz_l" :key="index">
+          <div class="pl-10 max-sm:pl-0 flex flex-col max-sm:items-center gap-y-2">
+            <div class="mx-auto" v-for="(val,index) in list.uz_l" :key="index">
               <input type="text" class="p-2 outline-none rounded-xl border border-filter_gray"
                      required
                      v-model="list.uz_l[index]">
               <button @click="remove(index)"
-                      class="bg-danger p-2 rounded-xl text-white ml-2">{{ $t("Удалить") }}
+                class="bg-danger p-2 rounded-xl text-white ml-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-f2b47a05=""><path d="M10 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M14 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M4 7H20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path></svg>
               </button>
             </div>
             <div class="my-2">
-              <button class="bg-primary_gr rounded-xl p-2 text-white" @click="list.uz_l.push('')">{{
+              <button class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-xl p-2 text-white" @click="list.uz_l.push('')">{{
                   $t('Добавить значение')
                 }}
               </button>
@@ -55,12 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="">
-        <button @click="$emit('removeField', index)" class="bg-danger p-2 my-2 rounded-xl text-white ">
-          {{ $t("Удалить поле для ввода") }}
-        </button>
-
-      </div>
+       
     </div>
   </div>
 </template>

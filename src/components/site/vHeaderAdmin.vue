@@ -1,8 +1,8 @@
 <template>
-  <div class="flex">
+  <div class="flex ">
     <div
         :class="{'bg-primary_gr': showBg(), 'w-[70px] max-lg:w-0' : !openMenu, 'w-[300px] ' : openMenu}"
-        class=" transition-all max-lg:absolute h-full overflow-y-scroll py-4 duration-300 top-0 left-0 border-b-[0.5px] border-white z-50"
+        class="transition-all h-full max-lg:fixed relative overflow-y-scroll py-6 duration-300 top-0 left-0 border-b-[0.5px] border-white z-50"
     >
     <div class="flex flex-col h-full p-3">
         <div class="">
@@ -428,14 +428,14 @@
                   d="M10 12H18M18 12L15.5 9.77778M18 12L15.5 14.2222M18 7.11111V5C18 4.44772 17.5523 4 17 4H7C6.44772 4 6 4.44772 6 5V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V16.8889"
                   stroke="#EB5757" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <p class="text-danger" :class="{'hidden' : !openMenu, 'block ' : openMenu}">
+            <p class="text-danger pb-10" :class="{'hidden' : !openMenu, 'block ' : openMenu}">
               {{ $t("Выход") }}
             </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="cursor-pointer relative z-40 m-4 absolute" @click="openMenu = !openMenu">
+    <div class="cursor-pointer absolute z-40 m-4 left-16 max-lg:left-0 transition-all duration-300" :class="{'left-16' : !openMenu, 'left-[300px]' : openMenu}" @click="openMenu = !openMenu">
       <svg data-v-8c5b6cc0="" fill="#fff" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
            xmlns="http://www.w3.org/2000/svg">
         <path data-v-8c5b6cc0=""
