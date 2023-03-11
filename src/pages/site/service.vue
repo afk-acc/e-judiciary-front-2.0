@@ -1,13 +1,13 @@
 <template>
   <div class="">
-    <div class="_container flex mt-[4.75rem] ">
+    <div class="_container flex mt-[4rem] ">
       <div
-          class=" w-4/12 max-lg:fixed h-screen   max-lg:w-6/12 max-md:w-10/12 break-all z-50 transition-all bg-footer_bg px-8 pt-7 pb-[150px]"
+          class=" w-4/12 max-lg:fixed h-screen   max-lg:w-6/12 max-md:w-10/12 break-all z-50 transition-all bg-footer_bg pl-8 pt-7 pb-[150px]"
           :class="{'max-lg:left-[-1000px]' : !openLeft, 'max-lg:left-0' : openLeft}"
       >
-        <v-search v-model:model-value="params.query" @search="load_all_doc_list(this.params)"
+        <v-search class="mr-4" v-model:model-value="params.query" @search="load_all_doc_list(this.params)"
                   :placeholder="$t('Поиск документов')"/>
-        <div class="max-h-[85vh] overflow-y-auto h-screen">
+        <div class="max-h-[85vh] overflow-y-auto h-screen w-full">
           <v-dropdown/>
         </div>
 
@@ -27,11 +27,14 @@
       </div>
       <div class="w-full px-10 max-lg:px-10 max-lg:mt-16  ">
         <div class="text-lg text-black font-bold my-5">{{ $t('Выберите шаблон для документа') }}</div>
-        <p class="font-medium text-lg text-black">{{ $t('Все') }}</p>
+        <div class="h-[1px] w-full bg-[#ededed]">
+          
+        </div>
         <div class="max-h-[85vh] overflow-y-auto h-screen">
 
-        <div v-if="get_all_doc_list.data" class="flex-col gap-y-5 flex ">
+        <div v-if="get_all_doc_list.data" class="flex-col gap-y-1 flex ">
           <DocItem :item="item" v-for="(item, index) in get_all_doc_list.data" :key="index"/>
+          
         </div>
         <div v-else>
           <UserSceletTemplate/>

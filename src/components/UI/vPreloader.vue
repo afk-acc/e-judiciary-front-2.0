@@ -1,150 +1,44 @@
 <template>
-  <div class="w-full  z-50 h-screen flex-col px-10 bg-primary_gr flex justify-center items-center">
-    <svg width="260" height="300" viewBox="80 150 350 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class=" rightElem" d="M254.892 208.291C255.609 208.703 256.492 208.705 257.211 208.297L327.518 168.409C329.07 167.528 331 168.642 331 170.419L330.932 206.305C330.932 207.124 330.497 207.881 329.788 208.297L256.105 251.802C255.383 252.227 254.487 252.232 253.76 251.816L226.732 235.666C226.009 235.253 225.564 234.488 225.564 233.66V196.774C225.564 194.992 227.505 193.879 229.057 194.771L254.892 208.291Z" fill="#fff"/>
-      <path class="topElem" d="M223.141 180.297C222.417 180.712 221.524 180.71 220.802 180.29L188.944 161.774C187.391 160.871 187.411 158.633 188.98 157.758L254.357 121.296C255.065 120.901 255.928 120.901 256.636 121.296L322.037 157.77C323.611 158.648 323.625 160.895 322.062 161.792L290.01 180.203C289.291 180.616 288.405 180.617 287.685 180.206L256.576 162.44C255.856 162.029 254.971 162.03 254.252 162.442L223.141 180.297Z" fill="#fff"/>
-      <path class="leftElem" d="M216.603 187.744C217.323 188.157 217.767 188.921 217.767 189.748V239.439C217.767 240.256 218.201 241.013 218.908 241.43L254.317 262.287C255.045 262.716 255.949 262.718 256.68 262.294L327.496 221.665C329.048 220.762 331 221.875 331 223.662V260.471C331 261.317 330.535 262.096 329.788 262.502L256.613 301.717C255.917 302.094 255.076 302.094 254.38 301.717L182.212 262.526C181.465 262.12 181 261.341 181 260.495V171.316C181 169.535 182.94 168.421 184.492 169.312L216.603 187.744Z" fill="#fff"/>
-    </svg>
-   <div class="flex">
-    <p class="text-2xl text-white">{{ $t('Инициализция') }}</p>
-    <div class="dots ml-[2px] mt-[23px] flex">
-      <div class="dotOne w-[3px] h-[3px] rounded-full bg-white"></div>
-      <div class="dotTwo mx-1 w-[3px] h-[3px] rounded-full bg-white"></div>
-      <div class="dotThree w-[3px] h-[3px] rounded-full bg-white"></div>
-    </div>
-   </div>
-  </div> <div>
-  </div>
+  <div class="w-full fixed left-0 top-0 z-50 h-screen flex-col px-10 bg-filter_gray  flex justify-center items-center">
+    <div class="lds-ring "><div></div><div></div><div></div><div></div></div>
+  </div> 
+
 </template>
 
 <style lang="scss">
-.topElem {
-  animation: 1.1s linear infinite topElem;
-    @keyframes topElem {
-      0% {
-      opacity: 0
-     }
-      10% {
-        transform: translateY(-130px);
-        opacity:0
-      }
-      30% {
-        opacity: .3
-      }
-      50% {
-        opacity: .6
-      }
-      60% {
-        opacity: .8
-      }
-      70% {
-        transform: translateY(0);
-        opacity:1
-        
-      }
-      100% {
-        opacity: .4
-      }
-    }
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
 }
-.rightElem {
-  animation:  1.1s linear infinite  rightElem;
-    @keyframes rightElem {
-      0% {
-      opacity: 0
-     }
-      10% {
-        transform: translate(-150px, 50px);
-        opacity:0
-      }
-      30% {
-        opacity: .2
-      }
-      50% {
-        opacity: .4
-      }
-     60% {
-        opacity: .7
-      }
-      70% {
-        transform: translate(0);
-        opacity: 1;
-      }
-      100% {
-        opacity:.4
-      }
-    }
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  margin: 8px;
+  border: 8px solid #007bff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #007bff transparent transparent transparent;
 }
-.leftElem {
-  animation: 1.1s linear infinite  leftElem;
-    @keyframes leftElem {
-     0% {
-      opacity: 0
-     }
-     10% {
-        transform: translate(150px, 50px);
-        opacity:0
-      }
-      30% {
-        opacity: .1
-      }
-      50% {
-        opacity: .4
-      }
-     60% {
-        opacity: .8
-      }
-      70% {
-        transform: translate(0);
-        opacity: 1;
-      }
-      100% {
-        opacity:.4
-      }
-    }
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
 }
-.dots {
-  .dotOne{
-    animation: 1.09s linear infinite  dotOne;
-    @keyframes dotOne {
-      0% {
-        opacity: 0
-      }
-      50% {
-        opacity: 1
-      }
-      100% {
-        opacity: 0
-      }
-    }
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
   }
-  .dotTwo{
-    animation: 1.11s linear infinite  dotTwo;
-    @keyframes dotTwo {
-      0% {
-        opacity: 0
-      }
-      50% {
-        opacity: 1
-      }
-      100% {
-        opacity: 0
-      }
-    }
-  }
-  .dotThree{
-    animation: 1.12s linear infinite  dotThree;
-    @keyframes dotThree {
-      0% {
-        opacity: 0
-      }
-      50% {
-        opacity: 1
-      }
-      100% {
-        opacity: 0
-      }
-    }
+  100% {
+    transform: rotate(360deg);
   }
 }
 

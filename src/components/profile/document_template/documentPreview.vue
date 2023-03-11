@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1000px] w-full max-lg:w-[720p] my_class"
+  <div class="max-w-[700px] max-lg:w-[720p] my_class"
   >
     <span v-for="(content, index) in item.doc_content"
           class=" inline-block "
@@ -8,7 +8,8 @@
       'text-center':content.align === 'center',
       'text-end':content.align === 'end',
       'font-bold':content.weight === 'bold',
-      'block w-full':Number(content.new_line) === 1
+      'block w-full ':Number(content.new_line) === 1,
+      'italic':content.italic
 
     }"
     >
@@ -16,21 +17,21 @@
           v-if="!(content.deleted) "
       >
           <br v-if="Number(content.new_line) === 1"/>
-        <span class="break-all">
-            &nbsp;{{ content.text }} &nbsp;
-         </span>
+        <div class="break-all" style="white-space: pre-line">
+          {{content.text}}
+         </div>
           <span class="break-all" v-for="field in content.fields">
                {{ field.value }}
           </span>
 
       </span>
     </span>
-    <div class="flex justify-between mt-5">
-      <div class="w-[150px]">{{ $t("Дата") }}
+    <div class="flex w-full  justify-between mt-5">
+      <div class="w-[150px]">Сана
         <hr class="ml-12"/>
       </div>
-      <div class="w-[150px] ">{{ $t('Подпись') }}
-        <hr class="ml-20"/>
+      <div class="w-[150px] ">Имзо
+        <hr class="ml-12"/>
       </div>
     </div>
 

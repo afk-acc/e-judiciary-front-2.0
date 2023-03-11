@@ -6,8 +6,17 @@
       </div>
     </div>
   </div>
-  <div class="_container ">
-    
+  <div class="_container mx-auto">
+    <div class="flex justify-center w-full mx-auto text-center flex-wrap">
+      <div class="">
+        <h1 class="text-2xl  text-center">{{ $t('Задайте вопрос юристу!') }}</h1>
+        <div class="flex justify-center">
+
+        <div class="w-[50px] h-[2px] mt-2 rounded-full bg-primary"></div>
+        </div>
+        <contactForm></contactForm>
+      </div>
+    </div>
     <div v-if="get_lawyer_list.data" class="flex flex-wrap max-lg:px-10 max-lg:justify-center  w-full justify-between  gap-y-5">
       <lawyer-item class="max-w-[500px] w-full" v-for="(item,index) in get_lawyer_list.data" :key="index" :item="item"/>
     </div>
@@ -28,22 +37,24 @@
       {{$t('Ничего не найдено')}}
     </div>
   </div>
+ 
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
 import LawyerItem from "../../components/site/lawyers/lawyerItem.vue";
+import contactForm from "../../components/site/contacts/contactForm.vue";
 import LawyersSceletTemplate from "./sceleton/lawyersSceletTemplate.vue";
 
 export default {
   name: "lawyers",
-  components: { LawyerItem, LawyersSceletTemplate },
+  components: { LawyerItem, LawyersSceletTemplate, contactForm },
  
   data() {
     return {
       params: {
         page: 1,
-        limit: 15
+        limit: 8
       }
     }
   },

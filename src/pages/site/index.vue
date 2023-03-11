@@ -7,6 +7,16 @@
     <v-documents-template/>
     <div class="_container max-lg:px-4 ">
       <v-stats/>
+      <div id="indexForm" class="flex justify-center w-full mx-auto text-center flex-wrap">
+      <div class="">
+        <h1 class="text-2xl  text-center">{{ $t('Задайте вопрос юристу!') }}</h1>
+        <div class="flex justify-center">
+
+        <div class="w-[50px] h-[2px] mt-2 rounded-full bg-primary"></div>
+        </div>
+        <contactForm></contactForm>
+      </div>
+    </div>
     </div>
     <v-info/>
   </div>
@@ -14,7 +24,7 @@
 
 <script>
 import userSceletTemplate from "./sceleton/userSceletTemplate.vue";
-
+import contactForm from "../../components/site/contacts/contactForm.vue";
 import vInner from "../../components/site/index/vInner.vue"
 import VAdvantages from "../../components/site/index/vAdvantages.vue";
 import VDocumentsTemplate from "../../components/site/index/vDocumentsTemplate.vue";
@@ -30,7 +40,8 @@ export default {
     VDocumentsTemplate,
     VAdvantages,
     vInner, 
-    userSceletTemplate 
+    userSceletTemplate,
+    contactForm
   },
   methods:{
     ...mapActions(['loadCurrentUser'])

@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="py-4 pr-3 flex justify-between text-sm items-center border-b border-border_c" @click="isActive = !isActive">
+    <div class="py-4  cursor-pointer hover:text-link transition-all duration-300  pr-3 flex justify-between text-sm items-center border-b border-border_c" @click="isActive = !isActive">
       <p> {{ item.title }}</p>
       <div :class="{'rotate-0':!isActive, '-rotate-90':isActive}" class="transition-all duration-300">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +10,7 @@
 
     </div>
     <div class=" pl-4 transition-all duration-700 overflow-y-auto ease-linear " :class="{'max-h-screen ':isActive, 'max-h-0':!isActive}">
-      <div class="pt-5  text-sm pb-4  border-b border-border_c" :class="{'active-left':activeItem === index}" v-for="(doc, index) in item.document_list" :key="index" @click="activeItem = index">
+      <div class="text-sm py-2  border-b border-border_c" :class="{'active-left':activeItem === index}" v-for="(doc, index) in item.document_list" :key="index" @click="activeItem = index">
         <router-link  :to="{name:'constructor', params:{name:doc.id}}" class="pl-5 block">
           {{ doc.name }}
         </router-link>

@@ -446,20 +446,7 @@
                   {{ $t("Обращение пользователей") }}
                 </div>
               </profile-link-items>
-              <profile-link-items route="documents" :params="{ page: 1 }">
-                <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
-                  <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_"
-                       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                       viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
-                    <g id="tab-previous">
-                    	<g>
-                    		<path d="M20,23.1L4.2,12L20,0.9V23.1z M7.7,12L18,19.2V4.8L7.7,12z"/>
-                    	</g>
-                    </g>
-                  </svg>
-                  {{ $t("Мои документы") }}
-                </div>
-              </profile-link-items>
+             
               <profile-link-items route="service" :params="{ page: 1 }">
                 <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
                   <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_"

@@ -5,7 +5,7 @@
       'bg-header_gr': showBg(),
         
     }"
-        class="absolute max-lg:bg-header_gr max-lg:fixed transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-50"
+        class="absolute max-lg:bg-header_gr max-lg:fixed transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-30"
     >
       <div class="_container flex items-center justify-between relative"
       >
@@ -61,7 +61,7 @@
               <ul class="flex flex-col  gap-y-2 bg-primary_gr z-30 max-md:left-[-60px] border border-filter_gray border-opacity-50 absolute max-w-[300px] w-screen left-0 top-10 transition-all duration-300 "
                   :class="{
                 'max-h-0 overflow-hidden hidden':!show_adv,
-                'max-h-[200px] overflow-y-scroll py-2 px-4':show_adv
+                'max-h-[200px] overflow-y-auto py-2 px-4':show_adv
                   }"
               >
                 <li class="underline text-base" v-for="item in ref_list">

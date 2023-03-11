@@ -2,7 +2,10 @@
   <div class="flex justify-between  items-center">
     <div class="flex flex-col border-b w-10/12 pb-2 border-spacing-x-10	 border-filter_gray border-opacity-30">
       <div class="font-medium cursor-pointer flex justify-between" @click="isActive = !isActive" >
-        <p>{{ item.title }}</p>
+        <div class="flex gap-x-2 items-center hover:text-link transition-all duration-300">
+        <p class="">{{ item.sort_order }}</p>
+        <p class="">{{ item.title }}</p>
+      </div>
         <div :class="{'rotate-0' : !isActive, '-rotate-90' : isActive }" class="transition-all duration-300"><svg  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="#586069" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
       </div>
       <div class="flex flex-col gap-y-4 transition-all duration-300 px-4 " 

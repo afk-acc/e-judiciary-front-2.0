@@ -2,7 +2,10 @@
   <div class=" flex items-center text-center max-lg:flex-col">
     <div class="w-6/12 mx-auto mt-20 max-lg:w-8/12 max-sm:w-full max-lg:my-20 font-semibold">
       <form class="w-7/12 mx-auto max-lg:w-full max-lg:px-4" @submit.prevent="auth">
-        <h1 class="text-4xl mb-20">{{ $t(`Регистрация`) }}</h1>
+        <div class="mb-20">
+          <h1 class="text-4xl">{{ $t(`Регистрация`) }}</h1>
+          <p class="text-danger text-sm mt-2 text-opacity-50">(регистрация исключительно для юристов)</p>
+        </div>
         <div class="border-[1px] h-12 flex rounded-xl border-l_gray_2  items-center px-4 ">
           <svg width="30" height="30" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -82,7 +85,7 @@
         </div>
         <div class="text-link mb-2 flex flex-col gap-y-4">
           <router-link :to="{name: 'sign-in'}">{{ $t('Авторизация') }}</router-link>
-          <router-link :to="{name: 'sign-up-lawyer'}">{{$t('Зарегестрироваться как "Юрист"')}}</router-link>
+          <router-link :to="{name: 'sign-up'}">{{$t('Зарегестрироваться как "Пользователь"')}}</router-link>
         </div>
         <v-button type='submit'
                   class="w-9/12 max-sm:w-8/12 mx-auto bg-sign_in h-[40px] flex items-center justify-center text-normal">
@@ -117,7 +120,7 @@ export default {
     ...mapGetters(['getIsAuth'])
   },
   methods: {
-    ...mapActions(['register']),
+    ...mapActions(['register', 'send_request_lawyer']),
     auth() {
       // this.register(this.login)
       axios.post(`auth/register`, {
@@ -133,7 +136,7 @@ export default {
         localStorage.setItem('token', res.data.access_token);
         // context.commit('updateIsAuth', true)
         this.$router.push({name: "info"})
-
+        this.send_request_lawyer()
         toast.success(this.$t('Вы успешно зарегистрировались'), {autoClose: 1500})
       }).catch(e => {
         localStorage.removeItem('token');
