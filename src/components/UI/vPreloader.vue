@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full z-50 h-screen flex-col px-10 bg-filter_gray bg-opacity-30 flex justify-center items-center">
+  <div class="w-full fixed left-0 top-0 z-50 h-screen flex-col px-10 bg-filter_gray  flex justify-center items-center">
     <div class="lds-ring "><div></div><div></div><div></div><div></div></div>
   </div> 
 

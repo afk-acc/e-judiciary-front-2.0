@@ -19,9 +19,9 @@ export default {
 </script>
 <template>
   <div id="app">
-    <RouterView v-if="show">
+   <vPreloader  v-if="!show"></vPreloader>
+    <RouterView >
     </RouterView>
-   <vPreloader v-else></vPreloader>
     
   </div>
 </template>
