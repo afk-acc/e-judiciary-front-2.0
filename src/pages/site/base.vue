@@ -1,18 +1,20 @@
 <template>
-    <v-header />
+  <div class="flex flex-col justify-between min-h-screen">
+    <v-header/>
     <router-view></router-view>
-    <v-footer class="" />
+    <v-footer class=""/>
+  </div>
 </template>
 
 <script>
 import VHeader from "../../components/site/vHeader.vue";
 import VFooter from "../../components/site/vFooter.vue";
 
-import { mapActions } from "vuex";
+import {mapActions} from "vuex";
 
 export default {
   name: "base",
-  components: { VFooter, VHeader},
+  components: {VFooter, VHeader},
   methods: {
     ...mapActions(["loadCurrentUser"]),
   },

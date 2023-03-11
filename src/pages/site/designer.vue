@@ -1,5 +1,5 @@
 <template>
-  <div class="_container">
+  <div class="_container pt-10  ">
     <div class="flex items-center mx-10 gap-x-4 mt-14 text-base">
       <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -11,28 +11,32 @@
       </svg>
       {{ get_fields.name }}
     </div>
-    <div class="flex justify-between mx-10 max-md:mx-4 text-sm  max-lg:items-center max-lg:flex-col">
-      <form
-          class="flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 overflow-auto max-h-[570px]"
+    <form class="flex-wrap flex justify-between max-md:mx-4 text-sm  max-lg:items-center max-lg:flex-col">
+      <div
+          class="px-2 max-h-[500px] overflow-y-auto gap-y-1 flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 "
           @submit.prevent="add">
         <v-input required="true" v-model:model-value="appeal.title" :label="$t('Заголовок')"/>
-        <v-input required="true" v-model:model-value="appeal.description" type="textarea" :label="$t('Описание')"/>
-        <div v-for="(item,index) in get_fields.doc_content" :key="index">
-
+        <v-input required="true" v-model:model-value="appeal.description" type="text" :label="$t('Описание')"/>
+        <div v-for="(item,index) in get_fields.doc_content" :key="index" class="flex flex-col gap-y-1">
           <designer-input
               v-model:model-value="field.value"
               v-for="(field, i) in item.fields" :item="field" :key="i"
           />
         </div>
-        <div class="flex flex-col gap-y-5 mt-5">
-          <v-button-2 class="text-sm" type="submit">{{ $t('Создать обращение') }}</v-button-2>
-        </div>
-      </form>
-      <div
-          class="w-[566px] max-lg:my-16 overflow-auto max-h-[570px] max-lg:max-h-full max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
-        <document_preview :item="get_fields"/>
+
       </div>
-    </div>
+      <div
+          class="w-7/12 max-h-[500px] overflow-y-auto doc_preview max-lg:my-16 max-lg:max-h-full max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
+        <document_preview :item="get_fields"/>
+
+      </div>
+      <div class="flex justify-end w-full gap-y-5 my-5">
+        <div class="w-6/12 flex justify-center">
+
+        <v-button-2 class="text-sm" type="submit">{{ $t('Создать обращение') }}</v-button-2>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -89,6 +93,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style >
+.doc_preview{
+  border: 1px solid #ebebeb;
+  box-shadow: 3px 3px 6px rgb(0 0 0 / 10%);
+  padding-right: 10px;
+  padding-left: 10px;
+}
 </style>

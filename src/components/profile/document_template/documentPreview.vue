@@ -1,29 +1,30 @@
 <template>
   <div class="max-w-[1000px] w-full max-lg:w-[720p] my_class"
   >
-    <div v-for="(content, index) in item.doc_content"
-         class="w-full inline-block "
-         :class="{
-      'text-start':content.align === 'start',
+    <span v-for="(content, index) in item.doc_content"
+          class=" inline-block "
+          :class="{
+      'text-justify':content.align === 'start',
       'text-center':content.align === 'center',
       'text-end':content.align === 'end',
       'font-bold':content.weight === 'bold',
+      'block w-full':Number(content.new_line) === 1
 
     }"
     >
-      <div
+      <span
           v-if="!(content.deleted) "
       >
-        <br v-if="Number(content.new_line) === 1">
+          <br v-if="Number(content.new_line) === 1"/>
         <span class="break-all">
-        {{ content.text }}
-      </span>
-        <p class="break-all" v-for="field in content.fields">
-          {{field.value}}
-        </p>
+            &nbsp;{{ content.text }} &nbsp;
+         </span>
+          <span class="break-all" v-for="field in content.fields">
+               {{ field.value }}
+          </span>
 
-      </div>
-    </div>
+      </span>
+    </span>
     <div class="flex justify-between mt-5">
       <div class="w-[150px]">{{ $t("Дата") }}
         <hr class="ml-12"/>
@@ -51,7 +52,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 .my_class {
   font-family: 'Times New Roman', Times, serif;
 }

@@ -1,12 +1,12 @@
 <template>
-  <form class="mt-6 text-sm w-9/12 mx-auto max-md:w-full" @submit.prevent="add">
+  <form class=" text-sm my-10 w-9/12 mx-auto max-md:w-full " @submit.prevent="add">
     <input
         required
         v-model="appeal.title" class="border border-opacity-20 border-primary w-full p-2 rounded-lg" type="text"
            name="" :placeholder="$t('Заголовок')">
     <textarea v-model="appeal.description"
               required
-              class="my-4 border-opacity-20 h-[120px] border-primary border rounded-lg p-2 w-full resize-none"
+              class=" my-4 border-opacity-20 h-[120px] border-primary border rounded-lg p-2 w-full resize-none"
               :placeholder="$t('Описание')"></textarea>
       <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-4 px-6 max-sm:w-full ">
         Отправить

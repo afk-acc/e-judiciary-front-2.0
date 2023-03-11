@@ -1,18 +1,22 @@
 <template>
- <div class="pt-0">
-  <div class="text-white pt-[170px] pb-[270px] relative text-center overflow-hidden before:absolute before:-z-10 before:left-0 before:top-[-17%] before:w-full before:-skew-y-[2.5deg] before:h-full before:bg-bg-one before:bg-left max-lg:before:bg-bottom before:bg-no-repeat before:bg-cover">
-    <div>
-      <h1 class="text-4xl uppercase font-bold">{{ $t('Контакты') }}</h1>
+  <div class="pt-0">
+    <div
+        class="text-white pt-[170px] pb-[270px] relative text-center overflow-hidden before:absolute before:-z-10 before:left-0 before:top-[-17%] before:w-full before:-skew-y-[2.5deg] before:h-full before:bg-bg-one before:bg-left max-lg:before:bg-bottom before:bg-no-repeat before:bg-cover">
+      <div>
+        <h1 class="text-4xl uppercase font-bold">{{ $t('Контакты') }}</h1>
+      </div>
     </div>
-  </div>
-  <div class="_container px-10 mt-10 flex gap-x-6 max-lg:gap-x-0 justify-around max-lg:flex-col">
-    <div class="left w-7/12 max-lg:w-full">
-      <h1 class="text-2xl">{{ $t('Наши контактные данные') }}</h1>
-      <div class="w-[50px] h-[2px] mt-2 rounded-full bg-primary"></div>
-      <div class="w-full flex max-lg:flex-col gap-x-4 my-10 max-lg:items-center max-lg:w-full">
-        <contactItem>
-           <template v-slot:contactSvg>
-            <svg width="40px" height="40px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+    <div class="_container px-10 mt-10 flex gap-x-6 max-lg:gap-x-0 justify-around max-lg:flex-col">
+      <div class="left w-7/12 max-lg:w-full">
+        <h1 class="text-2xl text-center">{{ $t('Наши контактные данные') }}</h1>
+        <div class="flex justify-center">
+
+        <div class="w-[50px] h-[2px] mt-2 rounded-full bg-primary"></div>
+        </div>
+        <div class="w-full flex max-lg:flex-col gap-x-4 my-10 max-lg:items-center max-lg:w-full">
+          <contactItem>
+            <template v-slot:contactSvg>
+              <svg width="40px" height="40px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
                    xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
                    class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet">
                 <path
@@ -21,7 +25,8 @@
                 <path
                     d="M32.062 36.617s2.122.397 1.273 4.486c0 0 .339 3.187 2.2 2.896c0 0 .508-4.599 2.881-8.122c0 0-.962.958-2.053-2.219c-.165.12-.389.148-.576-.038c-.47-.469-.754-1.06-1.06-1.654a.496.496 0 0 1-.051-.277c-1.544-.576-4.671-1.154-5.114 3.393c.001 0 .592 3.13 2.5 1.535"
                     fill="#0054D1"></path>
-                <path d="M31.09 25.995c.146 2.048.42 2.67.779 1.819c.361-.844-.779-1.819-.779-1.819" fill="#0054D1"></path>
+                <path d="M31.09 25.995c.146 2.048.42 2.67.779 1.819c.361-.844-.779-1.819-.779-1.819"
+                      fill="#0054D1"></path>
                 <path d="M30.449 27.928s.597-.088.426-.839c0 0-.426.044-.426.839" fill="#0054D1"></path>
                 <path d="M30.219 23.811s-1.505 0-.973.769c.529.767.973-.769.973-.769" fill="#0054D1"></path>
                 <path d="M37.74 42.468s.46-.938.445-2.384c.001 0-1.463 1.672-.445 2.384" fill="#0054D1"></path>
@@ -46,26 +51,30 @@
             <template v-slot:contactInfo>
               {{ $t('г.Ташкент, Мирабадский район, А.Проспект Тимура, 19') }}
             </template>
-        </contactItem>
-        <contactItem>
+          </contactItem>
+          <contactItem href="mailto:unreal@outlook.com">
             <template v-slot:contactSvg>
               <svg width="40px" height="40px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 1694.235h1920V226H0v1468.235ZM112.941 376.664V338.94H1807.06v37.723L960 1111.233l-847.059-734.57ZM1807.06 526.198v950.513l-351.134-438.89-88.32 70.475 378.353 472.998H174.042l378.353-472.998-88.32-70.475-351.134 438.89V526.198L960 1260.768l847.059-734.57Z" fill="#0054D1"/>
+                <path
+                    d="M0 1694.235h1920V226H0v1468.235ZM112.941 376.664V338.94H1807.06v37.723L960 1111.233l-847.059-734.57ZM1807.06 526.198v950.513l-351.134-438.89-88.32 70.475 378.353 472.998H174.042l378.353-472.998-88.32-70.475-351.134 438.89V526.198L960 1260.768l847.059-734.57Z"
+                    fill="#0054D1"/>
               </svg>
             </template>
             <template v-slot:contactTitle>
               E-mail
             </template>
-            <template v-slot:contactInfo >
+            <template v-slot:contactInfo>
               <p class="text-primary">unreal@outlook.com</p>
             </template>
-        </contactItem>
-      </div>
-      <div class="w-full flex max-lg:flex-col gap-x-4 my-10 max-lg:my-10 max-lg:items-center  max-lg:w-full">
-        <contactItem>
+          </contactItem>
+        </div>
+        <div class="w-full flex max-lg:flex-col gap-x-4 my-10 max-lg:my-10 max-lg:items-center  max-lg:w-full">
+          <contactItem>
             <template v-slot:contactSvg>
-              <svg fill="#0054D1" width="40px" height="40px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 1.25c-8.146 0-14.75 6.604-14.75 14.75s6.604 14.75 14.75 14.75c8.146 0 14.75-6.604 14.75-14.75v0c-0.010-8.142-6.608-14.74-14.749-14.75h-0.001zM16 29.25c-7.318 0-13.25-5.932-13.25-13.25s5.932-13.25 13.25-13.25c7.318 0 13.25 5.932 13.25 13.25v0c-0.008 7.314-5.936 13.242-13.249 13.25h-0.001zM16.75 15.689v-9.689c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0 10c0 0 0 0 0 0 0 0.207 0.084 0.395 0.22 0.53v0l3.999 4.001c0.136 0.136 0.324 0.22 0.531 0.22 0.415 0 0.751-0.336 0.751-0.751 0-0.207-0.084-0.395-0.22-0.531v0z"></path>
+              <svg fill="#0054D1" width="40px" height="40px" viewBox="0 0 32 32" version="1.1"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16 1.25c-8.146 0-14.75 6.604-14.75 14.75s6.604 14.75 14.75 14.75c8.146 0 14.75-6.604 14.75-14.75v0c-0.010-8.142-6.608-14.74-14.749-14.75h-0.001zM16 29.25c-7.318 0-13.25-5.932-13.25-13.25s5.932-13.25 13.25-13.25c7.318 0 13.25 5.932 13.25 13.25v0c-0.008 7.314-5.936 13.242-13.249 13.25h-0.001zM16.75 15.689v-9.689c0-0.414-0.336-0.75-0.75-0.75s-0.75 0.336-0.75 0.75v0 10c0 0 0 0 0 0 0 0.207 0.084 0.395 0.22 0.53v0l3.999 4.001c0.136 0.136 0.324 0.22 0.531 0.22 0.415 0 0.751-0.336 0.751-0.751 0-0.207-0.084-0.395-0.22-0.531v0z"></path>
               </svg>
             </template>
             <template v-slot:contactTitle>
@@ -76,13 +85,13 @@
               <br>
               {{ $t('Обед: 13:00-14:00') }}
             </template>
-        </contactItem>
-        <contactItem>
+          </contactItem>
+          <contactItem href="tel:+998910003696">
             <template v-slot:contactSvg>
-              <svg fill="#0054D1" height="40px" width="40px" version="1.1" id="Capa_1" 
-                xmlns="http://www.w3.org/2000/svg" 
-                xmlns:xlink="http://www.w3.org/1999/xlink" 
-            	  viewBox="0 0 473.806 473.806" xml:space="preserve">
+              <svg fill="#0054D1" height="40px" width="40px" version="1.1" id="Capa_1"
+                   xmlns="http://www.w3.org/2000/svg"
+                   xmlns:xlink="http://www.w3.org/1999/xlink"
+                   viewBox="0 0 473.806 473.806" xml:space="preserve">
               	<g>
               		<g>
               			<path d="M374.456,293.506c-9.7-10.1-21.4-15.5-33.8-15.5c-12.3,0-24.1,5.3-34.2,15.4l-31.6,31.5c-2.6-1.4-5.2-2.7-7.7-4
@@ -101,10 +110,10 @@
               				c4.1,2.6,8.3,4.7,12.3,6.7c3.6,1.8,7,3.5,9.9,5.3c0.4,0.2,0.8,0.5,1.2,0.7c3.4,1.7,6.6,2.5,9.9,2.5c8.3,0,13.5-5.2,15.2-6.9
               				l34.2-34.2c3.4-3.4,8.8-7.5,15.1-7.5c6.2,0,11.3,3.9,14.4,7.3c0.1,0.1,0.1,0.1,0.2,0.2l55.1,55.1
               				C420.456,377.706,420.456,388.206,410.256,398.806z"/>
-              			<path d="M256.056,112.706c26.2,4.4,50,16.8,69,35.8s31.3,42.8,35.8,69c1.1,6.6,6.8,11.2,13.3,11.2c0.8,0,1.5-0.1,2.3-0.2
+                    <path d="M256.056,112.706c26.2,4.4,50,16.8,69,35.8s31.3,42.8,35.8,69c1.1,6.6,6.8,11.2,13.3,11.2c0.8,0,1.5-0.1,2.3-0.2
               				c7.4-1.2,12.3-8.2,11.1-15.6c-5.4-31.7-20.4-60.6-43.3-83.5s-51.8-37.9-83.5-43.3c-7.4-1.2-14.3,3.7-15.6,11
               				S248.656,111.506,256.056,112.706z"/>
-              			<path d="M473.256,209.006c-8.9-52.2-33.5-99.7-71.3-137.5s-85.3-62.4-137.5-71.3c-7.3-1.3-14.2,3.7-15.5,11
+                    <path d="M473.256,209.006c-8.9-52.2-33.5-99.7-71.3-137.5s-85.3-62.4-137.5-71.3c-7.3-1.3-14.2,3.7-15.5,11
               				c-1.2,7.4,3.7,14.3,11.1,15.6c46.6,7.9,89.1,30,122.9,63.7c33.8,33.8,55.8,76.3,63.7,122.9c1.1,6.6,6.8,11.2,13.3,11.2
               				c0.8,0,1.5-0.1,2.3-0.2C469.556,223.306,474.556,216.306,473.256,209.006z"/>
               		</g>
@@ -115,27 +124,34 @@
               {{ $t('Телефон') }}
             </template>
             <template v-slot:contactInfo>
-            +998 91 000 36 96
+              +998 91 000 36 96
             </template>
-        </contactItem>
-        
+          </contactItem>
+
+        </div>
+      </div>
+      <div class="right w-5/12 max-lg:mx-auto max-lg:w-9/12 max-md:w-full text-center flex  flex-wrap">
+        <div class="">
+          <h1 class="text-2xl  text-center">{{ $t('Задайте вопрос юристу!') }}</h1>
+          <div class="flex justify-center">
+
+          <div class="w-[50px] h-[2px] mt-2 rounded-full bg-primary"></div>
+          </div>
+          <contactForm></contactForm>
+        </div>
       </div>
     </div>
-    <div class="right w-5/12 max-lg:mx-auto max-lg:w-9/12 max-md:w-full text-center">
-      <h1 class="text-2xl text-center">{{ $t('Задайте вопрос!') }}</h1>
-      <contactForm></contactForm>
+    <div class="_container px-4 ">
+      <v-map/>
     </div>
   </div>
-  <div class="_container px-4 ">
-    <v-map/>
-  </div>
- </div>
 </template>
 
 <script>
 import contactItem from '../../components/site/contacts/contactItem.vue'
 import contactForm from '../../components/site/contacts/contactForm.vue'
 import vMap from '../../components/site/contacts/vMap.vue';
+
 export default {
   components: {
     contactItem,

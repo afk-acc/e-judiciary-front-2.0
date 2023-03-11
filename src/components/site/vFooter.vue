@@ -14,51 +14,52 @@
       </div>
       <div class="flex flex-wrap max-lg:justify-center gap-y-5 gap-x-10 text-sm">
         <div class=" max-lg:my-10 max-w-[150px] max-sm:max-w-max">
-          <p class="text-primary font-bold  cursor-pointer"> {{ $t('Навигация по системе') }}</p>
-          <ul class="text-gray  flex flex-col gap-y-3 mt-3">
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{
+          <p class="text-primary font-bold  cursor-pointer footer__link"> {{ $t('Навигация по системе') }}</p>
+          <ul class="text-gray  flex flex-col gap-y-3 mt-3 ">
+            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer footer__link ">{{
                 $t('Создание обращения')
               }}
             </router-link>
-            <router-link :to="{name:'info'}" class="cursor-pointer" v-if="login()">{{
+            <router-link :to="{name:'info'}" class="cursor-pointer footer__link" v-if="login()">{{
                 $t('Личный кабинет')
               }}
             </router-link>
-            <router-link :to="{name:'sign-in'}" class="cursor-pointer" v-else>{{ $t('Личный кабинет') }}</router-link>
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{ $t('Услуги') }}</router-link>
+            <router-link :to="{name:'sign-in'}" class="cursor-pointer footer__link" v-else>{{ $t('Личный кабинет') }}</router-link>
+            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer footer__link">{{ $t('Услуги') }}</router-link>
           </ul>
         </div>
         <div class=" max-lg:my-10 max-w-[150px] max-sm:max-w-max">
-          <p class="text-primary font-bold  cursor-pointer"> {{ $t('Навигация по системе') }}</p>
+          <p class="text-primary font-bold  cursor-pointer footer__link"> {{ $t('Навигация по системе') }}</p>
           <ul class="text-gray  flex flex-col gap-y-3 mt-3">
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{
+            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer footer__link">{{
                 $t('Создание обращения')
               }}
             </router-link>
-            <router-link :to="{name:'info'}" class="cursor-pointer" v-if="login()">{{
+            <router-link :to="{name:'info'}" class="cursor-pointer footer__link" v-if="login()">{{
                 $t('Личный кабинет')
               }}
             </router-link>
-            <router-link :to="{name:'sign-in'}" class="cursor-pointer" v-else>{{ $t('Личный кабинет') }}</router-link>
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{ $t('Услуги') }}</router-link>
+            <router-link :to="{name:'sign-in'}" class="cursor-pointer footer__link" v-else>{{ $t('Личный кабинет') }}</router-link>
+            <router-link :to="{name:'service', params:{page:1}}" class="footer__link cursor-pointer">{{ $t('Услуги') }}</router-link>
           </ul>
         </div>
         <div class=" max-lg:my-10 max-w-[150px] max-sm:max-w-max">
-          <p class="text-primary font-bold  cursor-pointer"> {{ $t('Навигация по системе') }}</p>
+          <p class="text-primary font-bold  cursor-pointer footer__link"> {{ $t('Навигация по системе') }}</p>
           <ul class="text-gray flex flex-col gap-y-3 mt-3 ">
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{
+            <router-link :to="{name:'service', params:{page:1}}" class="footer__link cursor-pointer">{{
                 $t('Создание обращения')
               }}
             </router-link>
-            <router-link :to="{name:'info'}" class="cursor-pointer" v-if="login()">{{
+            <router-link :to="{name:'info'}" class="cursor-pointer footer__link" v-if="login()">{{
                 $t('Личный кабинет')
               }}
             </router-link>
-            <router-link :to="{name:'sign-in'}" class="cursor-pointer" v-else>{{ $t('Личный кабинет') }}</router-link>
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer">{{ $t('Услуги') }}</router-link>
+            <router-link :to="{name:'sign-in'}" class="cursor-pointer footer__link" v-else>{{ $t('Личный кабинет') }}</router-link>
+            <router-link :to="{name:'service', params:{page:1}}" class="footer__link cursor-pointer">{{ $t('Услуги') }}</router-link>
           </ul>
         </div>
         <div class=" max-lg:my-10 flex justify-center flex-col max-sm:w-11/12">
+          <p class="mb-2 font-bold  cursor-pointer text-[#71787E]"> {{ $t('Введите свой email:') }}</p>
           <div class="relative">
             <input type="text" class="w-full py-2 px-4 rounded-xl outline-none focus:border-borderFocus focus:shadow-inputFocus" :placeholder="$t('Подписаться')">
             <div class="absolute z-10 cursor-pointer active:scale-90 transition-all duration-75 select-none -right-2 top-0">
@@ -72,7 +73,6 @@
               </svg>
             </div>
           </div>
-          <p class="mt-2 font-bold  cursor-pointer text-[#71787E]"> {{ $t('Введите свой email:') }}</p>
         </div>
       </div>
     </div>
@@ -92,6 +92,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.footer__link{
+  position: relative;
+  &:hover::after{
+    width: 100%;
+  }
+  &::after{
+    transition: all .3s ease-in-out;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background: #1D438C;
+  }
+}
+.router-link-active::after{
+  width: 100% !important;
+}
 
 </style>

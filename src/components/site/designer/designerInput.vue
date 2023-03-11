@@ -3,20 +3,20 @@
     <label class="flex flex-col text-gray  font-medium gap-y-2"
            v-if="item.input_type_name === 'text' || item.input_type_name === 'date' || item.input_type_name === 'number' || item.input_type_name === 'select_from_request' ">
       {{ getText(item, 'name_') }}
-
       <textarea
           ref="textarea"
           v-if="item.input_type_name === 'text'"
           :value="modelValue"
           :required="Number(item.required) === 1"
-          class="border border-footer_bg rounded-xl outline-none px-4 py-2 resize-none"
+          rows="1"
+          class="border border-footer_bg rounded-md focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2 resize-none"
           @input="$emit('update:modelValue', $event.target.value)"
       />
-      <input type="text" v-else
+      <input  v-else
              :value="modelValue"
              :required="Number(item.required) === 1"
-             :type="item.input_type_name === 'select_from_request'?'text':item.type"
-             class="border border-footer_bg rounded-xl outline-none px-4 py-2"
+             :type="item.input_type_name"
+             class="border border-footer_bg rounded-md focus:border-borderFocus asdas focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2"
              @input="$emit('update:modelValue', $event.target.value)"
       >
     </label>
@@ -24,7 +24,7 @@
       {{ getText(item, 'name_') }}
       <select
           value="-1"
-          class="p-2 outline-none border border-filter_gray rounded-xl"
+          class="border border-footer_bg rounded-md p-2 outline-none border border-filter_gray rounded-xl"
           :required="Number(item.required) === 1"
           @input="$emit('update:modelValue', $event.target.value)"
           name="" id="">

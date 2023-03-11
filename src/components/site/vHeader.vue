@@ -11,7 +11,21 @@
       >
         <div class="flex max-lg:justify-between max-lg:items-center  h-full max-lg:w-full max-lg:mx-4 items-start pt-2">
           <router-link to="/" class=" h-[70px]  relative  ">
-            <img src="/ejudiciary.svg" alt="" class="w-full h-[60px] object-cover">
+            <div
+                class="w-[60px] h-[60px] object-cover flex items-center justify-center header__logo transition-all duration-300">
+              <svg width="60" height="60" viewBox="190 100 150 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M254.892 208.291C255.609 208.703 256.492 208.705 257.211 208.297L327.518 168.409C329.07 167.528 331 168.642 331 170.419L330.932 206.305C330.932 207.124 330.497 207.881 329.788 208.297L256.105 251.802C255.383 252.227 254.487 252.232 253.76 251.816L226.732 235.666C226.009 235.253 225.564 234.488 225.564 233.66V196.774C225.564 194.992 227.505 193.879 229.057 194.771L254.892 208.291Z"
+                    fill="#fff"/>
+                <path
+                    d="M223.141 180.297C222.417 180.712 221.524 180.71 220.802 180.29L188.944 161.774C187.391 160.871 187.411 158.633 188.98 157.758L254.357 121.296C255.065 120.901 255.928 120.901 256.636 121.296L322.037 157.77C323.611 158.648 323.625 160.895 322.062 161.792L290.01 180.203C289.291 180.616 288.405 180.617 287.685 180.206L256.576 162.44C255.856 162.029 254.971 162.03 254.252 162.442L223.141 180.297Z"
+                    fill="#fff"/>
+                <path
+                    d="M216.603 187.744C217.323 188.157 217.767 188.921 217.767 189.748V239.439C217.767 240.256 218.201 241.013 218.908 241.43L254.317 262.287C255.045 262.716 255.949 262.718 256.68 262.294L327.496 221.665C329.048 220.762 331 221.875 331 223.662V260.471C331 261.317 330.535 262.096 329.788 262.502L256.613 301.717C255.917 302.094 255.076 302.094 254.38 301.717L182.212 262.526C181.465 262.12 181 261.341 181 260.495V171.316C181 169.535 182.94 168.421 184.492 169.312L216.603 187.744Z"
+                    fill="white"/>
+              </svg>
+            </div>
           </router-link>
           <div class="cursor-pointer hidden max-lg:block "
                @click="openBurger = !openBurger">
@@ -26,23 +40,24 @@
             class="flex transition-all max-lg:absolute max-lg:bg-header_gr max-lg:w-full max-lg:flex-col items-center justify-between max-lg:justify-start max-lg:h-screen"
             :class="{'max-lg:top-[-1000px]' : !openBurger, 'max-lg:top-[78px]' : openBurger}">
           <ul class="flex max-lg:flex-col gap-x-8 text-white font-bold mr-4 max-lg:text-xl items-center text-sm">
-            <router-link :to="{name:'service', params:{page:1}}" class="cursor-pointer py-4">{{
+            <router-link :to="{name:'service', params:{page:1}}"
+                         class="cursor-pointer py-4 header__link transition-all duration-300">{{
                 $t('Услуги')
               }}
             </router-link>
-            <router-link :to="{name: 'faq'}">
+            <router-link :to="{name: 'faq'}" class="header__link">
               <li class="cursor-pointer py-4">{{ $t('Вопросы') }}</li>
             </router-link>
-            <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-4">{{
+            <router-link :to="{name:'lawyers', params:{page:1}}" class="cursor-pointer py-4 header__link">{{
                 $t('Юристы')
               }}
             </router-link>
-            <router-link :to="{name: 'contacts'}">
+            <router-link :to="{name: 'contacts'}" class="header__link">
               <li class="cursor-pointer py-4">{{ $t('Контакты') }}</li>
             </router-link>
             <li class="relative max-lg:my-10">
               <span @click="show_adv = !show_adv" class="cursor-pointer"
-                   >{{ $t('Дополнительно') }}</span>
+              >{{ $t('Дополнительно') }}</span>
               <ul class="flex flex-col  gap-y-2 bg-primary_gr z-30 max-md:left-[-60px] border border-filter_gray border-opacity-50 absolute max-w-[300px] w-screen left-0 top-10 transition-all duration-300 "
                   :class="{
                 'max-h-0 overflow-hidden hidden':!show_adv,
@@ -57,22 +72,16 @@
 
               </ul>
             </li>
-            <li class="relative py-4 pr-8 mt-[-12px] max-lg:py-4 text-sm">
+            <div class="relative py-4  mt-[-12px] max-lg:py-4 text-sm min-w-[150px]">
               <input
                   v-model="params.query"
                   @keyup.enter="load_all_doc_list(this.params); isActive = true"
                   type="text"
-                  class="w-full ml-10  outline-none text-sm  border-b border-white "
+                  :class="{'search_active':search_active}"
+                  class=" outline-none text-sm  border-b border-white header__search"
                   style="background: none;"
               >
-              <div class="absolute p-4 z-50  top-full bg-primary_gr flex flex-col gap-y-2 left-0"
-                   v-if="isActive && get_all_doc_list?.data?.length > 0">
-                <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});"
-                     v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
-                  {{ item.name.slice(0, 45) }}
-                </div>
-              </div>
-              <div class="absolute left-3 top-[25px] max-lg:top-[25px] translate-x-[0px] translate-y-[-3px]">
+              <div @click="search_active = !search_active" class="cursor-pointer  header__search-icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                       d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
@@ -81,7 +90,15 @@
                         stroke-linejoin="round"/>
                 </svg>
               </div>
-            </li>
+              <div class="absolute p-4 z-50  top-full bg-primary_gr flex flex-col gap-y-2 left-0"
+                   v-if="isActive && get_all_doc_list?.data?.length > 0 && search_active">
+                <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});"
+                     v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
+                  {{ item.name.slice(0, 45) }}
+                </div>
+              </div>
+
+            </div>
 
           </ul>
           <div class="flex  max-lg:flex-col gap-x-8 text-white items-center ">
@@ -216,6 +233,7 @@ export default {
   components: {VNotification},
   data() {
     return {
+      search_active: false,
       mes: 0,
       scrollPosition: null,
       show_notification: false,
@@ -228,7 +246,7 @@ export default {
         limit: 5
       },
       isActive: false,
-      ref_list:[],
+      ref_list: [],
     }
   },
   setup() {
@@ -263,7 +281,7 @@ export default {
     this.mes = this.getCurrentUser.notify
     this.lang = localStorage.getItem('locale')
     window.addEventListener("scroll", this.updateScroll);
-    axios.get(`get-site-ref?limit=1000`).then(res=>{
+    axios.get(`get-site-ref?limit=1000`).then(res => {
       this.ref_list = res.data.data
     })
   },
@@ -297,8 +315,70 @@ export default {
 
 <style scoped>
 
+.search_active{
+  right: 0px !important;
+  width: 100% !important;
+
+}
+.search_active + .header__search-icon{
+  right: 100%;
+  justify-content: start;
+}
+.header__search {
+  position: absolute;
+  top:10px;
+  margin-left: 0;
+  width: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.header__search-icon {
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-25%);
+  right: 0;
+}
+
+
+.header__logo path {
+  transition: all 0.3s ease-in-out;
+}
+
+.header__logo:hover path {
+  fill: #007bff;
+
+}
+
+.header__link {
+  position: relative;
+}
+
+.header__link:hover::after {
+  width: 100%;
+}
+
+
+.router-link-active::after {
+  width: 100% !important;
+}
+
+.header__link::after {
+  content: "";
+  width: 0;
+  transition: all 0.3s ease-in-out;
+  height: 3px;
+  left: 0;
+  bottom: 10px;
+  position: absolute;
+  display: block;
+  background: #fff;
+}
+
 a.router-link-active {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .el-hover path {

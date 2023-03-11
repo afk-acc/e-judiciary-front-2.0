@@ -9,9 +9,8 @@
       </div>
 
     </div>
-    <div class=" transition-all duration-300 overflow-y-scroll h-full" :class="{'max-h-screen border-l border-primary':isActive, 'max-h-0':!isActive}">
-
-      <div class="pt-5  text-sm pb-4 border-b border-border_c" :class="{'active-left':activeItem === index}" v-for="(doc, index) in item.document_list" :key="index" @click="activeItem = index">
+    <div class=" pl-4 transition-all duration-700 overflow-y-auto ease-linear " :class="{'max-h-screen ':isActive, 'max-h-0':!isActive}">
+      <div class="pt-5  text-sm pb-4  border-b border-border_c" :class="{'active-left':activeItem === index}" v-for="(doc, index) in item.document_list" :key="index" @click="activeItem = index">
         <router-link  :to="{name:'constructor', params:{name:doc.id}}" class="pl-5 block">
           {{ doc.name }}
         </router-link>
