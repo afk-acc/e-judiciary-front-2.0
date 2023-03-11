@@ -8,7 +8,7 @@
       }}
     </div>
     <div class=""><img :src="item.user_info.image" alt="" class="w-[90px] h-[90px] rounded-full object-cover"></div>
-    <div class="text-link cursor-pointer w-2/12 text-center">{{ item.user_info.education_place || '- ' }}</div>
+    <div class="text-link cursor-pointer w-2/12 text-center">{{ item.user_info.education_place === 'null'?'- ':item.user_info.education_place }}</div>
     <div class="text-primary font-bold cursor-pointer" @click="change_request_lawyer({user_id:item.user_info.id, value:1})">{{ $t("Принять") }}</div>
     <div class="text-danger font-medium cursor-pointer" @click="change_request_lawyer({user_id:item.user_info.id, value:0})">{{ $t("Отклонить") }}</div>
     <div class="text-link cursor-pointer" @click="$emit('showModal', item)">{{ $t('Подробно') }}</div>

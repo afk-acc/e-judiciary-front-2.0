@@ -130,16 +130,7 @@
 
         </div>
       </div>
-      <div class="right w-5/12 max-lg:mx-auto max-lg:w-9/12 max-md:w-full text-center flex  flex-wrap">
-        <div class="">
-          <h1 class="text-2xl  text-center">{{ $t('Задайте вопрос юристу!') }}</h1>
-          <div class="flex justify-center">
-
-          <div class="w-[50px] h-[2px] mt-2 rounded-full bg-primary"></div>
-          </div>
-          <contactForm></contactForm>
-        </div>
-      </div>
+    
     </div>
     <div class="_container px-4 ">
       <v-map/>
@@ -149,18 +140,16 @@
 
 <script>
 import contactItem from '../../components/site/contacts/contactItem.vue'
-import contactForm from '../../components/site/contacts/contactForm.vue'
 import vMap from '../../components/site/contacts/vMap.vue';
 
 export default {
   components: {
     contactItem,
-    contactForm,
-    vMap
+      vMap
   }
 }
 </script>
 
 <style scoped>
 
-</style>0054D1
+</style>

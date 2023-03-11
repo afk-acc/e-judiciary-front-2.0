@@ -35,6 +35,7 @@ export default {
       return number.toFixed(0);
     },
     playAnimation() {
+      if(!this.played)
       this.$refs.number.play();
     },
     updateScroll() {

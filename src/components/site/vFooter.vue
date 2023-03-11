@@ -12,7 +12,7 @@
           }}</h3>
 
       </div>
-      <div class="flex flex-wrap max-lg:justify-center gap-y-5 gap-x-10 text-sm">
+      <div class="flex max-lg:flex-wrap max-lg:justify-center gap-y-5 gap-x-10 text-sm">
         <div class=" max-lg:my-10 max-w-[150px] max-sm:max-w-max">
           <p class="text-primary font-bold  cursor-pointer footer__link"> {{ $t('Навигация по системе') }}</p>
           <ul class="text-gray  flex flex-col gap-y-3 mt-3 ">

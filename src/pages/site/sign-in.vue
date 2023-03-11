@@ -1,12 +1,9 @@
 <template>
-  <div class=" flex items-center text-center max-lg:flex-col">
-    <div
-        class="w-7/12 max-lg:w-full text-white bg-primary_gr mt-auto p-7 text-center mx-auto items-center h-screen max-lg:h-full">
-      <img class="w-10/12 mx-auto  mt-32 max-lg:mt-0 max-md:w-full" src="/img/sign-in.png" alt="">
-    </div>
-    <div class="w-6/12 max-lg:w-full max-lg:my-20 font-semibold">
+  <div class="flex items-center text-center max-lg:flex-col">
+   
+    <div class="w-6/12 mx-auto mt-20 max-lg:w-8/12 max-sm:w-full max-lg:my-20 font-semibold">
       <form class="w-7/12 mx-auto max-lg:w-full max-lg:px-4" @submit.prevent="auth">
-        <h1 class="text-4xl mb-20">{{ $t(`Добро пожаловать`) }}</h1>
+        <h1 class="text-4xl mb-20">{{ $t(`Авторизация`) }}</h1>
         <div class="border-[1px] h-12 flex rounded-xl border-l_gray_2  items-center px-4 ">
           <svg width="30" height="30" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -20,7 +17,7 @@
                  name="" :placeholder="$t('Email')">
 
         </div>
-        <div class="border-[1px] h-12 mt-10 rounded-xl border-l_gray_2 flex items-center  px-4 ">
+        <div class="border-[1px] h-12 mt-10 rounded-xl border-l_gray_2 flex items-center px-4 ">
           <svg width="30" height="30" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M13.1631 16.533V11.783V11.783C13.1631 8.28546 15.9988 5.44971 19.4964 5.44971V5.44971C22.994 5.44971 25.8298 8.28546 25.8298 11.783V11.783V16.533"
@@ -53,11 +50,12 @@
                   fill="blue"></path>
           </svg>
         </div>
-        <div class="text-link mb-2">
-          <router-link :to="{name: 'sign-up'}">{{ $t('Регистрация') }}</router-link>
+        <div class="text-link flex flex-col gap-y-4">
+          <router-link :to="{name: 'sign-up'}">{{$t('Зарегестрироваться как "Пользователь"')}}</router-link>
+          <router-link :to="{name: 'sign-up-lawyer'}">{{$t('Зарегестрироваться как "Юрист"')}}</router-link>
         </div>
         <v-button-2 type='submit'
-                    class="w-11/12 mx-auto bg-sign_in h-[40px] flex items-center justify-center text-normal">
+                    class="w-9/12 max-lg: mt-6 mx-auto bg-sign_in h-[40px] flex items-center justify-center text-normal">
           {{ $t(`Войти`) }}
         </v-button-2>
       </form>

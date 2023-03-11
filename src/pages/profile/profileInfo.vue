@@ -6,9 +6,6 @@
         <button @click="showEdit = true; edit={...getCurrentUser}"
                 class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">{{ $t("Редактировать профиль") }}
         </button>
-        <button v-if="getCurrentUser.role_name === 'user' " @click="send_request_lawyer(getCurrentUser.id)"
-                class="text-white bg-primary_gr py-2 px-4 rounded-xl ">{{ $t("Стать юристом") }}
-        </button>
       </div>
 
     </div>
@@ -35,7 +32,7 @@
         <profile-info-item :item="getCurrentUser.education_end || '-'" :label="$t('Конец обучения')"/>
         <profile-info-item :item="getCurrentUser.work_experience || '-'" :label="$t('Стаж работы')"/>
         <profile-info-item :item="getCurrentUser.rating || '-'" :label="$t('Рейтинг')"/>
-        <profile-info-item :item="getCurrentUser.lawyer_file" :isFile="true" :label="$t('Сертификат юриста')"/>
+        <profile-info-item v-if="getCurrentUser.lawyer_file" :item="getCurrentUser.lawyer_file" :isFile="true" :label="$t('Сертификат юриста')"/>
 
       </div>
       <div v-else>
@@ -109,6 +106,13 @@
                          type="text"/>
                 <v-input class="" min="0" v-model:model-value="edit.city" :label="$t('Город проживания')"
                          type="text"/>
+                   <label class="flex flex-col text-gray text-sm font-medium gap-y-2">
+                            {{ $t("Телефон") }}          <input
+                            v-mask="'+998 (##) ###-##-##'"
+                           v-model="edit.phone"
+                           type="tel" class="border focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2"
+                           /></label>
+             
                 <div class="text-gray text-sm font-medium">
                   <p>{{ $t("Основной язык") }}</p>
                   <select class="outline-none w-full p-2" name="" id="" v-model="edit.languages">

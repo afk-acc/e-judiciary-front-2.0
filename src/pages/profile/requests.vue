@@ -49,15 +49,15 @@
 
       <div class="text-xl"><span class="font-bold text-black">{{ $t('Телефон') }}:</span> {{ active_user.phone || '-' }}
       </div>
-      <div class="text-xl flex flex-col" v-if="active_user.role_name === 'lawyer'">
+      <div class="text-xl flex flex-col" v-if="active_user.role_name ">
         <div class="">
           <span class="font-bold text-black">{{ $t('Рейтинг') }}:</span> {{
             active_user.rating || '-'
           }}
         </div>
         <div class="">
-          <span class="font-bold text-black ">{{ $t('Сертификат юриста') }}:</span>
-          <span class="text-link" @click="getFile(active_user.lawyer_file, change_user.name)">{{
+          <span class="font-bold text-black  ">{{ $t('Сертификат юриста') }}:</span>
+          <span class="text-link cursor-pointer ml-4" @click="getFile(active_user.lawyer_file, active_user.name)">{{
               $t("Скачать")
             }}</span>
         </div>
@@ -101,6 +101,18 @@ export default {
   },
   methods: {
     ...mapActions(['load_request_list', 'change_request_lawyer']),
+    getFile(pdf, name) {
+      if (pdf) {
+
+        const linkSource = pdf;
+        const downloadLink = document.createElement("a");
+        let ext = pdf.split('/')[1].split(';')[0]
+        const fileName = name + "." + ext;
+        downloadLink.href = linkSource;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      }
+    },
     loadPage(page) {
       if (page === '<') {
         if (Number(this.params.page) > 1) {
@@ -117,17 +129,7 @@ export default {
       }
       this.$router.push({name: 'requests', params: {page: this.params.page}})
     },
-    getFile(pdf, name) {
-      if (pdf) {
-        const linkSource = pdf;
-        const downloadLink = document.createElement("a");
-        let ext = pdf.split('/')[1].split(';')[0]
-        const fileName = name + "." + ext;
-        downloadLink.href = linkSource;
-        downloadLink.download = fileName;
-        downloadLink.click();
-      }
-    }
+    
 
   },
   computed: {

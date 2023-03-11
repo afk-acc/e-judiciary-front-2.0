@@ -39,8 +39,6 @@
       <div class="text-center font-bold text-2xl" v-else>
           {{$t('Ничего не найдено')}}
         </div>
- 
-   
     </div>
     <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_appeal_list?.meta?.links?.length > 0">
         <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"

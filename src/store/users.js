@@ -28,16 +28,18 @@ export default {
     actions: {
         update_user(context, params) {
             let fd = new FormData();
-            fd.set('education_place', params.education_place)
-            fd.set('education_start', params.education_start)
-            fd.set('education_end', params.education_end)
-            fd.set('work_experience', params.work_experience)
-            fd.set('country', params.country)
-            fd.set('city', params.city)
-            fd.set('languages', params.languages)
-            fd.set('bio', params.bio)
+            fd.set('education_place', params.education_place || null)
+            fd.set('education_start', params.education_start  || null)
+            fd.set('education_end', params.education_end  || null)
+            fd.set('work_experience', params.work_experience  || null)
+            fd.set('country', params.country  || null)
+            fd.set('city', params.city  || null)
+            fd.set('languages', params.languages  || null)
+            fd.set('bio', params.bio  || null)
             fd.set('locale', localStorage.getItem('locale'))
-            fd.set('role', params.role_id)
+            fd.set('role', params.role_id  || null)
+            fd.set('phone', params.phone  || null)
+            
             if (params.new_image)
                 fd.set('image', params.new_image)
             if (params.new_lawyer_file)

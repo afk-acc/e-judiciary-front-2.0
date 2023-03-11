@@ -5,6 +5,7 @@ import base from "../pages/site/base.vue";
 import designer from "../pages/site/designer.vue";
 import signIn from "../pages/site/sign-in.vue";
 import signUp from "../pages/site/sign-up.vue";
+import signUpLawyer from "../pages/site/sign-upLawyer.vue";
 import profile from "../pages/profile/index.vue";
 import info from "../pages/profile/profileInfo.vue"
 import appeals from "../pages/profile/appeals.vue";
@@ -77,6 +78,11 @@ const routes = [
         path: '/sign-up',
         component: signUp,
         name: 'sign-up'
+    },
+    {
+        path: '/sign-up-lawyer',
+        component: signUpLawyer,
+        name: 'sign-up-lawyer'
     },
     {
         path: '/profile',

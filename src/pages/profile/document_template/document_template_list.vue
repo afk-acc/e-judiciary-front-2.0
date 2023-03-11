@@ -9,7 +9,7 @@
         </router-link>
 
         <div class="flex justify-end" v-if="can(getCurrentUser, 'template.edit')">
-          <button @click="showAdd = true" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 py-2 px-4 text-sm rounded-md">
+          <button @click="showAdd = true" class="text-white bg-[#28a745] hover:bg-[#419554] hover:border-[#419554] transition-all duration-300 py-2 px-4 text-sm rounded-md">
             {{ $t('Добавить тип документа') }}
           </button>
         </div>

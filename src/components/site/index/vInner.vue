@@ -6,7 +6,7 @@
           <p class="text-3xl max-md:text-lg" v-html="$t('Найдите себе необходимый документ и заполните его без ошибок, <strong>выиграйте время</strong>.')"></p>
           <p class="my-6 font-medium text-sm">{{$t('Получите необходимый документ онлайн!')}}</p>
           <div class="flex justify-between w-full max-md:text-sm max-md:flex-wrap max-md:justify-center max-md:gap-x-4 max-md:gap-y-4">
-            <v-button @click="this.$router.push({name: 'contacts'})">{{$t('Задайте вопрос')}}</v-button>
+            <v-button @click="this.$router.push({name: 'lawyers', params: {page:1}})">{{$t('Задайте вопрос')}}</v-button>
             <v-button class="px-4" @click="check
               ">{{$t('Выберите юриста')}}</v-button>
           </div>

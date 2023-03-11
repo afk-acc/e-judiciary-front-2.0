@@ -1,11 +1,11 @@
 <template>
   <router-link
     :to="{ name: 'constructor', params: { name: item.id } }"
-    class="flex items-center gap-x-7 border-b border-border_c py-4 font-medium text-base max-lg:text-sm last:border-none">
+    class="flex items-center gap-x-7 hover:text-link  py-2 font-bold text-sm  max-lg:text-sm last:border-none">
     <div class="">
       <svg
-        width="47"
-        height="47"
+        width="30"
+        height="30"
         viewBox="0 0 47 47"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

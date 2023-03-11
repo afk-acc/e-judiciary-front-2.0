@@ -13,7 +13,7 @@ import {QuillEditor} from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import pusher from './pusher'
 import VueNumber from "vue-number-animation";
-
+import VueTheMask from 'vue-the-mask'
 const localeLocalStorage = localStorage.getItem("locale");
 const messages = Object.assign(languages);
 const i18n = createI18n({
@@ -29,6 +29,7 @@ app.use(store);
 app.use(router);
 app.use(i18n);
 app.use(VueNumber);
+app.use(VueTheMask)
 
 app.component('QuillEditor', QuillEditor)
 app.use(VueAxios, axios);
