@@ -2,7 +2,7 @@
   <div class="flex ">
     <div
         :class="{'bg-primary_gr': showBg(), 'w-[70px] max-lg:w-0' : !openMenu, 'w-[300px] ' : openMenu}"
-        class="transition-all h-full max-lg:fixed relative overflow-y-scroll py-6 duration-300 top-0 left-0 border-b-[0.5px] border-white z-50"
+        class="transition-all h-full max-lg:fixed relative overflow-y-scroll py-6 duration-300 top-0 left-0 border-b-[0.5px] border-white z-40"
     >
       <div class="flex flex-col h-full p-3">
         <div class="">

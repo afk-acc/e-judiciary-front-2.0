@@ -5,7 +5,7 @@
       'bg-header_gr': showBg(),
         
     }"
-        class="absolute max-lg:bg-header_gr max-lg:fixed transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-30"
+        class="absolute max-lg:bg-header_gr max-lg:fixed transition-all duration-300 top-0 left-0 w-full border-b-[0.5px] border-white border-opacity-40 z-40"
     >
       <div class="_container flex items-center justify-between relative"
       >

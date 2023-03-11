@@ -2,7 +2,7 @@
   <div class="">
     <div class="_container flex mt-[4rem] ">
       <div
-          class=" w-4/12 max-lg:fixed h-screen   max-lg:w-6/12 max-md:w-10/12 break-all z-50 transition-all bg-footer_bg pl-8 pt-7 pb-[150px]"
+          class=" w-4/12 max-lg:fixed h-screen   max-lg:w-6/12 max-md:w-10/12 break-all z-30 transition-all bg-footer_bg pl-8 pt-7 pb-[150px]"
           :class="{'max-lg:left-[-1000px]' : !openLeft, 'max-lg:left-0' : openLeft}"
       >
         <v-search class="mr-4" v-model:model-value="params.query" @search="load_all_doc_list(this.params)"

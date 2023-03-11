@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full overflow-scroll max-lg:mt-10">
+  <div class="w-full max-h-[90vh] overflow-y-auto max-lg:mt-10">
     <div class="  max-lg:mt-10">
       <v-search v-model:model-value="params.query" @search="loadAppealList(params)"/>
       <div class="flex flex-wrap max-md:justify-center  justify-between">
