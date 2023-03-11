@@ -12,7 +12,7 @@
         </div>
 
       </div>
-      <div class="fixed z-40 opacity-40 bg-black w-full h-screen"
+      <div class="fixed z-30 opacity-40 bg-black w-full h-screen"
            :class="{'hidden': !openLeft, 'block' : openLeft}"
            @click="openLeft = !openLeft"
       ></div>

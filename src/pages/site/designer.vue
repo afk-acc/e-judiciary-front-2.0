@@ -11,7 +11,7 @@
       </svg>
       {{ get_fields.name }}
     </div>
-    <form class="flex-wrap flex justify-between max-md:mx-4 text-sm  max-lg:items-center max-lg:flex-col">
+    <form class="flex-wrap flex justify-between max-md:mx-4 text-sm  max-lg:items-center max-lg:flex-col" @submit.prevent="add">
       <div
           class="px-2 max-h-[500px] overflow-y-auto gap-y-1 flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 "
           @submit.prevent="add">
@@ -46,6 +46,7 @@ import DesignerInput from "../../components/site/designer/designerInput.vue";
 import VButton2 from "../../components/UI/vButton2.vue";
 import VInput from "../../components/UI/vInput.vue";
 import Document_preview from "../../components/profile/document_template/documentPreview.vue";
+import axios from "../../axios/index.js";
 
 export default {
   name: "designer",
@@ -63,24 +64,37 @@ export default {
     ...mapActions(['load_fields', 'load_preview', 'add_new_appeal']),
     ...mapMutations(['update_fields', 'update_send_appeal']),
     add() {
-      if (localStorage.getItem('token')) {
-        this.add_new_appeal({
-          appeal: this.appeal, doc: {
-            doc: this.get_fields.id,
-            fields: this.get_fields
-          }
-        })
-        this.update_fields([]);
-        this.$router.push({name: 'info'})
-      } else {
-        this.$router.push({name: 'sign-in'})
-        this.update_send_appeal({
-          appeal: this.appeal, doc: {
-            doc: this.get_fields.id,
-            fields: this.get_fields
-          }
-        });
-      }
+      // if (localStorage.getItem('token')) {
+       axios.post(`generate-doc-word`, {
+         doc:this.get_fields.id,
+         fields:this.get_fields
+
+       },{
+         responseType: 'blob'
+       }).then(response=>{
+          console.log(response.data)
+         const href = URL.createObjectURL(response.data);
+
+         // create "a" HTML element with href to file & click
+         const link = document.createElement('a');
+         link.href = href;
+         link.setAttribute('download', 'file.docx'); //or any other extension
+         document.body.appendChild(link);
+         link.click();
+
+         // clean up "a" element & remove ObjectURL
+         document.body.removeChild(link);
+         URL.revokeObjectURL(href);
+       })
+        // this.add_new_appeal({
+        //   appeal: this.appeal, doc: {
+            // doc: this.get_fields.id,
+            // fields: this.get_fields
+          // }
+        // })
+        // this.update_fields([]);
+        // this.$router.push({name: 'info'})
+      // }
     }
   },
   computed: {

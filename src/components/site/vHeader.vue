@@ -143,7 +143,7 @@
 
                       <div
                           v-if="show_notification && get_notifications.length > 0"
-                          class="absolute shadow-2xl top-10 z-40 -left-[200px] max-md:-left-[125px]  max-md:px-6 max-md:mx-4 max-md:flex-wrap max-h-[400px] overflow-scroll max-w-[400px] w-screen bg-white py-5 flex flex-col gap-y-4">
+                          class="absolute shadow-2xl top-10 z-30 -left-[200px] max-md:-left-[125px]  max-md:px-6 max-md:mx-4 max-md:flex-wrap max-h-[400px] overflow-scroll max-w-[400px] w-screen bg-white py-5 flex flex-col gap-y-4">
                         <v-notification :item="item" v-for="(item,index) in get_notifications" :key="index"/>
                       </div>
                     </div>

@@ -26,7 +26,7 @@
     </i>
   </div>
   <div
-      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-full relative max-lg:h-full bg-white max-lg:absolute transition-all duration-300 z-40"
+      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-full relative max-lg:h-full bg-white max-lg:absolute transition-all duration-300 z-30"
       :class="{'max-lg:-left-[600px]':!modalLeft, 'max-lg:left-0  h-full' : modalLeft}"
   >
     <div class="chat-left_title flex justify-center items-center border-b-[1px] py-5 border-[#DBDDE2]">
