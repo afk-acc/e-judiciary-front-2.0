@@ -10,7 +10,7 @@
       </div>
       <div class="flex  items-center">
         <div class="flex flex-col-reverse w-full">
-          <QuillEditor v-model:content="message.data" content-type="delta" id="rich" class="snow" theme="snow"
+          <QuillEditor v-model:content="message.data" content-type="html" id="rich" class="snow" theme="snow"
                        :toolbar="['bold', 'italic', 'link',{ 'header': [1, 2, 3, 4, 5, 6, false] }, { 'color': [] }, { 'background': [] }, { 'align': [] }, 'clean']"
                        placeholder="Введите сообщение...">
           </QuillEditor>
