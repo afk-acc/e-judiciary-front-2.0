@@ -1,19 +1,35 @@
 <template>
-  <div class="flex gap-x-1 text-sm justify-between items-center border-b border-border_c px-4 ">
-   <div class="flex items-center w-6/12 gap-x-8 max-md:gap-x-2">
-    <div class="py-5">
-      {{ num + '.' }}
+  <div class="flex  text-sm justify-between items-center border-b border-border_c px-4 ">
+    <div class="flex items-center w-8/12 gap-x-8 max-md:gap-x-2">
+      <div class="py-5">
+        {{ num + '.' }}
+      </div>
+      <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-2/12 text-start text-link cursor-pointer">
+        {{ item.title }}
+      </router-link>
     </div>
-    <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-2/12 text-start text-link cursor-pointer">{{ item.title }}</router-link>
-   </div>
     <div class="">{{ get_date(item.started) }}</div>
-   <div class="flex gap-x-6 items-center">
-    
-    
-    <div v-if="item.applicant_info.id === getCurrentUser.id" class="text-white bg-danger cursor-pointer rounded-xl py-2 px-2" @click="$emit('showModal', item.id)">
-      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-f2b47a05=""><path d="M10 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M14 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M4 7H20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path></svg>
+    <div class="flex gap-x-6 items-center">
+        <div v-if="item.applicant_info.id === getCurrentUser.id"
+             class="text-white bg-danger cursor-pointer rounded-xl py-2 px-2" @click="$emit('showModal', item.id)">
+          <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+               data-v-f2b47a05="">
+            <path d="M10 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                  data-v-f2b47a05=""></path>
+            <path d="M14 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                  data-v-f2b47a05=""></path>
+            <path d="M4 7H20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                  data-v-f2b47a05=""></path>
+            <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path>
+            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path>
+          </svg>
+        </div>
+      <div class="w-[36px] h-[36px]" v-else>
+
+      </div>
     </div>
-   </div>
   </div>
 </template>
 
@@ -30,7 +46,7 @@ export default {
     item: Object,
     num: Number
   },
-  computed:{
+  computed: {
     ...mapGetters(['getCurrentUser'])
   },
   methods: {

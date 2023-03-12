@@ -2,7 +2,7 @@
   <div class="mx-6">
     <div class="flex justify-between items-center max-sm:flex-col mb-4 max-sm:mb-10 ">
       <div class="font-bold text-primary text-xl py-4 max-sm:text-center">
-        {{ $t('Дополнительные ссылки на сайте') }}
+        {{ $t('Полезные ссылки') }}
       </div>
       <div class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2 max-sm:w-full max-sm:text-center" @click="show_add=true">{{ $t('Добавить') }}</div>
     </div>

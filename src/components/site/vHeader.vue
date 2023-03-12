@@ -57,14 +57,14 @@
             </router-link>
             <li class="relative max-lg:my-10">
               <span @click="show_adv = !show_adv" class="cursor-pointer"
-              >{{ $t('Дополнительно') }}</span>
+              >{{ $t('Полезные ссылки') }}</span>
               <ul class="flex flex-col  gap-y-2 bg-primary_gr z-30 max-md:left-[-60px] border border-filter_gray border-opacity-50 absolute max-w-[300px] w-screen left-0 top-10 transition-all duration-300 "
                   :class="{
                 'max-h-0 overflow-hidden hidden':!show_adv,
                 'max-h-[200px] overflow-y-auto py-2 px-4':show_adv
                   }"
               >
-                <li class="underline text-base" v-for="item in ref_list">
+                <li class=" text-xs" v-for="item in ref_list">
                   <a :href="item.ref">
                     {{ item.name }}
                   </a>
@@ -93,7 +93,7 @@
               <div class="absolute p-4 z-50  top-full bg-primary_gr flex flex-col gap-y-2 left-0"
                    v-if="isActive && get_all_doc_list?.data?.length > 0 && search_active">
                 <div @click="isActive = false;$router.push({name:'constructor', params:{name:item.id}});"
-                     v-for="(item, index) in get_all_doc_list?.data" :key="index" class="underline cursor-pointer">
+                     v-for="(item, index) in get_all_doc_list?.data" :key="index" class="text-xs cursor-pointer">
                   {{ item.name.slice(0, 45) }}
                 </div>
               </div>

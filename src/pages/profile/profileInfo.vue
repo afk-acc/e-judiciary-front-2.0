@@ -4,7 +4,8 @@
       <h1 class="text-link font-bold text-2xl max-md:text-center">{{ $t("Основная информация") }}</h1>
       <div class="flex gap-x-4 item-center max-md:mx-auto">
         <button @click="showEdit = true; edit={...getCurrentUser}"
-                class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">{{ $t("Редактировать профиль") }}
+                class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">
+          {{ $t("Редактировать профиль") }}
         </button>
       </div>
 
@@ -12,27 +13,36 @@
 
     <div v-if="item = getCurrentUser.id" class="w-full mx-auto max-md:flex max-md:flex-col ">
       <profile-info-item :item="getCurrentUser.name" :label="$t('ФИО')"/>
-      <profile-info-item :item="getCurrentUser.bio || '-'" :label="$t('О себе')"/>
-      <profile-info-item :item="getCurrentUser.country" :label="$t('Страна')"/>
-      <profile-info-item :item="getCurrentUser.city || '-'" :label="$t('Город')"/>
-      <profile-info-item :item="getCurrentUser.phone || '-'" :label="$t('Телефон')"/>
+      <profile-info-item :item="(getCurrentUser.bio || '-')==='null'?'-':getCurrentUser.bio" :label="$t('О себе')"/>
+      <profile-info-item :item="(getCurrentUser.country || '-') ==='null'?'-':getCurrentUser.country"
+                         :label="$t('Страна')"/>
+      <profile-info-item :item="(getCurrentUser.city || '-') ==='null'?'-':getCurrentUser.city" :label="$t('Город')"/>
+      <profile-info-item :item="(getCurrentUser.phone || '-' )==='null'?'-':getCurrentUser.phone"
+                         :label="$t('Телефон')"/>
     </div>
     <div v-else>
       <profileInfoScelet></profileInfoScelet>
     </div>
-    <div class="" >
+    <div class="">
       <div class="flex gap-x-4 my-2">
         <h1 class="text-link font-bold text-2xl">{{ $t("Информация о юристе") }}</h1>
       </div>
 
       <div v-if="item = getCurrentUser.id" class="w-full mx-auto max-md:flex max-md:flex-col ">
-        <profile-info-item :item="getCurrentUser.languages || '-'" :label="$t('Знание языков')"/>
-        <profile-info-item :item="getCurrentUser.education_place || '-'" :label="$t('Образование')"/>
-        <profile-info-item :item="getCurrentUser.education_start || '-'" :label="$t('Начала обучения')"/>
-        <profile-info-item :item="getCurrentUser.education_end || '-'" :label="$t('Конец обучения')"/>
-        <profile-info-item :item="getCurrentUser.work_experience || '-'" :label="$t('Стаж работы')"/>
-        <profile-info-item :item="getCurrentUser.rating || '-'" :label="$t('Рейтинг')"/>
-        <profile-info-item v-if="getCurrentUser.lawyer_file" :item="getCurrentUser.lawyer_file" :isFile="true" :label="$t('Сертификат юриста')"/>
+        <profile-info-item :item="(getCurrentUser.languages || '-')==='null'?'-':getCurrentUser.languages "
+                           :label="$t('Знание языков')"/>
+        <profile-info-item :item="(getCurrentUser.education_place || '-')==='null'?'-':getCurrentUser.education_place"
+                           :label="$t('Образование')"/>
+        <profile-info-item :item="(getCurrentUser.education_start || '-')==='null'?'-':getCurrentUser.education_start"
+                           :label="$t('Начала обучения')"/>
+        <profile-info-item :item="(getCurrentUser.education_end || '-')==='null'?'-':getCurrentUser.education_end"
+                           :label="$t('Конец обучения')"/>
+        <profile-info-item :item="(getCurrentUser.work_experience || '-')==='null'?'-':getCurrentUser.work_experience"
+                           :label="$t('Стаж работы')"/>
+        <profile-info-item :item="(getCurrentUser.rating || '-')==='null'?'-':getCurrentUser.rating"
+                           :label="$t('Рейтинг')"/>
+        <profile-info-item v-if="getCurrentUser.lawyer_file" :item="getCurrentUser.lawyer_file" :isFile="true"
+                           :label="$t('Сертификат юриста')"/>
 
       </div>
       <div v-else>
@@ -40,11 +50,12 @@
       </div>
     </div>
     <v-modal v-if="showEdit" @showModal="showEdit = false">
-      <form @submit.prevent="editProfile" enctype="multipart/form-data" >
+      <form @submit.prevent="editProfile" enctype="multipart/form-data">
 
         <p class="mx-auto font-bold mt-10 flex justify-center
          text-xl   max-md:text-center ">
-         {{$t('Редактирование пользователя')
+          {{
+            $t('Редактирование пользователя')
           }}</p>
         <div class="px-2">
           <div class="">
@@ -106,13 +117,14 @@
                          type="text"/>
                 <v-input class="" min="0" v-model:model-value="edit.city" :label="$t('Город проживания')"
                          type="text"/>
-                   <label class="flex flex-col text-gray text-sm font-medium gap-y-2">
-                            {{ $t("Телефон") }}          <input
-                            v-mask="'+998 (##) ###-##-##'"
-                           v-model="edit.phone"
-                           type="tel" class="border focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2"
-                           /></label>
-             
+                <label class="flex flex-col text-gray text-sm font-medium gap-y-2">
+                  {{ $t("Телефон") }} <input
+                    v-mask="'+998 (##) ###-##-##'"
+                    v-model="edit.phone"
+                    type="tel"
+                    class="border focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2"
+                /></label>
+
                 <div class="text-gray text-sm font-medium">
                   <p>{{ $t("Основной язык") }}</p>
                   <select class="outline-none w-full p-2" name="" id="" v-model="edit.languages">
@@ -127,7 +139,7 @@
                   <p class="mb-2">{{ $t("Документ подтверждающий что вы юрист") }}</p>
                   <label for="lawyer_file" class="text-primary py-2 "> Выберите файл</label>
                   <input type="file" id="lawyer_file" @change="edit.new_lawyer_file = $event.target.files[0]"
-                   class="hidden">
+                         class="hidden">
                 </div>
 
               </div>
@@ -135,7 +147,9 @@
 
           </div>
           <div class="flex justify-center my-4">
-            <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">{{
+            <button type="submit"
+                    class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 cursor-pointer rounded-xl py-2 px-2">
+              {{
                 $t('Сохранить')
               }}
             </button>

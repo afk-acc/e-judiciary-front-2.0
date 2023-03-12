@@ -1,6 +1,7 @@
 <template>
   <div class="w-full fixed left-0 top-0 z-[9999] h-screen flex-col px-10 bg-white  flex justify-center items-center">
     <div class="lds-ring "><div></div><div></div><div></div><div></div></div>
+    <div class="mt-10 text-xl">{{$t("Загрузка")}}...</div>
   </div> 
 
 </template>

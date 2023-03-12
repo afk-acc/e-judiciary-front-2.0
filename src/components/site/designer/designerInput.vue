@@ -9,7 +9,7 @@
           :value="modelValue"
           :required="Number(item.required) === 1"
           rows="1"
-          class="border border-footer_bg rounded-md focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2 resize-none"
+          class="border overflow-hidden border-footer_bg rounded-md focus:border-borderFocus focus:shadow-inputFocus border-footer_bg rounded-md outline-none px-4 py-2 resize-none"
           @input="$emit('update:modelValue', $event.target.value)"
       />
       <input  v-else
