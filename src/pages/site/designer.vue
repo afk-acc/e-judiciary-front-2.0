@@ -1,5 +1,5 @@
 <template>
-  <form class="pt-10" @submit.prevent="add">
+  <form class="pt-10 flex flex-wrap gap-x-4" @submit.prevent="add">
     <div class="flex w-11/12 justify-between mt-14 mb-10 mx-5">
       <div class="flex items-center gap-x-1 text-base">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
