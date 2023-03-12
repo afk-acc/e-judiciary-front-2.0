@@ -1,10 +1,10 @@
 <template>
-  <div class="flex  max-lg:gap-x-0">
+  <div class="flex  max-lg:gap-x-0 ">
     <v-header-admin/>
-    <div class="pt-[50px] w-full ">
+    <div class=" w-full ">
       <div class="w-full ">
-        <div class="px-2 py-0 h-screen " :class="{ 'py-2': this.$route.name !== 'reports'  }">
-          <router-view />
+        <div class=" py-0 h-screen " :class="{ 'py-2': this.$route.name !== 'reports'  }">
+          <router-view class="py-[50px] px-2 max-h-[98vh] overflow-y-auto"/>
         </div>
       </div>
     </div>

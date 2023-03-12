@@ -1,8 +1,8 @@
 <template>
-  <div class="max-lg:mt-10 px-2 h-full">
+  <div class="max-lg:mt-10 px-2 h-full max-h-screen overflow-y-auto">
     <h1 class="font-bold text-xl my-4">{{ $t('Редактирование документов')}}</h1>
     <div class="flex flex-col gap-y-4">
-      <div class="flex gap-x-4">
+      <div class="flex  gap-x-4">
       
         <router-link :to="{name:'create_document_template'}" class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-2 rounded-md text-white">
           {{ $t('Добавить документ') }}
@@ -91,10 +91,11 @@ import {canAccess} from "../../../assets/functions.js";
 import VInput from "../../../components/UI/vInput.vue";
 import VModal from "../../../components/UI/vModal.vue";
 import DocTypeItem from "../../../components/profile/document_template/DocTypeItem.vue";
+import UsersScelet from "../sceleton/usersScelet.vue";
 
 export default {
   name: "documentTypeList",
-  components: {DocTypeItem, VInput, VModal},
+  components: {UsersScelet, DocTypeItem, VInput, VModal},
   data() {
     return {
       showEdit: false,

@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-between  items-center">
-    <div class="flex flex-col border-b w-10/12 pb-2 border-spacing-x-10	 border-filter_gray border-opacity-30">
+    <div class="flex flex-col border-b w-11/12 pb-2 border-spacing-x-10	 border-filter_gray border-opacity-30">
       <div class="font-medium cursor-pointer flex justify-between" @click="isActive = !isActive" >
         <div class="flex gap-x-2 items-center hover:text-link transition-all duration-300">
         <p class="">{{ item.sort_order }}</p>

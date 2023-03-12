@@ -17,7 +17,6 @@
       <span
           v-if="!(content.deleted) "
       >
-          <br v-if="Number(content.new_line) === 1"/>
         <span class="break-all" style="white-space: pre-line">
           {{ content.text }}&nbsp;
          </span>
@@ -32,6 +31,8 @@
             </span>
 
       </span>
+                <br v-if="Number(content.new_line) === 1"/>
+
     </span>
     <div class="flex w-full  justify-between mt-5">
       <div class="w-[150px]">Сана {{getDate(new Date())}}
