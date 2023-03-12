@@ -1,6 +1,6 @@
 <template>
-  <form class="pt-10 flex flex-wrap gap-x-4" @submit.prevent="add">
-    <div class="flex w-11/12 justify-between mt-14 mb-10 mx-5">
+  <form class="pt-10 flex flex-wrap gap-x-4 _container justify-between" @submit.prevent="add">
+    <div class="flex w-full justify-between mt-14 mb-10 ">
       <div class="flex items-center gap-x-1 text-base">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -39,7 +39,7 @@
     </div>
     <div
         class="px-2 max-h-[500px] overflow-y-auto gap-y-1 flex flex-col text-sm w-4/12 max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 "
-        @submit.prevent="add">
+       >
       <div v-for="(item,index) in get_fields.doc_content" :key="index" class="flex flex-col gap-y-1">
         <designer-input
             v-model:model-value="field.value"
@@ -53,8 +53,10 @@
       <document_preview :item="get_fields"/>
     </div>
     <div class="flex justify-end w-full gap-y-5 my-5">
-      <div class="w-9/12 flex justify-center">
+      <div class="w-full flex justify-end">
+        <div class="w-7/12 flex justify-center">
         <v-button-2 class="text-sm" type="button" @click="openModal = !openModal">{{ $t('Предпросмотр') }}</v-button-2>
+        </div>
       </div>
       <div>
         <v-modal v-if="openModal" @showModal="openModal = !openModal">
