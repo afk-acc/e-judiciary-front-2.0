@@ -624,7 +624,7 @@
         </div>
       </div>
     </div>
-    <div class="cursor-pointer  absolute z-30 m-4 left-16 max-lg:left-0 transition-all duration-300"
+    <div class="cursor-pointer  absolute z-40 m-4 left-16 max-lg:left-0 transition-all duration-300"
          :class="{'left-16' : !openMenu, 'left-[300px]' : openMenu}" @click="openMenu = !openMenu">
       <svg data-v-8c5b6cc0="" fill="#fff" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
            xmlns="http://www.w3.org/2000/svg">

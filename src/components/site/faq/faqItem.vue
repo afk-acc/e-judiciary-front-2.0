@@ -2,7 +2,7 @@
   <div>
     <div
       @click="setActive()"
-      class="border border-l_black_text relative max-w-[800px] my-4 py-4 px-7 cursor-pointer"
+      class=" shadow-md border border-[#ced4da] rounded relative max-w-[800px] my-4 py-4 px-7 cursor-pointer"
     >
       <div
         class="w-[10px] h-[10px] bg-l_black_text left-[-5px] top-1/2 absolute rounded-full -translate-y-1/2">

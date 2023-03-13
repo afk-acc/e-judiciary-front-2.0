@@ -15,7 +15,7 @@
           :class="{'max-md:max-h-0 max-md:overflow-hidden' : !open, 'max-md:max-h-screen ' : open}"
       >
         <router-link :to="{name:'constructor', params:{name:child.id}}" v-for="child in item.document_list?.slice(0,5)"
-                     class="flex pb-6 items-center gap-x-4 font-medium cursor-pointer border-white border-b ">
+                     class="flex pb-2 pl-8 items-center gap-x-4 font-light border-opacity-30 cursor-pointer border-white border-b">
           <svg width="5" height="5" viewBox="0 0 5 5" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="2.5" cy="2.5" r="2.5" fill="white"/>
           </svg>

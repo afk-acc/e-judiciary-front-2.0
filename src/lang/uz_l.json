@@ -1,5 +1,16 @@
 {
+  "Выберите список": "Ro'yxatni tanlang",
   "Полезные ссылки": " Foydali xavolalar",
+  "Выберите": "Tanlang",
+  "Шаблон списка возможных значений": "Mumkin bo'lgan qiymatlar ro'yxati shabloni",
+  "Выберите из списка": "Ro'yxatdan tanlang",
+  "Добавить список":"Ro'yxat qo'shish",
+  "Редактирование списков": "Ro'yxatlarni tahrirlash",
+  "Редактирование списка": "Ro'yxatni tahrirlash",
+  "Название списка": "Ro'yxat nomi",
+  "Список значений": "Qiymatlar ro'yxati",
+  "Значение": "Ma'nosi",
+
   "Описание о себе": "O'zingiz haqingizda tavsif",
   "Знание языков": "Asosiy til",
   "Фотография профиля": "Profil fotosurati",
@@ -325,5 +336,40 @@
   "Определяет суд, в который должна быть подана апелляция": "Murojaat berilishi lozim bo‘lgan sudni aniqlaydi",
   "Создание формы обращения в результате ответа на поставленные вопросы": "Qo‘yilgan  savollarga javob berish natijasida  murojaat shaklini yaratish",
   "Информация о порядке обращения в суд в Республике Узбекистан для инвесторов": "Investorlar uchun O‘zbekiston Respublikasida sudga murojaat qilish tartibida haqida ma'lumot",
-  "Получение юридической помощи онлайн от специалиста в режиме чата 24/7.": "24/7 Chat  rejimida mutaxassisdan onlayn huquqiy yordam olish."
+  "Получение юридической помощи онлайн от специалиста в режиме чата 24/7.": "24/7 Chat  rejimida mutaxassisdan onlayn huquqiy yordam olish.",
+  
+  "Вопрос": "Савол",
+  "Задайте вопрос юристу!": "Advokatga savol bering!",
+  "Часто задаваемые вопросы": "Tez-tez so'raladigan savollar",
+  "Настройки": "Sozlamalar",
+  "Cистема": "Tizim",
+  "Остальное": "Qolganlari",
+  "Заявки стать юристом": "Advokat bo'lish uchun arizalar",
+  "Шаблоны документов": "Hujjatlar shablonlari",
+  "Вернуться": "Qaytish",
+  "Добавить тип документа": "Hujjat turini qo'shing",
+  "Добавить документ": "Hujjat qo'shing",
+  "Порядок": "Buyurtma",
+  "Создать свой документ": "Hujjatingizni yarating",
+  "Название документа": "Hujjat nomi",
+  "Выберите тип": "Turini tanlang",
+  "Введите текст": "Matnni kiriting",
+  "Поля для ввода": "Kirish uchun maydonlar",
+  "Название поля": "Maydon nomi",
+  "Тип поля": "Maydon turi",
+  "Выберите тип поля": "Maydon turini tanlang",
+  "Обязательное поле": "Majburiy maydon",
+  "Да": "Ha",
+  "Нет": "Yo'q",
+  "Добавить секцию": "Bo'lim qo'shing",
+  "Добавить новый тип документа": "Yangi hujjat turini qo'shing",
+  "Удалить документ": "Hujjatni o'chirish",
+  "Вопросы ответы": "Savollar javoblari"
+
+
+
+  
+
+
+  
 }

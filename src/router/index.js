@@ -9,7 +9,6 @@ import signUpLawyer from "../pages/site/sign-upLawyer.vue";
 import profile from "../pages/profile/index.vue";
 import info from "../pages/profile/profileInfo.vue"
 import appeals from "../pages/profile/appeals.vue";
-import docuements from "../pages/profile/documents.vue";
 import documents from "../pages/profile/documents.vue";
 import lawyers from "../pages/site/lawyers.vue";
 import appeal from "../pages/profile/appeal.vue";
@@ -28,6 +27,7 @@ import createDocumentTemplate from "../pages/profile/document_template/createDoc
 import documentTypeList from "../pages/profile/documentTypeList.vue";
 import FAQ from "../pages/profile/FAQ.vue";
 import SiteRef from "../pages/profile/SiteRef.vue";
+import template_list from "../pages/profile/document_template/template_list.vue";
 
 const routes = [
 
@@ -154,6 +154,11 @@ const routes = [
                 path: '/create-document-template',
                 component: createDocumentTemplate,
                 name: 'create_document_template'
+            },
+            {
+                path: '/template-list/:page',
+                component: template_list,
+                name: 'template_list'
             },
             {
                 path: '/document-type',

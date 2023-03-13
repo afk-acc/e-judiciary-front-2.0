@@ -4,7 +4,7 @@
     <div class="w-6/12 mx-auto mt-20 max-lg:w-8/12 max-sm:w-full max-lg:my-20 font-semibold">
       <form class="w-7/12 mx-auto max-lg:w-full max-lg:px-4" @submit.prevent="auth">
         <h1 class="text-4xl mb-20">{{ $t(`Авторизация`) }}</h1>
-        <div class="border-[1px] h-12 flex rounded-xl border-l_gray_2  items-center px-4 ">
+        <div class="shadow-md border-[#ced4da] rounded border-[1px] h-12 flex border-l_gray_2  items-center px-4 ">
           <svg width="30" height="30" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M7.83838 8.41162H31.1561C32.5875 8.41162 33.748 9.5722 33.748 11.0035V27.8439C33.748 29.2752 32.5875 30.4342 31.1577 30.4342H7.83838C6.40863 30.4358 5.24805 29.2752 5.24805 27.8439V11.0035C5.24805 9.5722 6.40863 8.41162 7.83838 8.41162Z"
@@ -17,7 +17,7 @@
                  name="" :placeholder="$t('Email')">
 
         </div>
-        <div class="border-[1px] h-12 mt-10 rounded-xl border-l_gray_2 flex items-center px-4 ">
+        <div class="shadow-md border border-[#ced4da] rounded h-12 mt-10  border-l_gray_2 flex items-center px-4 ">
           <svg width="30" height="30" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M13.1631 16.533V11.783V11.783C13.1631 8.28546 15.9988 5.44971 19.4964 5.44971V5.44971C22.994 5.44971 25.8298 8.28546 25.8298 11.783V11.783V16.533"

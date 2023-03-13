@@ -106,7 +106,7 @@
 
             <p class="text-2xl font-medium mt-2">{{ $t('Описание о себе') }}</p>
             <v-input v-model:model-value="edit.bio"
-                     label="Описание" type="textarea"/>
+                     :label="$t('Описание')" type="textarea"/>
             <p class="text-xl font-medium mt-4 max-sm:text-center max-sm:mb-5 text-center">{{
                 $t('Фотография профиля')
               }}</p>

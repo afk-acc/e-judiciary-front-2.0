@@ -8,7 +8,9 @@ export default {
             document_template_list: [],
             document_template: {},
             input_type_list: [],
+            template_list: [],
         }
+
     },
     getters: {
         get_document_template_list(state) {
@@ -17,11 +19,17 @@ export default {
         get_document_template(state) {
             return state.document_template
         },
+        get_template_list(state) {
+            return state.template_list
+        },
         get_input_type_list(state) {
             return state.input_type_list
         }
     },
     mutations: {
+        update_template_list(state, data) {
+            state.template_list = data;
+        },
         update_document_template_list(state, data) {
             state.document_template_list = data
         },
@@ -33,6 +41,54 @@ export default {
         }
     },
     actions: {
+        load_template_list(context, params) {
+            axios.get(`document-template/get-doc-value-list?page=${params.page}&limit=${params.limit}&locale=${localStorage.getItem('locale')}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
+                context.commit('update_template_list', res.data)
+            })
+        },
+        delete_template_list(context, params) {
+            axios.delete(`document-template/delete-doc-value-list/${params.id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
+                toast.success(t('Список удален'), {autoClose:2000})
+                context.dispatch('load_template_list', params)
+            }).catch(er=>{
+                toast.error(t('Список не удален'), {autoClose:2000})
+
+            })
+        },
+        add_template_list(context, params) {
+            axios.post(`document-template/create-doc-value-list`, params, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
+                toast.success(t('Список добавлен'), {autoClose:2000})
+                context.dispatch('load_template_list', {page: params.page, limit: params.limit})
+            }).catch(er=>{
+                toast.error(t('Список не добавлен'), {autoClose:2000})
+
+            })
+        },
+        update_template_list(context, params) {
+            axios.post(`document-template/update-doc-value-list/${params.id}`, params, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(res => {
+                toast.success(t('Список обновлен'), {autoClose:2000})
+                context.dispatch('load_template_list', {page: params.page, limit: params.limit})
+            }).catch(er=>{
+                toast.error(t('Список не обновлен'), {autoClose:2000})
+
+            })
+        },
         load_document_template_list(context, params) {
             axios.get(`get-doc-template-list?page=${params.page}&limit=${params.limit}&appeal_type_id=${params.appeal_type_id || '-'}&locale=${localStorage.getItem('locale')}`,
                 {
@@ -113,7 +169,7 @@ export default {
             }).then(res => {
                 toast.success(t('Удалено'), {autoClose: 2000})
                 context.dispatch('load_doc_type_list')
-            }).catch(e=>{
+            }).catch(e => {
                 toast.error(t('К этому типу привязаны документы, вы не можете его удалить'), {autoClose: 2000})
 
             })

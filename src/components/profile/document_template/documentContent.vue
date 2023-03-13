@@ -9,7 +9,6 @@
       <div class="flex gap-x-2 my-2 w-full">
         <div class="cursor-pointer p-1"
              @click="item.align ='start'"
-
              :class="{'bg-[#dbeafe] text-[#2563eb] svgStroke':item.align === 'start'}"
         >
           

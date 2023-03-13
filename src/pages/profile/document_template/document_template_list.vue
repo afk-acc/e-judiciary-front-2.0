@@ -1,18 +1,25 @@
 <template>
   <div class="max-lg:mt-10 px-2 h-full max-h-screen overflow-y-auto">
-    <h1 class="font-bold text-xl my-4">{{ $t('Редактирование документов')}}</h1>
+    <h1 class="font-bold text-xl my-4">{{ $t('Редактирование документов') }}</h1>
     <div class="flex flex-col gap-y-4">
       <div class="flex  gap-x-4">
-      
-        <router-link :to="{name:'create_document_template'}" class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-2 rounded-md text-white">
+
+        <router-link :to="{name:'create_document_template'}"
+                     class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-2 rounded-md text-white">
           {{ $t('Добавить документ') }}
         </router-link>
 
-        <div class="flex justify-end" v-if="can(getCurrentUser, 'template.edit')">
-          <button @click="showAdd = true" class="text-white bg-[#28a745] hover:bg-[#419554] hover:border-[#419554] transition-all duration-300 py-2 px-4 text-sm rounded-md">
+        <div class="flex justify-end gap-x-4" v-if="can(getCurrentUser, 'template.edit')">
+          <button @click="showAdd = true"
+                  class="text-white bg-[#28a745] hover:bg-[#419554] hover:border-[#419554] transition-all duration-300 py-2 px-4 text-sm rounded-md">
             {{ $t('Добавить тип документа') }}
           </button>
+          <router-link :to="{'name':'template_list', params:{page:1}}"
+                       class="text-white bg-[#28a745] hover:bg-[#419554] hover:border-[#419554] transition-all duration-300 py-2 px-4 text-sm rounded-md">
+            {{ $t('Шаблон списка возможных значений') }}
+          </router-link>
         </div>
+
       </div>
       <div class="" v-if="get_doc_type_list?.data?.length > 0">
         <doc-type-item :item="item" v-for="(item,index) in get_doc_type_list.data"
@@ -21,22 +28,22 @@
         />
       </div>
       <div v-else>
-      <UsersScelet/>
-      <UsersScelet/>
-      <UsersScelet/>
-      <UsersScelet/>
-      <UsersScelet/>
-    </div>
-    <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_doc_type_list?.data?.length > 0">
-      <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
-           v-for="item in get_doc_type_list?.meta?.links"
-           :class="{'bg-primary text-white rounded-full ':item.active}">
-        {{ $t(item.label) }}
+        <UsersScelet/>
+        <UsersScelet/>
+        <UsersScelet/>
+        <UsersScelet/>
+        <UsersScelet/>
       </div>
-    </div>
-    <div class="text-center font-bold text-2xl" v-else-if="get_doc_type_list.data">
-      {{ $t('Ничего не найдено') }}
-    </div>
+      <div class="flex gap-x-[1px] flex-wrap my-10 " v-if="get_doc_type_list?.data?.length > 0">
+        <div class="px-4 py-2 cursor-pointer" @click="loadPage($t(item.label))"
+             v-for="item in get_doc_type_list?.meta?.links"
+             :class="{'bg-primary text-white rounded-full ':item.active}">
+          {{ $t(item.label) }}
+        </div>
+      </div>
+      <div class="text-center font-bold text-2xl" v-else-if="get_doc_type_list.data">
+        {{ $t('Ничего не найдено') }}
+      </div>
     </div>
     <v-modal @showModal="showEdit = false" v-if="showEdit" class="w-full">
       <form @submit.prevent="update_doc_type(change);showEdit=false" class="">
@@ -49,15 +56,16 @@
                  v-model="change.name_uz_c">
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-md "
                  v-model="change.name_ru">
-           <p>{{ $t('Порядок') + ':' }}</p>
+          <p>{{ $t('Порядок') + ':' }}</p>
           <input type="text" class="py-2 px-4 outline-none border-filter_gray border rounded-md "
-                 v-model="change.sort_order" >
+                 v-model="change.sort_order">
         </div>
         <div class="flex gap-x-4 justify-center">
           <button @click="showEdit = false;" class="text-white bg-danger rounded-md py-2 px-4">
             {{ $t('Отменить') }}
           </button>
-          <button type="submit" class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-md py-2 px-4">
+          <button type="submit"
+                  class="text-white bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-md py-2 px-4">
             {{ $t('Сохранить') }}
           </button>
         </div>
@@ -77,7 +85,9 @@
               $t('Отменить')
             }}
           </button>
-          <button type="submit" class="text-white text-sm  bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] rounded-md py-2 px-4">{{ $t('Добавить') }}
+          <button type="submit"
+                  class="text-white text-sm  bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] rounded-md py-2 px-4">
+            {{ $t('Добавить') }}
           </button>
         </div>
       </form>
@@ -108,9 +118,9 @@ export default {
         name_ru: "",
         sort_order: -1
       },
-      params:{
-        page:1,
-        limit:10,
+      params: {
+        page: 1,
+        limit: 10,
       }
     }
   },
@@ -148,7 +158,7 @@ export default {
         this.$router.go(-1);
       }
       this.params.page = this.$route.params.page
-      this.load_doc_type_list(this.params )
+      this.load_doc_type_list(this.params)
     }
   },
   watch: {

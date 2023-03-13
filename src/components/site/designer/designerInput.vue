@@ -28,8 +28,9 @@
           :required="Number(item.required) === 1"
           @input="$emit('update:modelValue', $event.target.value)"
           name="" id="">
-        <option value="-1" disabled>Выберите</option>
-        <option :value="option" v-for="(option, i) in JSON.parse(item.option)['uz_l']">{{ option }}</option>
+        <option value="-1" disabled>{{ $t("Выберите") }}</option>
+        <option :value="val.value" v-if="item.option_list" v-for="val in item.option_list">{{val.value}}</option>
+        <option v-else :value="option" v-for="(option, i) in JSON.parse(item.option)['uz_l']">{{ option }}</option>
 
       </select>
     </label>

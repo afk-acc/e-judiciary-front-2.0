@@ -1,7 +1,7 @@
 <template>
   <form class="pt-10 flex flex-wrap gap-x-4 _container justify-between" @submit.prevent="add">
     <div class="flex w-full justify-between mt-14 mb-10 ">
-      <div class="flex items-center gap-x-1 text-base">
+      <div class="flex items-center gap-x-1 text-base font-bold text-[#253858]">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
               d="M11.4583 4.16666H4.16659C3.61405 4.16666 3.08415 4.38615 2.69345 4.77685C2.30275 5.16755 2.08325 5.69746 2.08325 6.24999V20.8333C2.08325 21.3859 2.30275 21.9158 2.69345 22.3065C3.08415 22.6972 3.61405 22.9167 4.16659 22.9167H18.7499C19.3025 22.9167 19.8324 22.6972 20.2231 22.3065C20.6138 21.9158 20.8333 21.3859 20.8333 20.8333V13.5417"
@@ -15,7 +15,7 @@
       <div class="flex items-center gap-x-6">
         <div class="">
 
-          <v-button-2 class="text-sm" type="button" @click="openModal = !openModal">{{
+          <v-button-2 class="text-sm pt-3 pb-3" type="button" @click="openModal = !openModal">{{
               $t('Предпросмотр')
             }}
           </v-button-2>
@@ -58,7 +58,7 @@
 
     </div>
     <div
-        class="w-7/12 max-h-[500px] overflow-y-auto border border-filter_gray border-opacity-30 p-4 max-lg:my-16 max-lg:h-[600px] max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full">
+        class="w-7/12 max-h-[500px] overflow-y-auto border rounded border-filter_gray border-opacity-30 p-4 max-lg:my-16 max-lg:h-[600px] max-sm:max-h-[570px] max-lg:w-10/12 max-md:w-full  shadow-md">
       <document_preview :item="get_fields"/>
     </div>
     <div class="flex justify-end w-full gap-y-5 my-5">

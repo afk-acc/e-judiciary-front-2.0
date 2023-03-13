@@ -22,20 +22,39 @@
          </span>
           <span class="break-all" v-for="field in content.fields">
             <br v-if="Number(field.new_line) === 1"/>
+            <span v-if="isAdmin" class="text-filter_gray italic" :class="{
+      'text-justify':field.align === 'start',
+      'text-center ':field.align === 'center',
+      'text-end':field.align === 'end',
+      'font-bold':field.weight === 'bold',
+      'block w-full ':Number(field.new_line) === 1,
+
+      'italic':field.italic
+
+    }">{{ field.name_uz_l }}</span>
             <span v-if="field.input_type_name === 'date'">
-              {{getDate(field.value)}}&nbsp;
+              {{ getDate(field.value) }}&nbsp;
             </span>
-            <span v-else  style="white-space: pre-line">
+            <span v-else style="white-space: pre-line" :class="{
+      'text-justify':field.align === 'start',
+      'text-center ':field.align === 'center',
+      'text-end':field.align === 'end',
+      'font-bold':field.weight === 'bold',
+      'block w-full ':Number(field.new_line) === 1,
+
+      'italic':field.italic
+
+    }">
                {{ field.value }}&nbsp;
             </span>
             </span>
 
       </span>
-                <br v-if="Number(content.new_line) === 1"/>
+        <br v-if="Number(content.new_line) === 1"/>
 
     </span>
     <div class="flex w-full  justify-between mt-5">
-      <div class="w-[150px]">Сана {{getDate(new Date())}}
+      <div class="w-[150px]">Сана {{ getDate(new Date()) }}
       </div>
       <div class="w-[150px] ">Имзо
         <hr class="ml-12"/>
@@ -55,13 +74,14 @@ export default {
   },
   computed: {},
   props: {
-    item: Object
+    item: Object,
+    isAdmin: Boolean
   },
-  methods:{
-    getDate(date){
-      if(date){
-      let options = {  year: 'numeric', month: 'numeric', day: 'numeric' };
-      let d = new Date(date);
+  methods: {
+    getDate(date) {
+      if (date) {
+        let options = {year: 'numeric', month: 'numeric', day: 'numeric'};
+        let d = new Date(date);
         return d.toLocaleDateString("ru", options)
       }
       return '________'

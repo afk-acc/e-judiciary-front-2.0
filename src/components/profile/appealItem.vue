@@ -1,10 +1,10 @@
 <template>
   <div class="flex  text-sm justify-between items-center border-b border-border_c px-4 ">
-    <div class="flex items-center w-8/12 gap-x-8 max-md:gap-x-2">
+    <div class="flex items-center w-10/12 gap-x-8 max-md:gap-x-2">
       <div class="py-5">
         {{ num + '.' }}
       </div>
-      <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-2/12 text-start text-link cursor-pointer">
+      <router-link :to="{name:'appeal-info', params:{id:item.id}}" class="w-11/12 break-words text-start text-link cursor-pointer">
         {{ item.title }}
       </router-link>
     </div>
