@@ -133,7 +133,7 @@
                 <option :value="val.id" v-for="val in get_template_list.data">
                   {{ val.name }}
                 </option>
-                <option value="null">{{ $t('Использовать свой') }}</option>
+<!--                <option value="null">{{ $t('Использовать свой') }}</option>-->
               </select>
             </div>
           </div>
