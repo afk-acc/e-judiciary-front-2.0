@@ -115,17 +115,20 @@
                       required
                       @change="item.input_type_name = get_input_type_list.filter(el=>{return el.id === item.input_type_id})[0].name;list={uz_l:[]}"
                       v-model="item.input_type_id">
-                <option value="" disabled>Выберите тип поля</option>
+                <option value="" disabled>{{ $t("Выберите тип поля") }}</option>
                 <option :value="option.id" v-for="(option, index) in get_input_type_list">{{ option.name }}</option>
               </select>
             </div>
             <div class="" v-if="Number(item.input_type_id) === 2">
 
-              <div class="" ><p>{{ $t("Выберите список") }}</p></div>
+              <div class=""><p>{{ $t("Выберите список") }}</p></div>
               <select
                   v-model="item.template_list_id"
+                  @change="current = get_template_list?.data?.filter(e=>{
+                    return e.id === item.template_list_id
+                  })[0]"
                   class="w-full max-w-[200px] outline-none p-2 border focus:border-borderFocus focus:shadow-inputFocus border-filter_gray rounded-md"
-                  name="" id="" >
+                  name="" id="">
                 <option value="null" disabled>{{ $t('Выберите из списка') }}</option>
                 <option :value="val.id" v-for="val in get_template_list.data">
                   {{ val.name }}
@@ -181,6 +184,17 @@
             </div>
           </div>
         </div>
+        <div class="" v-else-if="Number(item.input_type_id) === 2">
+          <div class="font-medium">{{ $t("Список возможных значений:") }} {{current?.name}}</div>
+          <div class="pl-4">
+            <div class="border-t  first:border-t-0 last:border-b border-filter_gray py-1 mt-2" v-for="(val,index) in current?.values" :key="index">
+              {{val.value}}
+              <div class="pl-6 ">
+                <p class="border-t first:border-t-0 last:border-b border-filter_gray py-1 mt-1 last:border-b-0" v-for="(temp, ind) in val?.second_values">{{temp.value}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -201,6 +215,7 @@ export default {
       list: {
         uz_l: []
       },
+      current: [],
     }
 
   },
@@ -217,11 +232,20 @@ export default {
   mounted() {
     if (this.item.input_type_name === 'select') {
       this.list = JSON.parse(this.item.option)
+
+      this.current = this.get_template_list?.data?.filter(e=>{
+        return e.id === this.item.template_list_id
+      })[0]
     }
   },
   watch: {
     list(val) {
       this.item.option = val
+    },
+    get_template_list(val){
+      this.current = val?.data?.filter(e=>{
+        return e.id === this.item.template_list_id
+      })[0]
     }
   }
 }

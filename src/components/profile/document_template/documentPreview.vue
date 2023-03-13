@@ -17,11 +17,11 @@
       <span
           v-if="!(content.deleted) "
       >
-        <span class="break-all" style="white-space: pre-line">
+        <span class="break-all" style="white-space: pre-line" v-if="content.text">
           {{ content.text }}&nbsp;
          </span>
-          <span class="break-all" v-for="field in content.fields">
-            <br v-if="Number(field.new_line) === 1"/>
+         <span v-if="Number(content.new_line) === 1"><br></span>
+          <span class="break-all h-max" v-for="field in content.fields">
             <span v-if="isAdmin" class="text-filter_gray italic" :class="{
       'text-justify':field.align === 'start',
       'text-center ':field.align === 'center',
@@ -35,7 +35,9 @@
             <span v-if="field.input_type_name === 'date'">
               {{ getDate(field.value) }}&nbsp;
             </span>
-            <span v-else style="white-space: pre-line" :class="{
+            <span v-else-if="!isAdmin" style="white-space: pre-line"
+                  class="h-max"
+                  :class="{
       'text-justify':field.align === 'start',
       'text-center ':field.align === 'center',
       'text-end':field.align === 'end',
@@ -46,12 +48,11 @@
 
     }">
                {{ field.value }}&nbsp;
+
             </span>
             </span>
 
       </span>
-        <br v-if="Number(content.new_line) === 1"/>
-
     </span>
     <div class="flex w-full  justify-between mt-5">
       <div class="w-[150px]">Сана {{ getDate(new Date()) }}
