@@ -36,7 +36,9 @@ export default {
 * {
   scrollbar-width: thin;
 }
-
+.bg-danger path{
+  stroke: #fff;
+}
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 3px;
