@@ -24,7 +24,7 @@
         </span>
       </span>
         <span class="break-all" style="white-space: pre-line" v-if="content.text">
-          {{ content.text }}&nbsp;
+          {{ content.text.replaceAll("<br>", "\n") }}&nbsp;
          </span>
          <span v-if="Number(content.new_line) === 1"><br></span>
           <span class="break-all h-max" v-for="field in content.fields">

@@ -44,7 +44,7 @@
           <div class="my-5 ">
             <button
                 type="button"
-                @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id})"
+                @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id, text:''})"
                 class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-md p-2 text-white">
               {{ $t("Добавить секцию") }}
             </button>

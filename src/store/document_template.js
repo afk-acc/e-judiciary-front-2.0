@@ -56,10 +56,10 @@ export default {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
-                toast.success(t('Список удален'), {autoClose:2000})
+                toast.success(t('Список удален'), {autoClose: 2000})
                 context.dispatch('load_template_list', params)
-            }).catch(er=>{
-                toast.error(t('Список не удален'), {autoClose:2000})
+            }).catch(er => {
+                toast.error(t('Список не удален'), {autoClose: 2000})
 
             })
         },
@@ -69,10 +69,10 @@ export default {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
-                toast.success(t('Список добавлен'), {autoClose:2000})
+                toast.success(t('Список добавлен'), {autoClose: 2000})
                 context.dispatch('load_template_list', {page: params.page, limit: params.limit})
-            }).catch(er=>{
-                toast.error(t('Список не добавлен'), {autoClose:2000})
+            }).catch(er => {
+                toast.error(t('Список не добавлен'), {autoClose: 2000})
 
             })
         },
@@ -82,10 +82,10 @@ export default {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             }).then(res => {
-                toast.success(t('Список обновлен'), {autoClose:2000})
+                toast.success(t('Список обновлен'), {autoClose: 2000})
                 context.dispatch('load_template_list', {page: params.page, limit: params.limit})
-            }).catch(er=>{
-                toast.error(t('Список не обновлен'), {autoClose:2000})
+            }).catch(er => {
+                toast.error(t('Список не обновлен'), {autoClose: 2000})
 
             })
         },
@@ -121,6 +121,11 @@ export default {
             })
         },
         update_document_doc_template(context, params) {
+            for (let i = 0; i < params.doc_content.length; i++) {
+                if (params.doc_content[i].text)
+                    params.doc_content[i].text = params.doc_content[i].text.replaceAll('\n', '<br>')
+            }
+
             axios.post(`document-template/update-document-template-content`, {
                 ...params,
                 locale: localStorage.getItem('locale')
