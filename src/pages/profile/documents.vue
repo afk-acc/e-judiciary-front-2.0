@@ -1,5 +1,5 @@
 <template>
-  <div class="flex  flex-col max-lg:mt-20 ">
+  <div class="flex flex-col max-lg:mt-20 ">
     <span>{{ $t('Кол-во файлов') }}: {{get_user_docs?.meta?.total}}</span>
     <div class="flex flex-col  py-4 first:pt-0 " v-for="(item, index) in get_user_docs.data" :key="index">
       <div @click="get_file(file.file, file.name)" class=" cursor-pointer flex gap-x-2 items-center" v-for="(file, i) in item.files" :key="i">

@@ -78,7 +78,7 @@
                   @keyup.enter="load_all_doc_list(this.params); isActive = true"
                   type="text"
                   :class="{'search_active':search_active}"
-                  class=" outline-none text-sm  border-b border-white header__search"
+                  class=" outline-none text-sm border-b border-white header__search"
                   style="background: none;"
               >
               <div @click="search_active = !search_active" class="cursor-pointer  header__search-icon">
@@ -313,16 +313,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .search_active{
   right: 0px !important;
   width: 100% !important;
-
+  @media (max-width: 420px) {
+    width: 60% !important;
+  } 
 }
 .search_active + .header__search-icon{
   right: 100%;
   justify-content: start;
+  @media (max-width: 420px) {
+    right: 60% !important;
+  } 
 }
 .header__search {
   position: absolute;

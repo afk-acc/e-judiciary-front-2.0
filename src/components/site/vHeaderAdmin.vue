@@ -2,7 +2,7 @@
   <div class="flex  ">
     <div
         :class="{'bg-primary_gr': showBg(), 'w-[70px] max-lg:w-0' : !openMenu, 'w-[300px] ' : openMenu}"
-        class="transition-all h-full max-lg:fixed relative overflow-y-auto py-6 duration-300 top-0 left-0 border-b-[0.5px] border-white z-40"
+        class="transition-all h-full max-lg:fixed relative overflow-y-auto py-6 duration-300 top-0 left-0 border-b-[0.5px] border-white z-50"
     >
       <div class="flex flex-col h-full p-3">
         <div class="">
@@ -852,12 +852,17 @@ export default {
 .search_active {
   right: 0px !important;
   width: 100% !important;
-
+  @media (max-width: 420px) {
+    width: 60% !important;
+  } 
 }
 
 .search_active + .header__search-icon {
   right: 100%;
   justify-content: start;
+  @media (max-width: 420px) {
+    right: 60% !important;
+  } 
 }
 
 .header__search {

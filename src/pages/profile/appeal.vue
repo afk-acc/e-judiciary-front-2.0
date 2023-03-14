@@ -8,16 +8,16 @@
             {{ get_appeal.title }}
           </h3>
           <p class="pt-4">
-            <span class="font-bold">Тема обращения :</span> {{ get_appeal.appeal_type_text }}
+            <span class="font-bold">{{ $t('Тема обращения') }} :</span> {{ get_appeal.appeal_type_text }}
           </p>
           <div class="">
-            <p class="mt-10 font-bold pb-5">Описание</p>
+            <p class="mt-10 font-bold pb-5">{{ $t('Описание') }}</p>
             <p class="w-10/12">
               {{ get_appeal.description }}
             </p>
           </div>
           <div class="flex flex-col gap-y-2" v-if="get_appeal.files?.length > 0">
-            <p class="mt-10 font-bold pb-5">Прикрипленные файлы</p>
+            <p class="mt-10 font-bold pb-5">{{ $t(' ') }}</p>
             <span @click="getPdf(item.file, get_appeal.title)" v-for="item in get_appeal.files"
                   class="text-link cursor-pointer">{{ $t('Скачать прикрепленный файл') }}</span>
           </div>
@@ -26,7 +26,7 @@
       <div class="w-4/12 ml-4 max-lg:ml-0 h-full  mt-14 p-6  max-xl:w-full " v-if="get_appeal.id">
         <div class="appeal-response shadow-2xl USERS bg-white rounded-2xl py-2 px-4"
              v-if="show && lawyers.length !== 0">
-          <h3 class="text-[28px] text-center font-bold mb-4 mx-auto pb-5 USERS ">Отклики</h3>
+          <h3 class="text-[28px] text-center font-bold mb-4 mx-auto pb-5 USERS ">{{ $t('Отклики') }}</h3>
           <div class="max-h-[500px] overflow-y-scroll">
 
             <vAppealResponse @changeUser="changeUser" :item="item" v-for="item in lawyers"/>
@@ -41,12 +41,12 @@
                   <h3 class="text-2xl font-bold">{{ changed_user?.name }} </h3>
                   <div class="relative w-6 h-[1px] bg-filter_gray ml-6">
                   </div>
-                  <p class="relative  text-filter_gray pl-8 text-xl">Юрист</p>
+                  <p class="relative  text-filter_gray pl-8 text-xl">{{ $t('Юрист') }}</p>
                 </div>
 
               </div>
               <div class="w-full max-h-[300px] overflow-y-scroll">
-                <p class="font-bold text-xl">Общая информация</p>
+                <p class="font-bold text-xl">{{ $t('Общая информация') }}</p>
                 <div class="flex flex-col gap-y-2">
                   <div class="flex gap-y-2 flex-col">
                     <span class="text-primary font-medium text-xl">{{ $t('О себе') }}</span>
@@ -84,12 +84,12 @@
               </div>
 
               <div class="mt-8 flex justify-between w-full">
-                <v-button @click="change" class="m-0 px-0 py-0  cursor-pointer">Выбрать
+                <v-button @click="change" class="m-0 px-0 py-0  cursor-pointer">{{ $t('Выбрать  ') }}
                 </v-button>
                 <v-button @click="ignore"
                           mode="danger"
                           class="m-0 px-0 py-0   border-white_red border cursor-pointer">
-                  Игнорировать
+                  {{ $t('Игнорировать') }}
                 </v-button>
               </div>
             </div>
@@ -101,7 +101,7 @@
           <div class="appeal-response ADVOCATE  ">
             <div class="bg-footer_bg shadow-2xl text-black rounded-2xl py-2"
                  v-if="get_appeal.applicant_id === getCurrentUser.id">
-              <h3 class="text-[28px] text-center font-bold mx-auto pb-5 ADVOCATE ">Выбраный юрист</h3>
+              <h3 class="text-[28px] text-center font-bold mx-auto pb-5 ADVOCATE ">{{ $t('Выбраный юрист') }}</h3>
               <div class="flex justify-center items-center ">
                 <img :src="getImage(get_appeal.lawyer_info?.image)" alt=""
                      class="w-[60px] rounded-full object-cover h-[60px]"/>
@@ -138,7 +138,7 @@
               </div>
             </div>
             <div class="bg-footer_bg shadow-2xl bg-opacity-50 rounded-2xl py-2" v-else>
-              <h3 class="text-[28px] text-center font-bold mx-auto pb-5 ADVOCATE ">Пользователь</h3>
+              <h3 class="text-[28px] text-center font-bold mx-auto pb-5 ADVOCATE ">{{ $t('Пользователь') }}</h3>
               <div class="flex justify-center items-center ">
                 <img :src="getImage(get_appeal.applicant_info.image)" alt=""
                      class="rounded-full object-cover w-[60px] h-[60px]"/>
@@ -150,15 +150,15 @@
             </div>
             <div class="" v-if="Number(get_appeal.status_id) !== 4 && getCurrentUser.role_name === 'lawyer'">
               <label for="file2" class="block cursor-pointer bg-white mt-10 rounded-2xl text-l_black">
-                <h3 class="text-2xl py-2 text-center font-bold mx-auto ">Загрузить ответ</h3>
+                <h3 class="text-2xl py-2 text-center font-bold mx-auto ">{{ $t('Загрузить ответ') }}</h3>
                 <input type="file" id="file2" @change="file=$event.target.files[0]" class="hidden">
               </label>
               <div class="flex items-center justify-center my-4" v-if="file" @click="send">
-                <button class="bg-primary_gr py-2 px-4 rounded-xl text-white">Отправить</button>
+                <button class="bg-primary_gr py-2 px-4 rounded-xl text-white">{{ $t('Отправить') }}</button>
               </div>
             </div>
             <div class="" v-if="Number(get_appeal.status_id) === 4">
-              <p class="mt-10 font-bold pb-5">Прикрипленные файлы</p>
+              <p class="mt-10 font-bold pb-5">{{ $t('Прикрипленные файлы') }}</p>
               <div class="flex flex-col gap-y-2">
               <span @click="getPdf(item.file, get_appeal.title +' answer')" v-for="item in get_appeal.lawyer_files"
                     class="text-link cursor-pointer">{{ item.name }}</span>
@@ -166,19 +166,19 @@
               <div class="my-4 w-full flex justify-center"
                    v-if="get_appeal.applicant_id === getCurrentUser.id && get_appeal.score === null">
 
-                <button class="bg-primary_gr py-2 px-4 text-white rounded-xl" @click="showRating = true">Оценить Юриста
+                <button class="bg-primary_gr py-2 px-4 text-white rounded-xl" @click="showRating = true">{{ $t('Оценить Юриста') }}
                 </button>
                 <v-modal v-if="showRating" @showModal="showRating =!showRating">
                   <div class="text-center flex justify-center flex-wrap gap-y-2">
-                    <h3 class="text-3xl font-bold w-full">Оцените Юриста</h3>
+                    <h3 class="text-3xl font-bold w-full">{{ $t('Оцените Юриста') }}</h3>
                     <p class="relative text-base text-filter_gray pl-8"></p>
                     <star-rating :increment="0.5" active-color="#1B3D7E" v-model:rating="rating"/>
                     <div class="w-full mt-10 flex justify-center max-sm:flex-wrap">
                       <v-button @click="showRating=!showRating"
                                 class="w-[306px] h-[60px] bg-opacity-0 border border-filter_gray text-filter_gray">
-                        Отменить
+                        {{ $t('Отменить') }}
                       </v-button>
-                      <v-button @click="sendRating" class="w-[306px] h-[60px] ml-4 max-sm:ml-0 max-sm:mt-4">Сохранить
+                      <v-button @click="sendRating" class="w-[306px] h-[60px] ml-4 max-sm:ml-0 max-sm:mt-4">{{ $t('Сохранить') }}
                       </v-button>
                     </div>
                   </div>
@@ -186,7 +186,7 @@
 
               </div>
               <div class="font-bold text-2xl" v-else>
-                <div> Результат работы</div>
+                <div>{{ $t('Результат работы') }}</div>
 
                 <star-rating :increment="0.5" active-color="#1B3D7E" read-only="true"
                              v-model:rating="get_appeal.score"/>
@@ -219,10 +219,10 @@
                   @click="send_response({appeal_id:get_appeal.id})"
                   class="w-11/12 cursor-pointer"
                   v-if="get_appeal.can_send">
-                Оставить отклик
+                {{ $t('Оставить отклик') }}
               </v-button>
               <v-button class="w-11/12 cursor-pointer" v-else>
-                Вы уже откликнулись
+                {{ $t('Вы уже откликнулись') }}
               </v-button>
 
             </div>

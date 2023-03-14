@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white flex relative h-screen text-sm">
-    <div class="hidden max-lg:block max-lg:absolute top-8 left-2 max-md:top-4" @click="open=!open">
+    <div class="hidden max-lg:block max-lg:absolute top-20 left-4" @click="open=!open">
       <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer w-8 h-8" fill="none" viewBox="0 0 24 24"
            stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>

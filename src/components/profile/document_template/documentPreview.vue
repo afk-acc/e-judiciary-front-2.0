@@ -1,6 +1,5 @@
 <template>
-  <div class="max-w-[700px] max-lg:w-[720p] my_class"
-  >
+  <div class="max-w-[700px] max-lg:w-[720p] my_class">
     <span v-for="(content, index) in item.doc_content"
           class=""
           :class="{
@@ -54,14 +53,13 @@
 
       </span>
     </span>
-    <div class="flex w-full  justify-between mt-5">
+    <div class="flex w-full justify-between mt-5">
       <div class="w-[150px]">Сана {{ getDate(new Date()) }}
       </div>
       <div class="w-[150px] ">Имзо
         <hr class="ml-12"/>
       </div>
     </div>
-
   </div>
 </template>
 

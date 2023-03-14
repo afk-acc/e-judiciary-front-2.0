@@ -1,5 +1,5 @@
 <template>
-  <div class=" flex flex-col gap-y-4 border border-filter_gray border-opacity-30 p-4 m-2 mb-2"
+  <div class="flex flex-col gap-y-4 border border-filter_gray border-opacity-30 p-4 m-2 mb-2"
        v-if="!(item.deleted) "
   >
     <div class="my-2 w-full max-md:w-8/12 max-sm:w-full">

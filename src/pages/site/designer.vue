@@ -1,7 +1,7 @@
 <template>
   <form class="pt-10 flex flex-wrap gap-x-4 _container justify-between" @submit.prevent="add">
-    <div class="flex w-full justify-between mt-14 mb-10 ">
-      <div class="flex items-center gap-x-1 text-base font-bold text-[#253858]">
+    <div class="flex w-full justify-between mt-14 mb-10 max-lg:flex-col max-lg:items-center max-lg:p-4 max-lg:gap-y-4  ">
+      <div class="flex items-center gap-x-1 text-base max-md:text-sm font-bold text-[#253858]">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
               d="M11.4583 4.16666H4.16659C3.61405 4.16666 3.08415 4.38615 2.69345 4.77685C2.30275 5.16755 2.08325 5.69746 2.08325 6.24999V20.8333C2.08325 21.3859 2.30275 21.9158 2.69345 22.3065C3.08415 22.6972 3.61405 22.9167 4.16659 22.9167H18.7499C19.3025 22.9167 19.8324 22.6972 20.2231 22.3065C20.6138 21.9158 20.8333 21.3859 20.8333 20.8333V13.5417"
@@ -42,7 +42,7 @@
                     transform="translate(-3.247 -16.268)" fill="#fff"></path>
             </g>
           </svg>
-          <button class="text-link cursor-pointer" type="submit">Скачать</button>
+          <button class="text-link cursor-pointer" type="submit">{{ $t('Скачать') }}</button>
         </div>
       </div>
     </div>

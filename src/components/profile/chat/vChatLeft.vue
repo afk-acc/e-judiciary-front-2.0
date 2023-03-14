@@ -1,5 +1,5 @@
 <template>
-  <div class=" hidden max-lg:block absolute z-20 left-[50px] max-sm:left-[20px] max-lg:top-10 max-md:top-10 cursor-pointer "
+  <div class=" hidden max-lg:block absolute z-10 left-[50px] max-sm:left-[20px] max-lg:top-10 max-md:top-14 cursor-pointer "
        @click="modalLeft = !modalLeft"
   >
     <i>
@@ -26,8 +26,8 @@
     </i>
   </div>
   <div
-      class="border-r-[1px]  h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-full relative max-lg:h-full bg-white max-lg:absolute transition-all duration-300 z-30"
-      :class="{'max-lg:-left-[600px]':!modalLeft, 'max-lg:left-0  h-full' : modalLeft}"
+      class="border-r-[1px] h-full border-[#DBDDE2] w-[33%] max-lg:w-5/12 max-sm:w-full relative max-lg:h-full bg-white max-lg:absolute transition-all duration-300 z-20"
+      :class="{'max-lg:-left-[600px]':!modalLeft, 'max-lg:left-0 h-full' : modalLeft}"
   >
     <div class="chat-left_title flex justify-center items-center border-b-[1px] py-5 border-[#DBDDE2]">
       <svg

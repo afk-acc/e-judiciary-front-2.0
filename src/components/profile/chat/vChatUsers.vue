@@ -8,7 +8,7 @@
       <p class="text-sm" v-html="item?.message?.data?.slice(0, 120)"> </p>
     </div>
     <div
-        class="chat-user_time flex items-center absolute max-lg:static max-lg:items-start max-md:items-center  right-4  text-filter_gray">
+        class="chat-user_time flex items-center absolute max-lg:static max-lg:items-start max-md:items-center  right-4 text-filter_gray">
       <div class="flex relative justify-end" v-if="item.message.is_read === 1 ">
         <div class="chat-path relative">
           <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">

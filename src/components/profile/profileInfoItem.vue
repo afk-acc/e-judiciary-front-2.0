@@ -1,5 +1,5 @@
 <template>
-  <div class="flex max-sm:flex-col max-sm:items-center w-fullfont-bold  table_item">
+  <div class="flex max-sm:flex-col max-sm:items-center w-fullfont-bold table_item">
     <div class="w-3/12 border-r max-sm:border-r-0 border-[#E7E7E7] p-3 max-sm:w-full max-sm:text-center ">
       {{ label }}
     </div>

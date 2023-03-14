@@ -103,8 +103,6 @@
       </div>
 
       <div class="mt-10 mb-10">
-        <div class="flex">
-        </div>
         <div class="">
           <div class="flex items-center gap-x-4  max-md:flex-col max-md:gap-y-4 max-md:items-center">
             <div class="">
@@ -190,7 +188,7 @@
             <div class="border-t  first:border-t-0 last:border-b border-filter_gray py-1 mt-2" v-for="(val,index) in current?.values" :key="index">
               {{val.value}}
               <div class="pl-6 ">
-                <p class="border-t first:border-t-0 last:border-b border-filter_gray py-1 mt-1 last:border-b-0" v-for="(temp, ind) in val?.second_values">{{temp.value}}</p>
+                <p class="border-t first:border-t-0 last:border-b border-filter_gray py-1 mt-1" v-for="(temp, ind) in val?.second_values">{{temp.value}}</p>
               </div>
             </div>
           </div>

@@ -2,14 +2,14 @@
   <div class="max-lg:mt-10 px-2 h-full max-h-screen overflow-y-auto">
     <h1 class="font-bold text-xl my-4">{{ $t('Редактирование документов') }}</h1>
     <div class="flex flex-col gap-y-4">
-      <div class="flex  gap-x-4">
+      <div class="flex max-md:flex-wrap max-md:justify-center gap-y-4 gap-x-4">
 
         <router-link :to="{name:'create_document_template'}"
                      class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-2 rounded-md text-white">
           {{ $t('Добавить документ') }}
         </router-link>
 
-        <div class="flex justify-end gap-x-4" v-if="can(getCurrentUser, 'template.edit')">
+        <div class="flex max-md:flex-wrap max-md:justify-center gap-y-4 justify-end gap-x-4" v-if="can(getCurrentUser, 'template.edit')">
           <button @click="showAdd = true"
                   class="text-white bg-[#28a745] hover:bg-[#419554] hover:border-[#419554] transition-all duration-300 py-2 px-4 text-sm rounded-md">
             {{ $t('Добавить тип документа') }}

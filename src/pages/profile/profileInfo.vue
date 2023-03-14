@@ -62,7 +62,7 @@
 
             <p class="text-2xl font-medium mt-2">{{ $t('Описание о себе') }}</p>
             <v-input v-model:model-value="edit.bio"
-                     label="Описание" type="textarea"/>
+                     :label="this.$t('Описание')" type="textarea"/>
             <p class="text-xl font-medium mt-4 max-sm:text-center max-sm:mb-5 text-center">{{
                 $t('Фотография профиля')
               }}</p>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="text-gray text-sm font-medium">
                   <p class="mb-2">{{ $t("Документ подтверждающий что вы юрист") }}</p>
-                  <label for="lawyer_file" class="text-primary py-2 "> Выберите файл</label>
+                  <label for="lawyer_file" class="text-primary py-2 ">{{ $t('Выберите файл') }}</label>
                   <input type="file" id="lawyer_file" @change="edit.new_lawyer_file = $event.target.files[0]"
                          class="hidden">
                 </div>

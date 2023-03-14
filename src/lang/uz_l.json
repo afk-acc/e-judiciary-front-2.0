@@ -364,12 +364,36 @@
   "Добавить секцию": "Bo'lim qo'shing",
   "Добавить новый тип документа": "Yangi hujjat turini qo'shing",
   "Удалить документ": "Hujjatni o'chirish",
-  "Вопросы ответы": "Savollar javoblari"
+  "Вопросы ответы": "Savollar javoblari",
+  "Документ подтверждающий что вы юрист": "Advokat ekanligingizni tasdiqlovchi hujjat",
+  "Выберите файл": "Faylni tanlang",
+  "Дата обучения": "O'qish sanasi",
+  "Вы уже откликнулись": "Siz allaqachon javob berdingiz",
+  "Оставить отклик": "Javob qoldiring",
+  "Результат работы": "Ish natijasi",
+  "Оцените Юриста": "Advokatni Baholang",
+  "Оценить Юриста": "Advokatni Baholang",
+  "Загрузить ответ": "Javobni yuklang",
+  "Пользователь": "Foydalanuvchi",
+  "Окончил ВУЗ": "Oliy o'quv yurtini tamomlagan",
+  "Кол-во выполненных обращений": "Bajarilgan qo'ng'iroqlar soni",
+  "Выбраный юрист": "Tanlangan advokat",
+  "Игнорировать": "E'tibor bermang",
+  "Скачать прикрепленный файл": "Biriktirilgan faylni yuklab oling",
+  "Тема обращения": "Murojaat mavzusi",
+  "Предпросмотр": "Oldindan ko'rish"
+
+
+
+
+
+
+
+
 
 
 
   
-
 
   
 }
