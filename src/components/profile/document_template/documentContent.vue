@@ -3,7 +3,8 @@
        v-if="!(item.deleted) "
   >
     <div class="my-2 w-full max-md:w-8/12 max-sm:w-full">
-      <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text" :placeholder="$t('Введите текст')" ></v-textarea>
+      <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text"
+                  :placeholder="$t('Введите текст')"></v-textarea>
     </div>
     <div class="">
       <div class="flex gap-x-2 my-2 w-full">
@@ -11,20 +12,31 @@
              @click="item.align ='start'"
              :class="{'bg-[#dbeafe] text-[#2563eb] svgStroke':item.align === 'start'}"
         >
-          
-          <svg width="20" height="20" viewBox="0 0 18 18" :fill="item.align === 'start'?'#fff':'#000'"><line stroke="#000" x1="3" x2="15" y1="9" y2="9"></line> <line stroke="#000" x1="3" x2="13" y1="14" y2="14"></line> <line stroke="#000" x1="3" x2="9" y1="4" y2="4"></line> </svg>
+          <svg width="20" height="20" viewBox="0 0 18 18" :fill="item.align === 'start'?'#fff':'#000'">
+            <line stroke="#000" x1="3" x2="15" y1="9" y2="9"></line>
+            <line stroke="#000" x1="3" x2="13" y1="14" y2="14"></line>
+            <line stroke="#000" x1="3" x2="9" y1="4" y2="4"></line>
+          </svg>
         </div>
         <div class="cursor-pointer p-1 flex justify-center"
              @click="item.align ='center'"
              :class="{'bg-[#dbeafe] text-[#2563eb] svgStroke':item.align === 'center'}"
         >
-        <svg width="20" height="20" viewBox="0 0 18 18"> <line stroke="#000" x1="15" x2="3" y1="9" y2="9"></line> <line stroke="#000" x1="14" x2="4" y1="14" y2="14"></line> <line stroke="#000" x1="12" x2="6" y1="4" y2="4"></line> </svg>
+          <svg width="20" height="20" viewBox="0 0 18 18">
+            <line stroke="#000" x1="15" x2="3" y1="9" y2="9"></line>
+            <line stroke="#000" x1="14" x2="4" y1="14" y2="14"></line>
+            <line stroke="#000" x1="12" x2="6" y1="4" y2="4"></line>
+          </svg>
         </div>
         <div class="cursor-pointer p-1 "
              @click="item.align ='end'"
              :class="{'bg-[#dbeafe] text-[#2563eb] svgStroke':item.align === 'end'}"
         >
-        <svg width="20" height="20" viewBox="0 0 18 18"> <line stroke="#000" x1="15" x2="3" y1="9" y2="9"></line> <line stroke="#000" x1="15" x2="5" y1="14" y2="14"></line> <line stroke="#000" x1="15" x2="9" y1="4" y2="4"></line> </svg>
+          <svg width="20" height="20" viewBox="0 0 18 18">
+            <line stroke="#000" x1="15" x2="3" y1="9" y2="9"></line>
+            <line stroke="#000" x1="15" x2="5" y1="14" y2="14"></line>
+            <line stroke="#000" x1="15" x2="9" y1="4" y2="4"></line>
+          </svg>
         </div>
         <div class="cursor-pointer p-1"
              @click="item.weight = item.weight === 'bold'?'regular':'bold'"
@@ -42,7 +54,11 @@
              @click="item.italic = !item.italic"
              :class="{'bg-[#dbeafe] text-[#2563eb] svgStroke' : item.italic}"
         >
-          <svg width="20" height="20" fill="#000" viewBox="0 0 18 18"><line stroke="#000" x1="7" x2="13" y1="4" y2="4"></line> <line stroke="#000" x1="5" x2="11" y1="14" y2="14"></line> <line stroke="#000" x1="8" x2="10" y1="14" y2="4"></line></svg>
+          <svg width="20" height="20" fill="#000" viewBox="0 0 18 18">
+            <line stroke="#000" x1="7" x2="13" y1="4" y2="4"></line>
+            <line stroke="#000" x1="5" x2="11" y1="14" y2="14"></line>
+            <line stroke="#000" x1="8" x2="10" y1="14" y2="4"></line>
+          </svg>
         </div>
         <div class="cursor-pointer p-1"
              @click="item.new_line = Number(item.new_line) === 1?0:1"
@@ -59,33 +75,57 @@
                   height="32"/>
           </svg>
         </div>
+        <div class="cursor-pointer p-1"
+             @click="item.is_date = Number(item.is_date) === 1?0:1"
+             :class="{'bg-[#dbeafe] text-[#2563eb] svgStroke ':Number(item.is_date) === 1}"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
+            <path
+                :fill="Number(item.is_date) === 1 ?'#2563eb':'#000'"
+                d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+          </svg>
+        </div>
       </div>
       <div class="flex flex-col relative gap-y-2 my-10 max-md:w-full " v-if="item.fields.length > 0">
         <div class="font-bold mt-2 " @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
-     
+
         <div class="flex flex-col gap-y-2  max-sm:pl-0 ">
           <document-field @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
-             v-for="(field, index) in item.fields" :key="index" :index="index"/>
+                          v-for="(field, index) in item.fields" :key="index" :index="index"/>
         </div>
       </div>
       <div class="flex gap-x-4 mt-10">
         <button
-        type="button"
-         @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1})"
-                class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-1 rounded-md text-white">
+            type="button"
+            @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1})"
+            class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-1 rounded-md text-white">
           <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z" stroke="#fff" stroke-width="1" stroke-linecap="round"/>
+            <path
+                d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z"
+                stroke="#fff" stroke-width="1" stroke-linecap="round"/>
           </svg>
         </button>
         <button
-          type="button"
-          @click="$emit('removeSection', index)"
-          class="bg-danger p-1 text-white rounded-md ">
-          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-f2b47a05=""><path d="M10 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M14 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M4 7H20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path><path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path></svg>
+            type="button"
+            @click="$emit('removeSection', index)"
+            class="bg-danger p-1 text-white rounded-md ">
+          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+               data-v-f2b47a05="">
+            <path d="M10 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                  data-v-f2b47a05=""></path>
+            <path d="M14 12V17" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                  data-v-f2b47a05=""></path>
+            <path d="M4 7H20" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                  data-v-f2b47a05=""></path>
+            <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path>
+            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke-width="1.2"
+                  stroke-linecap="round" stroke-linejoin="round" data-v-f2b47a05=""></path>
+          </svg>
         </button>
       </div>
     </div>
-      
+
   </div>
 </template>
 

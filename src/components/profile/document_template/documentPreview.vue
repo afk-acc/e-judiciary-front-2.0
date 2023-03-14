@@ -16,6 +16,13 @@
       <span
           v-if="!(content.deleted) "
       >
+        <span class="flex w-full justify-between mt-5" v-if="Number(content.is_date) === 1">
+      <span class="w-[150px]">Сана {{ getDate(new Date()) }}
+      </span>
+      <span class="w-[150px] ">Имзо
+        <hr class="ml-12"/>
+        </span>
+      </span>
         <span class="break-all" style="white-space: pre-line" v-if="content.text">
           {{ content.text }}&nbsp;
          </span>
@@ -53,13 +60,7 @@
 
       </span>
     </span>
-    <div class="flex w-full justify-between mt-5">
-      <div class="w-[150px]">Сана {{ getDate(new Date()) }}
-      </div>
-      <div class="w-[150px] ">Имзо
-        <hr class="ml-12"/>
-      </div>
-    </div>
+
   </div>
 </template>
 
