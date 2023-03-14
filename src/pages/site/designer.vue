@@ -14,8 +14,7 @@
       </div>
       <div class="flex items-center gap-x-6">
         <div class="">
-
-          <v-button-2 class="text-sm pt-3 pb-3" type="button" @click="openModal = !openModal">{{
+          <v-button-2 class="text-sm" type="button" @click="openModal = !openModal">{{
               $t('Предпросмотр')
             }}
           </v-button-2>
