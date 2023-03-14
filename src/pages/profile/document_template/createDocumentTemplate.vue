@@ -59,7 +59,7 @@
         </div>
       </div>
       <div class="w-[50%] max-lg:w-full max-lg:h-[500px] overflow-y-scroll p-4 border border-opacity-60 border-filter_gray">
-        <document-preview :item="get_document_template"/>
+        <document-preview :is-admin="true" :item="get_document_template"/>
         <div class="flex justify-center gap-x-4 mt-10" v-if="can(getCurrentUser, 'template.create')">
           <button
               type="submit"
@@ -94,7 +94,7 @@ export default {
 
   },
   methods: {
-    ...mapActions(['load_input_type_list', 'update_document_doc_template', 'create_document_template', 'load_doc_type_list', 'load_input_type_list']),
+    ...mapActions(['load_input_type_list', 'update_document_doc_template', 'load_template_list','create_document_template', 'load_doc_type_list', 'load_input_type_list']),
     can(user, item) {
       if (user.permissions) {
         return canAccess(user, item);
@@ -112,6 +112,7 @@ export default {
       }
       this.load_input_type_list()
       this.load_doc_type_list({page:1, limit:1000})
+      this.load_template_list({page: 1, limit: 10000})
       // this.load_document_template_list(this.params)
     }
   },
@@ -123,6 +124,7 @@ export default {
         }
         this.load_input_type_list()
         this.load_doc_type_list({page:1, limit:1000})
+        this.load_template_list({page: 1, limit: 10000})
       }
       // this.load_document_template_list(this.params)
     },
