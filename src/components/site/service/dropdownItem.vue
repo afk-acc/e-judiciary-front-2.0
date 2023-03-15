@@ -11,7 +11,7 @@
     </div>
     <div class=" px-2 transition-all duration-700 overflow-y-auto ease-linear " :class="{'max-h-screen ':isActive, 'max-h-0':!isActive}">
       <div class="text-sm py-2 pr-2 border-b border-border_c" :class="{'active-left':activeItem === index}" v-for="(doc, index) in item.document_list" :key="index" @click="activeItem = index">
-        <router-link  :to="{name:'constructor', params:{name:doc.id}}" class="block">
+        <router-link  :to="{name:'constructor', params:{name:doc.id}}" class="block " style="word-break: normal">
           {{ doc.name }}
         </router-link>
       </div>
