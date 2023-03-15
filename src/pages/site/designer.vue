@@ -19,7 +19,7 @@
             }}
           </v-button-2>
         </div>
-        <div class="flex justify-center flex-col items-center">
+        <div class="flex justify-center flex-col items-center w-[100px]">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
             <g id="doc-icon" transform="translate(-10.023 .098)">
               <path id="Path_9" data-name="Path 9"
