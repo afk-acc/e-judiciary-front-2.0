@@ -1,6 +1,6 @@
 <template>
   <form class="pt-10 flex flex-wrap gap-x-4 _container justify-between" @submit.prevent="add">
-    <div class="flex w-[9/12] justify-between mt-14 mb-10 max-lg:flex-col max-lg:items-center max-lg:p-4 max-lg:gap-y-4  ">
+    <div class="flex w-full justify-between mt-14 mb-10 max-lg:flex-col max-lg:items-center max-lg:p-4 max-lg:gap-y-4  ">
       <div class="flex  items-center gap-x-1 text-base max-md:text-sm font-bold text-[#253858]">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
