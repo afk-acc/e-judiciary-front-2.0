@@ -7,7 +7,7 @@
       'text-center':content.align === 'center',
       'text-end':content.align === 'end',
       'font-bold':content.weight === 'bold',
-      'block w-full ':Number(content.new_line) === 1,
+      'block w-full ':(Number(content.new_line) === 1 && content.align !== 'start'),
 
       'italic':content.italic
 
@@ -33,12 +33,22 @@
       'text-center ':field.align === 'center',
       'text-end':field.align === 'end',
       'font-bold':field.weight === 'bold',
-      'block w-full ':Number(field.new_line) === 1,
+      'block w-full ':(Number(field.new_line) === 1 && field.align !== 'start'),
 
       'italic':field.italic
 
     }">{{ field.name_uz_l }}</span>
-            <span v-if="field.input_type_name === 'date'">
+            <span v-if="field.input_type_name === 'date'"
+                  :class="{
+      'text-justify':field.align === 'start',
+      'text-center ':field.align === 'center',
+      'text-end':field.align === 'end',
+      'font-bold':field.weight === 'bold',
+      'block w-full ':(Number(field.new_line) === 1 && field.align !== 'start'),
+
+      'italic':field.italic
+
+    }">
               {{ getDate(field.value) }}&nbsp;
             </span>
             <span v-else-if="!isAdmin" style="white-space: pre-line"
@@ -48,7 +58,7 @@
       'text-center ':field.align === 'center',
       'text-end':field.align === 'end',
       'font-bold':field.weight === 'bold',
-      'block w-full ':Number(field.new_line) === 1,
+      'block w-full ': (Number(field.new_line) === 1 && field.align !== 'start'),
 
       'italic':field.italic
 
