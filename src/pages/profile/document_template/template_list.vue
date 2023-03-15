@@ -188,10 +188,15 @@
                          v-model:model-value="item.value"/>
                 <div class="pl-4 " v-for="(t, ind) in item.second_values">
                   <div class="items-center flex gap-x-1" v-if="!t.deleted">
+                    <div class="w-full">
+                      <v-input :label="$t('Значение') + ' '+ (index +1) +'-'+(ind+1)" class="w-full"
+                               v-model:model-value="t.value"/>
+                      <v-input :label="$t('Дополнительно')" class="pl-5 w-full"
+                               v-model:model-value="t.second_value"/>
+                    </div>
 
-                    <v-input :label="$t('Значение') + ' '+ (index +1) +'-'+(ind+1)" class="w-full"
-                             v-model:model-value="t.value"/>
-                    <div class="mt-[26px]">
+                    <div class="mt-[26px]  flex gap-x-1">
+
                       <button
                           type="button"
                           @click="t.deleted = true"

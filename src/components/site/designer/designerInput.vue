@@ -39,7 +39,7 @@
           @input="$emit('update:modelValue', $event.target.value)"
           name="" id="">
         <option value="" selected disabled>{{$t("Выберите")}}</option>
-        <option :value="i.value" v-for="i in item.option_list.filter(el=>{
+        <option :value="i.value +`\n(${i.second_value})`" v-for="i in item.option_list.filter(el=>{
           return el.id === temp
         })[0].second_values">{{ i.value }}
         </option>
