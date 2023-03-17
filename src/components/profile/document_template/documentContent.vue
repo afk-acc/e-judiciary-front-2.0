@@ -90,14 +90,52 @@
         <div class="font-bold mt-2 " @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
 
         <div class="flex flex-col gap-y-2  max-sm:pl-0 ">
-          <document-field @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
-                          v-for="(field, index) in item.fields" :key="index" :index="index"/>
+          <document-field
+              @updatePositionBottom="(it, index)=>{
+                  if(index !== item.fields.length - 1){
+                    item.fields[index + 1].position -=1;
+                    item.fields[index].position = Number(item.fields[index+1].position) +1;
+                  }
+                }"
+              @updatePositionTop="(it, index)=>{
+                  if(index > 0){
+                    item.fields[index - 1].position = Number(item.fields[index-1].position) +1;
+                    item.fields[index].position -=1;
+                  }
+                }"
+              @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
+                          v-for="(field, index) in item.fields.sort((a, b)=>a.position - b.position - 1)" :key="index" :index="index"/>
+        </div>
+      </div>
+      <div class="flex gap-x-4 mt-10 ">
+
+        <div class="p-2 arrow_icon"
+             @click="$emit('updatePositionBottom', item, index)"
+        >
+          <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill="#000000"
+                    d="M544 805.888V168a32 32 0 1 0-64 0v637.888L246.656 557.952a30.72 30.72 0 0 0-45.312 0 35.52 35.52 0 0 0 0 48.064l288 306.048a30.72 30.72 0 0 0 45.312 0l288-306.048a35.52 35.52 0 0 0 0-48 30.72 30.72 0 0 0-45.312 0L544 805.824z"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="p-2 arrow_icon" @click="$emit('updatePositionTop', item,index)">
+          <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill="#000000"
+                    d="M572.235 205.282v600.365a30.118 30.118 0 1 1-60.235 0V205.282L292.382 438.633a28.913 28.913 0 0 1-42.646 0 33.43 33.43 0 0 1 0-45.236l271.058-288.045a28.913 28.913 0 0 1 42.647 0L834.5 393.397a33.43 33.43 0 0 1 0 45.176 28.913 28.913 0 0 1-42.647 0l-219.618-233.23z"></path>
+            </g>
+          </svg>
         </div>
       </div>
       <div class="flex gap-x-4 mt-10">
         <button
             type="button"
-            @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1})"
+            @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1, position:item.fields.length || 0})"
             class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-1 rounded-md text-white">
           <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -143,7 +181,8 @@ export default {
   },
   props: {
     item: Object,
-    index: Number
+    index: Number,
+    max: Number,
   },
   mounted() {
 
@@ -151,8 +190,28 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .svgStroke svg line {
   stroke: #2563eb;
+}
+
+.arrow_icon {
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+  cursor: pointer;
+  path{
+    transition: all 0.3s ease-in-out;
+
+  }
+
+  &:hover {
+    background: #dbeafe;
+
+    path {
+
+      fill: #2563eb;
+    }
+  }
+
 }
 </style>

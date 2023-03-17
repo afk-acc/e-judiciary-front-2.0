@@ -102,7 +102,7 @@
         </div>
       </div>
 
-      <div class="mt-10 mb-10">
+      <div class="my-2">
         <div class="">
           <div class="flex items-center gap-x-4  max-md:flex-col max-md:gap-y-4 max-md:items-center">
             <div class="">
@@ -194,6 +194,31 @@
           </div>
         </div>
       </div>
+      <div class="flex gap-x-4  ">
+
+        <div class="p-2 arrow_icon"
+             @click="$emit('updatePositionBottom', item, index)"
+        >
+          <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill="#000000"
+                    d="M544 805.888V168a32 32 0 1 0-64 0v637.888L246.656 557.952a30.72 30.72 0 0 0-45.312 0 35.52 35.52 0 0 0 0 48.064l288 306.048a30.72 30.72 0 0 0 45.312 0l288-306.048a35.52 35.52 0 0 0 0-48 30.72 30.72 0 0 0-45.312 0L544 805.824z"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="p-2 arrow_icon" @click="$emit('updatePositionTop', item,index)">
+          <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill="#000000"
+                    d="M572.235 205.282v600.365a30.118 30.118 0 1 1-60.235 0V205.282L292.382 438.633a28.913 28.913 0 0 1-42.646 0 33.43 33.43 0 0 1 0-45.236l271.058-288.045a28.913 28.913 0 0 1 42.647 0L834.5 393.397a33.43 33.43 0 0 1 0 45.176 28.913 28.913 0 0 1-42.647 0l-219.618-233.23z"></path>
+            </g>
+          </svg>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -249,11 +274,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 path {
   stroke: #fff;
 }
+.arrow_icon {
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+  cursor: pointer;
+path{
+  transition: all 0.3s ease-in-out;
 
+}
+
+&:hover {
+   background: #dbeafe;
+
+path {
+
+  fill: #2563eb;
+}
+}
+
+}
 .checkbox-green {
   display: inline-block;
   height: 28px;

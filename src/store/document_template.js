@@ -125,7 +125,10 @@ export default {
                 if (params.doc_content[i].text)
                     params.doc_content[i].text = params.doc_content[i].text.replaceAll('\n', '<br>')
             }
-
+            params.doc_content = params.doc_content.sort((a, b)=>a.position - b.position - 1);
+            for(let i = 0;i<params.doc_content.length;i++){
+                params.doc_content[i].fields = params.doc_content[i].fields.sort((a, b)=>a.position - b.position - 1);
+            }
             axios.post(`document-template/update-document-template-content`, {
                 ...params,
                 locale: localStorage.getItem('locale')
@@ -138,6 +141,10 @@ export default {
             })
         },
         create_document_template(context, params) {
+            params.doc_content = params.doc_content.sort((a, b)=>a.position - b.position - 1);
+            for(let i = 0;i<params.doc_content.length;i++){
+                params.doc_content[i].fields = params.doc_content[i].fields.sort((a, b)=>a.position - b.position - 1);
+            }
             axios.post(`document-template/create-document-template`, {
                 ...params,
                 locale: localStorage.getItem('locale')

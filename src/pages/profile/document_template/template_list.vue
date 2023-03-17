@@ -268,7 +268,8 @@
                 @click="change_list.values.push({
                   value:'',
                   template_list_id:change_list.id,
-                  id:'new_id'
+                  id:'new_id',
+                  second_values:[]
                 })"
                 class="text-white bg-[#28a745] hover:bg-[#419554] hover:border-[#419554] transition-all duration-300 py-2 px-4 text-sm rounded-md">
               {{ $t("Добавить") }}

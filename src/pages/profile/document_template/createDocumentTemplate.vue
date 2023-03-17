@@ -30,7 +30,9 @@
       <div class="flex items-center justify-between">
         <select
             required
-            name="" class="px-4 p-2 my-4 outline-none focus:border-borderFocus border border-filter_gray border-opacity-30 focus:shadow-inputFocus rounded-md" id="" v-model="get_document_template.appeal_type_id">
+            name=""
+            class="px-4 p-2 my-4 outline-none focus:border-borderFocus border border-filter_gray border-opacity-30 focus:shadow-inputFocus rounded-md"
+            id="" v-model="get_document_template.appeal_type_id">
           <option value="-1" disabled>{{ $t('Выберите тип') }}</option>
           <option :value="item.id" v-for="(item, index) in get_doc_type_list.data">
             {{ item.title }}
@@ -40,25 +42,45 @@
       </div>
     </div>
 
-    <div class="flex max-lg:w-full  gap-x-2 max-lg:flex-col h-[500px] max-lg:h-full max-lg:items-center max-lg:gap-y-10 overflow-y-scroll overflow-x-scroll">
-      <div class="w-[49%] max-lg:w-full max-lg:h-[500px] max-lg:border-b max-lg:border-opacity-60 max-lg:border-filter_gray overflow-y-scroll">
+    <div
+        class="flex max-lg:w-full  gap-x-2 max-lg:flex-col h-[500px] max-lg:h-full max-lg:items-center max-lg:gap-y-10 overflow-y-scroll overflow-x-scroll">
+      <div
+          class="w-[49%] max-lg:w-full max-lg:h-[500px] max-lg:border-b max-lg:border-opacity-60 max-lg:border-filter_gray overflow-y-scroll">
         <div class="">
           <div class="" v-if="can(getCurrentUser, 'template.edit')">
             <document-content
+                @updatePositionBottom="(item, index)=>{
+                  if(index !== get_document_template.doc_content.length - 1){
+                    get_document_template.doc_content[index + 1].position -=1;
+                    get_document_template.doc_content[index].position = Number(get_document_template.doc_content[index+1].position) +1;
+                  }
+                }"
+                @updatePositionTop="(item, index)=>{
+                  if(index > 0){
+                    get_document_template.doc_content[index - 1].position = Number(get_document_template.doc_content[index-1].position) +1;
+                    get_document_template.doc_content[index].position -=1;
+                  }
+                }"
                 @removeSection="(val)=>{get_document_template.doc_content[val].deleted = true}"
-                :index="index" v-for="(item, index) in get_document_template.doc_content" :item="item" :key="index"/>
+                :index="index"
+                v-for="(item, index) in get_document_template.doc_content.sort((a, b)=>a.position - b.position - 1)"
+                :item="item" :key="index"
+                :max="get_document_template.doc_content.length"
+            />
           </div>
 
         </div>
         <div class="my-5 ">
           <button
               type="button"
-              @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id})"
-              class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 ml-2 p-2 text-white rounded-xl ">{{ $t("Добавить секцию") }}
+              @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id, position:get_document_template.doc_content.length })"
+              class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 ml-2 p-2 text-white rounded-xl ">
+            {{ $t("Добавить секцию") }}
           </button>
         </div>
       </div>
-      <div class="w-[50%] max-lg:w-full max-lg:h-[500px] overflow-y-scroll p-4 border border-opacity-60 border-filter_gray">
+      <div
+          class="w-[50%] max-lg:w-full max-lg:h-[500px] overflow-y-scroll p-4 border border-opacity-60 border-filter_gray">
         <document-preview :is-admin="true" :item="get_document_template"/>
         <div class="flex justify-center gap-x-4 mt-10" v-if="can(getCurrentUser, 'template.create')">
           <button
@@ -94,7 +116,7 @@ export default {
 
   },
   methods: {
-    ...mapActions(['load_input_type_list', 'update_document_doc_template', 'load_template_list','create_document_template', 'load_doc_type_list', 'load_input_type_list']),
+    ...mapActions(['load_input_type_list', 'update_document_doc_template', 'load_template_list', 'create_document_template', 'load_doc_type_list', 'load_input_type_list']),
     can(user, item) {
       if (user.permissions) {
         return canAccess(user, item);
@@ -111,7 +133,7 @@ export default {
         this.$router.go(-1);
       }
       this.load_input_type_list()
-      this.load_doc_type_list({page:1, limit:1000})
+      this.load_doc_type_list({page: 1, limit: 1000})
       this.load_template_list({page: 1, limit: 10000})
       // this.load_document_template_list(this.params)
     }
@@ -123,7 +145,7 @@ export default {
           this.$router.go(-1);
         }
         this.load_input_type_list()
-        this.load_doc_type_list({page:1, limit:1000})
+        this.load_doc_type_list({page: 1, limit: 1000})
         this.load_template_list({page: 1, limit: 10000})
       }
       // this.load_document_template_list(this.params)
@@ -132,6 +154,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
