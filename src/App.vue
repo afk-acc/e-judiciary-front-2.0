@@ -8,7 +8,7 @@ export default {
     if (!localStorage.getItem("locale")) localStorage.setItem("locale", "ru");
     setTimeout(() => {
       this.show = true
-    }, 3000);
+    }, 0);
   },
   data() {
     return {

@@ -34,29 +34,29 @@
         <div
             class="w-[49%] max-lg:w-full max-lg:h-[500px] max-lg:border-b max-lg:border-opacity-60 max-lg:border-filter_gray overflow-y-scroll">
           <div class="">
-            <div class="" v-if="can(getCurrentUser, 'template.edit') && get_document_template.doc_content">
+            <div class="" v-if="can(getCurrentUser, 'template.edit') && doc_content">
               <document-content
-                @updatePositionBottom="(item, index)=>{
-                  if(index !== get_document_template.doc_content.length - 1){
-                    get_document_template.doc_content[index + 1].position -=1;
-                    get_document_template.doc_content[index].position = Number(get_document_template.doc_content[index+1].position) +1;
+                  @updatePositionBottom="(item, index)=>{
+                  if(index !== doc_content.length - 1){
+                    doc_content[index + 1].position -=1;
+                    doc_content[index].position = Number(doc_content[index+1].position) +1;
                   }
                 }"
                   @updatePositionTop="(item, index)=>{
                   if(index > 0){
-                    get_document_template.doc_content[index - 1].position = Number(get_document_template.doc_content[index-1].position) +1;
-                    get_document_template.doc_content[index].position -=1;
+                    doc_content[index - 1].position = Number(doc_content[index-1].position) +1;
+                    doc_content[index].position -=1;
                   }
                 }"
-                  @removeSection="(val)=>{get_document_template.doc_content[val].deleted = true}"
-                  :index="index" v-for="(item, index) in get_document_template.doc_content.sort((a, b)=>a.position - b.position - 1)" :item="item" :key="index"/>
+                  @removeSection="(val)=>{doc_content[val].deleted = true}"
+                  :index="index" v-for="(item, index) in doc_content" :item="item" :key="index"/>
             </div>
           </div>
 
           <div class="my-5 ">
             <button
                 type="button"
-                @click="get_document_template.doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id, text:''})"
+                @click="doc_content.push({fields:[], id:'new_id', document_template_id:get_document_template.id, text:'', position:doc_content.length})"
                 class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 rounded-md p-2 text-white">
               {{ $t("Добавить секцию") }}
             </button>
@@ -97,6 +97,7 @@ export default {
     return {
       params: '',
       page: 1,
+      doc_content: [],
     }
   },
   methods: {
@@ -109,7 +110,9 @@ export default {
       return false;
     },
     send() {
+      this.get_document_template.doc_content = this.doc_content
       if (this.params === 'save') {
+
         this.update_document_doc_template(this.get_document_template);
         this.$router.push({name: 'document_list', params: {page: 1}})
       } else {
@@ -139,6 +142,13 @@ export default {
     }
   },
   watch: {
+    get_document_template(val) {
+      this.doc_content = val.doc_content.sort((a, b) => a.position - b.position - 1)
+      for(let i=0;i<this.doc_content.length;i++){
+        this.doc_content[i].fields = this.doc_content[i].fields.sort((a, b) => a.position - b.position - 1)
+      }
+      this.get_document_template.doc_content = this.doc_content
+    },
     getCurrentUser(val) {
       if (val.id) {
         if (!canAccess(val, "template.read")) {

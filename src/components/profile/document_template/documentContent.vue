@@ -92,19 +92,19 @@
         <div class="flex flex-col gap-y-2  max-sm:pl-0 ">
           <document-field
               @updatePositionBottom="(it, index)=>{
-                  if(index !== item.fields.length - 1){
-                    item.fields[index + 1].position -=1;
-                    item.fields[index].position = Number(item.fields[index+1].position) +1;
+                  if(index !== fields.length - 1){
+                    fields[index + 1].position -=1;
+                    fields[index].position = Number(fields[index+1].position) +1;
                   }
                 }"
               @updatePositionTop="(it, index)=>{
                   if(index > 0){
-                    item.fields[index - 1].position = Number(item.fields[index-1].position) +1;
-                    item.fields[index].position -=1;
+                    fields[index - 1].position = Number(fields[index-1].position) +1;
+                    fields[index].position -=1;
                   }
                 }"
-              @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
-                          v-for="(field, index) in item.fields.sort((a, b)=>a.position - b.position - 1)" :key="index" :index="index"/>
+              @removeField="(val)=>{fields[val].deleted = true}" :item="field"
+                          v-for="(field, index) in fields" :key="index" :index="index"/>
         </div>
       </div>
       <div class="flex gap-x-4 mt-10 ">
@@ -135,7 +135,7 @@
       <div class="flex gap-x-4 mt-10">
         <button
             type="button"
-            @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1, position:item.fields.length || 0})"
+            @click="fields.push({id:'new_id', document_content_id:item.id, input_type_id:1, position:fields.length || 0})"
             class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-1 rounded-md text-white">
           <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -176,7 +176,8 @@ export default {
   components: {VTextarea, DocumentField},
   data() {
     return {
-      openField: false
+      openField: false,
+      fields:[],
     }
   },
   props: {
@@ -185,7 +186,8 @@ export default {
     max: Number,
   },
   mounted() {
-
+      this.fields = this.item.fields.sort((a, b)=>a.position - b.position - 1)
+      this.item.fields = this.fields;
   }
 }
 </script>
