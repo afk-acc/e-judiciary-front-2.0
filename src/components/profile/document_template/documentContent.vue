@@ -86,13 +86,14 @@
           </svg>
         </div>
       </div>
-      <div class="flex flex-col relative gap-y-2 my-10 max-md:w-full " v-if="item.fields.length > 0">
+      <div class="flex flex-col relative gap-y-2 my-10 max-md:w-full " v-if="fields.length > 0">
         <div class="font-bold mt-2 " @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
 
         <div class="flex flex-col gap-y-2  max-sm:pl-0 ">
           <document-field
               @updatePositionBottom="(it, index)=>{
-                  if(index !== fields.length - 1){
+                  if(index !== fields.length - 1 && fields.length !== 0){
+
                     fields[index + 1].position -=1;
                     fields[index].position = Number(fields[index+1].position) +1;
                   }
@@ -104,7 +105,7 @@
                   }
                 }"
               @removeField="(val)=>{fields[val].deleted = true}" :item="field"
-                          v-for="(field, index) in fields" :key="index" :index="index"/>
+              v-for="(field, index) in fields" :key="index" :index="index"/>
         </div>
       </div>
       <div class="flex gap-x-4 mt-10 ">
@@ -177,7 +178,7 @@ export default {
   data() {
     return {
       openField: false,
-      fields:[],
+      fields: [],
     }
   },
   props: {
@@ -186,8 +187,17 @@ export default {
     max: Number,
   },
   mounted() {
-      this.fields = this.item.fields.sort((a, b)=>a.position - b.position - 1)
-      this.item.fields = this.fields;
+    if (this.item.fields.length > 0)
+      this.fields = this.item.fields.sort((a, b) => a.position - b.position - 1)
+    this.item.fields = this.fields;
+  },
+  watch:{
+    fields:{
+      handler(val){
+        this.fields = this.fields.sort((a, b) => a.position - b.position - 1)
+      },
+      deep:true
+    }
   }
 }
 </script>
@@ -201,7 +211,8 @@ export default {
   transition: all 0.3s ease-in-out;
   border-radius: 4px;
   cursor: pointer;
-  path{
+
+  path {
     transition: all 0.3s ease-in-out;
 
   }

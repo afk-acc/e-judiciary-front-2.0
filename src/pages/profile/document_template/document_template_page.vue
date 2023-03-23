@@ -40,13 +40,15 @@
                   if(index !== doc_content.length - 1){
                     doc_content[index + 1].position -=1;
                     doc_content[index].position = Number(doc_content[index+1].position) +1;
+                    doc_content = doc_content.sort((a, b) => a.position - b.position - 1)
                   }
                 }"
                   @updatePositionTop="(item, index)=>{
                   if(index > 0){
                     doc_content[index - 1].position = Number(doc_content[index-1].position) +1;
                     doc_content[index].position -=1;
-                  }
+                    doc_content = doc_content.sort((a, b) => a.position - b.position - 1)
+  }
                 }"
                   @removeSection="(val)=>{doc_content[val].deleted = true}"
                   :index="index" v-for="(item, index) in doc_content" :item="item" :key="index"/>
@@ -143,11 +145,14 @@ export default {
   },
   watch: {
     get_document_template(val) {
-      this.doc_content = val.doc_content.sort((a, b) => a.position - b.position - 1)
-      for(let i=0;i<this.doc_content.length;i++){
-        this.doc_content[i].fields = this.doc_content[i].fields.sort((a, b) => a.position - b.position - 1)
+      if (val?.doc_content?.length > 0) {
+
+        this.doc_content = val.doc_content.sort((a, b) => a.position - b.position - 1)
+        for (let i = 0; i < this.doc_content.length; i++) {
+          this.doc_content[i].fields = this.doc_content[i].fields.sort((a, b) => a.position - b.position - 1)
+        }
+        this.get_document_template.doc_content = this.doc_content
       }
-      this.get_document_template.doc_content = this.doc_content
     },
     getCurrentUser(val) {
       if (val.id) {
