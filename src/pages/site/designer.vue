@@ -47,7 +47,7 @@
     </div>
     <div
         class="px-2 max-h-[500px] overflow-y-auto gap-y-1 flex flex-col text-sm w-[40%] max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 "
-      v-if="get_fields.doc_content"
+      v-if="get_fields?.doc_content"
     >
       <div v-for="(item,index) in get_fields.doc_content.sort((a, b)=>a.position - b.position - 1)" :key="index" class="flex flex-col gap-y-1">
         <designer-input
