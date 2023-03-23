@@ -1,6 +1,7 @@
 <template>
   <form class="pt-10 flex flex-wrap gap-x-4 _container justify-between" @submit.prevent="add">
-    <div class="flex w-full justify-between mt-14 mb-10 max-lg:flex-col max-lg:items-center max-lg:p-4 max-lg:gap-y-4  ">
+    <div
+        class="flex w-full justify-between mt-14 mb-10 max-lg:flex-col max-lg:items-center max-lg:p-4 max-lg:gap-y-4  ">
       <div class="flex  items-center gap-x-1 text-base max-md:text-sm font-bold text-[#253858]">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -47,12 +48,12 @@
     </div>
     <div
         class="px-2 max-h-[500px] overflow-y-auto gap-y-1 flex flex-col text-sm w-[40%] max-lg:w-10/12 max-md:w-full max-lg:max-h-full py-5 "
-      v-if="get_fields?.doc_content"
+        v-if="get_fields?.doc_content"
     >
-      <div v-for="(item,index) in get_fields.doc_content.sort((a, b)=>a.position - b.position - 1)" :key="index" class="flex flex-col gap-y-1">
+      <div v-for="(item,index) in doc_content" :key="index" class="flex flex-col gap-y-1">
         <designer-input
             v-model:model-value="field.value"
-            v-for="(field, i) in item.fields.sort((a, b)=>a.position - b.position - 1)" :item="field" :key="i"
+            v-for="(field, i) in item.fields" :item="field" :key="i"
         />
       </div>
 
@@ -100,6 +101,7 @@ export default {
       },
     }
   },
+
   methods: {
     ...mapActions(['load_fields', 'load_preview', 'add_new_appeal']),
     ...mapMutations(['update_fields', 'update_send_appeal']),
@@ -137,7 +139,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_fields', 'get_preview'])
+    ...mapGetters(['get_fields', 'get_preview']),
+    doc_content() {
+
+      let arr = this.get_fields.doc_content.sort((a, b) => a.position - b.position)
+      for (let i = 0; i < arr.length; i++) {
+        arr[i].fields = arr[i].fields.sort((a, b) => a.position - b.position)
+      }
+      return arr;
+    },
   },
   mounted() {
     this.load_fields(Number(this.$route.params.name))
