@@ -52,7 +52,7 @@
     </v-modal>
     <v-modal  v-if="show_info" @showModal="show_info = !show_info">
       <div class="text-center font-bold text-primary text-2xl">{{ $t("Информация о пользователе") }}</div>
-      <div class="flex justify-center my-2"><img :src="change_user.image" alt=""
+      <div class="flex justify-center my-2"><img :src="get_server_domain+change_user.image" alt=""
         class="w-[100px] h-[100px] rounded-full object-cover "></div>
       <div class="flex flex-col gap-y-4 ">
         <div class="text-base"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ change_user.name }}</div>
@@ -112,7 +112,7 @@
               }}</p>
             <div class="flex justify-center my-2" v-if="edit.image">
 
-              <img class="rounded-full w-[150px] h-[150px] object-cover " :src="edit.image" alt="">
+              <img class="rounded-full w-[150px] h-[150px] object-cover " :src="get_server_domain+edit.image" alt="">
             </div>
             <div class="flex justify-center my-4">
               <label for="file">
@@ -209,7 +209,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getUsersList', 'getRoleList'])
+    ...mapGetters(['getUsersList', 'getRoleList','get_server_domain'])
   },
   methods: {
     ...mapActions(['loadUsersList', 'loadRoleList', 'changeUserRole', 'update_user']),

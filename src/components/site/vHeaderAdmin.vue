@@ -23,7 +23,7 @@
           <div @click="this.$router.push({name: 'info'})"
                class="flex py-4 cursor-pointer border-white border-opacity-40 border-b items-center gap-x-2 no-underline">
             <div class="w-[35px] h-[35px] ml-1">
-              <img :src="getCurrentUser.image" class="w-full h-full rounded-full" alt="">
+              <img :src="get_server_domain+ getCurrentUser.image" class="w-full h-full rounded-full" alt="">
             </div>
             <div class="text-sm text-white" :class="{'hidden' : !openMenu, 'block' : openMenu}">{{
                 getCurrentUser.name
@@ -446,7 +446,7 @@
                   {{ $t("Обращение пользователей") }}
                 </div>
               </profile-link-items>
-             
+
               <profile-link-items route="service" :params="{ page: 1 }">
                 <div class="flex gap-x-2 items-center profile-hover profile-hoverFill">
                   <svg fill="#fff" height="10px" width="10px" version="1.1" id="XMLID_57_"
@@ -779,7 +779,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['getCurrentUser', 'get_notifications', 'get_base_url', 'get_all_doc_list']),
+    ...mapGetters(['getCurrentUser', 'get_notifications', 'get_base_url', 'get_all_doc_list', 'get_server_domain']),
 
   },
   methods: {
@@ -854,7 +854,7 @@ export default {
   width: 100% !important;
   @media (max-width: 420px) {
     width: 60% !important;
-  } 
+  }
 }
 
 .search_active + .header__search-icon {
@@ -862,7 +862,7 @@ export default {
   justify-content: start;
   @media (max-width: 420px) {
     right: 60% !important;
-  } 
+  }
 }
 
 .header__search {

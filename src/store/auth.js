@@ -12,6 +12,9 @@ export default {
         }
     },
     getters: {
+        get_server_domain(state){
+          return 'https://api.e.sjco.uz/';
+        },
         get_lawyer_list(state) {
             return state.lawyer_list
         },
@@ -74,13 +77,13 @@ export default {
             }).then(res => {
                 context.commit('updateCurrentUser', res.data.data)
                 context.commit('updateIsAuth', true)
-                axios.get('get-user-image', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                }).then(im=>{
-                    context.commit('updateUserImage', im.data)
-                })
+                // axios.get('get-user-image', {
+                //     headers: {
+                //         Authorization: `Bearer ${localStorage.getItem('token')}`
+                //     }
+                // }).then(im=>{
+                //     context.commit('updateUserImage', im.data)
+                // })
             }).catch(res => {
                 context.commit('updateIsAuth', false)
                 localStorage.removeItem('token')

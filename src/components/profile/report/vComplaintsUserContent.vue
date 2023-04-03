@@ -5,7 +5,7 @@
         class="flex items-center max-md:flex-wrap justify-between px-6 pl-12 border-b border-filter_gray border-opacity-50 pb-5 max-sm:justify-end">
       <div class="flex  gap-x-5 items-center max-sm:hidden">
         <div>
-          <img class="w-[50px] h-[50px] rounded-full object-cover" :src="getImage(report?.reciver_info?.image)" alt=""/>
+          <img class="w-[50px] h-[50px] rounded-full object-cover" :src="get_server_domain+report?.reciver_info?.image" alt=""/>
         </div>
         <div>
           <h3 class="text-lg font-bold">{{ report?.reciver_info?.name }}</h3>
@@ -75,7 +75,12 @@
 
 <script>
 
+import {mapGetters} from "vuex";
+
 export default {
+  computed:{
+    ...mapGetters(['get_server_domain'])
+  },
   components: {
   },
   props: {

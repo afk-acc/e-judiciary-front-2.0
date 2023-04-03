@@ -7,7 +7,7 @@
           <div
               class="flex max-sm:flex-col max-sm:text-center max-sm:items-center max-lg:mx-auto cursor-pointer select-none">
             <div>
-              <img class="w-[45px] h-[45px] object-cover rounded-full" :src="getImage(reciver.image)" alt="">
+              <img class="w-[45px] h-[45px] object-cover rounded-full" :src="get_server_domain+reciver.image" alt="">
             </div>
             <div class="pl-4">
               <p>{{ reciver.name }}</p>
@@ -104,7 +104,7 @@
       </div>
       <div class="overflow-y-scroll h-full pb-20">
         <div class="p-6 text-center">
-          <img class=" mx-auto w-[60px] h-[60px] rounded-full object-cover" :src="getImage(reciver.image)" alt="">
+          <img class=" mx-auto w-[60px] h-[60px] rounded-full object-cover" :src="get_server_domain+reciver.image" alt="">
           <h3 class="text-sm font-bold pt-4">{{ reciver.name }}</h3>
           <p class="text-sm text-filter_gray">{{ reciver.phone }}</p>
         </div>
@@ -233,7 +233,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['get_messages', 'getCurrentUser', 'get_base_url', 'get_sended']),
+    ...mapGetters(['get_messages','get_server_domain','getCurrentUser', 'get_base_url', 'get_sended']),
     messages() {
 
       return this.get_messages.data?.sort((a, b) => {

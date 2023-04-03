@@ -256,7 +256,7 @@ export default {
     StarRating
   },
   computed: {
-    ...mapGetters(['get_appeal', 'get_base_url', 'getCurrentUser']),
+    ...mapGetters(['get_appeal', 'get_base_url', 'getCurrentUser', 'get_server_domain']),
     lawyers() {
       return [...this.get_appeal.lawyers]
     },
@@ -308,7 +308,7 @@ export default {
       this.showRating = false;
     },
     getImage(image) {
-      return image
+      return this.get_server_domain+image
     },
     getPdf(pdf, name) {
       const linkSource = pdf;

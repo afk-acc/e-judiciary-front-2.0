@@ -23,7 +23,7 @@
     </div>
     <v-modal v-if="show_info" @showModal="show_info = !show_info">
       <div class="text-center font-bold text-primary text-2xl">{{ $t("Информация о пользователе") }}</div>
-      <div class="flex justify-center my-2"><img :src="active_user.image" alt=""
+      <div class="flex justify-center my-2"><img :src="get_server_domain+active_user.image" alt=""
                                                  class="w-[100px] h-[100px] rounded-full object-cover "></div>
       <div class="text-xl"><span class="font-bold text-black">{{ $t('Имя') }}:</span> {{ active_user.name }}</div>
       <div class="text-xl"><span class="font-bold text-black">{{ $t('Роль') }}:</span> {{ active_user.role_locale }}
@@ -133,7 +133,7 @@ export default {
 
   },
   computed: {
-    ...mapGetters(['get_request_list', 'getCurrentUser'])
+    ...mapGetters(['get_request_list', 'getCurrentUser', 'get_server_domain'])
   },
   mounted() {
     this.params.page = this.$route.params.page

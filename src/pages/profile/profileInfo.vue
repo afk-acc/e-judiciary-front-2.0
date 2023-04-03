@@ -68,7 +68,7 @@
               }}</p>
             <div class="flex justify-center my-2" v-if="edit.image">
 
-              <img class="rounded-full w-[150px] h-[150px] object-cover " :src="edit.image" alt="">
+              <img class="rounded-full w-[150px] h-[150px] object-cover " :src="get_server_domain+edit.image" alt="">
             </div>
             <div class="flex justify-center  my-4">
               <label for="file">
@@ -178,7 +178,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getCurrentUser"]),
+    ...mapGetters(["getCurrentUser",'get_server_domain']),
   },
   mounted() {
   },

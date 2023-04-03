@@ -1,7 +1,7 @@
 <template>
   <div class="flex cursor-pointer relative w-full p-4 gap-x-2">
     <div class="w-[48px] h-[48px]">
-      <img class="w-[48px] h-[48px] rounded-full max-w-sm object-cover" :src="reciver.image" alt=""/>
+      <img class="w-[48px] h-[48px] rounded-full max-w-sm object-cover" :src="get_server_domain+reciver.image" alt=""/>
     </div>
     <div class=" w-9/12">
       <p class="font-bold text-sm">{{ reciver?.name }}</p>
@@ -46,7 +46,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getCurrentUser', 'get_base_url'])
+    ...mapGetters(['getCurrentUser', 'get_base_url', 'get_server_domain'])
   },
   props: {
     item: Object,

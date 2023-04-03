@@ -2,7 +2,7 @@
   <div class="cursor-pointer" :class="{'border-l-4 border-primary':is_active}">
     <div class="flex mt-4 pl-4">
       <div>
-        <img :src="getImage(item.reciver_info.image)" class="w-[40px] h-[40px] rounded-full object-cover" alt="">
+        <img :src="get_server_domain+item.reciver_info.image" class="w-[40px] h-[40px] rounded-full object-cover" alt="">
       </div>
       <div class="px-2 flex w-full justify-between">
         <div class="">
@@ -29,7 +29,7 @@ export default {
     is_active: Boolean
   },
   computed: {
-    ...mapGetters(['get_base_url'])
+    ...mapGetters(['get_base_url', 'get_server_domain'])
   },
   methods: {
     getDate(date) {
