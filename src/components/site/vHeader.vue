@@ -180,7 +180,7 @@
                   <router-link :to="{name:'info'}" class="flex mx-auto   gap-x-4 max-lg:my-6 items-center">
                     <div class="text-sm  hidden max-lg:flex">{{ getCurrentUser.name }}</div>
                     <div class="w-[85px] h-[55px] ">
-                      <img :src="getCurrentUser.image" class="w-[55px] h-[55px] rounded-full" alt="">
+                      <img :src="get_server_domain+ getCurrentUser.image" class="w-[55px] h-[55px] rounded-full" alt="">
                     </div>
                   </router-link>
                 </div>
@@ -259,7 +259,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['getCurrentUser', 'get_notifications', 'get_base_url', 'get_all_doc_list']),
+    ...mapGetters(['getCurrentUser', 'get_notifications', 'get_base_url', 'get_all_doc_list', 'get_server_domain']),
 
   },
   methods: {
