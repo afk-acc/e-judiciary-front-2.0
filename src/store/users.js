@@ -28,6 +28,8 @@ export default {
     actions: {
         update_user(context, params) {
             let fd = new FormData();
+            fd.set('name', params.name || null)
+
             fd.set('education_place', params.education_place || null)
             fd.set('education_start', params.education_start  || null)
             fd.set('education_end', params.education_end  || null)

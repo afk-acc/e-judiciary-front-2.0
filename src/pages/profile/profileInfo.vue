@@ -59,7 +59,9 @@
           }}</p>
         <div class="px-2">
           <div class="">
-
+            <p class="text-2xl font-medium mt-2">{{ $t('Имя') }}</p>
+            <v-input v-model:model-value="edit.name"
+                     :label="this.$t('ФИО')" type="text"/>
             <p class="text-2xl font-medium mt-2">{{ $t('Описание о себе') }}</p>
             <v-input v-model:model-value="edit.bio"
                      :label="this.$t('Описание')" type="textarea"/>
