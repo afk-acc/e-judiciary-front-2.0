@@ -146,12 +146,14 @@ export default {
   watch: {
     get_document_template(val) {
       if (val?.doc_content?.length > 0) {
-
+        console.log("3")
         this.doc_content = val.doc_content.sort((a, b) => a.position - b.position - 1)
         for (let i = 0; i < this.doc_content.length; i++) {
           this.doc_content[i].fields = this.doc_content[i].fields.sort((a, b) => a.position - b.position - 1)
         }
         this.get_document_template.doc_content = this.doc_content
+        console.log("4")
+
       }
     },
     getCurrentUser(val) {
@@ -160,10 +162,12 @@ export default {
           this.$router.go(-1);
         }
       }
+      console.log("1");
       this.load_document_template({id: this.$route.params.id})
       this.load_doc_type_list({page: 1, limit: 1000})
       this.load_input_type_list()
       this.load_template_list({page: 1, limit: 10000})
+      console.log("2");
       // this.load_document_template_list(this.params)
     },
     $route(from, to) {
