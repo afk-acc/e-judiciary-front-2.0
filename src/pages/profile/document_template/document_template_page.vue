@@ -137,10 +137,12 @@ export default {
       if (!canAccess(this.getCurrentUser, "template.read")) {
         this.$router.go(-1);
       }
+      console.log("11");
       this.load_document_template({id: this.$route.params.id})
       this.load_doc_type_list({page: 1, limit: 1000})
       this.load_input_type_list()
       this.load_template_list({page: 1, limit: 10000})
+      console.log("12");
     }
   },
   watch: {
