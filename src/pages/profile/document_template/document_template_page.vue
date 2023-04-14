@@ -149,10 +149,10 @@ export default {
     get_document_template(val) {
       if (val?.doc_content?.length > 0) {
         console.log("3")
-        this.doc_content = val.doc_content.sort((a, b) => a.position - b.position - 1)
-        for (let i = 0; i < this.doc_content.length; i++) {
-          this.doc_content[i].fields = this.doc_content[i].fields.sort((a, b) => a.position - b.position - 1)
-        }
+        this.doc_content = val.doc_content
+        // for (let i = 0; i < this.doc_content.length; i++) {
+          // this.doc_content[i].fields = this.doc_content[i].fields.sort((a, b) => a.position - b.position - 1)
+        // }
         this.get_document_template.doc_content = this.doc_content
         console.log("4")
 

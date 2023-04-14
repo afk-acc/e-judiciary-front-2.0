@@ -3,8 +3,11 @@
        v-if="!(item.deleted) "
   >
     <div class="my-2 w-full max-md:w-8/12 max-sm:w-full">
-      <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text"
-                  :placeholder="$t('Введите текст')"></v-textarea>
+      <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text_uz_l"
+                  :placeholder="$t('Введите текст')+'(uz_l)'"></v-textarea>
+                  
+      <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text_uz_c"
+                  :placeholder="$t('Введите текст')+'(uz_c)'"></v-textarea>
     </div>
     <div class="">
       <div class="flex gap-x-2 my-2 w-full">
