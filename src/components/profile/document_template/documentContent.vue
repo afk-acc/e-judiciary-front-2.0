@@ -190,8 +190,8 @@ export default {
     max: Number,
   },
   mounted() {
-    if (this.item.fields.length > 0)
-      this.fields = this.item.fields.sort((a, b) => a.position - b.position - 1)
+    // if (this.item.fields.length > 0)
+      // this.fields = this.item.fields.sort((a, b) => a.position - b.position - 1)
     this.item.fields = this.fields;
   },
   watch:{
