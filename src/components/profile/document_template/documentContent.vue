@@ -99,13 +99,19 @@
 
                     fields[index + 1].position -=1;
                     fields[index].position = Number(fields[index+1].position) +1;
+                    let temp = fields[index] 
+                    fields[index] = fields[index+1];
+                    fields[index+1] = temp;
                   }
                 }"
               @updatePositionTop="(it, index)=>{
                   if(index > 0){
                     fields[index - 1].position = Number(fields[index-1].position) +1;
                     fields[index].position -=1;
-                  }
+                    let temp = fields[index] 
+                    fields[index] = fields[index-1];
+                    fields[index-1] = temp;
+                                    }
                 }"
               @removeField="(val)=>{fields[val].deleted = true}" :item="field"
               v-for="(field, index) in fields" :key="index" :index="index"/>
@@ -195,12 +201,14 @@ export default {
     // this.item.fields = this.fields;
   },
   watch:{
-    fields:{
-      handler(val){
-        this.fields = this.fields.sort((a, b) => a.position - b.position - 1)
-      },
-      deep:true
-    }
+    // fields:{
+    //   handler(new_val, old_val){
+    //     console.log(new_val)
+    //     console.log(old_val)
+    //     // this.fields = this.fields.sort((a, b) => a.position - b.position - 1)
+    //   },
+    //   deep:true
+    // }
   }
 }
 </script>
