@@ -5,7 +5,7 @@
     <div class="my-2 w-full max-md:w-8/12 max-sm:w-full">
       <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text_uz_l"
                   :placeholder="$t('Введите текст')+'(uz_l)'"></v-textarea>
-                  
+
       <v-textarea class="w-full focus:border-borderFocus focus:shadow-inputFocus" v-model:model-value="item.text_uz_c"
                   :placeholder="$t('Введите текст')+'(uz_c)'"></v-textarea>
     </div>
@@ -89,32 +89,32 @@
           </svg>
         </div>
       </div>
-      <div class="flex flex-col relative gap-y-2 my-10 max-md:w-full " v-if="fields.length > 0">
+      <div class="flex flex-col relative gap-y-2 my-10 max-md:w-full " v-if="item.fields.length > 0">
         <div class="font-bold mt-2 " @click="openField = !openField">{{ $t("Поля для ввода") }}</div>
 
         <div class="flex flex-col gap-y-2  max-sm:pl-0 ">
           <document-field
               @updatePositionBottom="(it, index)=>{
-                  if(index !== fields.length - 1 && fields.length !== 0){
+                  if(index !== item.fields.length - 1 && item.fields.length !== 0){
 
-                    fields[index + 1].position -=1;
-                    fields[index].position = Number(fields[index+1].position) +1;
-                    let temp = fields[index] 
-                    fields[index] = fields[index+1];
-                    fields[index+1] = temp;
+                    item.fields[index + 1].position -=1;
+                    item.fields[index].position = Number(item.fields[index+1].position) +1;
+                    let temp = item.fields[index]
+                    item.fields[index] = item.fields[index+1];
+                    item.fields[index+1] = temp;
                   }
                 }"
               @updatePositionTop="(it, index)=>{
                   if(index > 0){
-                    fields[index - 1].position = Number(fields[index-1].position) +1;
-                    fields[index].position -=1;
-                    let temp = fields[index] 
-                    fields[index] = fields[index-1];
-                    fields[index-1] = temp;
+                    item.fields[index - 1].position = Number(item.fields[index-1].position) +1;
+                    item.fields[index].position -=1;
+                    let temp = item.fields[index]
+                    item.fields[index] = item.fields[index-1];
+                    item.fields[index-1] = temp;
                                     }
                 }"
-              @removeField="(val)=>{fields[val].deleted = true}" :item="field"
-              v-for="(field, index) in fields" :key="index" :index="index"/>
+              @removeField="(val)=>{item.fields[val].deleted = true}" :item="field"
+              v-for="(field, index) in item.fields" :key="index" :index="index"/>
         </div>
       </div>
       <div class="flex gap-x-4 mt-10 ">
@@ -145,7 +145,7 @@
       <div class="flex gap-x-4 mt-10">
         <button
             type="button"
-            @click="fields.push({id:'new_id', document_content_id:item.id, input_type_id:1, position:fields.length || 0})"
+            @click="item.fields.push({id:'new_id', document_content_id:item.id, input_type_id:1, position:fields.length || 0})"
             class="bg-[#007bff] hover:bg-[#0069d9] hover:border-[#0062cc] transition-all duration-300 p-1 rounded-md text-white">
           <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -196,8 +196,8 @@ export default {
     max: Number,
   },
   mounted() {
-    if (this.item.fields.length > 0)
-      this.fields = this.item.fields
+    // if (this.item.fields.length > 0)
+    //   this.fields = this.item.fields
     // this.item.fields = this.fields;
   },
   watch:{

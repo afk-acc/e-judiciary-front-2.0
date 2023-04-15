@@ -7,7 +7,7 @@
       'text-center':content.align === 'center',
       'text-end':content.align === 'end',
       'font-bold':content.weight === 'bold',
-      'block w-full ':(Number(content.new_line) === 1 && content.align !== 'start'),
+      'block w-full ':(Number(content.new_line) === 1 ),
 
       'italic':content.italic
 
@@ -16,15 +16,18 @@
       <span
           v-if="!(content.deleted) "
       >
-        <span class="flex w-full justify-between mt-5" v-if="Number(content.is_date) === 1">
-      <span class="w-[150px]">Сана {{ getDate(new Date()) }}
+        <span class="flex w-full justify-between mt-5" v-if="Number(content.is_date) === 1 ">
+          <span class="w-[150px]">{{ $t("Сана") }} {{ getDate(new Date()) }}
+          </span>
+          <span class="w-[150px] ">{{ $t("Имзо") }}
+            <hr class="ml-12"/>
+          </span>
       </span>
-      <span class="w-[150px] ">Имзо
-        <hr class="ml-12"/>
-        </span>
-      </span>
-        <span class="break-all" style="white-space: pre-line" v-if="content.text_uz_l">
-          {{ content.text_uz_l.replaceAll("<br>", "\n") }}&nbsp;
+
+
+        <span class="break-all" style="white-space: pre-line" v-if="content.text_uz_l || content.text_uz_c">
+          {{ get_text(content) }}
+<!--          {{  }}&nbsp;-->
          </span>
          <span v-if="Number(content.new_line) === 1"><br></span>
           <span class="break-all h-max" v-for="field in content.fields">
@@ -33,7 +36,7 @@
       'text-center ':field.align === 'center',
       'text-end':field.align === 'end',
       'font-bold':field.weight === 'bold',
-      'block w-full ':(Number(field.new_line) === 1 && field.align !== 'start'),
+      'block w-full ':(Number(field.new_line) === 1),
 
       'italic':field.italic
 
@@ -44,7 +47,7 @@
       'text-center ':field.align === 'center',
       'text-end':field.align === 'end',
       'font-bold':field.weight === 'bold',
-      'block w-full ':(Number(field.new_line) === 1 && field.align !== 'start'),
+      'block w-full ':(Number(field.new_line) === 1),
 
       'italic':field.italic
 
@@ -58,7 +61,7 @@
       'text-center ':field.align === 'center',
       'text-end':field.align === 'end',
       'font-bold':field.weight === 'bold',
-      'block w-full ': (Number(field.new_line) === 1 && field.align !== 'start'),
+      'block w-full ': (Number(field.new_line) === 1 ),
 
       'italic':field.italic
 
@@ -82,7 +85,9 @@ export default {
   mounted() {
 
   },
-  computed: {},
+  computed: {
+
+  },
   props: {
     item: Object,
     isAdmin: Boolean
@@ -95,8 +100,14 @@ export default {
         return d.toLocaleDateString("ru", options)
       }
       return '________'
+    },
+    get_text(content){
+      if(localStorage.getItem('locale') === 'uz_c')
+        return content.text_uz_c.replaceAll("<br>", "\n")
+      return content.text_uz_l.replaceAll("<br>", "\n")
     }
-  }
+  },
+
 }
 </script>
 

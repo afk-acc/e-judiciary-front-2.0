@@ -53,17 +53,23 @@
                   if(index !== get_document_template.doc_content.length - 1){
                     get_document_template.doc_content[index + 1].position -=1;
                     get_document_template.doc_content[index].position = Number(get_document_template.doc_content[index+1].position) +1;
+                    let temp = get_document_template.doc_content[index]
+                    get_document_template.doc_content[index] = get_document_template.doc_content[index+1];
+                    get_document_template.doc_content[index + 1] = temp
                   }
                 }"
                 @updatePositionTop="(item, index)=>{
                   if(index > 0){
                     get_document_template.doc_content[index - 1].position = Number(get_document_template.doc_content[index-1].position) +1;
                     get_document_template.doc_content[index].position -=1;
+                  let temp = get_document_template.doc_content[index]
+                    get_document_template.doc_content[index] = get_document_template.doc_content[index-1];
+                    get_document_template.doc_content[index - 1] = temp
                   }
                 }"
                 @removeSection="(val)=>{get_document_template.doc_content[val].deleted = true}"
                 :index="index"
-                v-for="(item, index) in get_document_template.doc_content.sort((a, b)=>a.position - b.position - 1)"
+                v-for="(item, index) in get_document_template.doc_content"
                 :item="item" :key="index"
                 :max="get_document_template.doc_content.length"
             />

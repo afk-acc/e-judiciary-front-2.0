@@ -108,7 +108,8 @@ export default {
     add() {
       axios.post(`generate-doc-word`, {
             doc: this.get_fields.id,
-            fields: this.get_fields
+            fields: this.get_fields,
+            locale: localStorage.getItem('locale')
           },
           {
             responseType: 'blob'
