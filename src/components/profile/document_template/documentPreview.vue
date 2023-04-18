@@ -101,7 +101,7 @@ export default {
     },
     get_text(content) {
       if (localStorage.getItem('locale') === 'uz_c')
-        if (content.text_uz_c.length > 0)
+        if (content.text_uz_c)
           return content.text_uz_c.replaceAll("<br>", "\n")
       return content.text_uz_l.replaceAll("<br>", "\n")
     }
