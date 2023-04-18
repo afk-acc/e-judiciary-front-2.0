@@ -27,7 +27,7 @@
 
         <span class="break-all" style="white-space: pre-line" v-if="content.text_uz_l || content.text_uz_c">
           {{ get_text(content) }}
-<!--          {{  }}&nbsp;-->
+          <!--          {{  }}&nbsp;-->
          </span>
          <span v-if="Number(content.new_line) === 1"><br></span>
           <span class="break-all h-max" v-for="field in content.fields">
@@ -85,9 +85,7 @@ export default {
   mounted() {
 
   },
-  computed: {
-
-  },
+  computed: {},
   props: {
     item: Object,
     isAdmin: Boolean
@@ -101,9 +99,10 @@ export default {
       }
       return '________'
     },
-    get_text(content){
-      if(localStorage.getItem('locale') === 'uz_c')
-        return content.text_uz_c.replaceAll("<br>", "\n")
+    get_text(content) {
+      if (localStorage.getItem('locale') === 'uz_c')
+        if (content.text_uz_c.length > 0)
+          return content.text_uz_c.replaceAll("<br>", "\n")
       return content.text_uz_l.replaceAll("<br>", "\n")
     }
   },

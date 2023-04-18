@@ -150,7 +150,8 @@ export default {
       return arr;
     },
   },
-  mounted() {
+  async mounted() {
+
     this.load_fields(Number(this.$route.params.name))
   },
   watch: {}
