@@ -40,7 +40,7 @@
 
       'italic':field.italic
 
-    }">{{ field.name_uz_l }}</span>
+    }">{{ get_text_2(field) }}</span>
             <span v-if="field.input_type_name === 'date'"
                   :class="{
       'text-justify':field.align === 'start',
@@ -104,6 +104,13 @@ export default {
         if (content.text_uz_c)
           return content.text_uz_c.replaceAll("<br>", "\n")
       return content.text_uz_l.replaceAll("<br>", "\n")
+    },
+    get_text_2(text){
+      if (localStorage.getItem('locale') === 'uz_c')
+        if (text.name_uz_c)
+          return text.name_uz_c.replaceAll("<br>", "\n")
+      return text.name_uz_l.replaceAll("<br>", "\n")
+
     }
   },
 
